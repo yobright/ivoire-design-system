@@ -1,5 +1,4 @@
 {
-  "name": "ivoire-design-system",
   "version": "0.0.1",
   "description": "Design system to support digital transformation",
   "type": "module",
@@ -40,6 +39,10 @@
     "email": "geraldmbahia@outlook.com",
     "url": "https://github.com/yobright"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@yobright" 
+  },
+  "name": "@yobright/ivds",
   "license": "ISC",
   "devDependencies": {
     "@chromatic-com/storybook": "^1.8.0",
