@@ -1,103 +1,11 @@
 {
-  "version": "0.0.1",
-  "description": "Design system to support digital transformation",
-  "type": "module",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.es.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "/dist"
+  "name": "root",
+  "private": true,
+  "workspaces": [
+    "packages/*"
   ],
-  "scripts": {
-    "format": "prettier --write --parser typescript  '**/*.{ts,tsx}'",
-    "lint": "eslint 'src/**/*.{ts,tsx}' --fix",
-    "build": "tsc && vite build",
-    "test": "vitest run",
-    "test-watch": "vitest",
-    "test:coverage": "vitest --coverage",
-    "test:ui": "vitest --ui",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "prepare": "husky"
-  },
-  "lint-staged": {
-    "*.{ts,tsx}": [
-      "pnpm run format",
-      "pnpm run lint",
-      "pnpm run test"
-    ]
-  },
-  "keywords": [
-    "design system",
-    "côte d'ivoire",
-    "react",
-    "typescript",
-    "vite",
-    "storybook",
-    "component library",
-    "ui kit"
-  ],
-  "homepage": "https://github.com/babiverse/ivoire-design-system#readme",
-  "bugs": {
-    "url": "https://github.com/babiverse/ivoire-design-system/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/babiverse/ivoire-design-system"
-  },
-  "author": {
-    "name": "babiverse",
-    "email": "geraldmbahia@outlook.com",
-    "url": "https://github.com/babiverse"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@babiverse"
-  },
-  "name": "@babiverse/ivds",
-  "license": "ISC",
+  "dependencies": {},
   "devDependencies": {
-    "@chromatic-com/storybook": "^1.8.0",
-    "@eslint/js": "^9.9.1",
-    "@storybook/addon-essentials": "^8.2.9",
-    "@storybook/addon-interactions": "^8.2.9",
-    "@storybook/addon-links": "^8.2.9",
-    "@storybook/addon-onboarding": "^8.2.9",
-    "@storybook/blocks": "^8.2.9",
-    "@storybook/react": "^8.2.9",
-    "@storybook/react-vite": "^8.2.9",
-    "@storybook/test": "^8.2.9",
-    "@testing-library/jest-dom": "^6.5.0",
-    "@testing-library/react": "^16.0.1",
-    "@types/jest": "^29.5.12",
-    "@types/react": "^18.3.5",
-    "eslint": "^9.9.1",
-    "eslint-plugin-react": "^7.35.0",
-    "eslint-plugin-storybook": "^0.8.0",
-    "globals": "^15.9.0",
-    "husky": "^9.1.5",
-    "jsdom": "^25.0.0",
-    "lint-staged": "^15.2.9",
-    "prettier": "^3.3.3",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "storybook": "^8.2.9",
-    "styled-components": "^6.1.13",
-    "tsc-alias": "^1.8.10",
-    "typescript": "^5.5.4",
-    "typescript-eslint": "^8.3.0",
-    "vite": "^5.4.2",
-    "vite-plugin-dts": "^4.0.3",
-    "vitest": "^2.0.5"
-  },
-  "peerDependencies": {
-    "react": "^18.3.1"
-  },
-  "dependencies": {
-    "@types/node": "^22.5.1"
-  },
-  "eslintConfig": {
-    "extends": [
-      "plugin:storybook/recommended"
-    ]
+    "lerna": "^8.1.9"
   }
 }
