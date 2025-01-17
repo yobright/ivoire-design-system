@@ -9,11 +9,12 @@
     "/dist"
   ],
   "scripts": {
-    "format": "prettier --write parser typescript  '**/*.{ts,tsx}'",
-    "lint": "eslint  . --ext .ts,.tsx --ignore-path .gitignore --fix",
+    "format": "prettier --write --parser typescript  '**/*.{ts,tsx}'",
+    "lint": "eslint 'src/**/*.{ts,tsx}' --fix",
     "build": "tsc && vite build",
     "test": "vitest run",
     "test-watch": "vitest",
+    "test:coverage": "vitest --coverage",
     "test:ui": "vitest --ui",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
@@ -32,17 +33,27 @@
     "react",
     "typescript",
     "vite",
-    "storybook"
+    "storybook",
+    "component library",
+    "ui kit"
   ],
+  "homepage": "https://github.com/babiverse/ivoire-design-system#readme",
+  "bugs": {
+    "url": "https://github.com/babiverse/ivoire-design-system/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/babiverse/ivoire-design-system"
+  },
   "author": {
-    "name": "kasskoo",
+    "name": "babiverse",
     "email": "geraldmbahia@outlook.com",
-    "url": "https://github.com/yobright"
+    "url": "https://github.com/babiverse"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@yobright" 
+    "registry": "https://npm.pkg.github.com/@babiverse"
   },
-  "name": "@yobright/ivds",
+  "name": "@babiverse/ivds",
   "license": "ISC",
   "devDependencies": {
     "@chromatic-com/storybook": "^1.8.0",

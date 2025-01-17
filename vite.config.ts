@@ -7,16 +7,17 @@ import { peerDependencies } from "./package.json";
 export default defineConfig({
   build: {
     lib: {
-      entry: "./src/index.ts", 
-      name: "ivoiredesignsystem",
+      entry: "./src/index.ts",
+      name: "@babiverse/ivds",
       fileName: (format) => `index.${format}.js`,
       formats: ["cjs", "es"],
     },
     rollupOptions: {
       external: [...Object.keys(peerDependencies)],
     },
-    sourcemap: true, 
+    sourcemap: true,
     emptyOutDir: true,
+    minify: "esbuild",
   },
   plugins: [dts()],
   test: {
