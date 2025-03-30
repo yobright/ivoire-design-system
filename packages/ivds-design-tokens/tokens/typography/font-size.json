@@ -1,0 +1,34 @@
+{
+  "typography": {
+    "fontSizes": {
+      "xs": {
+        "value": "12px",
+        "type": "fontSize"
+      },
+      "sm": {
+        "value": "14px",
+        "type": "fontSize"
+      },
+      "md": {
+        "value": "16px",
+        "type": "fontSize"
+      },
+      "lg": {
+        "value": "20px",
+        "type": "fontSize"
+      },
+      "xl": {
+        "value": "24px",
+        "type": "fontSize"
+      },
+      "2xl": {
+        "value": "32px",
+        "type": "fontSize"
+      },
+      "3xl": {
+        "value": "40px",
+        "type": "fontSize"
+      }
+    }
+  }
+}

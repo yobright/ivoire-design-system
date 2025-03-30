@@ -1,0 +1,26 @@
+{
+  "color": {
+    "semantic": {
+      "success": {
+        "value": "#0B6C36",
+        "type": "color",
+        "comment": "Green for success messages"
+      },
+      "warning": {
+        "value": "#FFA500",
+        "type": "color",
+        "comment": "Orange or amber for warnings"
+      },
+      "error": {
+        "value": "#D32F2F",
+        "type": "color",
+        "comment": "Red for error messages"
+      },
+      "info": {
+        "value": "#3178C6",
+        "type": "color",
+        "comment": "Blue for informational messages"
+      }
+    }
+  }
+}

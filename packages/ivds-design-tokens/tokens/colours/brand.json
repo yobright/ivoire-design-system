@@ -1,0 +1,36 @@
+{
+  "color": {
+    "brand": {
+      "primary": {
+        "value": "#F04C23",
+        "type": "color",
+        "comment": "Ivory Coast official orange"
+      },
+      "secondary": {
+        "value": "#0B6C36",
+        "type": "color",
+        "comment": "Deep green used in header and accents"
+      },
+      "tertiary": {
+        "value": "#CFA647",
+        "type": "color",
+        "comment": "Gold accent color"
+      },
+      "background": {
+        "value": "#FFFFFF",
+        "type": "color",
+        "comment": "Primary background color (white)"
+      },
+      "surface": {
+        "value": "#F8F8F8",
+        "type": "color",
+        "comment": "Light gray background surfaces"
+      },
+      "text": {
+        "value": "#333333",
+        "type": "color",
+        "comment": "Main body text color"
+      }
+    }
+  }
+}
