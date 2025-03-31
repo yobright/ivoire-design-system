@@ -1,52 +1,32 @@
 {
   "spacing": {
-    "4xs": {
-      "value": "0.125rem",
-      "comment": "2px"
-    },
-    "3xs": {
-      "value": "0.25rem",
-      "comment": "4px"
-    },
-    "2xs": {
-      "value": "0.5rem",
-      "comment": "8px"
+    "none": {
+      "value": "0",
+      "type": "spacing"
     },
     "xs": {
-      "value": "0.75rem",
-      "comment": "12px"
+      "value": "4px",
+      "type": "spacing"
     },
-    "s": {
-      "value": "1rem",
-      "comment": "16px"
+    "sm": {
+      "value": "8px",
+      "type": "spacing"
     },
-    "m": {
-      "value": "1.5rem",
-      "comment": "24px"
+    "md": {
+      "value": "16px",
+      "type": "spacing"
     },
-    "l": {
-      "value": "2rem",
-      "comment": "32px"
+    "lg": {
+      "value": "24px",
+      "type": "spacing"
     },
     "xl": {
-      "value": "2.5rem",
-      "comment": "40px"
+      "value": "32px",
+      "type": "spacing"
     },
     "2xl": {
-      "value": "3.0rem",
-      "comment": "48px"
-    },
-    "3xl": {
-      "value": "3.5rem",
-      "comment": "56px"
-    },
-    "4xl": {
-      "value": "4rem",
-      "comment": "64px"
-    },
-    "5xl": {
-      "value": "4.5rem",
-      "comment": "72px"
+      "value": "48px",
+      "type": "spacing"
     }
   }
 }

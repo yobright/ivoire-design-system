@@ -1,17 +1,23 @@
 {
   "name": "ivds-design-tokens",
   "version": "1.0.0",
-  "main": "dist/index.js",
-  "style": "dist/tokens.css",
+  "description": "Design tokens for the Ivoire Design System",
+  "homepage": "https://github.com/babiverse/ivoire-design-system#readme",
+  "license": "MIT",
+  "main": "lib/all.css",
   "files": [
-    "dist"
+    "lib"
   ],
   "scripts": {
-    "build": "token-transformer tokens/tokens.json dist/tokens.json && style-dictionary build",
-    "clean": "rm -rf dist"
+    "build": "yarn build-tokens && yarn minify-css",
+    "build-tokens": "node build.js",
+    "minify-css": "foreach -g \"lib/**/*.css\" -i \"lib/**/*.min.css\" -t 10 -x \"yarn cleancss -o #{dir}/#{name}.min.css #{path}\"",
+    "clean": "rm -rf lib",
+    "prebuild": "yarn clean"
   },
   "devDependencies": {
-    "style-dictionary": "4.3.3",
-    "token-transformer": "0.0.33"
+    "clean-css-cli": "^4.3.0",
+    "foreach-cli": "^1.8.1",
+    "style-dictionary": "^3.7.0"
   }
 }
