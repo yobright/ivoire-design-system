@@ -4,12 +4,12 @@
       "primary": {
         "value": "Open Sans, Arial, sans-serif",
         "type": "fontFamily",
-        "comment": "Main brand font"
+        "comment": "Main font"
       },
       "secondary": {
         "value": "Roboto, Arial, sans-serif",
         "type": "fontFamily",
-        "comment": "Fallback or secondary usage"
+        "comment": "Secondary usage"
       }
     }
   }
