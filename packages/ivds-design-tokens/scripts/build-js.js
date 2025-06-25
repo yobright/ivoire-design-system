@@ -4,6 +4,7 @@ const path = require("path")
 const libDir = path.join(__dirname, "../lib")
 const outputFile = path.join(libDir, "index.js")
 const outputDtsFile = path.join(libDir, "index.d.ts")
+const outputCjsFile = path.join(libDir, "index.cjs")
 
 const jsonFiles = fs
   .readdirSync(libDir)
@@ -25,7 +26,7 @@ if (fs.existsSync(mainTokensFile)) {
   allTokens = { ...allTokens, ...mainTokens }
 }
 
-const jsContent = `// auto-gen design tokens
+const jsContent = `// Auto-generated design tokens
 export const tokens = ${JSON.stringify(allTokens, null, 2)};
 
 // Individual token exports
@@ -34,6 +35,20 @@ ${Object.keys(allTokens)
     .join("\n")}
 
 export default tokens;
+`
+
+// Generate CommonJS file
+const cjsContent = `// Auto-generated design tokens (CommonJS)
+const tokens = ${JSON.stringify(allTokens, null, 2)};
+
+// Individual token exports
+${Object.keys(allTokens)
+    .map((key) => `module.exports.${key} = tokens.${key};`)
+    .join("\n")}
+
+module.exports.tokens = tokens;
+module.exports.default = tokens;
+module.exports = tokens;
 `
 
 const generateInterface = (obj, name = "TokenValue", depth = 0) => {
@@ -64,7 +79,7 @@ const generateInterface = (obj, name = "TokenValue", depth = 0) => {
   return "any"
 }
 
-const dtsContent = `// auto-gen design tokens type definitions
+const dtsContent = `// Auto-generated design tokens type definitions
 export interface Tokens ${generateInterface(allTokens, "Tokens")}
 
 export declare const tokens: Tokens;
@@ -76,21 +91,12 @@ ${Object.keys(allTokens)
 export default tokens;
 `
 
+// Write files
 fs.writeFileSync(outputFile, jsContent)
+fs.writeFileSync(outputCjsFile, cjsContent)
 fs.writeFileSync(outputDtsFile, dtsContent)
 
-const cjsContent = `// auto-gen design tokens (CommonJS)
-const tokens = ${JSON.stringify(allTokens, null, 2)};
-
-// individual token exports
-${Object.keys(allTokens)
-    .map((key) => `module.exports.${key} = tokens.${key};`)
-    .join("\n")}
-
-module.exports.tokens = tokens;
-module.exports.default = tokens;
-`
-
-fs.writeFileSync(path.join(libDir, "index.cjs"), cjsContent)
-
-console.log("✅ JavaScript/TypeScript exports successfully generated bruh!")
+console.log("✅ JavaScript/TypeScript exports generated successfully!")
+console.log(`   - ES6 modules: ${path.relative(process.cwd(), outputFile)}`)
+console.log(`   - CommonJS: ${path.relative(process.cwd(), outputCjsFile)}`)
+console.log(`   - TypeScript: ${path.relative(process.cwd(), outputDtsFile)}`)
