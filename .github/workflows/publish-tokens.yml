@@ -1,4 +1,4 @@
-name: Publish Design Tokens
+name: Publish IVDS Design Tokens
 
 on:
   push:
