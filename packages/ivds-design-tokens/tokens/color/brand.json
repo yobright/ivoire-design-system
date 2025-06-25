@@ -2,34 +2,30 @@
   "color": {
     "brand": {
       "primary": {
-        "value": "#F04C23",
-        "type": "color",
-        "comment": "Ivory Coast official orange"
+        "50": { "value": "#f0f9ff" },
+        "100": { "value": "#e0f2fe" },
+        "200": { "value": "#bae6fd" },
+        "300": { "value": "#7dd3fc" },
+        "400": { "value": "#38bdf8" },
+        "500": { "value": "#0ea5e9" },
+        "600": { "value": "#0284c7" },
+        "700": { "value": "#0369a1" },
+        "800": { "value": "#075985" },
+        "900": { "value": "#0c4a6e" },
+        "950": { "value": "#082f49" }
       },
       "secondary": {
-        "value": "#0B6C36",
-        "type": "color",
-        "comment": "Deep green used in header and accents"
-      },
-      "tertiary": {
-        "value": "#CFA647",
-        "type": "color",
-        "comment": "Gold accent color"
-      },
-      "background": {
-        "value": "#FFFFFF",
-        "type": "color",
-        "comment": "Primary background color (white)"
-      },
-      "surface": {
-        "value": "#F8F8F8",
-        "type": "color",
-        "comment": "Light gray background surfaces"
-      },
-      "text": {
-        "value": "#333333",
-        "type": "color",
-        "comment": "Main body text color"
+        "50": { "value": "#f8fafc" },
+        "100": { "value": "#f1f5f9" },
+        "200": { "value": "#e2e8f0" },
+        "300": { "value": "#cbd5e1" },
+        "400": { "value": "#94a3b8" },
+        "500": { "value": "#64748b" },
+        "600": { "value": "#475569" },
+        "700": { "value": "#334155" },
+        "800": { "value": "#1e293b" },
+        "900": { "value": "#0f172a" },
+        "950": { "value": "#020617" }
       }
     }
   }

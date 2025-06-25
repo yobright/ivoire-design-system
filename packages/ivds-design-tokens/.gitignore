@@ -1,1 +1,25 @@
-lib
+# Build outputs
+lib/
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Logs
+*.log
+
+# Coverage
+coverage/
+
+# Dependencies (inherited from root)
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

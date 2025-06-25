@@ -1,34 +1,17 @@
 {
-  "typography": {
-    "fontSizes": {
-      "xs": {
-        "value": "12px",
-        "type": "fontSize"
-      },
-      "sm": {
-        "value": "14px",
-        "type": "fontSize"
-      },
-      "md": {
-        "value": "16px",
-        "type": "fontSize"
-      },
-      "lg": {
-        "value": "20px",
-        "type": "fontSize"
-      },
-      "xl": {
-        "value": "24px",
-        "type": "fontSize"
-      },
-      "2xl": {
-        "value": "32px",
-        "type": "fontSize"
-      },
-      "3xl": {
-        "value": "40px",
-        "type": "fontSize"
-      }
-    }
+  "fontSize": {
+    "xs": { "value": "0.75rem" },
+    "sm": { "value": "0.875rem" },
+    "base": { "value": "1rem" },
+    "lg": { "value": "1.125rem" },
+    "xl": { "value": "1.25rem" },
+    "2xl": { "value": "1.5rem" },
+    "3xl": { "value": "1.875rem" },
+    "4xl": { "value": "2.25rem" },
+    "5xl": { "value": "3rem" },
+    "6xl": { "value": "3.75rem" },
+    "7xl": { "value": "4.5rem" },
+    "8xl": { "value": "6rem" },
+    "9xl": { "value": "8rem" }
   }
 }

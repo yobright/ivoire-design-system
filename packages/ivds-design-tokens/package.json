@@ -1,23 +1,66 @@
 {
-  "name": "ivds-design-tokens",
-  "version": "1.0.0",
+  "name": "@ivds/design-tokens",
+  "version": "0.1.0",
   "description": "Design tokens for the Ivoire Design System",
   "homepage": "https://github.com/babiverse/ivoire-design-system#readme",
   "license": "MIT",
   "main": "lib/all.css",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./lib/index.js",
+      "require": "./lib/index.cjs",
+      "types": "./lib/index.d.ts"
+    },
+    "./css": "./lib/all.css",
+    "./css/*": "./lib/*.css",
+    "./scss": "./lib/all.scss",
+    "./scss/*": "./lib/*.scss",
+    "./js": "./lib/index.js",
+    "./json": "./lib/tokens.json",
+    "./package.json": "./package.json"
+  },
   "files": [
-    "lib"
+    "lib/",
+    "README.md",
+    "CHANGELOG.md"
   ],
   "scripts": {
-    "build": "yarn build-tokens && yarn minify-css",
+    "build": "yarn clean && yarn build-tokens && yarn build-exports && yarn minify-css",
     "build-tokens": "node build.js",
+    "build-exports": "node scripts/build-js.js",
     "minify-css": "foreach -g \"lib/**/*.css\" -i \"lib/**/*.min.css\" -t 10 -x \"yarn cleancss -o #{dir}/#{name}.min.css #{path}\"",
-    "clean": "rm -rf lib",
-    "prebuild": "yarn clean"
+    "clean": "rimraf lib",
+    "prebuild": "yarn clean",
+    "prepublishOnly": "yarn build",
+    "test": "node scripts/test-tokens.js"
   },
   "devDependencies": {
-    "clean-css-cli": "^4.3.0",
+    "clean-css-cli": "^5.6.2",
     "foreach-cli": "^1.8.1",
-    "style-dictionary": "^3.7.0"
+    "rimraf": "^5.0.5",
+    "style-dictionary": "^3.9.2"
+  },
+  "keywords": [
+    "design-tokens",
+    "design-system",
+    "css",
+    "scss",
+    "javascript",
+    "typescript",
+    "ivds",
+    "tokens"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/babiverse/ivoire-design-system.git",
+    "directory": "packages/ivds-design-tokens"
+  },
+  "bugs": {
+    "url": "https://github.com/babiverse/ivoire-design-system/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

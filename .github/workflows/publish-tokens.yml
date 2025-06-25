@@ -1,0 +1,84 @@
+name: Publish Design Tokens
+
+on:
+  push:
+    branches: [main]
+    paths: ['packages/ivds-design-tokens/**']
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: |
+          cd packages/ivds-design-tokens
+          yarn install --frozen-lockfile
+
+      - name: Run tests
+        run: |
+          cd packages/ivds-design-tokens
+          yarn test
+
+      - name: Build tokens
+        run: |
+          cd packages/ivds-design-tokens
+          yarn build
+
+      - name: Check if version changed
+        id: version-check
+        run: |
+          cd packages/ivds-design-tokens
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          PUBLISHED_VERSION=$(npm view @ivds/design-tokens version 2>/dev/null || echo "0.0.0")
+          echo "current=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+          echo "published=$PUBLISHED_VERSION" >> $GITHUB_OUTPUT
+          if [ "$CURRENT_VERSION" != "$PUBLISHED_VERSION" ]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Publish to npm
+        if: steps.version-check.outputs.changed == 'true'
+        run: |
+          cd packages/ivds-design-tokens
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create GitHub Release
+        if: steps.version-check.outputs.changed == 'true'
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: design-tokens-v${{ steps.version-check.outputs.current }}
+          name: Design Tokens v${{ steps.version-check.outputs.current }}
+          body: |
+            ## @ivds/design-tokens v${{ steps.version-check.outputs.current }}
+            
+            Design tokens for the Ivoire Design System.
+            
+            ### Installation
+            ```bash
+            yarn install @ivds/design-tokens@${{ steps.version-check.outputs.current }}
+            ```
+            
+            ### Changes
+            See the [changelog](https://github.com/${{ github.repository }}/compare/design-tokens-v${{ steps.version-check.outputs.published }}...design-tokens-v${{ steps.version-check.outputs.current }}) for details.
+          draft: false
+          prerelease: false

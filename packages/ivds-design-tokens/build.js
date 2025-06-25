@@ -1,102 +1,190 @@
-const dictionary = require('style-dictionary');
-const PLATFORMS = ['css', 'scss'];
+const StyleDictionary = require("style-dictionary")
+
+StyleDictionary.registerTransform({
+  name: "name/cti/kebab",
+  type: "name",
+  transformer: (token, options) => {
+    return token.path.join("-")
+  },
+})
+
+StyleDictionary.registerTransform({
+  name: "size/rem",
+  type: "value",
+  matcher: (token) => {
+    return token.path.includes("spacing") || token.path.includes("fontSize") || token.path.includes("borderRadius")
+  },
+  transformer: (token) => {
+    const value = token.original.value
+    if (typeof value === "string") {
+      return value
+    }
+    return value + "rem"
+  },
+})
+
+StyleDictionary.registerFormat({
+  name: "css/variables-with-references",
+  formatter: (dictionary) => {
+    const header = `/**
+ * IVDS Design Tokens
+ * Generated on ${new Date().toISOString()}
+ */
+
+:root {`
+
+    const variables = dictionary.allTokens.map((token) => `  --${token.name}: ${token.value};`).join("\n")
+
+    const footer = "\n}"
+
+    return header + "\n" + variables + footer
+  },
+})
+
+StyleDictionary.registerFormat({
+  name: "javascript/es6",
+  formatter: (dictionary) => {
+    const tokens = dictionary.allTokens.reduce((acc, token) => {
+      const keys = token.path
+      let current = acc
+
+      for (let i = 0; i < keys.length - 1; i++) {
+        if (!current[keys[i]]) {
+          current[keys[i]] = {}
+        }
+        current = current[keys[i]]
+      }
+
+      current[keys[keys.length - 1]] = token.value
+      return acc
+    }, {})
+
+    return `// Auto-generated design tokens
+export const tokens = ${JSON.stringify(tokens, null, 2)};
+export default tokens;`
+  },
+})
+
+StyleDictionary.registerTransformGroup({
+  name: "css/custom",
+  transforms: ["attribute/cti", "name/cti/kebab", "time/seconds", "content/icon", "size/rem", "color/css"],
+})
+
+StyleDictionary.registerTransformGroup({
+  name: "scss/custom",
+  transforms: ["attribute/cti", "name/cti/kebab", "time/seconds", "content/icon", "size/rem", "color/css"],
+})
 
 /**
- * Helper function that prepends the given path with the destination directory
- * and ensures that the path has a trailing slash
+ * Helper function, ajoute le rep de dest au chemin d'acc
  */
-const getPath = (path = '') => {
-  const fullPath = `lib/${path}`;
-  const hasTrailingSlash = fullPath.slice(-1) === '/';
-  return hasTrailingSlash ? fullPath : `${fullPath}/`;
-};
+const getPath = (path = "") => {
+  const fullPath = `lib/${path}`
+  const hasTrailingSlash = fullPath.slice(-1) === "/"
+  return hasTrailingSlash ? fullPath : `${fullPath}/`
+}
 
-const getPlatformConfig = (output, buildPath) =>
-  PLATFORMS.reduce(
-    (acc, platform) => ({
-      ...acc,
-      [platform]: {
-        transformGroup: `${platform}`,
-        buildPath: getPath(buildPath),
-        files: [{
-          destination: `${output}.${platform}`,
-          format: `${platform}/variables`,
-          options: {
-            showFileHeader: false,
-          },
-        }],
+const getPlatformConfig = (output, buildPath = "") => ({
+  css: {
+    transformGroup: "css/custom",
+    buildPath: getPath(buildPath),
+    files: [
+      {
+        destination: `${output}.css`,
+        format: "css/variables-with-references",
+        options: {
+          showFileHeader: true,
+        },
       },
-    }),
-    {}
-  );
+    ],
+  },
+  scss: {
+    transformGroup: "scss/custom",
+    buildPath: getPath(buildPath),
+    files: [
+      {
+        destination: `${output}.scss`,
+        format: "scss/variables",
+        options: {
+          showFileHeader: true,
+        },
+      },
+    ],
+  },
+  js: {
+    transformGroup: "js",
+    buildPath: getPath(buildPath),
+    files: [
+      {
+        destination: `${output}.js`,
+        format: "javascript/es6",
+      },
+    ],
+  },
+  json: {
+    transformGroup: "js",
+    buildPath: getPath(buildPath),
+    files: [
+      {
+        destination: `${output}.json`,
+        format: "json/nested",
+      },
+    ],
+  },
+})
 
-// Build the token files
-Object.values({
+// Build configurations
+const configs = [
   // All tokens
-  all: dictionary.extend({
-    source: ['tokens/**/*.json'],
-    platforms: getPlatformConfig('all'),
-  }),
+  {
+    source: ["tokens/**/*.json"],
+    platforms: getPlatformConfig("all"),
+  },
 
-  /* COLORS */
+  // Colors only
+  {
+    source: ["tokens/color/*.json"],
+    platforms: getPlatformConfig("colors", "color"),
+  },
 
-  // All colors
-  allColors: dictionary.extend({
-    source: ['tokens/color/*.json'],
-    platforms: getPlatformConfig('all', 'color'),
-  }),
+  // Typography only
+  {
+    source: ["tokens/typography/*.json"],
+    platforms: getPlatformConfig("typography", "typography"),
+  },
 
-  // Brand colors
-  brandColors: dictionary.extend({
-    source: ['tokens/color/brand.json'],
-    platforms: getPlatformConfig('brand', 'color'),
-  }),
+  // Spacing only
+  {
+    source: ["tokens/spacing/*.json"],
+    platforms: getPlatformConfig("spacing", "spacing"),
+  },
 
-  // Semantic colors
-  semanticColors: dictionary.extend({
-    source: ['tokens/color/semantic.json'],
-    platforms: getPlatformConfig('semantic', 'color'),
-  }),
+  // Elevation only
+  {
+    source: ["tokens/elevation/*.json"],
+    platforms: getPlatformConfig("elevation", "elevation"),
+  },
 
-  /* SPACING */
+  // Border only
+  {
+    source: ["tokens/border/*.json"],
+    platforms: getPlatformConfig("border", "border"),
+  },
 
-  allSpacing: dictionary.extend({
-    source: ['tokens/spacing/*.json'],
-    platforms: getPlatformConfig('all', 'spacing'),
-  }),
+  // Breakpoints only
+  {
+    source: ["tokens/breakpoints/*.json"],
+    platforms: getPlatformConfig("breakpoints", "breakpoint"),
+  },
+]
 
-  spacing: dictionary.extend({
-    source: ['tokens/spacing/spacing.json'],
-    platforms: getPlatformConfig('spacing', 'spacing'),
-  }),
+// Build all configurations
+console.log("🔨 Building design tokens...")
 
-  /* TYPOGRAPHY */
+configs.forEach((config, index) => {
+  console.log(`Building configuration ${index + 1}/${configs.length}...`)
+  const sd = StyleDictionary.extend(config)
+  sd.buildAllPlatforms()
+})
 
-  allTypography: dictionary.extend({
-    source: ['tokens/typography/*.json'],
-    platforms: getPlatformConfig('all', 'typography'),
-  }),
-
-  fontFamilies: dictionary.extend({
-    source: ['tokens/typography/font-families.json'],
-    platforms: getPlatformConfig('font-families', 'typography'),
-  }),
-
-  fontSizes: dictionary.extend({
-    source: ['tokens/typography/font-sizes.json'],
-    platforms: getPlatformConfig('font-sizes', 'typography'),
-  }),
-
-  /* BREAKPOINTS */
-
-  allBreakpoints: dictionary.extend({
-    source: ['tokens/breakpoints/*.json'],
-    platforms: getPlatformConfig('all', 'breakpoint'),
-  }),
-
-  breakpoints: dictionary.extend({
-    source: ['tokens/breakpoints/breakpoints.json'],
-    platforms: getPlatformConfig('breakpoints', 'breakpoint'),
-  }),
-
-}).forEach((item) => item.buildAllPlatforms());
+console.log("✅ Design tokens built successfully!")
