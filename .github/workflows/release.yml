@@ -92,12 +92,10 @@ jobs:
       - name: Build dependencies
         run: |
           if [[ "${{ matrix.package }}" != "design-tokens" ]]; then
-            cd packages/ivds-design-tokens
-            yarn build
+            (cd packages/ivds-design-tokens && yarn build)
           fi
           if [[ "${{ matrix.package }}" == "react" ]]; then
-            cd packages/ivds-core
-            yarn build
+            (cd packages/ivds-core && yarn build)
           fi
 
       - name: Build package
