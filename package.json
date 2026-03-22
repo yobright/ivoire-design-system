@@ -1,13 +1,38 @@
 {
-  "name": "root",
+  "name": "ivoire-design-system",
   "private": true,
+  "description": "A comprehensive design system with design tokens, CSS components, and React components",
   "license": "MIT",
+  "author": "IVDS Team",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/babiverse/ivoire-design-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/babiverse/ivoire-design-system/issues"
+  },
+  "homepage": "https://babiverse.github.io/ivoire-design-system",
+  "engines": {
+    "node": ">=22.13.1",
+    "yarn": ">=1.22.0"
+  },
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
     "build": "lerna run build",
-    "build:tokens": "lerna run --scope ivds-design-tokens build"
+    "build:tokens": "lerna run --scope @ivds/design-tokens build",
+    "build:core": "lerna run --scope @ivds/core build",
+    "build:react": "lerna run --scope @ivds/react build",
+    "test:tokens": "lerna run --scope @ivds/design-tokens test",
+    "test:core": "lerna run --scope @ivds/core test",
+    "test:react": "lerna run --scope @ivds/react test",
+    "test:gov-starters": "node scripts/test-gov-starters.mjs",
+    "certify:gov": "node scripts/ivds-certify.mjs",
+    "audit:react-coverage": "node scripts/react-component-coverage.mjs",
+    "audit:react-coverage:strict": "node scripts/react-component-coverage.mjs --strict",
+    "dev:core": "lerna run --scope @ivds/core storybook",
+    "dev:react": "lerna run --scope @ivds/react storybook"
   },
   "dependencies": {},
   "devDependencies": {

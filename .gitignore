@@ -1,9 +1,10 @@
-docs/
-
 # Dependencies
 node_modules/
 .pnp
 .pnp.js
+
+# Internal documentation
+/babiverse-team
 
 # Production builds
 /build
@@ -12,6 +13,7 @@ node_modules/
 /es
 /cjs
 /umd
+**/lib/
 
 # Development
 .DS_Store
@@ -47,6 +49,9 @@ jspm_packages/
 
 # Optional eslint cache
 .eslintcache
+
+# TypeScript build info
+*.tsbuildinfo
 
 # Optional REPL history
 .node_repl_history
@@ -111,6 +116,9 @@ Thumbs.db
 
 # Storybook
 storybook-static/
+
+# Reports
+reports/
 
 # Chromatic
 build-storybook.log
