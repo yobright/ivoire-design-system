@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       packages: ${{ steps.packages.outputs.packages }}
-      
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -68,10 +68,14 @@ jobs:
     name: Release packages
     runs-on: ubuntu-latest
     needs: determine-packages
+    permissions:
+      contents: write
+      id-token: write
     strategy:
+      fail-fast: false
       matrix:
         package: ${{ fromJson(needs.determine-packages.outputs.packages) }}
-    
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -149,28 +153,26 @@ jobs:
         if: steps.version-check.outputs.changed == 'true'
         run: |
           cd packages/ivds-${{ matrix.package }}
-          npm publish --access public
+          npm publish --access public --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Create GitHub Release
         if: steps.version-check.outputs.changed == 'true'
-        uses: softprops/action-gh-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ matrix.package }}-v${{ steps.version-check.outputs.current }}
           name: ${{ matrix.package }} v${{ steps.version-check.outputs.current }}
           body: |
             ## @ivds/${{ matrix.package }} v${{ steps.version-check.outputs.current }}
-            
+
             ### Installation
             ```bash
             npm install @ivds/${{ matrix.package }}@${{ steps.version-check.outputs.current }}
             # or
             yarn add @ivds/${{ matrix.package }}@${{ steps.version-check.outputs.current }}
             ```
-            
+
             ### Changes
             See the [changelog](https://github.com/${{ github.repository }}/compare/${{ matrix.package }}-v${{ steps.version-check.outputs.published }}...${{ matrix.package }}-v${{ steps.version-check.outputs.current }}) for details.
           draft: false
@@ -181,7 +183,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [determine-packages, release]
     if: contains(needs.determine-packages.outputs.packages, 'core') || contains(needs.determine-packages.outputs.packages, 'react')
-    
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -223,59 +225,9 @@ jobs:
           if [ -d "packages/ivds-react/storybook-static" ]; then
             cp -r packages/ivds-react/storybook-static deploy/react
           fi
-          
-          # Create index.html for main page
-          cat > deploy/index.html << 'EOF'
-          <!DOCTYPE html>
-          <html>
-          <head>
-            <title>IVDS Design System</title>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <style>
-              body { font-family: system-ui, sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
-              .card { border: 1px solid #e5e7eb; border-radius: 8px; padding: 1.5rem; margin: 1rem 0; }
-              .button { display: inline-block; background: #3b82f6; color: white; padding: 0.75rem 1.5rem; text-decoration: none; border-radius: 6px; margin: 0.5rem 0.5rem 0.5rem 0; }
-              .button:hover { background: #2563eb; }
-            </style>
-          </head>
-          <body>
-            <h1>IVDS Design System</h1>
-            <p>A comprehensive design system with design tokens, CSS components, and React components.</p>
-            
-            <div class="card">
-              <h2>📚 Documentation</h2>
-              <a href="./core/" class="button">Core CSS Components</a>
-              <a href="./react/" class="button">React Components</a>
-            </div>
-            
-            <div class="card">
-              <h2>📦 Packages</h2>
-              <ul>
-                <li><strong>@ivds/design-tokens</strong> - Design tokens (colors, typography, spacing)</li>
-                <li><strong>@ivds/core</strong> - CSS-only component library</li>
-                <li><strong>@ivds/react</strong> - React component library</li>
-              </ul>
-            </div>
-            
-            <div class="card">
-              <h2>🚀 Quick Start</h2>
-              <pre><code># Install design tokens
-          npm install @ivds/design-tokens
-          
-          # Install CSS components
-          npm install @ivds/core @ivds/design-tokens
-          
-          # Install React components
-          npm install @ivds/react @ivds/core @ivds/design-tokens</code></pre>
-            </div>
-          </body>
-          </html>
-          EOF
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./deploy
-          cname: ivds.design
