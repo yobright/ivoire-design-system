@@ -1,0 +1,35 @@
+body {
+  background:
+    radial-gradient(circle at top right, var(--color-brand-secondary-50), transparent 35%),
+    radial-gradient(circle at bottom left, var(--color-brand-primary-50), transparent 30%),
+    var(--color-semantic-neutral-100);
+  color: var(--color-semantic-neutral-900);
+  font-family: var(--fontFamily-primary, 'Source Sans 3', sans-serif);
+  margin: 0;
+}
+
+.starter-toolbar {
+  align-items: center;
+  background: var(--color-semantic-neutral-900);
+  border-radius: var(--borderRadius-sm, 0.25rem);
+  display: inline-flex;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-3);
+  padding: var(--spacing-2) var(--spacing-3);
+}
+
+.starter-toolbar a {
+  border: 1px solid transparent;
+  border-radius: var(--borderRadius-xs, 0.125rem);
+  color: var(--color-semantic-neutral-50);
+  font-size: var(--fontSize-sm, 0.875rem);
+  font-weight: var(--fontWeight-medium, 500);
+  padding: var(--spacing-1) var(--spacing-2);
+  text-decoration: none;
+}
+
+.starter-toolbar a:hover,
+.starter-toolbar a:focus-visible {
+  border-color: var(--color-semantic-neutral-50);
+  color: var(--color-semantic-neutral-50);
+}

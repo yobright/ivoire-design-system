@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IVDS Gov HTML - OPISMS</title>
+    <link rel="stylesheet" href="./node_modules/@ivds/core/lib/all.css" />
+    <link rel="stylesheet" href="./node_modules/@ivds/core/lib/gov/gov.css" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body>
+    <main class="ivds-gov-shell" lang="fr">
+      <div class="ivds-gov-shell__container">
+        <nav class="starter-toolbar" aria-label="Navigation templates starter">
+          <a href="./index.html">Landing</a>
+          <a href="./passport.html">Passeport</a>
+          <a href="./opisms.html">OPISMS</a>
+        </nav>
+
+        <section class="ivds-gov-top-promo">
+          <div>
+            <h1 class="ivds-gov-top-promo__title">Carnet de vaccination electronique</h1>
+            <p class="ivds-gov-top-promo__subtitle">Template IVDS d authentification pour les plateformes de sante.</p>
+          </div>
+        </section>
+
+        <section class="ivds-gov-auth-layout">
+          <article class="ivds-gov-auth-card">
+            <span class="ivds-gov-auth-card__eyebrow">OPISMS</span>
+            <h2 class="ivds-gov-auth-card__title">Vous n avez pas encore de carnet electronique ?</h2>
+            <p>Accedez a un suivi vaccine harmonise pour vous et votre famille.</p>
+            <div class="ivds-gov-auth-card__actions">
+              <button class="ivds-button ivds-button--primary" type="button">Abonnez-vous</button>
+            </div>
+          </article>
+
+          <article class="ivds-gov-auth-card">
+            <h2 class="ivds-gov-auth-card__title">Espace abonne</h2>
+            <form>
+              <div class="ivds-gov-form-field">
+                <label for="identifier">Identifiant</label>
+                <input id="identifier" type="text" autocomplete="username" />
+              </div>
+
+              <div class="ivds-gov-form-field">
+                <label for="password">Mot de passe</label>
+                <input id="password" type="password" autocomplete="current-password" />
+              </div>
+
+              <div class="ivds-gov-auth-card__actions">
+                <button class="ivds-button ivds-button--primary" type="submit">Connexion</button>
+                <a href="#">Mot de passe oublie ?</a>
+              </div>
+            </form>
+          </article>
+        </section>
+
+        <aside class="ivds-gov-action-modal" aria-label="Action rapide">
+          <h2 class="ivds-gov-form-section__title">Action rapide</h2>
+          <p>Besoin d aide pour votre premiere connexion ? Activez le parcours assiste.</p>
+          <div class="ivds-gov-action-modal__actions">
+            <button class="ivds-button ivds-button--primary" type="button">Demarrer le parcours assiste</button>
+            <button class="ivds-button ivds-button--secondary" type="button">Contacter le support</button>
+          </div>
+        </aside>
+      </div>
+    </main>
+  </body>
+</html>

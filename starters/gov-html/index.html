@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IVDS Gov HTML Starter</title>
+    <link rel="stylesheet" href="./node_modules/@ivds/core/lib/all.css" />
+    <link rel="stylesheet" href="./node_modules/@ivds/core/lib/gov/gov.css" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body>
+    <div class="starter-toolbar" role="region" aria-label="Starter controls">
+      <a href="./index.html">Landing</a>
+      <a href="./passport.html">Passeport</a>
+      <a href="./opisms.html">OPISMS</a>
+      <label for="locale-switch">Locale</label>
+      <select id="locale-switch" aria-label="Locale switch">
+        <option value="fr">FR</option>
+        <option value="en">EN</option>
+      </select>
+    </div>
+
+    <main id="app" aria-live="polite"></main>
+
+    <script type="module" src="./assets/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "@ivds/starter-gov-html",
+  "private": true,
+  "version": "1.0.0",
+  "description": "IVDS government HTML/CSS starter",
+  "dependencies": {
+    "@ivds/core": "^1.0.0",
+    "@ivds/design-tokens": "^1.0.0"
+  },
+  "scripts": {
+    "dev": "python3 -m http.server 4300",
+    "start": "python3 -m http.server 4300"
+  }
+}

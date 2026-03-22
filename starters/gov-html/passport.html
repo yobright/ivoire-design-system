@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IVDS Gov HTML - Passeport</title>
+    <link rel="stylesheet" href="./node_modules/@ivds/core/lib/all.css" />
+    <link rel="stylesheet" href="./node_modules/@ivds/core/lib/gov/gov.css" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body>
+    <main class="ivds-gov-shell" lang="fr">
+      <div class="ivds-gov-shell__container">
+        <nav class="starter-toolbar" aria-label="Navigation templates starter">
+          <a href="./index.html">Landing</a>
+          <a href="./passport.html">Passeport</a>
+          <a href="./opisms.html">OPISMS</a>
+        </nav>
+
+        <section class="ivds-gov-top-promo">
+          <div>
+            <h1 class="ivds-gov-top-promo__title">Demande de passeport officiel</h1>
+            <p class="ivds-gov-top-promo__subtitle">Template transactionnel IVDS pour services diplomatiques et de service.</p>
+          </div>
+        </section>
+
+        <section class="ivds-gov-form-page">
+          <div class="ivds-gov-form-page__grid">
+            <article class="ivds-gov-form-section">
+              <h2 class="ivds-gov-form-section__title">Informations de la demande</h2>
+
+              <form>
+                <div class="ivds-gov-form-field">
+                  <label for="full-name">Nom complet</label>
+                  <input id="full-name" type="text" />
+                </div>
+
+                <div class="ivds-gov-form-field">
+                  <label for="request-type">Type de demande</label>
+                  <select id="request-type">
+                    <option>Premiere obtention</option>
+                    <option>Renouvellement</option>
+                  </select>
+                </div>
+
+                <div class="ivds-gov-form-field">
+                  <label for="details">Details complementaires</label>
+                  <textarea id="details"></textarea>
+                </div>
+
+                <div class="ivds-gov-action-modal__actions">
+                  <button class="ivds-button ivds-button--primary" type="submit">Continuer</button>
+                  <button class="ivds-button ivds-button--secondary" type="button">Enregistrer le brouillon</button>
+                </div>
+              </form>
+            </article>
+
+            <aside class="ivds-gov-form-section">
+              <h2 class="ivds-gov-form-section__title">Etapes du service</h2>
+              <ul class="ivds-gov-step-list">
+                <li class="ivds-gov-step-list__item"><span class="ivds-gov-step-list__index">1</span><span>Demande de passeport</span></li>
+                <li class="ivds-gov-step-list__item"><span class="ivds-gov-step-list__index">2</span><span>Suivi de dossier</span></li>
+                <li class="ivds-gov-step-list__item"><span class="ivds-gov-step-list__index">3</span><span>Retrait du passeport</span></li>
+              </ul>
+            </aside>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

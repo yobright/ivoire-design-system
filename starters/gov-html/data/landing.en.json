@@ -1,0 +1,137 @@
+{
+  "locale": "en",
+  "promo": {
+    "title": "Official portal of the Government of Côte d'Ivoire",
+    "subtitle": "IVDS V1 template for government landing pages",
+    "ctaLabel": "Write to Government",
+    "ctaHref": "#contact"
+  },
+  "navigation": [
+    { "id": "home", "label": { "fr": "Accueil", "en": "Home" }, "href": "#" },
+    {
+      "id": "gov",
+      "label": { "fr": "Gouvernement", "en": "Government" },
+      "href": "#",
+      "children": [
+        { "id": "institutions", "label": { "fr": "Institutions", "en": "Institutions" }, "href": "#" },
+        { "id": "cabinet", "label": { "fr": "Cabinet", "en": "Cabinet" }, "href": "#" }
+      ]
+    },
+    { "id": "services", "label": { "fr": "e-Services", "en": "e-Services" }, "href": "#" },
+    { "id": "news", "label": { "fr": "Actualités", "en": "News" }, "href": "#" },
+    { "id": "agenda", "label": { "fr": "Agenda", "en": "Agenda" }, "href": "#" }
+  ],
+  "flash": [
+    {
+      "id": "flash-1",
+      "category": "flash",
+      "title": {
+        "fr": "Renforcement de la sécurité routière : nouvelles mesures annoncées.",
+        "en": "Road safety enforcement: new measures announced."
+      },
+      "href": "#",
+      "publishedAt": "2026-02-19T09:00:00.000Z"
+    }
+  ],
+  "news": [
+    {
+      "id": "news-1",
+      "category": "Politics",
+      "title": {
+        "fr": "Coopération internationale : accord stratégique signé.",
+        "en": "International cooperation: strategic agreement signed."
+      },
+      "excerpt": {
+        "fr": "Une nouvelle étape diplomatique a été franchie.",
+        "en": "A new diplomatic milestone has been reached."
+      },
+      "href": "#",
+      "publishedAt": "2026-02-19T11:00:00.000Z"
+    }
+  ],
+  "services": [
+    {
+      "id": "srv-1",
+      "code": "passport",
+      "title": {
+        "fr": "Demande de passeport officiel",
+        "en": "Official passport request"
+      },
+      "href": "#",
+      "icon": "🛂",
+      "status": "available"
+    },
+    {
+      "id": "srv-2",
+      "code": "opisms",
+      "title": {
+        "fr": "Carnet de vaccination électronique",
+        "en": "Electronic vaccination booklet"
+      },
+      "href": "#",
+      "icon": "💉",
+      "status": "maintenance"
+    },
+    {
+      "id": "srv-3",
+      "code": "justice",
+      "title": {
+        "fr": "Plateforme e-Justice",
+        "en": "e-Justice platform"
+      },
+      "href": "#",
+      "icon": "⚖",
+      "status": "coming-soon"
+    }
+  ],
+  "agenda": [
+    {
+      "id": "agenda-1",
+      "title": { "fr": "Conseil des ministres", "en": "Council of ministers" },
+      "href": "#",
+      "location": { "fr": "Abidjan", "en": "Abidjan" },
+      "startAt": "2026-02-21T08:00:00.000Z"
+    },
+    {
+      "id": "agenda-2",
+      "title": { "fr": "Forum transformation numerique", "en": "Digital transformation forum" },
+      "href": "#",
+      "location": { "fr": "Yamoussoukro", "en": "Yamoussoukro" },
+      "startAt": "2026-02-25T08:00:00.000Z"
+    }
+  ],
+  "footerSections": [
+    {
+      "id": "primature",
+      "title": { "fr": "Primature", "en": "Prime Minister Office" },
+      "links": [
+        { "id": "pm", "label": { "fr": "Premier Ministre", "en": "Prime Minister" }, "href": "#" },
+        { "id": "discours", "label": { "fr": "Discours", "en": "Speeches" }, "href": "#" }
+      ]
+    },
+    {
+      "id": "gouvernement",
+      "title": { "fr": "Gouvernement", "en": "Government" },
+      "links": [
+        { "id": "institutions", "label": { "fr": "Institutions", "en": "Institutions" }, "href": "#" },
+        { "id": "agenda", "label": { "fr": "Agenda", "en": "Agenda" }, "href": "#" }
+      ]
+    },
+    {
+      "id": "actualites",
+      "title": { "fr": "Actualités", "en": "News" },
+      "links": [
+        { "id": "politique", "label": { "fr": "Politique", "en": "Politics" }, "href": "#" },
+        { "id": "economie", "label": { "fr": "Economie", "en": "Economy" }, "href": "#" }
+      ]
+    },
+    {
+      "id": "publications",
+      "title": { "fr": "Publications", "en": "Publications" },
+      "links": [
+        { "id": "docs", "label": { "fr": "Documents", "en": "Documents" }, "href": "#" },
+        { "id": "communiques", "label": { "fr": "Communiqués", "en": "Press releases" }, "href": "#" }
+      ]
+    }
+  ]
+}
