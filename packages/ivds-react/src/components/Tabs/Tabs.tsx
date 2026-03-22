@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { BaseComponentProps } from '../../utils/types';
 
 export interface TabItem {
@@ -33,14 +33,14 @@ export const Tabs: React.FC<TabsProps> = ({
 }) => {
   const tabsRef = useRef<Array<HTMLButtonElement | null>>([]);
 
-  const getInitialActiveId = () => {
+  const getInitialActiveId = useCallback(() => {
     const defaultItem = items.find((item) => item.id === defaultActiveId && !item.disabled);
     if (defaultItem) {
       return defaultItem.id;
     }
 
     return items.find((item) => !item.disabled)?.id;
-  };
+  }, [items, defaultActiveId]);
 
   const [activeId, setActiveId] = useState<string | undefined>(() => getInitialActiveId());
 
@@ -53,7 +53,7 @@ export const Tabs: React.FC<TabsProps> = ({
     if (nextId && nextId !== activeId) {
       setActiveId(nextId);
     }
-  }, [activeId, defaultActiveId, items]);
+  }, [activeId, getInitialActiveId, items]);
 
   const handleTabClick = (id: string) => {
     setActiveId(id);
