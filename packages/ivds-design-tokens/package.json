@@ -2,7 +2,7 @@
   "name": "@ivds/design-tokens",
   "version": "1.0.0",
   "description": "Design tokens for the Ivoire Design System",
-  "homepage": "https://github.com/babiverse/ivoire-design-system#readme",
+  "homepage": "https://github.com/yobright/ivoire-design-system#readme",
   "license": "MIT",
   "main": "lib/all.css",
   "module": "lib/index.js",
@@ -56,11 +56,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/babiverse/ivoire-design-system.git",
+    "url": "https://github.com/yobright/ivoire-design-system.git",
     "directory": "packages/ivds-design-tokens"
   },
   "bugs": {
-    "url": "https://github.com/babiverse/ivoire-design-system/issues"
+    "url": "https://github.com/yobright/ivoire-design-system/issues"
   },
   "author": "IVDS Team",
   "engines": {
@@ -72,6 +72,6 @@
   },
   "funding": {
     "type": "github",
-    "url": "https://github.com/sponsors/babiverse"
+    "url": "https://github.com/sponsors/yobright"
   }
 }

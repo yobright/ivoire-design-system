@@ -6,12 +6,12 @@
   "author": "IVDS Team",
   "repository": {
     "type": "git",
-    "url": "https://github.com/babiverse/ivoire-design-system.git"
+    "url": "https://github.com/yobright/ivoire-design-system.git"
   },
   "bugs": {
-    "url": "https://github.com/babiverse/ivoire-design-system/issues"
+    "url": "https://github.com/yobright/ivoire-design-system/issues"
   },
-  "homepage": "https://babiverse.github.io/ivoire-design-system",
+  "homepage": "https://yobright.github.io/ivoire-design-system",
   "engines": {
     "node": ">=22.13.1",
     "yarn": ">=1.22.0"

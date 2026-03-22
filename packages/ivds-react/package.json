@@ -117,13 +117,13 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/babiverse/ivoire-design-system.git",
+    "url": "https://github.com/yobright/ivoire-design-system.git",
     "directory": "packages/ivds-react"
   },
   "bugs": {
-    "url": "https://github.com/babiverse/ivoire-design-system/issues"
+    "url": "https://github.com/yobright/ivoire-design-system/issues"
   },
-  "homepage": "https://babiverse.github.io/ivoire-design-system/react",
+  "homepage": "https://yobright.github.io/ivoire-design-system/react",
   "engines": {
     "node": ">=22.13.1"
   },
@@ -133,6 +133,6 @@
   },
   "funding": {
     "type": "github",
-    "url": "https://github.com/sponsors/babiverse"
+    "url": "https://github.com/sponsors/yobright"
   }
 }
