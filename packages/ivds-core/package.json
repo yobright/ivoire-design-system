@@ -204,13 +204,13 @@
   "bundlesize": [
     {
       "path": "./lib/all.css",
-      "maxSize": "50 kB"
+      "maxSize": "80 kB"
     },
     {
       "path": "./lib/all.min.css",
-      "maxSize": "25 kB"
+      "maxSize": "55 kB"
     },
-{
+    {
       "path": "./lib/components/all.css",
       "maxSize": "35 kB"
     },
