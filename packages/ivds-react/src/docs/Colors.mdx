@@ -1,0 +1,94 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Fondations/Couleurs" />
+
+# Couleurs
+
+Le systeme de couleurs IVDS est organise en trois couches : **brand**, **semantic** et **UI**.
+
+---
+
+## Brand — Identite visuelle
+
+Les couleurs brand incarnent l'identite ivoirienne. Le **burnt orange** primaire
+evoque la terre et la chaleur du pays, tandis que le **vert institutionnel** represente
+la croissance et le developpement.
+
+### Primary — Burnt Orange
+
+| Token | Valeur | Usage |
+|-------|--------|-------|
+| `--color-brand-primary-50` | `#fef5ee` | Backgrounds subtils |
+| `--color-brand-primary-100` | `#fce8d4` | Hover backgrounds |
+| `--color-brand-primary-200` | `#f8cda8` | Bordures legeres |
+| `--color-brand-primary-300` | `#f2ac72` | Icones secondaires |
+| `--color-brand-primary-400` | `#e8853a` | Actions secondaires |
+| `--color-brand-primary-500` | `#CC5500` | **Couleur principale** |
+| `--color-brand-primary-600` | `#b34a00` | Hover |
+| `--color-brand-primary-700` | `#8f3b00` | Active/pressed |
+| `--color-brand-primary-800` | `#723000` | Texte haute contraste |
+| `--color-brand-primary-900` | `#562400` | Emphase profonde |
+| `--color-brand-primary-950` | `#331500` | Quasi-noir chaud |
+
+### Secondary — Vert institutionnel
+
+| Token | Valeur | Usage |
+|-------|--------|-------|
+| `--color-brand-secondary-500` | `#007a4d` | **Couleur secondaire** |
+| `--color-brand-secondary-600` | `#006640` | Hover |
+| `--color-brand-secondary-700` | `#005234` | Active |
+
+### Accent — Lagoon bleu civique
+
+| Token | Valeur | Usage |
+|-------|--------|-------|
+| `--color-brand-accent-500` | `#1a6bdb` | **Liens, actions primaires** |
+| `--color-brand-accent-600` | `#1058b8` | Hover |
+| `--color-brand-accent-700` | `#0b4593` | Active |
+
+### Couleurs culturelles
+
+| Token | Valeur | Reference |
+|-------|--------|-----------|
+| `--color-brand-cocoa` | `#6b4423` | Cacao — production ivoirienne |
+| `--color-brand-gold` | `#d4af37` | Or — paysages de savane |
+
+---
+
+## Semantic — Feedback utilisateur
+
+Les couleurs semantiques communiquent l'etat du systeme a l'utilisateur.
+
+| Categorie | Token 500 | Usage |
+|-----------|-----------|-------|
+| Success | `#19895d` | Validation, confirmation |
+| Warning | `#ce790b` | Avertissement, attention |
+| Error | `#d73a50` | Erreur, danger |
+| Info | `#1f6fe5` | Information, aide |
+
+---
+
+## Usage en CSS
+
+```css
+.my-component {
+  background-color: var(--color-brand-primary-50);
+  color: var(--color-brand-primary-900);
+  border: 1px solid var(--color-brand-primary-200);
+}
+
+.my-component:hover {
+  background-color: var(--color-brand-primary-100);
+}
+```
+
+## Usage en React
+
+```tsx
+import { ThemeProvider } from '@ivds/react';
+
+// Les tokens sont disponibles via CSS custom properties
+<ThemeProvider mode="light">
+  <Button variant="primary">Action</Button>
+</ThemeProvider>
+```

@@ -1,0 +1,75 @@
+name: Dependency Updates
+
+on:
+  schedule:
+    # Run weekly on Mondays at 9 AM UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+jobs:
+  update-dependencies:
+    name: Update Dependencies
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Update dependencies
+        run: |
+          # Update root dependencies
+          yarn upgrade --latest
+          
+          # Update package dependencies
+          cd packages/ivds-design-tokens
+          yarn upgrade --latest
+          
+          cd ../ivds-core
+          yarn upgrade --latest
+          
+          cd ../ivds-react
+          yarn upgrade --latest
+
+      - name: Run tests
+        run: |
+          yarn install
+          cd packages/ivds-design-tokens && yarn build && yarn test
+          cd ../ivds-core && yarn build && yarn lint && yarn test
+          cd ../ivds-react && yarn build && yarn lint && yarn test
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'chore: update dependencies'
+          title: 'chore: automated dependency updates'
+          body: |
+            ## Automated Dependency Updates
+            
+            This PR contains automated dependency updates for all packages in the monorepo.
+            
+            ### Changes
+            - Updated all dependencies to their latest compatible versions
+            - All tests are passing
+            
+            ### Review Checklist
+            - [ ] Review breaking changes in updated dependencies
+            - [ ] Test Storybook instances manually
+            - [ ] Verify visual regression tests pass
+            - [ ] Check bundle size impacts
+            
+            **Note**: This PR was created automatically. Please review carefully before merging.
+          branch: chore/dependency-updates
+          delete-branch: true
+          draft: false

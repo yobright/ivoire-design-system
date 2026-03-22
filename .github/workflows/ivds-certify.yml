@@ -1,0 +1,40 @@
+name: IVDS Gov Certification
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  certify-gov:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build tokens and core
+        run: |
+          yarn build:tokens
+          yarn build:core
+
+      - name: Run IVDS certification (soft gate)
+        run: yarn certify:gov
+
+      - name: Upload certification artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ivds-certification-report
+          path: reports/ivds-certification-*

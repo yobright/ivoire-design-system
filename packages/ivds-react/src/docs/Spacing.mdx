@@ -1,0 +1,64 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Fondations/Espacement" />
+
+# Espacement
+
+IVDS propose deux echelles d'espacement : **component** pour les elements UI
+et **layout** pour la structure de page.
+
+---
+
+## Espacement composant
+
+Pour les marges et paddings internes aux composants.
+
+| Token | Valeur | Pixels | Usage |
+|-------|--------|--------|-------|
+| `--spacing-4xs` | `0.125rem` | 2px | Micro-espacements |
+| `--spacing-3xs` | `0.25rem` | 4px | Entre elements lies |
+| `--spacing-2xs` | `0.5rem` | 8px | Padding interne compact |
+| `--spacing-xs` | `0.75rem` | 12px | Petit espacement |
+| `--spacing-s` | `1rem` | 16px | Espacement par defaut |
+| `--spacing-m` | `1.5rem` | 24px | Espacement moyen |
+| `--spacing-l` | `2rem` | 32px | Grand espacement |
+| `--spacing-xl` | `2.5rem` | 40px | Tres grand |
+| `--spacing-2xl` | `3rem` | 48px | Separation de sections |
+
+## Espacement layout
+
+Pour les marges entre sections et la structure de page.
+
+| Token | Valeur | Pixels | Usage |
+|-------|--------|--------|-------|
+| `--spacing-layout-2xs` | `1rem` | 16px | Minimum layout |
+| `--spacing-layout-xs` | `1.5rem` | 24px | Petit layout |
+| `--spacing-layout-s` | `2rem` | 32px | Layout compact |
+| `--spacing-layout-m` | `3rem` | 48px | Layout standard |
+| `--spacing-layout-l` | `4rem` | 64px | Grand layout |
+| `--spacing-layout-xl` | `6rem` | 96px | Hero sections |
+| `--spacing-layout-2xl` | `8rem` | 128px | Maximum layout |
+
+---
+
+## Tokens complementaires
+
+### Z-index
+
+| Token | Valeur | Usage |
+|-------|--------|-------|
+| `--zIndex-dropdown` | 1000 | Menus deroulants |
+| `--zIndex-sticky` | 1100 | Headers sticky |
+| `--zIndex-overlay` | 1300 | Overlays |
+| `--zIndex-modal` | 1400 | Modales |
+| `--zIndex-toast` | 1600 | Notifications toast |
+| `--zIndex-tooltip` | 1700 | Tooltips |
+
+### Opacite
+
+| Token | Valeur | Usage |
+|-------|--------|-------|
+| `--opacity-10` | 0.10 | Overlays subtils |
+| `--opacity-40` | 0.40 | Overlays moyens |
+| `--opacity-60` | 0.60 | Semi-transparent |
+| `--opacity-80` | 0.80 | Quasi-opaque |

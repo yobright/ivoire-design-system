@@ -1,0 +1,52 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Introduction" />
+
+# Ivoire Design System (IVDS)
+
+Bienvenue dans la documentation interactive du **Ivoire Design System**.
+
+IVDS est un design system multi-packages pour les plateformes institutionnelles
+et gouvernementales de Cote d'Ivoire, concu dans le cadre du PND et de la
+digitalisation des services publics.
+
+---
+
+## Packages
+
+| Package | Description | Installation |
+|---------|-------------|-------------|
+| `@ivds/design-tokens` | Couleurs, typographie, espacements, elevation | `yarn add @ivds/design-tokens` |
+| `@ivds/core` | Composants CSS-only, reset, utilitaires | `yarn add @ivds/core` |
+| `@ivds/react` | Composants React avec TypeScript | `yarn add @ivds/react` |
+
+## Demarrage rapide
+
+```bash
+# Installation
+yarn add @ivds/design-tokens @ivds/core @ivds/react
+
+# Dans votre app React
+import '@ivds/core';
+import { Button, Card, Header } from '@ivds/react';
+```
+
+## Principes de design
+
+- **Accessibilite** : WCAG 2.2 AA par defaut, navigation clavier, ARIA complet
+- **Coherence** : Tokens de design partages entre CSS et React
+- **Performance** : CSS-first, chargement minimal, Core Web Vitals
+- **Bilingue** : Support francais/anglais natif pour les composants gov
+
+## Architecture
+
+```
+@ivds/design-tokens  (JSON -> CSS / SCSS / JS / TypeScript)
+        |
+   @ivds/core        (SCSS components + utilities)
+        |
+   @ivds/react       (React + TypeScript + ThemeProvider)
+```
+
+Naviguez dans le panneau lateral pour explorer les composants, les tokens de design,
+et les patterns gouvernementaux.

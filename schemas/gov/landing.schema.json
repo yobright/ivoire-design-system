@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ivds.dev/schemas/gov/landing.schema.json",
+  "title": "Gov Landing Content",
+  "type": "object",
+  "required": ["locale", "promo", "navigation", "flash", "news", "services", "agenda", "footerSections"],
+  "properties": {
+    "locale": { "type": "string", "enum": ["fr", "en"] },
+    "promo": {
+      "type": "object",
+      "required": ["title", "subtitle"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "subtitle": { "type": "string" },
+        "ctaLabel": { "type": "string" },
+        "ctaHref": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "navigation": { "$ref": "./nav.schema.json" },
+    "flash": { "$ref": "./flash.schema.json" },
+    "news": { "$ref": "./news.schema.json" },
+    "services": { "$ref": "./services.schema.json" },
+    "agenda": { "$ref": "./agenda.schema.json" },
+    "footerSections": { "$ref": "./footer.schema.json" }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,15 @@
+{
+  "buildScriptName": "build-storybook",
+  "exitZeroOnChanges": true,
+  "exitOnceUploaded": true,
+  "autoAcceptChanges": "main",
+  "ignoreLastBuildOnBranch": "main",
+  "skip": "dependabot/**",
+  "externals": [
+    "public/**"
+  ],
+  "debug": false,
+  "fileHashing": true,
+  "onlyChanged": true,
+  "traceChanged": "expanded"
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ivds.dev/schemas/gov/news.schema.json",
+  "title": "Gov News Items",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "category", "title", "href", "publishedAt"],
+    "properties": {
+      "id": { "type": "string", "minLength": 1 },
+      "category": { "type": "string", "minLength": 1 },
+      "title": {
+        "type": "object",
+        "required": ["fr", "en"],
+        "properties": {
+          "fr": { "type": "string", "minLength": 1 },
+          "en": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
+      },
+      "excerpt": {
+        "type": "object",
+        "required": ["fr", "en"],
+        "properties": {
+          "fr": { "type": "string" },
+          "en": { "type": "string" }
+        },
+        "additionalProperties": false
+      },
+      "href": { "type": "string", "minLength": 1 },
+      "image": { "type": "string" },
+      "publishedAt": { "type": "string", "format": "date-time" }
+    },
+    "additionalProperties": false
+  }
+}

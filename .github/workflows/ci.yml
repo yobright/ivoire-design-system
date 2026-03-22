@@ -1,0 +1,158 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-and-test:
+    name: Lint and Test
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Lint root
+        run: |
+          if [ -f ".eslintrc.js" ] || [ -f ".eslintrc.json" ]; then
+            yarn lint
+          fi
+
+      - name: Build and test design tokens
+        run: |
+          cd packages/ivds-design-tokens
+          yarn build
+          yarn test
+
+      - name: Build and test core styles
+        run: |
+          cd packages/ivds-core
+          yarn build
+          yarn lint
+          yarn test
+
+      - name: Build and test React components
+        run: |
+          cd packages/ivds-react
+          yarn build
+          yarn lint
+          yarn test
+
+      - name: Generate React coverage baseline matrix
+        run: yarn audit:react-coverage
+
+      - name: Check bundle sizes
+        run: |
+          cd packages/ivds-core
+          yarn size
+
+      - name: Upload coverage reports
+        uses: codecov/codecov-action@v3
+        with:
+          directory: ./packages/
+          flags: unittests
+          name: codecov-umbrella
+          fail_ci_if_error: false
+
+      - name: Upload React coverage baseline artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: react-component-coverage
+          path: reports/react-component-coverage.*
+          retention-days: 7
+
+  build-storybooks:
+    name: Build Storybooks
+    runs-on: ubuntu-latest
+    needs: lint-and-test
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build design tokens
+        run: |
+          cd packages/ivds-design-tokens
+          yarn build
+
+      - name: Build core Storybook
+        run: |
+          cd packages/ivds-core
+          yarn build
+          yarn build-storybook
+
+      - name: Build React Storybook
+        run: |
+          cd packages/ivds-react
+          yarn build
+          yarn build-storybook
+
+      - name: Upload core Storybook artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: storybook-core
+          path: packages/ivds-core/storybook-static/
+          retention-days: 7
+
+      - name: Upload React Storybook artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: storybook-react
+          path: packages/ivds-react/storybook-static/
+          retention-days: 7
+
+  security-audit:
+    name: Security Audit
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Run security audit
+        run: yarn audit --level moderate
+
+      - name: Run Snyk security scan
+        uses: snyk/actions/node@master
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=high

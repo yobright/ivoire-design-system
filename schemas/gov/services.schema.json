@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ivds.dev/schemas/gov/services.schema.json",
+  "title": "Gov Service Items",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "code", "title", "href"],
+    "properties": {
+      "id": { "type": "string", "minLength": 1 },
+      "code": { "type": "string", "minLength": 1 },
+      "title": {
+        "type": "object",
+        "required": ["fr", "en"],
+        "properties": {
+          "fr": { "type": "string", "minLength": 1 },
+          "en": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
+      },
+      "href": { "type": "string", "minLength": 1 },
+      "icon": { "type": "string" },
+      "status": { "type": "string", "enum": ["available", "maintenance", "coming-soon"] }
+    },
+    "additionalProperties": false
+  }
+}

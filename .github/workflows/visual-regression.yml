@@ -1,0 +1,82 @@
+name: Visual Regression Testing
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'packages/ivds-react/**'
+      - 'packages/ivds-core/**'
+      - '.github/workflows/visual-regression.yml'
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - 'packages/ivds-react/**'
+      - 'packages/ivds-core/**'
+      - '.github/workflows/visual-regression.yml'
+
+jobs:
+  visual-tests:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Required for Chromatic
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'yarn'
+      
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      
+      - name: Build design tokens
+        run: |
+          cd packages/ivds-design-tokens
+          yarn build
+      
+      - name: Build core styles
+        run: |
+          cd packages/ivds-core
+          yarn build
+      
+      - name: Build React components
+        run: |
+          cd packages/ivds-react
+          yarn build
+      
+      - name: Run Chromatic visual regression tests
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          workingDir: packages/ivds-react
+          buildScriptName: build-storybook
+          exitZeroOnChanges: true
+          exitOnceUploaded: true
+          autoAcceptChanges: main
+          onlyChanged: true
+      
+      - name: Install Playwright browsers
+        run: |
+          cd packages/ivds-react
+          npx playwright install --with-deps chromium
+      
+      - name: Run accessibility tests
+        run: |
+          cd packages/ivds-react
+          yarn storybook --ci &
+          sleep 30
+          yarn test:a11y
+        env:
+          CI: true
+      
+      - name: Upload accessibility test results
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: accessibility-test-results
+          path: packages/ivds-react/test-results/
+          retention-days: 7

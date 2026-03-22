@@ -1,0 +1,108 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Fondations/Typographie" />
+
+# Typographie
+
+IVDS utilise deux familles de polices complementaires pour creer une hierarchie
+visuelle claire et professionnelle.
+
+---
+
+## Familles de polices
+
+### Inter — Body text
+
+**Usage** : Texte courant, formulaires, navigation, UI generale.
+
+Inter est optimise pour la lisibilite a l'ecran avec d'excellentes metriques
+pour les interfaces utilisateur. C'est la reference en typographie UI moderne.
+
+```css
+font-family: var(--typography-fontFamilies-primary);
+/* 'Inter', 'Noto Sans', 'Segoe UI', Arial, sans-serif */
+```
+
+### IBM Plex Sans — Headings
+
+**Usage** : Titres, sous-titres, hero sections, contenu editorial.
+
+IBM Plex Sans apporte un contraste geometrique distinctif avec le body text.
+Son caractere professionnel convient parfaitement au contexte institutionnel.
+
+```css
+font-family: var(--typography-fontFamilies-secondary);
+/* 'IBM Plex Sans', 'Inter', 'Noto Sans', sans-serif */
+```
+
+### JetBrains Mono — Code
+
+**Usage** : Blocs de code, contenu technique, tableaux de donnees.
+
+```css
+font-family: var(--typography-fontFamilies-mono);
+/* 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace */
+```
+
+---
+
+## Echelle typographique
+
+| Token | Taille | Pixels | Usage typique |
+|-------|--------|--------|---------------|
+| `--fontSize-xs` | `0.75rem` | 12px | Labels, captions |
+| `--fontSize-sm` | `0.875rem` | 14px | Texte secondaire |
+| `--fontSize-base` | `1rem` | 16px | Body text |
+| `--fontSize-lg` | `1.125rem` | 18px | Sous-titres |
+| `--fontSize-xl` | `1.25rem` | 20px | Titres de section |
+| `--fontSize-2xl` | `1.5rem` | 24px | Titres H3 |
+| `--fontSize-3xl` | `1.875rem` | 30px | Titres H2 |
+| `--fontSize-4xl` | `2.25rem` | 36px | Titres H1 |
+| `--fontSize-5xl` | `3rem` | 48px | Hero titles |
+
+## Graisses
+
+| Token | Valeur | Usage |
+|-------|--------|-------|
+| `--fontWeight-normal` | 400 | Body text |
+| `--fontWeight-medium` | 500 | Emphase legere |
+| `--fontWeight-semibold` | 600 | Sous-titres, labels |
+| `--fontWeight-bold` | 700 | Titres |
+
+## Hauteurs de ligne
+
+| Token | Valeur | Usage |
+|-------|--------|-------|
+| `--lineHeight-tight` | 1.25 | Titres |
+| `--lineHeight-snug` | 1.375 | Sous-titres |
+| `--lineHeight-normal` | 1.5 | Body text |
+| `--lineHeight-relaxed` | 1.625 | Texte long, articles |
+
+---
+
+## Combinaisons recommandees
+
+```css
+/* Titre de page */
+h1 {
+  font-family: var(--typography-fontFamilies-secondary);
+  font-size: var(--fontSize-4xl);
+  font-weight: var(--fontWeight-bold);
+  line-height: var(--lineHeight-tight);
+}
+
+/* Body text */
+p {
+  font-family: var(--typography-fontFamilies-primary);
+  font-size: var(--fontSize-base);
+  font-weight: var(--fontWeight-normal);
+  line-height: var(--lineHeight-normal);
+}
+
+/* Label de formulaire */
+label {
+  font-family: var(--typography-fontFamilies-primary);
+  font-size: var(--fontSize-sm);
+  font-weight: var(--fontWeight-medium);
+}
+```

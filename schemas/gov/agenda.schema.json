@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ivds.dev/schemas/gov/agenda.schema.json",
+  "title": "Gov Agenda Items",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "title", "href", "startAt"],
+    "properties": {
+      "id": { "type": "string", "minLength": 1 },
+      "title": {
+        "type": "object",
+        "required": ["fr", "en"],
+        "properties": {
+          "fr": { "type": "string", "minLength": 1 },
+          "en": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
+      },
+      "href": { "type": "string", "minLength": 1 },
+      "location": {
+        "type": "object",
+        "required": ["fr", "en"],
+        "properties": {
+          "fr": { "type": "string", "minLength": 1 },
+          "en": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
+      },
+      "startAt": { "type": "string", "format": "date-time" }
+    },
+    "additionalProperties": false
+  }
+}
