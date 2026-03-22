@@ -210,15 +210,7 @@
       "path": "./lib/all.min.css",
       "maxSize": "25 kB"
     },
-    {
-      "path": "./lib/utils-only.css",
-      "maxSize": "15 kB"
-    },
-    {
-      "path": "./lib/utils-only.min.css",
-      "maxSize": "8 kB"
-    },
-    {
+{
       "path": "./lib/components/all.css",
       "maxSize": "35 kB"
     },
