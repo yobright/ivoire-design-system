@@ -141,9 +141,81 @@ const configs = [
     platforms: getPlatformConfig("all"),
   },
 
-  // Colors only
+  // Spacing - component level
   {
-    source: ["tokens/color/*.json"],
+    source: ["tokens/spacing/component.json"],
+    platforms: getPlatformConfig("component", "spacing"),
+  },
+
+  // Spacing - layout level
+  {
+    source: ["tokens/spacing/layout.json"],
+    platforms: getPlatformConfig("layout", "spacing"),
+  },
+
+  // Spacing - legacy (for backwards compatibility)
+  {
+    source: ["tokens/spacing/spacing.json"],
+    platforms: getPlatformConfig("spacing", "spacing"),
+  },
+
+  // Colors - brand orange (primary)
+  {
+    source: ["tokens/color/brand/orange.json"],
+    platforms: getPlatformConfig("orange", "color/brand"),
+  },
+
+  // Colors - brand green (secondary)
+  {
+    source: ["tokens/color/brand/green.json"],
+    platforms: getPlatformConfig("green", "color/brand"),
+  },
+
+  // Colors - brand cocoa
+  {
+    source: ["tokens/color/brand/cocoa.json"],
+    platforms: getPlatformConfig("cocoa", "color/brand"),
+  },
+
+  // Colors - brand gold
+  {
+    source: ["tokens/color/brand/gold.json"],
+    platforms: getPlatformConfig("gold", "color/brand"),
+  },
+
+  // Colors - brand lagoon
+  {
+    source: ["tokens/color/brand/lagoon.json"],
+    platforms: getPlatformConfig("lagoon", "color/brand"),
+  },
+
+  // Colors - brand all
+  {
+    source: ["tokens/color/brand/**/*.json"],
+    platforms: getPlatformConfig("brand", "color"),
+  },
+
+  // Colors - UI base
+  {
+    source: ["tokens/color/ui/base.json"],
+    platforms: getPlatformConfig("base", "color/ui"),
+  },
+
+  // Colors - UI feedback
+  {
+    source: ["tokens/color/ui/feedback.json"],
+    platforms: getPlatformConfig("feedback", "color/ui"),
+  },
+
+  // Colors - UI all
+  {
+    source: ["tokens/color/ui/**/*.json"],
+    platforms: getPlatformConfig("ui", "color"),
+  },
+
+  // Colors - all (legacy)
+  {
+    source: ["tokens/color/**/*.json"],
     platforms: getPlatformConfig("colors", "color"),
   },
 
@@ -151,12 +223,6 @@ const configs = [
   {
     source: ["tokens/typography/*.json"],
     platforms: getPlatformConfig("typography", "typography"),
-  },
-
-  // Spacing only
-  {
-    source: ["tokens/spacing/*.json"],
-    platforms: getPlatformConfig("spacing", "spacing"),
   },
 
   // Elevation only
@@ -171,10 +237,34 @@ const configs = [
     platforms: getPlatformConfig("border", "border"),
   },
 
-  // Breakpoints only
+  // Breakpoints
   {
-    source: ["tokens/breakpoints/*.json"],
-    platforms: getPlatformConfig("breakpoints", "breakpoint"),
+    source: ["tokens/breakpoint/breakpoint.json"],
+    platforms: getPlatformConfig("breakpoint", "breakpoint"),
+  },
+
+  // Container widths (NEW!)
+  {
+    source: ["tokens/breakpoint/container-width.json"],
+    platforms: getPlatformConfig("container-width", "breakpoint"),
+  },
+
+  // Animation only
+  {
+    source: ["tokens/animation/*.json"],
+    platforms: getPlatformConfig("animation", "animation"),
+  },
+
+  // Opacity
+  {
+    source: ["tokens/opacity/*.json"],
+    platforms: getPlatformConfig("opacity", "opacity"),
+  },
+
+  // Z-index
+  {
+    source: ["tokens/zindex/*.json"],
+    platforms: getPlatformConfig("zindex", "zindex"),
   },
 ]
 

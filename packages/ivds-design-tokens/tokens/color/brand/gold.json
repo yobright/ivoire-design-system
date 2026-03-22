@@ -1,0 +1,26 @@
+{
+  "color": {
+    "brand": {
+      "gold": {
+        "value": "#d4af37",
+        "type": "color",
+        "comment": "Savanna gold - representing Ivory Coast's golden landscapes"
+      },
+      "gold-light": {
+        "value": "#faf7ed",
+        "type": "color",
+        "comment": "Light gold for backgrounds"
+      },
+      "gold-medium-light": {
+        "value": "#ead9a8",
+        "type": "color",
+        "comment": "Medium light gold"
+      },
+      "gold-dark": {
+        "value": "#a88c2c",
+        "type": "color",
+        "comment": "Dark gold for emphasis"
+      }
+    }
+  }
+}

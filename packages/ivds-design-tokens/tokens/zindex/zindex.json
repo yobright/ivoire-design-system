@@ -1,0 +1,14 @@
+{
+  "zIndex": {
+    "hide": { "value": "-1", "comment": "Hidden elements" },
+    "base": { "value": "0", "comment": "Default stacking" },
+    "dropdown": { "value": "1000", "comment": "Dropdown menus, selects" },
+    "sticky": { "value": "1100", "comment": "Sticky headers, nav bars" },
+    "fixed": { "value": "1200", "comment": "Fixed position elements" },
+    "overlay": { "value": "1300", "comment": "Background overlays" },
+    "modal": { "value": "1400", "comment": "Modal dialogs" },
+    "popover": { "value": "1500", "comment": "Popovers, tooltips" },
+    "toast": { "value": "1600", "comment": "Toast notifications" },
+    "tooltip": { "value": "1700", "comment": "Tooltip highest priority" }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "color": {
+    "brand": {
+      "green": {
+        "value": "#007a4d",
+        "type": "color",
+        "comment": "Secondary brand color - institutional green"
+      },
+      "green-light": {
+        "value": "#edf8f3",
+        "type": "color",
+        "comment": "Light green for backgrounds"
+      },
+      "green-medium-light": {
+        "value": "#b5dfc6",
+        "type": "color",
+        "comment": "Medium light green"
+      },
+      "green-dark": {
+        "value": "#004d31",
+        "type": "color",
+        "comment": "Dark green for emphasis"
+      }
+    }
+  }
+}

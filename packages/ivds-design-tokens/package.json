@@ -1,6 +1,6 @@
 {
   "name": "@ivds/design-tokens",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Design tokens for the Ivoire Design System",
   "homepage": "https://github.com/babiverse/ivoire-design-system#readme",
   "license": "MIT",
@@ -13,6 +13,8 @@
       "require": "./lib/index.cjs",
       "types": "./lib/index.d.ts"
     },
+    "./lib/all.css": "./lib/all.css",
+    "./lib/*.css": "./lib/*.css",
     "./css": "./lib/all.css",
     "./css/*": "./lib/*.css",
     "./scss": "./lib/all.scss",
@@ -60,7 +62,16 @@
   "bugs": {
     "url": "https://github.com/babiverse/ivoire-design-system/issues"
   },
+  "author": "IVDS Team",
+  "engines": {
+    "node": ">=22.13.1"
+  },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/babiverse"
   }
 }

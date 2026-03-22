@@ -1,4 +1,5 @@
 {
+  "_comment": "DEPRECATED: Use spacing/component.json (component-level) or spacing/layout.json (page-level) instead. This numeric scale is kept for backward compatibility only.",
   "spacing": {
     "0": { "value": "0" },
     "1": { "value": "0.25rem" },

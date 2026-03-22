@@ -1,71 +1,57 @@
 {
   "color": {
-    "semantic": {
-      "_comment": "Backward-compatible aliases mapping to canonical UI feedback palette. Use color.ui.* tokens for new code.",
+    "ui": {
       "success": {
-        "50": { "value": "#edf9f4" },
+        "50": { "value": "#edf9f4", "comment": "Success background" },
         "100": { "value": "#d7f1e5" },
         "200": { "value": "#afe0c9" },
         "300": { "value": "#7fccab" },
         "400": { "value": "#42af82" },
-        "500": { "value": "#19895d" },
-        "600": { "value": "#0f6f4a" },
+        "500": { "value": "#19895d", "comment": "Success base" },
+        "600": { "value": "#0f6f4a", "comment": "Success default" },
         "700": { "value": "#0a573a" },
         "800": { "value": "#08462f" },
-        "900": { "value": "#063423" },
+        "900": { "value": "#063423", "comment": "Success dark" },
         "950": { "value": "#021d12" }
       },
       "warning": {
-        "50": { "value": "#fff8eb" },
+        "50": { "value": "#fff8eb", "comment": "Warning background" },
         "100": { "value": "#ffeccc" },
         "200": { "value": "#ffd79b" },
         "300": { "value": "#fcbc63" },
         "400": { "value": "#ec9a2f" },
-        "500": { "value": "#ce790b" },
-        "600": { "value": "#a76009" },
+        "500": { "value": "#ce790b", "comment": "Warning base" },
+        "600": { "value": "#a76009", "comment": "Warning default" },
         "700": { "value": "#834b08" },
         "800": { "value": "#673b08" },
-        "900": { "value": "#4d2d05" },
+        "900": { "value": "#4d2d05", "comment": "Warning dark" },
         "950": { "value": "#2c1802" }
       },
       "error": {
-        "50": { "value": "#fff1f2" },
+        "50": { "value": "#fff1f2", "comment": "Error background" },
         "100": { "value": "#ffe1e3" },
         "200": { "value": "#ffc5ca" },
         "300": { "value": "#ff9aa2" },
         "400": { "value": "#f46674" },
-        "500": { "value": "#d73a50" },
-        "600": { "value": "#b72a41" },
+        "500": { "value": "#d73a50", "comment": "Error base" },
+        "600": { "value": "#b72a41", "comment": "Error default" },
         "700": { "value": "#922036" },
         "800": { "value": "#731a2d" },
-        "900": { "value": "#56131f" },
+        "900": { "value": "#56131f", "comment": "Error dark" },
         "950": { "value": "#2f0910" }
       },
       "info": {
-        "50": { "value": "#edf4ff" },
+        "50": { "value": "#edf4ff", "comment": "Info background" },
         "100": { "value": "#dbe9ff" },
         "200": { "value": "#bfd7ff" },
         "300": { "value": "#93bcff" },
         "400": { "value": "#5a96f5" },
-        "500": { "value": "#1f6fe5" },
-        "600": { "value": "#0050c8" },
+        "500": { "value": "#1f6fe5", "comment": "Info base" },
+        "600": { "value": "#0050c8", "comment": "Info default" },
         "700": { "value": "#003d99" },
         "800": { "value": "#002f73" },
-        "900": { "value": "#001f4d" },
+        "900": { "value": "#001f4d", "comment": "Info dark" },
         "950": { "value": "#00112a" }
-      },
-      "neutral": {
-        "50": { "value": "#fafafa" },
-        "100": { "value": "#f5f5f5" },
-        "200": { "value": "#e5e5e5" },
-        "300": { "value": "#d4d4d4" },
-        "400": { "value": "#a3a3a3" },
-        "500": { "value": "#737373" },
-        "600": { "value": "#525252" },
-        "700": { "value": "#404040" },
-        "800": { "value": "#262626" },
-        "900": { "value": "#171717" },
-        "950": { "value": "#0a0a0a" }
       }
     }
   }

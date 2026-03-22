@@ -1,0 +1,30 @@
+{
+  "breakpoint": {
+    "container-width": {
+      "xs": {
+        "value": "320px",
+        "comment": "Extra small container (mobile)"
+      },
+      "s": {
+        "value": "576px",
+        "comment": "Small container (large mobile)"
+      },
+      "m": {
+        "value": "768px",
+        "comment": "Medium container (tablet)"
+      },
+      "l": {
+        "value": "992px",
+        "comment": "Large container (desktop)"
+      },
+      "xl": {
+        "value": "1248px",
+        "comment": "Extra large container (wide desktop)"
+      },
+      "2xl": {
+        "value": "1440px",
+        "comment": "Maximum container width"
+      }
+    }
+  }
+}

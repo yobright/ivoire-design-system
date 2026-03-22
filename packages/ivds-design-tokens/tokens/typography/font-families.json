@@ -2,14 +2,24 @@
   "typography": {
     "fontFamilies": {
       "primary": {
-        "value": "Open Sans, Arial, sans-serif",
+        "value": "'Inter', 'Noto Sans', 'Segoe UI', Arial, sans-serif",
         "type": "fontFamily",
-        "comment": "Main font"
+        "comment": "Body text, forms, navigation — optimized for UI readability"
       },
       "secondary": {
-        "value": "Roboto, Arial, sans-serif",
+        "value": "'IBM Plex Sans', 'Inter', 'Noto Sans', sans-serif",
         "type": "fontFamily",
-        "comment": "Secondary usage"
+        "comment": "Headings and emphasis — geometric contrast with body text"
+      },
+      "mono": {
+        "value": "'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace",
+        "type": "fontFamily",
+        "comment": "Code blocks, technical content, data tables"
+      },
+      "display": {
+        "value": "'IBM Plex Sans', 'Inter', 'Noto Sans', sans-serif",
+        "type": "fontFamily",
+        "comment": "Hero sections, page titles, editorial display"
       }
     }
   }

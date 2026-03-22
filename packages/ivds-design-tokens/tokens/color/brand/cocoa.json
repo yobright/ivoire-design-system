@@ -1,0 +1,26 @@
+{
+  "color": {
+    "brand": {
+      "cocoa": {
+        "value": "#6b4423",
+        "type": "color",
+        "comment": "Cocoa brown - representing Ivory Coast's cocoa production"
+      },
+      "cocoa-light": {
+        "value": "#f5f0eb",
+        "type": "color",
+        "comment": "Light cocoa for backgrounds"
+      },
+      "cocoa-medium-light": {
+        "value": "#d4b8a0",
+        "type": "color",
+        "comment": "Medium light cocoa"
+      },
+      "cocoa-dark": {
+        "value": "#4a2f18",
+        "type": "color",
+        "comment": "Dark cocoa for emphasis"
+      }
+    }
+  }
+}

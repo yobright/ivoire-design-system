@@ -1,0 +1,26 @@
+{
+  "color": {
+    "brand": {
+      "orange": {
+        "value": "#CC5500",
+        "type": "color",
+        "comment": "Primary brand — burnt orange, terre ivoirienne"
+      },
+      "orange-light": {
+        "value": "#fef5ee",
+        "type": "color",
+        "comment": "Light orange for backgrounds"
+      },
+      "orange-medium-light": {
+        "value": "#f8cda8",
+        "type": "color",
+        "comment": "Medium light orange"
+      },
+      "orange-dark": {
+        "value": "#8f3b00",
+        "type": "color",
+        "comment": "Dark orange for emphasis"
+      }
+    }
+  }
+}

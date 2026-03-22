@@ -1,0 +1,21 @@
+{
+  "color": {
+    "ui": {
+      "white": { "value": "#ffffff", "comment": "Pure white" },
+      "black": { "value": "#000000", "comment": "Pure black" },
+      "neutral": {
+        "50": { "value": "#f7f8fa", "comment": "Lightest neutral" },
+        "100": { "value": "#f1f3f5" },
+        "200": { "value": "#e2e7ec" },
+        "300": { "value": "#cfd6dd" },
+        "400": { "value": "#a1adba" },
+        "500": { "value": "#6b7785", "comment": "Base neutral" },
+        "600": { "value": "#4d5968" },
+        "700": { "value": "#36414f" },
+        "800": { "value": "#202a36" },
+        "900": { "value": "#121a24" },
+        "950": { "value": "#070b10", "comment": "Darkest neutral" }
+      }
+    }
+  }
+}

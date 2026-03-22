@@ -1,0 +1,34 @@
+{
+  "spacing": {
+    "layout": {
+      "2xs": {
+        "value": "1rem",
+        "comment": "16px - Minimal layout spacing"
+      },
+      "xs": {
+        "value": "1.5rem",
+        "comment": "24px - Extra small layout spacing"
+      },
+      "s": {
+        "value": "2rem",
+        "comment": "32px - Small layout spacing"
+      },
+      "m": {
+        "value": "3rem",
+        "comment": "48px - Medium layout spacing (default)"
+      },
+      "l": {
+        "value": "4rem",
+        "comment": "64px - Large layout spacing"
+      },
+      "xl": {
+        "value": "6rem",
+        "comment": "96px - Extra large layout spacing"
+      },
+      "2xl": {
+        "value": "8rem",
+        "comment": "128px - Maximum layout spacing"
+      }
+    }
+  }
+}

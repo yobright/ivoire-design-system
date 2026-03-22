@@ -1,0 +1,26 @@
+{
+  "color": {
+    "brand": {
+      "lagoon": {
+        "value": "#1a6bdb",
+        "type": "color",
+        "comment": "Civic blue accent for links and actions"
+      },
+      "lagoon-light": {
+        "value": "#eef4ff",
+        "type": "color",
+        "comment": "Light lagoon for backgrounds"
+      },
+      "lagoon-medium-light": {
+        "value": "#bdd5ff",
+        "type": "color",
+        "comment": "Medium light lagoon"
+      },
+      "lagoon-dark": {
+        "value": "#0b4593",
+        "type": "color",
+        "comment": "Dark lagoon for emphasis"
+      }
+    }
+  }
+}

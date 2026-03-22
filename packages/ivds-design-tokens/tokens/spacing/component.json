@@ -1,0 +1,56 @@
+{
+  "spacing": {
+    "4xs": {
+      "value": "0.125rem",
+      "comment": "2px - Minimal spacing for tight layouts"
+    },
+    "3xs": {
+      "value": "0.25rem",
+      "comment": "4px - Tiny spacing between related elements"
+    },
+    "2xs": {
+      "value": "0.5rem",
+      "comment": "8px - Extra small spacing"
+    },
+    "xs": {
+      "value": "0.75rem",
+      "comment": "12px - Small spacing"
+    },
+    "s": {
+      "value": "1rem",
+      "comment": "16px - Default component spacing"
+    },
+    "m": {
+      "value": "1.5rem",
+      "comment": "24px - Medium spacing"
+    },
+    "l": {
+      "value": "2rem",
+      "comment": "32px - Large spacing"
+    },
+    "xl": {
+      "value": "2.5rem",
+      "comment": "40px - Extra large spacing"
+    },
+    "2xl": {
+      "value": "3rem",
+      "comment": "48px - 2X large spacing"
+    },
+    "3xl": {
+      "value": "3.5rem",
+      "comment": "56px - 3X large spacing"
+    },
+    "4xl": {
+      "value": "4rem",
+      "comment": "64px - 4X large spacing"
+    },
+    "5xl": {
+      "value": "4.5rem",
+      "comment": "72px - 5X large spacing"
+    },
+    "touch-target-min": {
+      "value": "3rem",
+      "comment": "48px - WCAG 2.2 AA minimum touch target size"
+    }
+  }
+}

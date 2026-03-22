@@ -1,0 +1,27 @@
+{
+  "animation": {
+    "duration": {
+      "instant": { "value": "50ms", "comment": "Micro-interactions" },
+      "fast": { "value": "150ms", "comment": "Button presses, toggles" },
+      "normal": { "value": "250ms", "comment": "Default transitions" },
+      "slow": { "value": "350ms", "comment": "Page transitions" },
+      "slower": { "value": "500ms", "comment": "Complex animations" }
+    },
+    "easing": {
+      "linear": { "value": "linear" },
+      "easeIn": { "value": "cubic-bezier(0.4, 0, 1, 1)" },
+      "easeOut": { "value": "cubic-bezier(0, 0, 0.2, 1)" },
+      "easeInOut": { "value": "cubic-bezier(0.4, 0, 0.2, 1)" },
+      "spring": { "value": "cubic-bezier(0.34, 1.56, 0.64, 1)", "comment": "Bouncy spring effect" },
+      "smooth": { "value": "cubic-bezier(0.25, 0.1, 0.25, 1)", "comment": "Smooth natural motion" },
+      "snappy": { "value": "cubic-bezier(0.2, 0, 0, 1)", "comment": "Quick responsive feel" }
+    },
+    "transition": {
+      "all": { "value": "all 250ms cubic-bezier(0.4, 0, 0.2, 1)" },
+      "colors": { "value": "color 150ms ease, background-color 150ms ease, border-color 150ms ease" },
+      "transform": { "value": "transform 250ms cubic-bezier(0.34, 1.56, 0.64, 1)" },
+      "opacity": { "value": "opacity 200ms ease" },
+      "shadow": { "value": "box-shadow 250ms ease" }
+    }
+  }
+}

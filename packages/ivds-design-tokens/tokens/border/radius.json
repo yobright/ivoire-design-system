@@ -1,13 +1,14 @@
 {
   "borderRadius": {
     "none": { "value": "0" },
-    "xs": { "value": "0.125rem" },
-    "sm": { "value": "0.25rem" },
-    "md": { "value": "0.375rem" },
-    "lg": { "value": "0.5rem" },
-    "xl": { "value": "0.75rem" },
-    "2xl": { "value": "1rem" },
-    "3xl": { "value": "1.5rem" },
-    "full": { "value": "9999px" }
+    "xs": { "value": "0.0625rem", "comment": "1px" },
+    "sm": { "value": "0.125rem", "comment": "2px" },
+    "md": { "value": "0.25rem", "comment": "4px" },
+    "lg": { "value": "0.375rem", "comment": "6px" },
+    "xl": { "value": "0.5rem", "comment": "8px" },
+    "2xl": { "value": "0.625rem", "comment": "10px" },
+    "3xl": { "value": "0.75rem", "comment": "12px" },
+    "4xl": { "value": "1rem", "comment": "16px" },
+    "full": { "value": "9999px", "comment": "Pill / circular surfaces" }
   }
 }

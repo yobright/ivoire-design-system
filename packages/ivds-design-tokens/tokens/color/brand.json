@@ -2,30 +2,49 @@
   "color": {
     "brand": {
       "primary": {
-        "50": { "value": "#f0f9ff" },
-        "100": { "value": "#e0f2fe" },
-        "200": { "value": "#bae6fd" },
-        "300": { "value": "#7dd3fc" },
-        "400": { "value": "#38bdf8" },
-        "500": { "value": "#0ea5e9" },
-        "600": { "value": "#0284c7" },
-        "700": { "value": "#0369a1" },
-        "800": { "value": "#075985" },
-        "900": { "value": "#0c4a6e" },
-        "950": { "value": "#082f49" }
+        "50": { "value": "#fef5ee", "comment": "Lightest tint — backgrounds" },
+        "100": { "value": "#fce8d4", "comment": "Subtle warm backgrounds" },
+        "200": { "value": "#f8cda8", "comment": "Hover backgrounds" },
+        "300": { "value": "#f2ac72", "comment": "Borders, dividers" },
+        "400": { "value": "#e8853a", "comment": "Icons, secondary actions" },
+        "500": { "value": "#CC5500", "comment": "Primary brand — burnt orange" },
+        "600": { "value": "#b34a00", "comment": "Hover state" },
+        "700": { "value": "#8f3b00", "comment": "Active/pressed state" },
+        "800": { "value": "#723000", "comment": "High contrast text on light" },
+        "900": { "value": "#562400", "comment": "Deep emphasis" },
+        "950": { "value": "#331500", "comment": "Near-black warm" }
       },
       "secondary": {
-        "50": { "value": "#f8fafc" },
-        "100": { "value": "#f1f5f9" },
-        "200": { "value": "#e2e8f0" },
-        "300": { "value": "#cbd5e1" },
-        "400": { "value": "#94a3b8" },
-        "500": { "value": "#64748b" },
-        "600": { "value": "#475569" },
-        "700": { "value": "#334155" },
-        "800": { "value": "#1e293b" },
-        "900": { "value": "#0f172a" },
-        "950": { "value": "#020617" }
+        "50": { "value": "#eef8f3", "comment": "Lightest green tint" },
+        "100": { "value": "#d4eede", "comment": "Subtle green backgrounds" },
+        "200": { "value": "#aaddc1", "comment": "Hover green backgrounds" },
+        "300": { "value": "#72c59c", "comment": "Green borders" },
+        "400": { "value": "#3ba674", "comment": "Green icons" },
+        "500": { "value": "#007a4d", "comment": "Secondary brand — institutional green" },
+        "600": { "value": "#006640", "comment": "Hover state" },
+        "700": { "value": "#005234", "comment": "Active/pressed state" },
+        "800": { "value": "#004129", "comment": "High contrast text on light" },
+        "900": { "value": "#00311f", "comment": "Deep emphasis" },
+        "950": { "value": "#001c11", "comment": "Near-black green" }
+      },
+      "accent": {
+        "50": { "value": "#eef4ff", "comment": "Lightest blue tint" },
+        "100": { "value": "#dce8ff", "comment": "Subtle blue backgrounds" },
+        "200": { "value": "#bdd5ff", "comment": "Hover blue backgrounds" },
+        "300": { "value": "#8fb8ff", "comment": "Blue borders" },
+        "400": { "value": "#5a93f5", "comment": "Blue icons" },
+        "500": { "value": "#1a6bdb", "comment": "Accent — civic lagoon blue" },
+        "600": { "value": "#1058b8", "comment": "Hover state" },
+        "700": { "value": "#0b4593", "comment": "Active/pressed state" },
+        "800": { "value": "#083775", "comment": "High contrast text on light" },
+        "900": { "value": "#052958", "comment": "Deep emphasis" },
+        "950": { "value": "#021832", "comment": "Near-black blue" }
+      },
+      "gradient": {
+        "primary": { "value": "linear-gradient(135deg, #CC5500 0%, #b34a00 100%)", "comment": "Warm gradient for CTAs" },
+        "secondary": { "value": "linear-gradient(135deg, #007a4d 0%, #005234 100%)", "comment": "Green gradient" },
+        "accent": { "value": "linear-gradient(135deg, #1a6bdb 0%, #0b4593 100%)", "comment": "Blue gradient" },
+        "glass": { "value": "linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.65) 100%)", "comment": "Frosted glass overlay" }
       }
     }
   }
