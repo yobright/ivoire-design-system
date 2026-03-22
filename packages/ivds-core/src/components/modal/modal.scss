@@ -1,0 +1,58 @@
+@use 'modal-mixin' as modal;
+
+.ivds-modal {
+  &__overlay {
+    @include modal.modal-overlay;
+  }
+
+  &__backdrop {
+    @include modal.modal-backdrop;
+  }
+  
+  &__container {
+    @include modal.modal-container;
+  }
+  
+  &__header {
+    @include modal.modal-header;
+  }
+  
+  &__title {
+    margin: 0;
+    font-size: var(--fontSize-xl, 1.25rem);
+    font-weight: var(--fontWeight-bold, 700);
+    color: var(--ivds-text-primary, #121a24);
+  }
+  
+  &__close {
+    @include modal.modal-close;
+    
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  
+  &__body {
+    @include modal.modal-body;
+  }
+  
+  &__footer {
+    @include modal.modal-footer;
+  }
+
+  // Sizes
+  &--sm &__container { max-width: 400px; }
+
+  &--lg &__container { max-width: 800px; }
+
+  &--xl &__container { max-width: 1000px; }
+
+  &--full &__container { 
+    max-width: none; 
+    height: 100%; 
+    margin: 0;
+    border: none;
+    box-shadow: none;
+  }
+}

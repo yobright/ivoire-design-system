@@ -1,0 +1,12 @@
+.ivds-icon--pen-line {
+  --mask-image-pen-line: url("data:image/svg+xml;charset=utf-8,%3Csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M14.25%202.5L3.5%2013.25L3.5143%2017.9857L8.25%2018L19%207.25L14.25%202.5ZM5.5%2014L14.25%205.25L16.25%207.25L7.5%2016L5.50696%2015.994L5.5%2014ZM3.5%2020H20.5V22H3.5V20Z'%20fill='black'/%3E%3C/svg%3E");
+  --mask-image: var(--mask-image-pen-line);
+}
+
+.ivds-icon-start--pen-line {
+  --mask-image-before: var(--mask-image-pen-line);
+}
+
+.ivds-icon-end--pen-line {
+  --mask-image-after: var(--mask-image-pen-line);
+}

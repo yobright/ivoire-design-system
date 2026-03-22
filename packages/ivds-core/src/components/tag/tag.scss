@@ -1,0 +1,235 @@
+// Tag component styles
+// Institutional tags for status, metadata and filtering.
+
+@use '_tag-mixin' as tag;
+
+.ivds-tag {
+  @include tag.tag-base;
+  @include tag.tag-size(var(--spacing-1, 0.25rem), var(--spacing-3, 0.75rem), var(--fontSize-sm, 0.875rem), 24px);
+  @include tag.tag-with-icon;
+  @include tag.tag-variant(
+    var(--ivds-surface-muted, #f1f3f5),
+    var(--ivds-text-secondary, #36414f),
+    var(--ivds-border-subtle, #e2e7ec),
+    var(--color-semantic-neutral-200, #e2e7ec)
+  );
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    svg {
+      width: 1em;
+      height: 1em;
+      fill: currentcolor;
+    }
+  }
+
+  &__text {
+    flex: 1;
+  }
+
+  &__remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    svg {
+      width: 0.875em;
+      height: 0.875em;
+      fill: currentcolor;
+    }
+  }
+}
+
+.ivds-tag--primary {
+  @include tag.tag-variant(
+    var(--color-brand-accent-50, #eef4ff),
+    var(--color-brand-accent-700, #0b4593),
+    var(--color-brand-accent-200, #bfd7ff),
+    var(--color-brand-accent-100, #dbe9ff)
+  );
+}
+
+.ivds-tag--success {
+  @include tag.tag-variant(
+    var(--color-semantic-success-50, #edf9f4),
+    var(--color-semantic-success-700, #0a573a),
+    var(--color-ui-success-200, #b8e9d2),
+    var(--color-ui-success-100, #d6f3e5)
+  );
+}
+
+.ivds-tag--warning {
+  @include tag.tag-variant(
+    var(--color-semantic-warning-50, #fff8eb),
+    var(--color-semantic-warning-700, #834b08),
+    var(--color-ui-warning-200, #f6d6a7),
+    var(--color-ui-warning-100, #fcebcf)
+  );
+}
+
+.ivds-tag--error {
+  @include tag.tag-variant(
+    var(--color-semantic-error-50, #fff1f2),
+    var(--color-semantic-error-700, #922036),
+    var(--color-ui-error-200, #f2b8c1),
+    var(--color-ui-error-100, #f9dbe0)
+  );
+}
+
+.ivds-tag--info {
+  @include tag.tag-variant(
+    var(--color-semantic-info-50, #edf4ff),
+    var(--color-semantic-info-700, #003d99),
+    var(--color-ui-info-200, #bfd7ff),
+    var(--color-ui-info-100, #dbe9ff)
+  );
+}
+
+.ivds-tag--outlined {
+  &.ivds-tag {
+    @include tag.tag-outlined(
+      var(--ivds-border-strong, #a1adba),
+      var(--ivds-text-secondary, #36414f),
+      var(--ivds-surface-muted, #f1f3f5)
+    );
+  }
+
+  &.ivds-tag--primary {
+    @include tag.tag-outlined(
+      var(--color-brand-accent-300, #93bcff),
+      var(--color-brand-accent-700, #0b4593),
+      var(--color-brand-accent-50, #eef4ff)
+    );
+  }
+
+  &.ivds-tag--success {
+    @include tag.tag-outlined(
+      var(--color-ui-success-300, #86d7b8),
+      var(--color-semantic-success-700, #0a573a),
+      var(--color-semantic-success-50, #edf9f4)
+    );
+  }
+
+  &.ivds-tag--warning {
+    @include tag.tag-outlined(
+      var(--color-ui-warning-300, #efbf76),
+      var(--color-semantic-warning-700, #834b08),
+      var(--color-semantic-warning-50, #fff8eb)
+    );
+  }
+
+  &.ivds-tag--error {
+    @include tag.tag-outlined(
+      var(--color-ui-error-300, #e68f9d),
+      var(--color-semantic-error-700, #922036),
+      var(--color-semantic-error-50, #fff1f2)
+    );
+  }
+
+  &.ivds-tag--info {
+    @include tag.tag-outlined(
+      var(--color-ui-info-300, #93bcff),
+      var(--color-semantic-info-700, #003d99),
+      var(--color-semantic-info-50, #edf4ff)
+    );
+  }
+}
+
+.ivds-tag--solid {
+  &.ivds-tag {
+    @include tag.tag-solid(
+      var(--color-semantic-neutral-700, #36414f),
+      #fff,
+      var(--color-semantic-neutral-800, #202a36)
+    );
+  }
+
+  &.ivds-tag--primary {
+    @include tag.tag-solid(
+      var(--color-brand-accent-600, #1058b8),
+      #fff,
+      var(--color-brand-accent-700, #0b4593)
+    );
+  }
+
+  &.ivds-tag--success {
+    @include tag.tag-solid(
+      var(--color-semantic-success-600, #0f6f4a),
+      #fff,
+      var(--color-semantic-success-700, #0a573a)
+    );
+  }
+
+  &.ivds-tag--warning {
+    @include tag.tag-solid(
+      var(--color-semantic-warning-600, #a76009),
+      #fff,
+      var(--color-semantic-warning-700, #834b08)
+    );
+  }
+
+  &.ivds-tag--error {
+    @include tag.tag-solid(
+      var(--color-semantic-error-600, #b72a41),
+      #fff,
+      var(--color-semantic-error-700, #922036)
+    );
+  }
+
+  &.ivds-tag--info {
+    @include tag.tag-solid(
+      var(--color-semantic-info-600, #0050c8),
+      #fff,
+      var(--color-semantic-info-700, #003d99)
+    );
+  }
+}
+
+.ivds-tag--small {
+  @include tag.tag-small;
+}
+
+.ivds-tag--large {
+  @include tag.tag-large;
+}
+
+.ivds-tag--removable {
+  @include tag.tag-removable;
+}
+
+.ivds-tag--link {
+  @include tag.tag-link;
+}
+
+.ivds-tag--interactive {
+  @include tag.tag-interactive;
+}
+
+.ivds-tag--new {
+  @include tag.tag-status-new;
+}
+
+.ivds-tag--updated {
+  @include tag.tag-status-updated;
+}
+
+.ivds-tag--disabled {
+  @include tag.tag-disabled;
+}
+
+.ivds-tag-group {
+  @include tag.tag-group;
+
+  &--compact {
+    @include tag.tag-group(var(--spacing-1, 0.25rem));
+  }
+
+  &--spacious {
+    @include tag.tag-group(var(--spacing-3, 0.75rem));
+  }
+}

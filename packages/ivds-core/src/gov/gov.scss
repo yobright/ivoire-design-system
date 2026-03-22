@@ -1,0 +1,559 @@
+/* Government namespace styles for IVDS */
+/* stylelint-disable no-descending-specificity */
+
+:root {
+  --ivds-gov-color-canvas: var(--ivds-surface-page, var(--color-semantic-neutral-50));
+  --ivds-gov-color-surface: var(--ivds-surface-base, var(--color-semantic-neutral-100));
+  --ivds-gov-color-surface-muted: var(--ivds-surface-muted, var(--color-semantic-neutral-100));
+  --ivds-gov-color-surface-strong: var(--ivds-surface-strong, var(--color-semantic-neutral-900));
+  --ivds-gov-color-primary: var(--color-brand-primary-600);
+  --ivds-gov-color-primary-soft: var(--color-brand-primary-50);
+  --ivds-gov-color-accent: var(--color-brand-secondary-600);
+  --ivds-gov-color-accent-soft: var(--color-brand-secondary-50);
+  --ivds-gov-color-text: var(--ivds-text-primary, var(--color-semantic-neutral-900));
+  --ivds-gov-color-text-muted: var(--ivds-text-secondary, var(--color-semantic-neutral-600));
+  --ivds-gov-color-border: var(--ivds-border-subtle, var(--color-semantic-neutral-200));
+  --ivds-gov-color-border-strong: var(--ivds-border-strong, var(--color-semantic-neutral-400));
+  --ivds-gov-focus-ring: var(--ivds-focus-ring, 0 0 0 3px var(--ivds-focus-ring-color));
+  --ivds-gov-radius-s: var(--ivds-radius-s, var(--borderRadius-sm));
+  --ivds-gov-radius-m: var(--ivds-radius-m, var(--borderRadius-md));
+  --ivds-gov-radius-l: var(--ivds-radius-l, var(--borderRadius-lg));
+  --ivds-gov-shadow-sm: var(--ivds-shadow-sm, var(--shadow-xs));
+  --ivds-gov-shadow-md: var(--ivds-shadow-md, var(--shadow-sm));
+  --ivds-gov-max-width: 1200px;
+}
+
+.ivds-gov-shell {
+  background: var(--ivds-gov-color-canvas);
+  color: var(--ivds-gov-color-text);
+  font-family: var(--fontFamily-primary);
+  min-height: 100vh;
+}
+
+.ivds-gov-shell__container {
+  margin: 0 auto;
+  max-width: var(--ivds-gov-max-width);
+  padding: var(--spacing-4);
+  width: 100%;
+}
+
+.ivds-gov-top-promo {
+  align-items: center;
+  background: linear-gradient(145deg, var(--ivds-gov-color-surface) 0%, var(--ivds-gov-color-surface-muted) 100%);
+  border: 1px solid var(--ivds-gov-color-border);
+  border-radius: var(--ivds-gov-radius-l);
+  box-shadow: var(--ivds-gov-shadow-sm);
+  display: grid;
+  gap: var(--spacing-4);
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: var(--spacing-5);
+}
+
+.ivds-gov-top-promo__title {
+  font-family: var(--fontFamily-secondary);
+  font-size: clamp(var(--fontSize-2xl), 3vw, var(--fontSize-4xl));
+  font-weight: var(--fontWeight-bold);
+  line-height: var(--lineHeight-tight);
+  margin: 0;
+}
+
+.ivds-gov-top-promo__subtitle {
+  color: var(--ivds-gov-color-text-muted);
+  font-size: var(--fontSize-base);
+  margin: var(--spacing-2) 0 0;
+  max-width: 65ch;
+}
+
+.ivds-gov-flash-ticker {
+  align-items: center;
+  background: var(--ivds-gov-color-surface);
+  border: 1px solid var(--ivds-gov-color-border);
+  border-radius: var(--ivds-gov-radius-m);
+  border-top: 4px solid var(--ivds-gov-color-primary);
+  box-shadow: var(--ivds-gov-shadow-sm);
+  display: grid;
+  gap: var(--spacing-3);
+  grid-template-columns: auto minmax(0, 1fr);
+  margin-top: var(--spacing-4);
+  padding: var(--spacing-3) var(--spacing-4);
+}
+
+.ivds-gov-flash-ticker__label {
+  background: var(--ivds-gov-color-primary);
+  border-radius: var(--ivds-gov-radius-s);
+  color: var(--ivds-text-on-strong, var(--color-semantic-neutral-50));
+  font-size: var(--fontSize-xs);
+  font-weight: var(--fontWeight-bold);
+  letter-spacing: 0.08em;
+  padding: var(--spacing-2) var(--spacing-3);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.ivds-gov-flash-ticker__list {
+  display: flex;
+  gap: var(--spacing-4);
+  list-style: none;
+  margin: 0;
+  overflow: auto;
+  padding: 0;
+}
+
+.ivds-gov-flash-ticker__item a {
+  color: var(--ivds-gov-color-text);
+  font-size: var(--fontSize-sm);
+  font-weight: var(--fontWeight-medium);
+  text-decoration: none;
+}
+
+.ivds-gov-flash-ticker__item a:hover,
+.ivds-gov-flash-ticker__item a:focus-visible {
+  color: var(--ivds-gov-color-primary);
+}
+
+.ivds-gov-header {
+  background: var(--ivds-gov-color-surface);
+  border: 1px solid var(--ivds-gov-color-border);
+  border-radius: var(--ivds-gov-radius-l);
+  border-top: 4px solid var(--ivds-gov-color-accent);
+  box-shadow: var(--ivds-gov-shadow-sm);
+  margin-top: var(--spacing-4);
+  padding: var(--spacing-4) var(--spacing-5);
+}
+
+.ivds-gov-header__row {
+  align-items: center;
+  display: flex;
+  gap: var(--spacing-4);
+  justify-content: space-between;
+}
+
+.ivds-gov-header__brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.ivds-gov-header__brand-title {
+  font-size: var(--fontSize-lg);
+  font-weight: var(--fontWeight-bold);
+  letter-spacing: 0.04em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.ivds-gov-header__brand-subtitle {
+  color: var(--ivds-gov-color-text-muted);
+  font-size: var(--fontSize-sm);
+  margin: 0;
+}
+
+.ivds-gov-primary-nav {
+  border-top: 1px solid var(--ivds-gov-color-border);
+  margin-top: var(--spacing-3);
+  padding-top: var(--spacing-3);
+}
+
+.ivds-gov-primary-nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ivds-gov-primary-nav__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.ivds-gov-primary-nav__item > a {
+  border-radius: var(--ivds-gov-radius-s);
+  color: var(--ivds-gov-color-text);
+  display: inline-block;
+  font-size: var(--fontSize-sm);
+  font-weight: var(--fontWeight-medium);
+  padding: var(--spacing-2) var(--spacing-3);
+  text-decoration: none;
+}
+
+.ivds-gov-primary-nav__item--active > a,
+.ivds-gov-primary-nav__item > a:hover,
+.ivds-gov-primary-nav__item > a:focus-visible {
+  background: var(--ivds-gov-color-primary-soft);
+  color: var(--ivds-gov-color-primary);
+}
+
+.ivds-gov-primary-nav__sublist {
+  border-left: 2px solid var(--ivds-gov-color-border);
+  display: grid;
+  gap: var(--spacing-1);
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 var(--spacing-3);
+}
+
+.ivds-gov-primary-nav__subitem a {
+  border-radius: var(--ivds-gov-radius-s);
+  color: var(--ivds-gov-color-text-muted);
+  display: inline-block;
+  font-size: var(--fontSize-xs);
+  font-weight: var(--fontWeight-medium);
+  padding: var(--spacing-1) var(--spacing-2);
+  text-decoration: none;
+}
+
+.ivds-gov-primary-nav__subitem a:hover,
+.ivds-gov-primary-nav__subitem a:focus-visible {
+  background: var(--ivds-gov-color-accent-soft);
+  color: var(--ivds-gov-color-accent);
+}
+
+.ivds-gov-language-switcher {
+  align-items: center;
+  display: inline-flex;
+  gap: var(--spacing-1);
+}
+
+.ivds-gov-language-switcher__button {
+  background: transparent;
+  border: 1px solid var(--ivds-gov-color-border-strong);
+  border-radius: var(--ivds-gov-radius-s);
+  color: var(--ivds-gov-color-text-muted);
+  cursor: pointer;
+  font-size: var(--fontSize-xs);
+  font-weight: var(--fontWeight-bold);
+  padding: var(--spacing-1) var(--spacing-2);
+  transition: border-color var(--ivds-motion-fast, 150ms) ease, color var(--ivds-motion-fast, 150ms) ease;
+}
+
+.ivds-gov-language-switcher__button:hover,
+.ivds-gov-language-switcher__button:focus-visible {
+  border-color: var(--ivds-gov-color-primary);
+  color: var(--ivds-gov-color-primary);
+}
+
+.ivds-gov-language-switcher__button--active {
+  background: var(--ivds-gov-color-primary-soft);
+  border-color: var(--ivds-gov-color-primary);
+  color: var(--ivds-gov-color-primary);
+}
+
+.ivds-gov-main-grid {
+  display: grid;
+  gap: var(--spacing-4);
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  margin-top: var(--spacing-4);
+}
+
+.ivds-gov-news-panel,
+.ivds-gov-agenda-panel,
+.ivds-gov-service-directory,
+.ivds-gov-mega-footer,
+.ivds-gov-auth-card,
+.ivds-gov-form-section {
+  background: var(--ivds-gov-color-surface);
+  border: 1px solid var(--ivds-gov-color-border);
+  border-radius: var(--ivds-gov-radius-m);
+  box-shadow: var(--ivds-gov-shadow-sm);
+}
+
+.ivds-gov-news-panel,
+.ivds-gov-agenda-panel,
+.ivds-gov-service-directory,
+.ivds-gov-auth-card,
+.ivds-gov-form-section {
+  padding: var(--spacing-4);
+}
+
+.ivds-gov-news-panel__title,
+.ivds-gov-agenda-panel__title,
+.ivds-gov-service-directory__title,
+.ivds-gov-mega-footer__title,
+.ivds-gov-auth-card__title,
+.ivds-gov-form-section__title {
+  font-size: var(--fontSize-xl);
+  font-weight: var(--fontWeight-bold);
+  margin: 0 0 var(--spacing-3);
+}
+
+.ivds-gov-news-panel__list,
+.ivds-gov-agenda-panel__list,
+.ivds-gov-service-directory__list,
+.ivds-gov-step-list {
+  display: grid;
+  gap: var(--spacing-3);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ivds-gov-news-panel__item,
+.ivds-gov-agenda-panel__item,
+.ivds-gov-service-directory__item,
+.ivds-gov-step-list__item {
+  border: 1px solid var(--ivds-gov-color-border);
+  border-radius: var(--ivds-gov-radius-s);
+  padding: var(--spacing-3);
+}
+
+.ivds-gov-news-panel__item a,
+.ivds-gov-agenda-panel__item a,
+.ivds-gov-service-directory__item a {
+  color: var(--ivds-gov-color-text);
+  font-weight: var(--fontWeight-semibold);
+  text-decoration: none;
+}
+
+.ivds-gov-news-panel__excerpt {
+  color: var(--ivds-gov-color-text-muted);
+  font-size: var(--fontSize-sm);
+  margin: var(--spacing-1) 0 0;
+}
+
+.ivds-gov-news-panel__meta,
+.ivds-gov-agenda-panel__meta,
+.ivds-gov-service-directory__meta {
+  color: var(--ivds-gov-color-text-muted);
+  display: block;
+  font-size: var(--fontSize-xs);
+  margin-top: var(--spacing-1);
+}
+
+.ivds-gov-service-directory__item {
+  align-items: center;
+  display: grid;
+  gap: var(--spacing-2);
+  grid-template-columns: auto minmax(0, 1fr) auto;
+}
+
+.ivds-gov-service-directory__status {
+  border: 1px solid var(--ivds-gov-color-border-strong);
+  border-radius: var(--ivds-gov-radius-s);
+  color: var(--ivds-gov-color-text-muted);
+  font-size: var(--fontSize-xs);
+  font-weight: var(--fontWeight-medium);
+  padding: var(--spacing-1) var(--spacing-2);
+  text-transform: uppercase;
+}
+
+.ivds-gov-service-directory__status--available {
+  background: var(--color-semantic-success-50);
+  border-color: var(--color-semantic-success-600);
+  color: var(--color-semantic-success-700);
+}
+
+.ivds-gov-service-directory__status--maintenance {
+  background: var(--color-semantic-warning-50);
+  border-color: var(--color-semantic-warning-600);
+  color: var(--color-semantic-warning-700);
+}
+
+.ivds-gov-service-directory__status--coming-soon {
+  background: var(--ivds-gov-color-surface-muted);
+  border-color: var(--ivds-gov-color-border-strong);
+  color: var(--ivds-gov-color-text-muted);
+}
+
+.ivds-gov-mega-footer {
+  margin-top: var(--spacing-6);
+  padding: var(--spacing-5);
+}
+
+.ivds-gov-mega-footer__grid {
+  display: grid;
+  gap: var(--spacing-4);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.ivds-gov-mega-footer__section ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ivds-gov-mega-footer__section li + li {
+  margin-top: var(--spacing-2);
+}
+
+.ivds-gov-mega-footer__section a {
+  color: var(--ivds-gov-color-text-muted);
+  font-size: var(--fontSize-sm);
+  text-decoration: none;
+}
+
+.ivds-gov-mega-footer__section a:hover,
+.ivds-gov-mega-footer__section a:focus-visible {
+  color: var(--ivds-gov-color-primary);
+}
+
+.ivds-gov-auth-layout {
+  display: grid;
+  gap: var(--spacing-4);
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
+  margin-top: var(--spacing-4);
+}
+
+.ivds-gov-auth-card__eyebrow {
+  color: var(--ivds-gov-color-accent);
+  display: block;
+  font-size: var(--fontSize-xs);
+  font-weight: var(--fontWeight-semibold);
+  letter-spacing: 0.08em;
+  margin-bottom: var(--spacing-2);
+  text-transform: uppercase;
+}
+
+.ivds-gov-auth-card__actions {
+  display: grid;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-3);
+}
+
+.ivds-gov-form-page {
+  display: grid;
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-4);
+}
+
+.ivds-gov-form-page__grid {
+  display: grid;
+  gap: var(--spacing-4);
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+}
+
+.ivds-gov-form-field {
+  display: grid;
+  gap: var(--spacing-1);
+  margin-top: var(--spacing-3);
+}
+
+.ivds-gov-form-field label {
+  font-size: var(--fontSize-sm);
+  font-weight: var(--fontWeight-semibold);
+}
+
+.ivds-gov-form-field input,
+.ivds-gov-form-field select,
+.ivds-gov-form-field textarea {
+  background: var(--ivds-gov-color-surface);
+  border: 1px solid var(--ivds-gov-color-border-strong);
+  border-radius: var(--ivds-gov-radius-s);
+  color: var(--ivds-gov-color-text);
+  font: inherit;
+  min-height: 2.5rem;
+  padding: 0 var(--spacing-3);
+}
+
+.ivds-gov-form-field textarea {
+  min-height: 8rem;
+  padding-block: var(--spacing-2);
+  resize: vertical;
+}
+
+.ivds-gov-step-list__item {
+  align-items: center;
+  display: grid;
+  gap: var(--spacing-2);
+  grid-template-columns: auto minmax(0, 1fr);
+}
+
+.ivds-gov-step-list__index {
+  background: var(--ivds-gov-color-primary-soft);
+  border-radius: var(--ivds-gov-radius-s);
+  color: var(--ivds-gov-color-primary);
+  display: inline-flex;
+  font-size: var(--fontSize-sm);
+  font-weight: var(--fontWeight-bold);
+  justify-content: center;
+  min-width: 2rem;
+  padding: var(--spacing-1) var(--spacing-2);
+}
+
+.ivds-gov-action-modal {
+  background: var(--ivds-gov-color-surface);
+  border: 1px solid var(--ivds-gov-color-border);
+  border-radius: var(--ivds-gov-radius-m);
+  box-shadow: var(--ivds-gov-shadow-md);
+  margin: var(--spacing-5) auto 0;
+  max-width: 42rem;
+  padding: var(--spacing-5);
+}
+
+.ivds-gov-action-modal__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-4);
+}
+
+.ivds-gov-shell a:focus-visible,
+.ivds-gov-shell button:focus-visible,
+.ivds-gov-shell input:focus-visible,
+.ivds-gov-shell select:focus-visible,
+.ivds-gov-shell textarea:focus-visible {
+  box-shadow: var(--ivds-gov-focus-ring);
+  outline: none;
+}
+
+.ivds-gov-sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+@media (max-width: 1024px) {
+  .ivds-gov-main-grid,
+  .ivds-gov-auth-layout,
+  .ivds-gov-form-page__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ivds-gov-mega-footer__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .ivds-gov-shell__container {
+    padding: var(--spacing-3);
+  }
+
+  .ivds-gov-top-promo {
+    grid-template-columns: 1fr;
+    padding: var(--spacing-4);
+  }
+
+  .ivds-gov-flash-ticker {
+    grid-template-columns: 1fr;
+  }
+
+  .ivds-gov-header {
+    padding: var(--spacing-4);
+  }
+
+  .ivds-gov-header__row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .ivds-gov-service-directory__item {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .ivds-gov-service-directory__status {
+    justify-self: start;
+  }
+
+  .ivds-gov-mega-footer__grid {
+    grid-template-columns: 1fr;
+  }
+}

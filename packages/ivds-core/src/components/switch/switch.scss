@@ -1,0 +1,62 @@
+// Switch (Toggle) component styles
+// Premium toggle switches for binary choices and settings
+/* stylelint-disable no-descending-specificity */
+
+@use '_switch-mixin' as sw;
+
+.ivds-switch {
+  @include sw.switch-base;
+  
+  // Elements
+  &__input {
+    @include sw.switch-input;
+    
+    &:checked + .ivds-switch__track {
+      @include sw.switch-checked;
+    }
+    
+    &:focus-visible + .ivds-switch__track {
+      @include sw.switch-focus;
+    }
+    
+    &:disabled + .ivds-switch__track {
+      cursor: not-allowed;
+    }
+  }
+  
+  &__track {
+    @include sw.switch-track;
+  }
+  
+  &__label {
+    font-size: var(--fontSize-base, 1rem);
+    font-weight: var(--fontWeight-medium, 500);
+    color: var(--ivds-text-secondary, #36414f);
+  }
+  
+  // Sizes
+  &--small {
+    .ivds-switch__track {
+      @include sw.switch-track(36px, 20px);
+    }
+    
+    .ivds-switch__input:checked + .ivds-switch__track::after {
+      transform: translateX(16px);
+    }
+  }
+  
+  &--large {
+    .ivds-switch__track {
+      @include sw.switch-track(52px, 28px);
+    }
+    
+    .ivds-switch__input:checked + .ivds-switch__track::after {
+      transform: translateX(24px);
+    }
+  }
+  
+  // States
+  &--disabled {
+    @include sw.switch-disabled;
+  }
+}

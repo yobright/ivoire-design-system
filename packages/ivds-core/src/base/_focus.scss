@@ -1,0 +1,31 @@
+// Unified focus ring mixin
+// Uses outline instead of box-shadow to avoid conflicts with elevated components (Card, Modal).
+// Inspired by Helsinki Design System: 3px solid outline with 2px offset.
+
+@mixin focus-ring($offset: var(--ivds-focus-ring-offset, 2px), $width: var(--ivds-focus-ring-width, 3px), $color: var(--ivds-focus-ring-color, var(--color-brand-accent-600, #1058b8))) {
+  &:focus-visible {
+    outline: #{$width} solid #{$color};
+    outline-offset: #{$offset};
+    box-shadow: none;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+// Variant for components where the focus indicator is on a sibling element
+// (e.g., checkbox input:focus-visible + .checkbox__box)
+@mixin focus-ring-on-sibling($selector, $offset: var(--ivds-focus-ring-offset, 2px), $width: var(--ivds-focus-ring-width, 3px), $color: var(--ivds-focus-ring-color, var(--color-brand-accent-600, #1058b8))) {
+  &:focus-visible + #{$selector} {
+    outline: #{$width} solid #{$color};
+    outline-offset: #{$offset};
+    box-shadow: none;
+  }
+
+  &:focus:not(:focus-visible) + #{$selector} {
+    outline: none;
+    box-shadow: none;
+  }
+}

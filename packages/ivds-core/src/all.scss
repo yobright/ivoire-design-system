@@ -1,0 +1,9 @@
+// Complete IVDS Core bundle
+// This file imports all styles for the IVDS Core package
+
+// Use statements must come first
+@use './variables/variables.scss';
+@use './base/base.scss';
+@use './utils/utils.scss';
+@use './icons/icons.scss';
+@use './components/all.scss';

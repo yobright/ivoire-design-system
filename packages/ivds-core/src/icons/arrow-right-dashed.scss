@@ -1,0 +1,12 @@
+.ivds-icon--arrow-right-dashed {
+  --mask-image-arrow-right-dashed: url("data:image/svg+xml;charset=utf-8,%3Csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20d='M14%205.5L12.5%207L17.5%2012L12.5%2017L14%2018.5L20.5%2012L14%205.5Z'%20fill='black'/%3E%3Cpath%20d='M15.5%2013L16.5%2012L15.5%2011H14V13H15.5Z'%20fill='black'/%3E%3Cpath%20d='M10%2011H12V13H10V11Z'%20fill='black'/%3E%3Cpath%20d='M8%2013V11H6V13H8Z'%20fill='black'/%3E%3C/svg%3E");
+  --mask-image: var(--mask-image-arrow-right-dashed);
+}
+
+.ivds-icon-start--arrow-right-dashed {
+  --mask-image-before: var(--mask-image-arrow-right-dashed);
+}
+
+.ivds-icon-end--arrow-right-dashed {
+  --mask-image-after: var(--mask-image-arrow-right-dashed);
+}

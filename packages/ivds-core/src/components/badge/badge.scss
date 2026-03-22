@@ -1,0 +1,56 @@
+@use 'badge-mixin' as badge;
+
+.ivds-badge {
+  @include badge.badge-base;
+  
+  &__dot {
+    @include badge.badge-dot;
+  }
+  
+  // Variants
+  &--neutral {
+    @include badge.badge-variant(
+      var(--color-semantic-neutral-100, #f1f3f5),
+      var(--color-semantic-neutral-700, #36414f),
+      var(--color-semantic-neutral-300, #cfd6dd)
+    );
+  }
+  
+  &--primary {
+    @include badge.badge-variant(
+      var(--color-brand-accent-50, #eef4ff),
+      var(--color-brand-accent-700, #0b4593),
+      var(--color-brand-accent-200, #bfd7ff)
+    );
+  }
+  
+  &--success {
+    @include badge.badge-variant(
+      var(--color-semantic-success-50, #edf9f4),
+      var(--color-semantic-success-700, #0a573a),
+      var(--color-ui-success-200, #b8e9d2)
+    );
+  }
+  
+  &--warning {
+    @include badge.badge-variant(
+      var(--color-semantic-warning-50, #fff8eb),
+      var(--color-semantic-warning-700, #834b08),
+      var(--color-ui-warning-200, #f6d6a7)
+    );
+  }
+  
+  &--error {
+    @include badge.badge-variant(
+      var(--color-semantic-error-50, #fff1f2),
+      var(--color-semantic-error-700, #922036),
+      var(--color-ui-error-200, #f2b8c1)
+    );
+  }
+  
+  &--outline {
+    background-color: transparent;
+    border: 1px solid var(--ivds-border-strong, #a1adba);
+    color: var(--ivds-text-secondary, #36414f);
+  }
+}

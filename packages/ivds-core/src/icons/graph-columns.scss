@@ -1,0 +1,12 @@
+.ivds-icon--graph-columns {
+  --mask-image-graph-columns: url("data:image/svg+xml;charset=utf-8,%3Csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M15.8571%209.33333L21%209.33333L21%2020L15.8571%2020L15.8571%209.33333ZM9.42857%204L14.5714%204L14.5714%2020L9.42857%2020L9.42857%204ZM3%2012L8.14286%2012L8.14286%2020L3%2020L3%2012Z'%20fill='black'/%3E%3C/svg%3E");
+  --mask-image: var(--mask-image-graph-columns);
+}
+
+.ivds-icon-start--graph-columns {
+  --mask-image-before: var(--mask-image-graph-columns);
+}
+
+.ivds-icon-end--graph-columns {
+  --mask-image-after: var(--mask-image-graph-columns);
+}

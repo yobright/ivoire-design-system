@@ -1,0 +1,211 @@
+// Notification component mixins and private styles
+
+@use '../../base/focus' as *;
+
+@mixin notification-base {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  padding: var(--spacing-4, 1rem);
+  border: 1px solid var(--ivds-border-subtle, #e2e7ec);
+  border-left-width: 4px;
+  border-radius: var(--ivds-radius-s, 0.125rem);
+  box-shadow: none;
+}
+
+@mixin notification-variant($bg-color, $border-color, $text-color, $title-color) {
+  background-color: $bg-color;
+  border-color: $border-color;
+  border-left-color: $border-color;
+
+  .ivds-notification__title {
+    color: $title-color;
+  }
+
+  .ivds-notification__message {
+    color: $text-color;
+  }
+
+  .ivds-notification__icon {
+    color: $border-color;
+  }
+}
+
+@mixin notification-icon {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: var(--spacing-3, 0.75rem);
+  margin-top: var(--spacing-1, 0.25rem);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin notification-content {
+  min-width: 0;
+  flex: 1;
+}
+
+@mixin notification-title($font-size: var(--fontSize-base, 1rem), $font-weight: var(--fontWeight-semibold, 600)) {
+  margin: 0 0 var(--spacing-1, 0.25rem);
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: var(--lineHeight-tight, 1.25);
+}
+
+@mixin notification-message($font-size: var(--fontSize-sm, 0.875rem)) {
+  margin: 0;
+  font-size: $font-size;
+  line-height: var(--lineHeight-relaxed, 1.625);
+}
+
+@mixin notification-dismissible {
+  padding-right: var(--spacing-12, 3rem);
+
+  .ivds-notification__dismiss {
+    position: absolute;
+    top: var(--spacing-3, 0.75rem);
+    right: var(--spacing-3, 0.75rem);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border: 1px solid transparent;
+    border-radius: var(--ivds-radius-xs, 0);
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    opacity: 0.78;
+    transition:
+      opacity var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
+      background-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
+      border-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease);
+
+    &:hover {
+      opacity: 1;
+      border-color: rgba(18, 26, 36, 0.16);
+      background-color: rgba(18, 26, 36, 0.06);
+    }
+
+    @include focus-ring;
+
+    &:focus-visible {
+      opacity: 1;
+    }
+  }
+}
+
+@mixin notification-actions {
+  margin-top: var(--spacing-3, 0.75rem);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2, 0.5rem);
+}
+
+@mixin notification-compact {
+  padding: var(--spacing-3, 0.75rem);
+
+  .ivds-notification__icon {
+    margin-right: var(--spacing-2, 0.5rem);
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .ivds-notification__title {
+    @include notification-title(var(--fontSize-sm, 0.875rem));
+  }
+
+  .ivds-notification__message {
+    @include notification-message(var(--fontSize-xs, 0.75rem));
+  }
+}
+
+@mixin notification-spacious {
+  padding: var(--spacing-6, 1.5rem);
+
+  .ivds-notification__icon {
+    margin-right: var(--spacing-4, 1rem);
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .ivds-notification__title {
+    @include notification-title(var(--fontSize-lg, 1.125rem), var(--fontWeight-semibold, 600));
+  }
+
+  .ivds-notification__message {
+    @include notification-message(var(--fontSize-base, 1rem));
+  }
+}
+
+@mixin notification-with-actions {
+  .ivds-notification__content {
+    padding-bottom: var(--spacing-1, 0.25rem);
+  }
+}
+
+@mixin notification-slide-in {
+  animation: ivds-notification-slide-in 0.28s ease-out;
+}
+
+@mixin notification-slide-out {
+  animation: ivds-notification-slide-out 0.2s ease-in forwards;
+}
+
+@mixin notification-fade-in {
+  animation: ivds-notification-fade-in 0.26s ease-out;
+}
+
+@mixin notification-fade-out {
+  animation: ivds-notification-fade-out 0.2s ease-in forwards;
+}
+
+@keyframes ivds-notification-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes ivds-notification-slide-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+}
+
+@keyframes ivds-notification-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ivds-notification-fade-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}

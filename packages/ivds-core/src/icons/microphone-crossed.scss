@@ -1,0 +1,12 @@
+.ivds-icon--microphone-crossed {
+  --mask-image-microphone-crossed: url("data:image/svg+xml;charset=utf-8,%3Csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M19%2011.5C19%2015.0261%2016.3928%2017.9433%2013.001%2018.429L12.9999%2021H16V23H8.00001V21H10.9999L11%2018.4291C10.478%2018.3544%209.97454%2018.2222%209.49633%2018.039L11.1141%2016.4218C11.4016%2016.4732%2011.6977%2016.5%2012%2016.5C14.6888%2016.5%2016.8818%2014.3777%2016.9954%2011.7169L17%2011.5H19ZM19.7929%202.79289L21.2071%204.20711L4.70712%2020.7071L3.29291%2019.2929L19.7929%202.79289ZM7.00001%2011.5C7.00001%2012.0885%207.10169%2012.6533%207.28843%2013.1777L5.76994%2014.6948C5.31222%2013.804%205.03994%2012.8023%205.00407%2011.7407L5.00001%2011.5H7.00001ZM12%201C13.6569%201%2015%202.34315%2015%204V5.463L8.99997%2011.464V4C8.99997%202.34315%2010.3432%201%2012%201Z'%20fill='black'/%3E%3C/svg%3E");
+  --mask-image: var(--mask-image-microphone-crossed);
+}
+
+.ivds-icon-start--microphone-crossed {
+  --mask-image-before: var(--mask-image-microphone-crossed);
+}
+
+.ivds-icon-end--microphone-crossed {
+  --mask-image-after: var(--mask-image-microphone-crossed);
+}

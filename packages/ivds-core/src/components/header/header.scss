@@ -1,0 +1,62 @@
+// Header component styles
+// Core styling for the IVDS header including layout, branding, and navigation
+/* stylelint-disable no-descending-specificity */
+
+@use '_header-mixin' as header;
+
+.ivds-header {
+  @include header.header-base;
+  
+  // Elements
+  &__brand {
+    @include header.header-brand;
+  }
+  
+  &__nav {
+    @include header.header-nav;
+  }
+  
+  &__actions {
+    @include header.header-actions;
+  }
+  
+  &__mobile-toggle {
+    @include header.header-mobile-toggle;
+  }
+  
+  &__universal-bar {
+    @include header.header-universal-bar;
+  }
+  
+  &__action-bar {
+    @include header.header-action-bar;
+  }
+  
+  // Variants
+  &--sticky {
+    @include header.header-sticky;
+  }
+  
+  &--glass {
+    @include header.header-glass;
+  }
+  
+  &--dark {
+    @include header.header-dark;
+  }
+  
+  &--scrolled {
+    @include header.header-scrolled;
+  }
+
+  // Nested container support (HDS style)
+  &__container {
+    width: 100%;
+    max-width: var(--container-max-width, 1440px);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-6, 1.5rem);
+  }
+}

@@ -1,0 +1,28 @@
+// All components bundle
+// This file imports all component styles for the IVDS Core package
+
+// Form components
+@use './button/button.scss';
+@use './text-input/text-input.scss';
+@use './checkbox/checkbox.scss';
+@use './radio-button/radio-button.scss';
+@use './switch/switch.scss';
+@use './select/select.scss';
+
+// Content and layout components
+@use './card/card.scss';
+@use './notification/notification.scss';
+@use './tag/tag.scss';
+@use './alert/alert.scss';
+@use './badge/badge.scss';
+@use './modal/modal.scss';
+@use './tabs/tabs.scss';
+
+// Navigation components
+@use './breadcrumb/breadcrumb.scss';
+@use './navigation/navigation.scss';
+@use './pagination/pagination.scss';
+
+// Structural components
+@use './header/header.scss';
+@use './footer/footer.scss';

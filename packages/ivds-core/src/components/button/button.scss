@@ -1,0 +1,308 @@
+// Button component styles
+/* stylelint-disable no-descending-specificity */
+
+@use 'button-mixin' as btn;
+
+.ivds-button {
+  @include btn.button-base;
+  @include btn.button-icon-spacing;
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    svg {
+      width: 1.15em;
+      height: 1.15em;
+      fill: currentcolor;
+    }
+  }
+
+  &__text {
+    flex: 1;
+  }
+
+  &--loading {
+    @include btn.button-loading;
+  }
+
+  &--full-width {
+    @include btn.button-full-width;
+  }
+
+  &--pill {
+    @include btn.button-pill;
+  }
+
+  &--icon-only {
+    @include btn.button-icon-only;
+
+    &.ivds-button--small {
+      @include btn.button-icon-only(40px);
+    }
+
+    &.ivds-button--large {
+      @include btn.button-icon-only(56px);
+    }
+  }
+}
+
+.ivds-button--primary {
+  @include btn.button-variant(
+    var(--ivds-interactive-primary-bg, #1058b8),
+    var(--ivds-interactive-primary-text, #fff),
+    var(--ivds-interactive-primary-bg, #1058b8),
+    var(--ivds-interactive-primary-bg-hover, #0b4593),
+    var(--ivds-interactive-primary-bg-hover, #0b4593),
+    var(--ivds-interactive-primary-bg-active, #083775)
+  );
+}
+
+.ivds-button--secondary {
+  @include btn.button-variant-outline(
+    var(--ivds-interactive-secondary-border, #1058b8),
+    var(--ivds-interactive-secondary-text, #0b4593),
+    var(--ivds-interactive-secondary-bg-hover, #eef4ff)
+  );
+}
+
+.ivds-button--accent {
+  @include btn.button-variant(
+    var(--color-brand-accent-500, #1a6bdb),
+    #fff,
+    var(--color-brand-accent-500, #1a6bdb),
+    var(--color-brand-accent-600, #1058b8),
+    var(--color-brand-accent-600, #1058b8),
+    var(--color-brand-accent-600, #1058b8)
+  );
+}
+
+.ivds-button--success {
+  @include btn.button-variant(
+    var(--color-semantic-success-600, #0f6f4a),
+    #fff,
+    var(--color-semantic-success-600, #0f6f4a),
+    var(--color-semantic-success-700, #0a573a),
+    var(--color-semantic-success-700, #0a573a),
+    var(--color-semantic-success-700, #0a573a)
+  );
+}
+
+.ivds-button--warning {
+  @include btn.button-variant(
+    var(--color-semantic-warning-500, #ce790b),
+    #fff,
+    var(--color-semantic-warning-500, #ce790b),
+    var(--color-semantic-warning-600, #a76009),
+    var(--color-semantic-warning-600, #a76009),
+    var(--color-semantic-warning-600, #a76009)
+  );
+}
+
+.ivds-button--danger {
+  @include btn.button-variant(
+    var(--color-semantic-error-500, #d73a50),
+    #fff,
+    var(--color-semantic-error-500, #d73a50),
+    var(--color-semantic-error-600, #b72a41),
+    var(--color-semantic-error-600, #b72a41),
+    var(--color-semantic-error-600, #b72a41)
+  );
+}
+
+.ivds-button--info {
+  @include btn.button-variant(
+    var(--color-semantic-info-600, #0050c8),
+    #fff,
+    var(--color-semantic-info-600, #0050c8),
+    var(--color-semantic-info-700, #003d99),
+    var(--color-semantic-info-700, #003d99),
+    var(--color-semantic-info-700, #003d99)
+  );
+}
+
+.ivds-button--neutral {
+  @include btn.button-variant(
+    var(--color-semantic-neutral-900, #121a24),
+    #fff,
+    var(--color-semantic-neutral-900, #121a24),
+    var(--color-semantic-neutral-800, #202a36),
+    var(--color-semantic-neutral-800, #202a36),
+    var(--color-semantic-neutral-800, #202a36)
+  );
+}
+
+.ivds-button--gradient-primary {
+  @include btn.button-variant-gradient(
+    linear-gradient(135deg, var(--color-brand-accent-500, #1a6bdb) 0%, var(--color-brand-accent-700, #0b4593) 100%),
+    #fff
+  );
+}
+
+.ivds-button--gradient-secondary {
+  @include btn.button-variant-gradient(
+    linear-gradient(135deg, var(--color-brand-secondary-500, #007a4d) 0%, var(--color-brand-secondary-700, #004d31) 100%),
+    #fff
+  );
+}
+
+.ivds-button--gradient-mixed {
+  @include btn.button-variant-gradient(
+    linear-gradient(135deg, var(--color-brand-primary-500, #cc5500) 0%, var(--color-brand-accent-600, #1058b8) 100%),
+    #fff
+  );
+}
+
+.ivds-button--gradient-sunset {
+  @include btn.button-variant-gradient(
+    linear-gradient(135deg, var(--color-brand-primary-500, #cc5500) 0%, var(--color-semantic-error-600, #b72a41) 100%),
+    #fff
+  );
+}
+
+.ivds-button--gradient-ocean {
+  @include btn.button-variant-gradient(
+    linear-gradient(135deg, var(--color-brand-accent-500, #1a6bdb) 0%, var(--color-brand-accent-700, #0b4593) 100%),
+    #fff
+  );
+}
+
+.ivds-button--outline-primary {
+  @include btn.button-variant-outline(
+    var(--color-brand-accent-600, #1058b8),
+    var(--color-brand-accent-700, #0b4593),
+    var(--color-brand-accent-50, #eef4ff)
+  );
+}
+
+.ivds-button--outline-secondary {
+  @include btn.button-variant-outline(
+    var(--color-brand-secondary-600, #006640),
+    var(--color-brand-secondary-700, #005234),
+    var(--color-brand-secondary-50, #eef8f3)
+  );
+}
+
+.ivds-button--outline-neutral {
+  @include btn.button-variant-outline(
+    var(--color-semantic-neutral-500, #6b7785),
+    var(--color-semantic-neutral-800, #202a36),
+    var(--color-semantic-neutral-100, #f1f3f5)
+  );
+}
+
+.ivds-button--ghost-primary {
+  @include btn.button-variant-ghost(
+    var(--color-brand-accent-700, #0b4593),
+    var(--ivds-interactive-supplementary-bg-hover, #e2e7ec)
+  );
+}
+
+.ivds-button--ghost-secondary {
+  @include btn.button-variant-ghost(
+    var(--color-brand-secondary-700, #005234),
+    var(--color-semantic-neutral-200, #e2e7ec)
+  );
+}
+
+.ivds-button--ghost-neutral {
+  @include btn.button-variant-ghost(
+    var(--color-semantic-neutral-800, #202a36),
+    var(--color-semantic-neutral-200, #e2e7ec)
+  );
+}
+
+.ivds-button--tertiary,
+.ivds-button--supplementary {
+  @extend .ivds-button--ghost-primary;
+}
+
+.ivds-button--ghost {
+  @extend .ivds-button--ghost-neutral;
+}
+
+.ivds-button--glass {
+  @include btn.button-variant-glass(var(--ivds-text-primary, #121a24));
+}
+
+.ivds-button--glass-dark {
+  @include btn.button-variant(
+    var(--color-semantic-neutral-900, #121a24),
+    #fff,
+    var(--color-semantic-neutral-900, #121a24),
+    var(--color-semantic-neutral-800, #202a36),
+    var(--color-semantic-neutral-800, #202a36)
+  );
+}
+
+.ivds-button--xs {
+  @include btn.button-size(var(--spacing-1, 0.25rem), var(--spacing-3, 0.75rem), var(--fontSize-xs, 0.75rem), 32px);
+}
+
+.ivds-button--small {
+  @include btn.button-size(var(--spacing-2, 0.5rem), var(--spacing-4, 1rem), var(--fontSize-sm, 0.875rem), 40px);
+}
+
+.ivds-button--large {
+  @include btn.button-size(var(--spacing-4, 1rem), var(--spacing-8, 2rem), var(--fontSize-lg, 1.125rem), 56px);
+}
+
+.ivds-button--xl {
+  @include btn.button-size(var(--spacing-5, 1.25rem), var(--spacing-10, 2.5rem), var(--fontSize-xl, 1.25rem), 64px);
+}
+
+.ivds-button-group {
+  display: inline-flex;
+
+  > .ivds-button {
+    border-radius: 0;
+
+    &:not(:first-child) {
+      margin-left: -2px;
+    }
+
+    &:first-child {
+      border-top-left-radius: var(--ivds-radius-s, 0.125rem);
+      border-bottom-left-radius: var(--ivds-radius-s, 0.125rem);
+    }
+
+    &:last-child {
+      border-top-right-radius: var(--ivds-radius-s, 0.125rem);
+      border-bottom-right-radius: var(--ivds-radius-s, 0.125rem);
+    }
+  }
+}
+
+.ivds-button-group--vertical {
+  flex-direction: column;
+
+  > .ivds-button {
+    border-radius: 0;
+
+    &:not(:first-child) {
+      margin-left: 0;
+      margin-top: -2px;
+    }
+
+    &:first-child {
+      border-top-left-radius: var(--ivds-radius-s, 0.125rem);
+      border-top-right-radius: var(--ivds-radius-s, 0.125rem);
+    }
+
+    &:last-child {
+      border-bottom-left-radius: var(--ivds-radius-s, 0.125rem);
+      border-bottom-right-radius: var(--ivds-radius-s, 0.125rem);
+    }
+  }
+}
+
+.ivds-button-group--gap {
+  gap: var(--spacing-2, 0.5rem);
+
+  > .ivds-button {
+    border-radius: var(--ivds-radius-s, 0.125rem);
+    margin: 0;
+  }
+}

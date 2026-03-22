@@ -1,0 +1,154 @@
+// Color design token imports
+// This file provides SCSS variable mappings for color tokens from @ivds/design-tokens
+// Import the new Ivory Coast themed brand colors from design tokens
+@import '../../../ivds-design-tokens/lib/color/brand.scss';
+@import '../../../ivds-design-tokens/lib/color/ui/base.scss';
+@import '../../../ivds-design-tokens/lib/color/ui/feedback.scss';
+
+// SCSS variable mappings for easier development
+// These provide fallback values and easier SCSS usage
+
+// ============================================
+// IVORY COAST BRAND COLORS
+// ============================================
+
+// Orange (Primary) - From Ivory Coast flag
+$color-brand-orange: $color-brand-orange !default;
+$color-brand-orange-light: $color-brand-orange-light !default;
+$color-brand-orange-medium-light: $color-brand-orange-medium-light !default;
+$color-brand-orange-dark: $color-brand-orange-dark !default;
+
+// Green (Secondary) - From Ivory Coast flag
+$color-brand-green: $color-brand-green !default;
+$color-brand-green-light: $color-brand-green-light !default;
+$color-brand-green-medium-light: $color-brand-green-medium-light !default;
+$color-brand-green-dark: $color-brand-green-dark !default;
+
+// Cocoa - Representing cocoa production
+$color-brand-cocoa: $color-brand-cocoa !default;
+$color-brand-cocoa-light: $color-brand-cocoa-light !default;
+$color-brand-cocoa-medium-light: $color-brand-cocoa-medium-light !default;
+$color-brand-cocoa-dark: $color-brand-cocoa-dark !default;
+
+// Gold - Representing savanna landscapes
+$color-brand-gold: $color-brand-gold !default;
+$color-brand-gold-light: $color-brand-gold-light !default;
+$color-brand-gold-medium-light: $color-brand-gold-medium-light !default;
+$color-brand-gold-dark: $color-brand-gold-dark !default;
+
+// Lagoon - Representing coastal lagoons
+$color-brand-lagoon: $color-brand-lagoon !default;
+$color-brand-lagoon-light: $color-brand-lagoon-light !default;
+$color-brand-lagoon-medium-light: $color-brand-lagoon-medium-light !default;
+$color-brand-lagoon-dark: $color-brand-lagoon-dark !default;
+
+// ============================================
+// BACKWARDS COMPATIBILITY ALIASES
+// ============================================
+// Map old primary/secondary to new orange/green for backwards compatibility
+$color-brand-primary: $color-brand-orange !default;
+$color-brand-primary-light: $color-brand-orange-light !default;
+$color-brand-primary-dark: $color-brand-orange-dark !default;
+
+$color-brand-secondary: $color-brand-green !default;
+$color-brand-secondary-light: $color-brand-green-light !default;
+$color-brand-secondary-dark: $color-brand-green-dark !default;
+
+// ============================================
+// UI COLORS - BASE (Neutrals, Black, White)
+// ============================================
+$color-ui-black: $color-ui-black !default;
+$color-ui-white: $color-ui-white !default;
+
+// Neutral scale (50-950)
+$color-ui-neutral-50: $color-ui-neutral-50 !default;
+$color-ui-neutral-100: $color-ui-neutral-100 !default;
+$color-ui-neutral-200: $color-ui-neutral-200 !default;
+$color-ui-neutral-300: $color-ui-neutral-300 !default;
+$color-ui-neutral-400: $color-ui-neutral-400 !default;
+$color-ui-neutral-500: $color-ui-neutral-500 !default;
+$color-ui-neutral-600: $color-ui-neutral-600 !default;
+$color-ui-neutral-700: $color-ui-neutral-700 !default;
+$color-ui-neutral-800: $color-ui-neutral-800 !default;
+$color-ui-neutral-900: $color-ui-neutral-900 !default;
+$color-ui-neutral-950: $color-ui-neutral-950 !default;
+
+// ============================================
+// UI COLORS - FEEDBACK (Success, Error, Warning, Info)
+// ============================================
+
+// Success scale (50-950)
+$color-ui-success-50: $color-ui-success-50 !default;
+$color-ui-success-100: $color-ui-success-100 !default;
+$color-ui-success-200: $color-ui-success-200 !default;
+$color-ui-success-300: $color-ui-success-300 !default;
+$color-ui-success-400: $color-ui-success-400 !default;
+$color-ui-success-500: $color-ui-success-500 !default;
+$color-ui-success-600: $color-ui-success-600 !default;
+$color-ui-success-700: $color-ui-success-700 !default;
+$color-ui-success-800: $color-ui-success-800 !default;
+$color-ui-success-900: $color-ui-success-900 !default;
+$color-ui-success-950: $color-ui-success-950 !default;
+
+// Error scale (50-950)
+$color-ui-error-50: $color-ui-error-50 !default;
+$color-ui-error-100: $color-ui-error-100 !default;
+$color-ui-error-200: $color-ui-error-200 !default;
+$color-ui-error-300: $color-ui-error-300 !default;
+$color-ui-error-400: $color-ui-error-400 !default;
+$color-ui-error-500: $color-ui-error-500 !default;
+$color-ui-error-600: $color-ui-error-600 !default;
+$color-ui-error-700: $color-ui-error-700 !default;
+$color-ui-error-800: $color-ui-error-800 !default;
+$color-ui-error-900: $color-ui-error-900 !default;
+$color-ui-error-950: $color-ui-error-950 !default;
+
+// Warning scale (50-950)
+$color-ui-warning-50: $color-ui-warning-50 !default;
+$color-ui-warning-100: $color-ui-warning-100 !default;
+$color-ui-warning-200: $color-ui-warning-200 !default;
+$color-ui-warning-300: $color-ui-warning-300 !default;
+$color-ui-warning-400: $color-ui-warning-400 !default;
+$color-ui-warning-500: $color-ui-warning-500 !default;
+$color-ui-warning-600: $color-ui-warning-600 !default;
+$color-ui-warning-700: $color-ui-warning-700 !default;
+$color-ui-warning-800: $color-ui-warning-800 !default;
+$color-ui-warning-900: $color-ui-warning-900 !default;
+$color-ui-warning-950: $color-ui-warning-950 !default;
+
+// Info scale (50-950)
+$color-ui-info-50: $color-ui-info-50 !default;
+$color-ui-info-100: $color-ui-info-100 !default;
+$color-ui-info-200: $color-ui-info-200 !default;
+$color-ui-info-300: $color-ui-info-300 !default;
+$color-ui-info-400: $color-ui-info-400 !default;
+$color-ui-info-500: $color-ui-info-500 !default;
+$color-ui-info-600: $color-ui-info-600 !default;
+$color-ui-info-700: $color-ui-info-700 !default;
+$color-ui-info-800: $color-ui-info-800 !default;
+$color-ui-info-900: $color-ui-info-900 !default;
+$color-ui-info-950: $color-ui-info-950 !default;
+
+// ============================================
+// BACKWARDS COMPATIBILITY - Semantic Colors
+// ============================================
+// Map old semantic naming to new UI feedback colors (using 600 as default)
+$color-semantic-success: $color-ui-success-600 !default;
+$color-semantic-success-light: $color-ui-success-100 !default;
+$color-semantic-success-dark: $color-ui-success-900 !default;
+
+$color-semantic-error: $color-ui-error-600 !default;
+$color-semantic-error-light: $color-ui-error-100 !default;
+$color-semantic-error-dark: $color-ui-error-900 !default;
+
+$color-semantic-warning: $color-ui-warning-600 !default;
+$color-semantic-warning-light: $color-ui-warning-100 !default;
+$color-semantic-warning-dark: $color-ui-warning-900 !default;
+
+$color-semantic-info: $color-ui-info-600 !default;
+$color-semantic-info-light: $color-ui-info-100 !default;
+$color-semantic-info-dark: $color-ui-info-900 !default;
+
+$color-semantic-neutral: $color-ui-neutral-500 !default;
+$color-semantic-neutral-light: $color-ui-neutral-100 !default;
+$color-semantic-neutral-dark: $color-ui-neutral-900 !default;

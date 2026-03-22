@@ -1,0 +1,62 @@
+@use 'alert-mixin' as alert;
+
+.ivds-alert {
+  @include alert.alert-base;
+  
+  &__icon {
+    @include alert.alert-icon;
+  }
+  
+  &__body {
+    flex: 1;
+  }
+  
+  &__title {
+    @include alert.alert-title;
+  }
+  
+  &__content {
+    @include alert.alert-content;
+  }
+  
+  // Variants
+  &--info {
+    @include alert.alert-variant(
+      var(--color-semantic-info-50, #edf4ff),
+      var(--color-semantic-info-600, #0050c8),
+      var(--color-semantic-info-700, #003d99)
+    );
+  }
+  
+  &--success {
+    @include alert.alert-variant(
+      var(--color-semantic-success-50, #edf9f4),
+      var(--color-semantic-success-600, #0f6f4a),
+      var(--color-semantic-success-700, #0a573a)
+    );
+  }
+  
+  &--warning {
+    @include alert.alert-variant(
+      var(--color-semantic-warning-50, #fff8eb),
+      var(--color-semantic-warning-600, #a76009),
+      var(--color-semantic-warning-700, #834b08)
+    );
+  }
+  
+  &--error {
+    @include alert.alert-variant(
+      var(--color-semantic-error-50, #fff1f2),
+      var(--color-semantic-error-600, #b72a41),
+      var(--color-semantic-error-700, #922036)
+    );
+  }
+  
+  &--orange {
+    @include alert.alert-variant(
+      var(--color-brand-primary-50, #fef5ee),
+      var(--color-brand-primary-600, #b34a00),
+      var(--color-brand-primary-900, #562400)
+    );
+  }
+}

@@ -1,0 +1,190 @@
+// Icon component styles
+// Consistent styling for all IVDS icons
+
+// Base icon styles
+.ivds-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  vertical-align: middle;
+  transition: transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  line-height: 1;
+}
+
+// Filled icons
+.ivds-icon--filled {
+  fill: currentcolor;
+}
+
+// Icon sizes
+.ivds-icon--xs {
+  width: 14px;
+  height: 14px;
+}
+
+.ivds-icon--sm {
+  width: 18px;
+  height: 18px;
+}
+
+.ivds-icon--md {
+  width: 24px;
+  height: 24px;
+}
+
+.ivds-icon--lg {
+  width: 32px;
+  height: 32px;
+}
+
+.ivds-icon--xl {
+  width: 48px;
+  height: 48px;
+}
+
+// Interactive icons
+.ivds-icon--interactive {
+  cursor: pointer;
+  
+  &:hover {
+    transform: scale(1.1);
+  }
+  
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+// Spinning animation for loaders
+.ivds-icon--spin {
+  animation: ivds-icon-spin 1s linear infinite;
+}
+
+@keyframes ivds-icon-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Pulse animation
+.ivds-icon--pulse {
+  animation: ivds-icon-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes ivds-icon-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+// Bounce animation
+.ivds-icon--bounce {
+  animation: ivds-icon-bounce 1s ease-in-out infinite;
+}
+
+@keyframes ivds-icon-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+// Color variants
+.ivds-icon--primary {
+  color: var(--color-brand-primary-500, #d946ef);
+}
+
+.ivds-icon--secondary {
+  color: var(--color-brand-secondary-500, #14b8a6);
+}
+
+.ivds-icon--accent {
+  color: var(--color-brand-accent-500, #f97316);
+}
+
+.ivds-icon--success {
+  color: var(--color-semantic-success-500, #22c55e);
+}
+
+.ivds-icon--warning {
+  color: var(--color-semantic-warning-500, #f59e0b);
+}
+
+.ivds-icon--error,
+.ivds-icon--danger {
+  color: var(--color-semantic-error-500, #ef4444);
+}
+
+.ivds-icon--info {
+  color: var(--color-semantic-info-500, #3b82f6);
+}
+
+.ivds-icon--muted {
+  color: var(--color-semantic-neutral-400, #a3a3a3);
+}
+
+// Icon with background
+.ivds-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2, 0.5rem);
+  border-radius: var(--borderRadius-md, 0.75rem);
+  background-color: var(--color-semantic-neutral-100, #f5f5f5);
+  
+  &--primary {
+    background-color: rgba(217, 70, 239, 0.1);
+    color: var(--color-brand-primary-500, #d946ef);
+  }
+  
+  &--secondary {
+    background-color: rgba(20, 184, 166, 0.1);
+    color: var(--color-brand-secondary-500, #14b8a6);
+  }
+  
+  &--success {
+    background-color: rgba(34, 197, 94, 0.1);
+    color: var(--color-semantic-success-500, #22c55e);
+  }
+  
+  &--warning {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: var(--color-semantic-warning-500, #f59e0b);
+  }
+  
+  &--error {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: var(--color-semantic-error-500, #ef4444);
+  }
+  
+  &--info {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: var(--color-semantic-info-500, #3b82f6);
+  }
+  
+  &--rounded {
+    border-radius: var(--borderRadius-full, 9999px);
+  }
+  
+  &--sm {
+    padding: var(--spacing-1, 0.25rem);
+  }
+  
+  &--lg {
+    padding: var(--spacing-3, 0.75rem);
+  }
+}

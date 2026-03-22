@@ -1,0 +1,12 @@
+.ivds-icon--person-male {
+  --mask-image-person-male: url("data:image/svg+xml;charset=utf-8,%3Csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M11%2016V22H13V16H15V24H9V16H11ZM14.5%207C16.3927%207%2017.9345%208.50239%2017.998%2010.3797L18%2010.5V16H16V10.5C16%209.70116%2015.3755%209.04817%2014.5881%209.00255L14.5%209H9.5C8.70116%209%208.04817%209.62446%208.00255%2010.4119L8%2010.5V16H6V10.5C6%208.60727%207.50239%207.06545%209.37967%207.00203L9.5%207H14.5ZM12%200C13.6569%200%2015%201.34315%2015%203C15%204.65685%2013.6569%206%2012%206C10.3431%206%209%204.65685%209%203C9%201.34315%2010.3431%200%2012%200ZM12%202C11.4477%202%2011%202.44772%2011%203C11%203.55228%2011.4477%204%2012%204C12.5523%204%2013%203.55228%2013%203C13%202.44772%2012.5523%202%2012%202Z'%20fill='black'/%3E%3C/svg%3E");
+  --mask-image: var(--mask-image-person-male);
+}
+
+.ivds-icon-start--person-male {
+  --mask-image-before: var(--mask-image-person-male);
+}
+
+.ivds-icon-end--person-male {
+  --mask-image-after: var(--mask-image-person-male);
+}

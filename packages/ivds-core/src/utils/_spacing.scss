@@ -1,0 +1,260 @@
+// Spacing utility classes
+// Generates margin and padding utilities using design tokens with responsive support
+
+@use '../variables/variables' as vars;
+
+// All margin utilities
+.ivds-m-0 { margin: var(--spacing-0, 0) !important; }
+.ivds-m-1 { margin: var(--spacing-1, 0.25rem) !important; }
+.ivds-m-2 { margin: var(--spacing-2, 0.5rem) !important; }
+.ivds-m-3 { margin: var(--spacing-3, 0.75rem) !important; }
+.ivds-m-4 { margin: var(--spacing-4, 1rem) !important; }
+.ivds-m-5 { margin: var(--spacing-5, 1.25rem) !important; }
+.ivds-m-6 { margin: var(--spacing-6, 1.5rem) !important; }
+.ivds-m-8 { margin: var(--spacing-8, 2rem) !important; }
+.ivds-m-10 { margin: var(--spacing-10, 2.5rem) !important; }
+.ivds-m-12 { margin: var(--spacing-12, 3rem) !important; }
+.ivds-m-16 { margin: var(--spacing-16, 4rem) !important; }
+.ivds-m-20 { margin: var(--spacing-20, 5rem) !important; }
+.ivds-m-24 { margin: var(--spacing-24, 6rem) !important; }
+.ivds-m-32 { margin: var(--spacing-32, 8rem) !important; }
+
+// Margin X-axis (left and right)
+.ivds-mx-0 { margin-left: var(--spacing-0, 0) !important; margin-right: var(--spacing-0, 0) !important; }
+.ivds-mx-1 { margin-left: var(--spacing-1, 0.25rem) !important; margin-right: var(--spacing-1, 0.25rem) !important; }
+.ivds-mx-2 { margin-left: var(--spacing-2, 0.5rem) !important; margin-right: var(--spacing-2, 0.5rem) !important; }
+.ivds-mx-3 { margin-left: var(--spacing-3, 0.75rem) !important; margin-right: var(--spacing-3, 0.75rem) !important; }
+.ivds-mx-4 { margin-left: var(--spacing-4, 1rem) !important; margin-right: var(--spacing-4, 1rem) !important; }
+.ivds-mx-5 { margin-left: var(--spacing-5, 1.25rem) !important; margin-right: var(--spacing-5, 1.25rem) !important; }
+.ivds-mx-6 { margin-left: var(--spacing-6, 1.5rem) !important; margin-right: var(--spacing-6, 1.5rem) !important; }
+.ivds-mx-8 { margin-left: var(--spacing-8, 2rem) !important; margin-right: var(--spacing-8, 2rem) !important; }
+.ivds-mx-10 { margin-left: var(--spacing-10, 2.5rem) !important; margin-right: var(--spacing-10, 2.5rem) !important; }
+.ivds-mx-12 { margin-left: var(--spacing-12, 3rem) !important; margin-right: var(--spacing-12, 3rem) !important; }
+.ivds-mx-16 { margin-left: var(--spacing-16, 4rem) !important; margin-right: var(--spacing-16, 4rem) !important; }
+.ivds-mx-auto { margin-left: auto !important; margin-right: auto !important; }
+
+// Margin Y-axis (top and bottom)
+.ivds-my-0 { margin-top: var(--spacing-0, 0) !important; margin-bottom: var(--spacing-0, 0) !important; }
+.ivds-my-1 { margin-top: var(--spacing-1, 0.25rem) !important; margin-bottom: var(--spacing-1, 0.25rem) !important; }
+.ivds-my-2 { margin-top: var(--spacing-2, 0.5rem) !important; margin-bottom: var(--spacing-2, 0.5rem) !important; }
+.ivds-my-3 { margin-top: var(--spacing-3, 0.75rem) !important; margin-bottom: var(--spacing-3, 0.75rem) !important; }
+.ivds-my-4 { margin-top: var(--spacing-4, 1rem) !important; margin-bottom: var(--spacing-4, 1rem) !important; }
+.ivds-my-5 { margin-top: var(--spacing-5, 1.25rem) !important; margin-bottom: var(--spacing-5, 1.25rem) !important; }
+.ivds-my-6 { margin-top: var(--spacing-6, 1.5rem) !important; margin-bottom: var(--spacing-6, 1.5rem) !important; }
+.ivds-my-8 { margin-top: var(--spacing-8, 2rem) !important; margin-bottom: var(--spacing-8, 2rem) !important; }
+.ivds-my-10 { margin-top: var(--spacing-10, 2.5rem) !important; margin-bottom: var(--spacing-10, 2.5rem) !important; }
+.ivds-my-12 { margin-top: var(--spacing-12, 3rem) !important; margin-bottom: var(--spacing-12, 3rem) !important; }
+.ivds-my-16 { margin-top: var(--spacing-16, 4rem) !important; margin-bottom: var(--spacing-16, 4rem) !important; }
+
+// Individual margin sides
+.ivds-mt-0 { margin-top: var(--spacing-0, 0) !important; }
+.ivds-mt-1 { margin-top: var(--spacing-1, 0.25rem) !important; }
+.ivds-mt-2 { margin-top: var(--spacing-2, 0.5rem) !important; }
+.ivds-mt-3 { margin-top: var(--spacing-3, 0.75rem) !important; }
+.ivds-mt-4 { margin-top: var(--spacing-4, 1rem) !important; }
+.ivds-mt-5 { margin-top: var(--spacing-5, 1.25rem) !important; }
+.ivds-mt-6 { margin-top: var(--spacing-6, 1.5rem) !important; }
+.ivds-mt-8 { margin-top: var(--spacing-8, 2rem) !important; }
+.ivds-mt-10 { margin-top: var(--spacing-10, 2.5rem) !important; }
+.ivds-mt-12 { margin-top: var(--spacing-12, 3rem) !important; }
+.ivds-mt-16 { margin-top: var(--spacing-16, 4rem) !important; }
+
+.ivds-mr-0 { margin-right: var(--spacing-0, 0) !important; }
+.ivds-mr-1 { margin-right: var(--spacing-1, 0.25rem) !important; }
+.ivds-mr-2 { margin-right: var(--spacing-2, 0.5rem) !important; }
+.ivds-mr-3 { margin-right: var(--spacing-3, 0.75rem) !important; }
+.ivds-mr-4 { margin-right: var(--spacing-4, 1rem) !important; }
+.ivds-mr-5 { margin-right: var(--spacing-5, 1.25rem) !important; }
+.ivds-mr-6 { margin-right: var(--spacing-6, 1.5rem) !important; }
+.ivds-mr-8 { margin-right: var(--spacing-8, 2rem) !important; }
+.ivds-mr-10 { margin-right: var(--spacing-10, 2.5rem) !important; }
+.ivds-mr-12 { margin-right: var(--spacing-12, 3rem) !important; }
+.ivds-mr-16 { margin-right: var(--spacing-16, 4rem) !important; }
+
+.ivds-mb-0 { margin-bottom: var(--spacing-0, 0) !important; }
+.ivds-mb-1 { margin-bottom: var(--spacing-1, 0.25rem) !important; }
+.ivds-mb-2 { margin-bottom: var(--spacing-2, 0.5rem) !important; }
+.ivds-mb-3 { margin-bottom: var(--spacing-3, 0.75rem) !important; }
+.ivds-mb-4 { margin-bottom: var(--spacing-4, 1rem) !important; }
+.ivds-mb-5 { margin-bottom: var(--spacing-5, 1.25rem) !important; }
+.ivds-mb-6 { margin-bottom: var(--spacing-6, 1.5rem) !important; }
+.ivds-mb-8 { margin-bottom: var(--spacing-8, 2rem) !important; }
+.ivds-mb-10 { margin-bottom: var(--spacing-10, 2.5rem) !important; }
+.ivds-mb-12 { margin-bottom: var(--spacing-12, 3rem) !important; }
+.ivds-mb-16 { margin-bottom: var(--spacing-16, 4rem) !important; }
+
+.ivds-ml-0 { margin-left: var(--spacing-0, 0) !important; }
+.ivds-ml-1 { margin-left: var(--spacing-1, 0.25rem) !important; }
+.ivds-ml-2 { margin-left: var(--spacing-2, 0.5rem) !important; }
+.ivds-ml-3 { margin-left: var(--spacing-3, 0.75rem) !important; }
+.ivds-ml-4 { margin-left: var(--spacing-4, 1rem) !important; }
+.ivds-ml-5 { margin-left: var(--spacing-5, 1.25rem) !important; }
+.ivds-ml-6 { margin-left: var(--spacing-6, 1.5rem) !important; }
+.ivds-ml-8 { margin-left: var(--spacing-8, 2rem) !important; }
+.ivds-ml-10 { margin-left: var(--spacing-10, 2.5rem) !important; }
+.ivds-ml-12 { margin-left: var(--spacing-12, 3rem) !important; }
+.ivds-ml-16 { margin-left: var(--spacing-16, 4rem) !important; }
+
+// All padding utilities
+.ivds-p-0 { padding: var(--spacing-0, 0) !important; }
+.ivds-p-1 { padding: var(--spacing-1, 0.25rem) !important; }
+.ivds-p-2 { padding: var(--spacing-2, 0.5rem) !important; }
+.ivds-p-3 { padding: var(--spacing-3, 0.75rem) !important; }
+.ivds-p-4 { padding: var(--spacing-4, 1rem) !important; }
+.ivds-p-5 { padding: var(--spacing-5, 1.25rem) !important; }
+.ivds-p-6 { padding: var(--spacing-6, 1.5rem) !important; }
+.ivds-p-8 { padding: var(--spacing-8, 2rem) !important; }
+.ivds-p-10 { padding: var(--spacing-10, 2.5rem) !important; }
+.ivds-p-12 { padding: var(--spacing-12, 3rem) !important; }
+.ivds-p-16 { padding: var(--spacing-16, 4rem) !important; }
+.ivds-p-20 { padding: var(--spacing-20, 5rem) !important; }
+.ivds-p-24 { padding: var(--spacing-24, 6rem) !important; }
+.ivds-p-32 { padding: var(--spacing-32, 8rem) !important; }
+
+// Padding X-axis (left and right)
+.ivds-px-0 { padding-left: var(--spacing-0, 0) !important; padding-right: var(--spacing-0, 0) !important; }
+.ivds-px-1 { padding-left: var(--spacing-1, 0.25rem) !important; padding-right: var(--spacing-1, 0.25rem) !important; }
+.ivds-px-2 { padding-left: var(--spacing-2, 0.5rem) !important; padding-right: var(--spacing-2, 0.5rem) !important; }
+.ivds-px-3 { padding-left: var(--spacing-3, 0.75rem) !important; padding-right: var(--spacing-3, 0.75rem) !important; }
+.ivds-px-4 { padding-left: var(--spacing-4, 1rem) !important; padding-right: var(--spacing-4, 1rem) !important; }
+.ivds-px-5 { padding-left: var(--spacing-5, 1.25rem) !important; padding-right: var(--spacing-5, 1.25rem) !important; }
+.ivds-px-6 { padding-left: var(--spacing-6, 1.5rem) !important; padding-right: var(--spacing-6, 1.5rem) !important; }
+.ivds-px-8 { padding-left: var(--spacing-8, 2rem) !important; padding-right: var(--spacing-8, 2rem) !important; }
+.ivds-px-10 { padding-left: var(--spacing-10, 2.5rem) !important; padding-right: var(--spacing-10, 2.5rem) !important; }
+.ivds-px-12 { padding-left: var(--spacing-12, 3rem) !important; padding-right: var(--spacing-12, 3rem) !important; }
+.ivds-px-16 { padding-left: var(--spacing-16, 4rem) !important; padding-right: var(--spacing-16, 4rem) !important; }
+
+// Padding Y-axis (top and bottom)
+.ivds-py-0 { padding-top: var(--spacing-0, 0) !important; padding-bottom: var(--spacing-0, 0) !important; }
+.ivds-py-1 { padding-top: var(--spacing-1, 0.25rem) !important; padding-bottom: var(--spacing-1, 0.25rem) !important; }
+.ivds-py-2 { padding-top: var(--spacing-2, 0.5rem) !important; padding-bottom: var(--spacing-2, 0.5rem) !important; }
+.ivds-py-3 { padding-top: var(--spacing-3, 0.75rem) !important; padding-bottom: var(--spacing-3, 0.75rem) !important; }
+.ivds-py-4 { padding-top: var(--spacing-4, 1rem) !important; padding-bottom: var(--spacing-4, 1rem) !important; }
+.ivds-py-5 { padding-top: var(--spacing-5, 1.25rem) !important; padding-bottom: var(--spacing-5, 1.25rem) !important; }
+.ivds-py-6 { padding-top: var(--spacing-6, 1.5rem) !important; padding-bottom: var(--spacing-6, 1.5rem) !important; }
+.ivds-py-8 { padding-top: var(--spacing-8, 2rem) !important; padding-bottom: var(--spacing-8, 2rem) !important; }
+.ivds-py-10 { padding-top: var(--spacing-10, 2.5rem) !important; padding-bottom: var(--spacing-10, 2.5rem) !important; }
+.ivds-py-12 { padding-top: var(--spacing-12, 3rem) !important; padding-bottom: var(--spacing-12, 3rem) !important; }
+.ivds-py-16 { padding-top: var(--spacing-16, 4rem) !important; padding-bottom: var(--spacing-16, 4rem) !important; }
+
+// Individual padding sides
+.ivds-pt-0 { padding-top: var(--spacing-0, 0) !important; }
+.ivds-pt-1 { padding-top: var(--spacing-1, 0.25rem) !important; }
+.ivds-pt-2 { padding-top: var(--spacing-2, 0.5rem) !important; }
+.ivds-pt-3 { padding-top: var(--spacing-3, 0.75rem) !important; }
+.ivds-pt-4 { padding-top: var(--spacing-4, 1rem) !important; }
+.ivds-pt-5 { padding-top: var(--spacing-5, 1.25rem) !important; }
+.ivds-pt-6 { padding-top: var(--spacing-6, 1.5rem) !important; }
+.ivds-pt-8 { padding-top: var(--spacing-8, 2rem) !important; }
+.ivds-pt-10 { padding-top: var(--spacing-10, 2.5rem) !important; }
+.ivds-pt-12 { padding-top: var(--spacing-12, 3rem) !important; }
+.ivds-pt-16 { padding-top: var(--spacing-16, 4rem) !important; }
+
+.ivds-pr-0 { padding-right: var(--spacing-0, 0) !important; }
+.ivds-pr-1 { padding-right: var(--spacing-1, 0.25rem) !important; }
+.ivds-pr-2 { padding-right: var(--spacing-2, 0.5rem) !important; }
+.ivds-pr-3 { padding-right: var(--spacing-3, 0.75rem) !important; }
+.ivds-pr-4 { padding-right: var(--spacing-4, 1rem) !important; }
+.ivds-pr-5 { padding-right: var(--spacing-5, 1.25rem) !important; }
+.ivds-pr-6 { padding-right: var(--spacing-6, 1.5rem) !important; }
+.ivds-pr-8 { padding-right: var(--spacing-8, 2rem) !important; }
+.ivds-pr-10 { padding-right: var(--spacing-10, 2.5rem) !important; }
+.ivds-pr-12 { padding-right: var(--spacing-12, 3rem) !important; }
+.ivds-pr-16 { padding-right: var(--spacing-16, 4rem) !important; }
+
+.ivds-pb-0 { padding-bottom: var(--spacing-0, 0) !important; }
+.ivds-pb-1 { padding-bottom: var(--spacing-1, 0.25rem) !important; }
+.ivds-pb-2 { padding-bottom: var(--spacing-2, 0.5rem) !important; }
+.ivds-pb-3 { padding-bottom: var(--spacing-3, 0.75rem) !important; }
+.ivds-pb-4 { padding-bottom: var(--spacing-4, 1rem) !important; }
+.ivds-pb-5 { padding-bottom: var(--spacing-5, 1.25rem) !important; }
+.ivds-pb-6 { padding-bottom: var(--spacing-6, 1.5rem) !important; }
+.ivds-pb-8 { padding-bottom: var(--spacing-8, 2rem) !important; }
+.ivds-pb-10 { padding-bottom: var(--spacing-10, 2.5rem) !important; }
+.ivds-pb-12 { padding-bottom: var(--spacing-12, 3rem) !important; }
+.ivds-pb-16 { padding-bottom: var(--spacing-16, 4rem) !important; }
+
+.ivds-pl-0 { padding-left: var(--spacing-0, 0) !important; }
+.ivds-pl-1 { padding-left: var(--spacing-1, 0.25rem) !important; }
+.ivds-pl-2 { padding-left: var(--spacing-2, 0.5rem) !important; }
+.ivds-pl-3 { padding-left: var(--spacing-3, 0.75rem) !important; }
+.ivds-pl-4 { padding-left: var(--spacing-4, 1rem) !important; }
+.ivds-pl-5 { padding-left: var(--spacing-5, 1.25rem) !important; }
+.ivds-pl-6 { padding-left: var(--spacing-6, 1.5rem) !important; }
+.ivds-pl-8 { padding-left: var(--spacing-8, 2rem) !important; }
+.ivds-pl-10 { padding-left: var(--spacing-10, 2.5rem) !important; }
+.ivds-pl-12 { padding-left: var(--spacing-12, 3rem) !important; }
+.ivds-pl-16 { padding-left: var(--spacing-16, 4rem) !important; }
+
+// Responsive spacing utilities for different breakpoints
+@media (min-width: 640px) {
+  // Small breakpoint margin utilities
+  .ivds-sm-m-0 { margin: var(--spacing-0, 0) !important; }
+  .ivds-sm-m-1 { margin: var(--spacing-1, 0.25rem) !important; }
+  .ivds-sm-m-2 { margin: var(--spacing-2, 0.5rem) !important; }
+  .ivds-sm-m-3 { margin: var(--spacing-3, 0.75rem) !important; }
+  .ivds-sm-m-4 { margin: var(--spacing-4, 1rem) !important; }
+  .ivds-sm-m-6 { margin: var(--spacing-6, 1.5rem) !important; }
+  .ivds-sm-m-8 { margin: var(--spacing-8, 2rem) !important; }
+  .ivds-sm-m-12 { margin: var(--spacing-12, 3rem) !important; }
+  .ivds-sm-m-16 { margin: var(--spacing-16, 4rem) !important; }
+  
+  // Small breakpoint padding utilities
+  .ivds-sm-p-0 { padding: var(--spacing-0, 0) !important; }
+  .ivds-sm-p-1 { padding: var(--spacing-1, 0.25rem) !important; }
+  .ivds-sm-p-2 { padding: var(--spacing-2, 0.5rem) !important; }
+  .ivds-sm-p-3 { padding: var(--spacing-3, 0.75rem) !important; }
+  .ivds-sm-p-4 { padding: var(--spacing-4, 1rem) !important; }
+  .ivds-sm-p-6 { padding: var(--spacing-6, 1.5rem) !important; }
+  .ivds-sm-p-8 { padding: var(--spacing-8, 2rem) !important; }
+  .ivds-sm-p-12 { padding: var(--spacing-12, 3rem) !important; }
+  .ivds-sm-p-16 { padding: var(--spacing-16, 4rem) !important; }
+}
+
+@media (min-width: 768px) {
+  // Medium breakpoint margin utilities
+  .ivds-md-m-0 { margin: var(--spacing-0, 0) !important; }
+  .ivds-md-m-1 { margin: var(--spacing-1, 0.25rem) !important; }
+  .ivds-md-m-2 { margin: var(--spacing-2, 0.5rem) !important; }
+  .ivds-md-m-3 { margin: var(--spacing-3, 0.75rem) !important; }
+  .ivds-md-m-4 { margin: var(--spacing-4, 1rem) !important; }
+  .ivds-md-m-6 { margin: var(--spacing-6, 1.5rem) !important; }
+  .ivds-md-m-8 { margin: var(--spacing-8, 2rem) !important; }
+  .ivds-md-m-12 { margin: var(--spacing-12, 3rem) !important; }
+  .ivds-md-m-16 { margin: var(--spacing-16, 4rem) !important; }
+  
+  // Medium breakpoint padding utilities
+  .ivds-md-p-0 { padding: var(--spacing-0, 0) !important; }
+  .ivds-md-p-1 { padding: var(--spacing-1, 0.25rem) !important; }
+  .ivds-md-p-2 { padding: var(--spacing-2, 0.5rem) !important; }
+  .ivds-md-p-3 { padding: var(--spacing-3, 0.75rem) !important; }
+  .ivds-md-p-4 { padding: var(--spacing-4, 1rem) !important; }
+  .ivds-md-p-6 { padding: var(--spacing-6, 1.5rem) !important; }
+  .ivds-md-p-8 { padding: var(--spacing-8, 2rem) !important; }
+  .ivds-md-p-12 { padding: var(--spacing-12, 3rem) !important; }
+  .ivds-md-p-16 { padding: var(--spacing-16, 4rem) !important; }
+}
+
+@media (min-width: 1024px) {
+  // Large breakpoint margin utilities
+  .ivds-lg-m-0 { margin: var(--spacing-0, 0) !important; }
+  .ivds-lg-m-1 { margin: var(--spacing-1, 0.25rem) !important; }
+  .ivds-lg-m-2 { margin: var(--spacing-2, 0.5rem) !important; }
+  .ivds-lg-m-3 { margin: var(--spacing-3, 0.75rem) !important; }
+  .ivds-lg-m-4 { margin: var(--spacing-4, 1rem) !important; }
+  .ivds-lg-m-6 { margin: var(--spacing-6, 1.5rem) !important; }
+  .ivds-lg-m-8 { margin: var(--spacing-8, 2rem) !important; }
+  .ivds-lg-m-12 { margin: var(--spacing-12, 3rem) !important; }
+  .ivds-lg-m-16 { margin: var(--spacing-16, 4rem) !important; }
+  
+  // Large breakpoint padding utilities
+  .ivds-lg-p-0 { padding: var(--spacing-0, 0) !important; }
+  .ivds-lg-p-1 { padding: var(--spacing-1, 0.25rem) !important; }
+  .ivds-lg-p-2 { padding: var(--spacing-2, 0.5rem) !important; }
+  .ivds-lg-p-3 { padding: var(--spacing-3, 0.75rem) !important; }
+  .ivds-lg-p-4 { padding: var(--spacing-4, 1rem) !important; }
+  .ivds-lg-p-6 { padding: var(--spacing-6, 1.5rem) !important; }
+  .ivds-lg-p-8 { padding: var(--spacing-8, 2rem) !important; }
+  .ivds-lg-p-12 { padding: var(--spacing-12, 3rem) !important; }
+  .ivds-lg-p-16 { padding: var(--spacing-16, 4rem) !important; }
+}

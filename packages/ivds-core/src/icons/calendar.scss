@@ -1,0 +1,12 @@
+.ivds-icon--calendar {
+  --mask-image-calendar: url("data:image/svg+xml;charset=utf-8,%3Csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M17%202C17.5523%202%2018%202.44772%2018%203V4H22V21H2V4H6V3C6%202.44772%206.44772%202%207%202C7.55228%202%208%202.44772%208%203V4H16V3C16%202.44772%2016.4477%202%2017%202ZM20%2011H4V19H20V11ZM20%206H4V9H20V6Z'%20fill='black'/%3E%3C/svg%3E");
+  --mask-image: var(--mask-image-calendar);
+}
+
+.ivds-icon-start--calendar {
+  --mask-image-before: var(--mask-image-calendar);
+}
+
+.ivds-icon-end--calendar {
+  --mask-image-after: var(--mask-image-calendar);
+}

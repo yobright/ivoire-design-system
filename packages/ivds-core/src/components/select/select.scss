@@ -1,0 +1,47 @@
+// Select component styles
+// Core styling for native and custom-looking select dropdowns
+/* stylelint-disable no-descending-specificity */
+
+@use '_select-mixin' as select;
+
+.ivds-select-wrapper {
+  @include select.select-wrapper;
+}
+
+.ivds-select {
+  @include select.select-base;
+  
+  // Sizes
+  &--small {
+    padding-top: var(--spacing-2, 0.5rem);
+    padding-bottom: var(--spacing-2, 0.5rem);
+    font-size: var(--fontSize-sm, 0.875rem);
+    border-radius: var(--ivds-radius-s, 0.125rem);
+  }
+  
+  &--large {
+    padding-top: var(--spacing-4, 1rem);
+    padding-bottom: var(--spacing-4, 1rem);
+    font-size: var(--fontSize-lg, 1.125rem);
+  }
+  
+  // States
+  &:disabled {
+    @include select.select-disabled;
+  }
+  
+  &--error {
+    @include select.select-error;
+  }
+}
+
+.ivds-select__label {
+  font-size: var(--fontSize-sm, 0.875rem);
+  font-weight: var(--fontWeight-semibold, 600);
+  color: var(--ivds-text-primary, #121a24);
+}
+
+.ivds-select__helper {
+  font-size: var(--fontSize-xs, 0.75rem);
+  color: var(--ivds-text-muted, #4d5968);
+}

@@ -1,0 +1,23 @@
+// Arrow left icon
+@import 'icon';
+
+.ivds-icon--arrow-left {
+  @include icon-base;
+  
+  // SVG icon using PostCSS inline-svg (fallback to Unicode)
+  background-image: svg-load('arrow-left.svg', fill=currentcolor);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  
+  // Unicode fallback
+  &::before {
+    content: '←';
+    font-size: inherit;
+  }
+  
+  // Hide text when SVG is available
+  &:not(.ivds-icon--no-svg)::before {
+    display: none;
+  }
+}

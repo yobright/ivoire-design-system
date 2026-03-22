@@ -1,0 +1,79 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss"
+  ],
+  "rules": {
+    "selector-class-pattern": [
+      "^ivds-[a-z]([a-z0-9-]+)?(__[a-z]([a-z0-9-]+)?)?(--[a-z]([a-z0-9-]+)?)?$",
+      {
+        "message": "Expected class selector to follow BEM methodology with 'ivds-' prefix (e.g., 'ivds-button', 'ivds-button__icon', 'ivds-button--primary')"
+      }
+    ],
+    "custom-property-pattern": [
+      "^[a-z]([a-zA-Z0-9-]+)?$",
+      {
+        "message": "Expected custom property to be kebab-case or camelCase (for design tokens)"
+      }
+    ],
+    "scss/at-mixin-pattern": [
+      "^[a-z]([a-z0-9-]+)?$",
+      {
+        "message": "Expected mixin to be kebab-case"
+      }
+    ],
+    "scss/at-function-pattern": [
+      "^[a-z]([a-z0-9-]+)?$",
+      {
+        "message": "Expected function to be kebab-case"
+      }
+    ],
+    "scss/dollar-variable-pattern": [
+      "^[a-z]([a-zA-Z0-9-]+)?$",
+      {
+        "message": "Expected variable to be kebab-case or camelCase (for design tokens)"
+      }
+    ],
+    "declaration-block-no-redundant-longhand-properties": null,
+    "shorthand-property-no-redundant-values": null,
+    "comment-empty-line-before": [
+      "always",
+      {
+        "except": ["first-nested"],
+        "ignore": ["after-comment", "stylelint-commands"]
+      }
+    ],
+    "rule-empty-line-before": [
+      "always-multi-line",
+      {
+        "except": ["first-nested"],
+        "ignore": ["after-comment"]
+      }
+    ],
+    "at-rule-empty-line-before": [
+      "always",
+      {
+        "except": ["blockless-after-same-name-blockless", "first-nested"],
+        "ignore": ["after-comment"],
+        "ignoreAtRules": ["use", "forward", "include", "mixin", "extend", "at-root", "if", "else", "each", "for", "while", "return", "function", "import"]
+      }
+    ],
+    "property-no-vendor-prefix": [
+      true,
+      {
+        "ignoreProperties": ["mask-image", "mask-position", "mask-repeat", "mask-size"]
+      }
+    ],
+    "scss/at-import-partial-extension": null,
+    "scss/at-extend-no-missing-placeholder": null,
+    "scss/dollar-variable-empty-line-before": null,
+    "scss/at-import-no-partial-leading-underscore": null,
+    "color-function-notation": "legacy",
+    "alpha-value-notation": "number",
+    "selector-not-notation": "complex"
+  },
+  "ignoreFiles": [
+    "lib/**/*",
+    "node_modules/**/*",
+    "**/__tests__/**/*"
+  ]
+}

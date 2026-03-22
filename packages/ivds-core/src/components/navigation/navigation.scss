@@ -1,0 +1,54 @@
+// Navigation component styles
+// Core styling for horizontal, vertical, and tabbed navigation menus
+/* stylelint-disable no-descending-specificity */
+
+@use '_navigation-mixins' as nav;
+
+.ivds-navigation {
+  @include nav.navigation-base;
+  
+  &__list {
+    @include nav.navigation-list;
+  }
+  
+  &__link {
+    @include nav.navigation-link;
+  }
+}
+
+// Side Navigation
+.ivds-side-nav {
+  @include nav.side-navigation-base;
+  
+  &__item {
+    @include nav.side-navigation-item;
+  }
+}
+
+// Tabs
+.ivds-tabs {
+  @include nav.tabs-base;
+  
+  &__item {
+    @include nav.tab-item;
+  }
+}
+
+// Dropdown Menu
+.ivds-dropdown {
+  position: relative;
+  
+  &__menu {
+    @include nav.dropdown-menu-base;
+  }
+  
+  &__item {
+    @include nav.dropdown-item;
+  }
+  
+  &:hover &__menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}

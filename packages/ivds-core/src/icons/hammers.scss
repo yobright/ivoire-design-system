@@ -1,0 +1,12 @@
+.ivds-icon--hammers {
+  --mask-image-hammers: url("data:image/svg+xml;charset=utf-8,%3Csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20d='M7.70276%202L2.71284%206.98991L2%2010.5541L3.42569%2011.9798L6.13993%209.26559L17.4589%2020.5846L19.5975%2018.4461L8.27846%207.12705L10.5541%204.85138L7.70276%202Z'%20fill='black'/%3E%3Cpath%20d='M21.2872%206.98993L16.2972%202.00002L13.4459%204.8514L15.8952%207.30076L12.8949%2010.3011L15.0334%2012.4396L18.0338%209.43929L20.5743%2011.9798L22%2010.5542L21.2872%206.98993Z'%20fill='black'/%3E%3Cpath%20d='M11.4692%2016.0039L9.33065%2013.8653L4.57621%2018.6198L6.71474%2020.7583L11.4692%2016.0039Z'%20fill='black'/%3E%3C/svg%3E");
+  --mask-image: var(--mask-image-hammers);
+}
+
+.ivds-icon-start--hammers {
+  --mask-image-before: var(--mask-image-hammers);
+}
+
+.ivds-icon-end--hammers {
+  --mask-image-after: var(--mask-image-hammers);
+}

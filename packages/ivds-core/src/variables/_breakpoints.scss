@@ -1,0 +1,11 @@
+// Breakpoint design token imports
+// This file provides SCSS variable mappings for breakpoint tokens from @ivds/design-tokens
+// The CSS custom properties are imported at the top level in all.scss
+
+// SCSS variable mappings for easier development
+
+$breakpoint-xs: var(--breakpoints-xs) !default;
+$breakpoint-sm: var(--breakpoints-sm) !default;
+$breakpoint-md: var(--breakpoints-md) !default;
+$breakpoint-lg: var(--breakpoints-lg) !default;
+$breakpoint-xl: var(--breakpoints-xl) !default;

@@ -1,0 +1,12 @@
+.ivds-icon--occupation {
+  --mask-image-occupation: url("data:image/svg+xml;charset=utf-8,%3Csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M6%202C6%200.89543%206.89543%200%208%200H16C17.1046%200%2018%200.89543%2018%202V4H16V2H8V4H6V2ZM22%204C23.1046%204%2024%204.89543%2024%206V22C24%2023.1046%2023.1046%2024%2022%2024H2C0.895429%2024%200%2023.1046%200%2022V6C0%204.89543%200.89543%204%202%204H22ZM22%2012.427L12.6835%2015.8155C12.242%2015.9761%2011.7581%2015.9761%2011.3166%2015.8155L2%2012.428V22H22V12.427ZM22%206H2V10.2996L12%2013.9359L22%2010.2996V6ZM12%2010C12.5523%2010%2013%2010.4477%2013%2011C13%2011.5523%2012.5523%2012%2012%2012C11.4477%2012%2011%2011.5523%2011%2011C11%2010.4477%2011.4477%2010%2012%2010Z'%20fill='black'/%3E%3C/svg%3E");
+  --mask-image: var(--mask-image-occupation);
+}
+
+.ivds-icon-start--occupation {
+  --mask-image-before: var(--mask-image-occupation);
+}
+
+.ivds-icon-end--occupation {
+  --mask-image-after: var(--mask-image-occupation);
+}

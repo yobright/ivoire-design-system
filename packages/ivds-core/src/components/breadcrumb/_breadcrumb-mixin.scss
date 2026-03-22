@@ -1,0 +1,51 @@
+// Breadcrumb component mixins and private styles
+
+@use '../../base/focus' as *;
+
+@mixin breadcrumb-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: var(--spacing-2, 0.5rem);
+  font-family: var(--fontFamily-primary, system-ui, sans-serif);
+  font-size: var(--fontSize-sm, 0.875rem);
+}
+
+@mixin breadcrumb-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2, 0.5rem);
+  color: var(--ivds-text-muted, #4d5968);
+}
+
+@mixin breadcrumb-link {
+  color: var(--color-brand-accent-700, #0b4593);
+  text-decoration: none;
+  font-weight: var(--fontWeight-medium, 500);
+  transition:
+    color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
+    text-decoration-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease);
+
+  &:hover {
+    color: var(--color-brand-accent-600, #1058b8);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.14em;
+  }
+
+  @include focus-ring;
+}
+
+@mixin breadcrumb-separator {
+  color: var(--ivds-border-strong, #a1adba);
+  display: flex;
+  align-items: center;
+}
+
+@mixin breadcrumb-current {
+  color: var(--ivds-text-primary, #121a24);
+  font-weight: var(--fontWeight-semibold, 600);
+}

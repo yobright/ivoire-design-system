@@ -1,0 +1,76 @@
+// Pagination component styles
+// Provides styling for the IVDS pagination component following Helsinki Design System patterns
+
+@use 'pagination-mixins' as pagination;
+
+.ivds-pagination {
+  @include pagination.pagination-base;
+  
+  &__list {
+    @include pagination.pagination-list;
+  }
+  
+  &__item {
+    @include pagination.pagination-item;
+  }
+  
+  &__link {
+    @include pagination.pagination-link;
+    
+    &--active {
+      @include pagination.pagination-link-active;
+    }
+    
+    &--disabled {
+      @include pagination.pagination-link-disabled;
+    }
+  }
+  
+  &__ellipsis {
+    @include pagination.pagination-ellipsis;
+  }
+  
+  // Size variants
+  &--small {
+    @include pagination.pagination-small;
+  }
+  
+  &--large {
+    @include pagination.pagination-large;
+  }
+  
+  // Layout variants
+  &--compact {
+    @include pagination.pagination-compact;
+  }
+  
+  &--rounded {
+    @include pagination.pagination-rounded;
+  }
+  
+  // Theme variants
+  &--theme-minimal {
+    @include pagination.pagination-theme-minimal;
+  }
+  
+  &--theme-dark {
+    @include pagination.pagination-theme-dark;
+  }
+  
+  // Feature variants
+  &--with-icons {
+    @include pagination.pagination-with-icons;
+  }
+  
+  &--with-info {
+    @include pagination.pagination-with-info;
+  }
+  
+  &--with-jumper {
+    @include pagination.pagination-with-jumper;
+  }
+  
+  &--responsive {
+    @include pagination.pagination-responsive;
+  }
+}

@@ -1,0 +1,12 @@
+// Example SCSS test to verify testing setup
+// This is a basic compilation test without sass-true
+
+.test-class {
+  color: red;
+  font-size: 16px;
+}
+
+.test-tokens {
+  color: var(--color-primary, #0ea5e9);
+  padding: var(--spacing-4, 1rem);
+}

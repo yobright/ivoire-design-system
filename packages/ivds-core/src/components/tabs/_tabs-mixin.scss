@@ -1,0 +1,55 @@
+// Tabs component mixins and private styles
+
+@use '../../base/focus' as *;
+
+@mixin tabs-list {
+  // Per-component CSS variable API
+  --border-color: var(--ivds-border-subtle, #e2e7ec);
+  --gap: var(--spacing-6, 1.5rem);
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+  border-bottom: 2px solid var(--border-color);
+}
+
+@mixin tab-trigger {
+  --color: var(--ivds-text-muted, #4d5968);
+  --active-color: var(--color-brand-accent-700, #0b4593);
+  --active-border-color: var(--color-brand-accent-600, #1058b8);
+  --min-height: 48px;
+
+  position: relative;
+  min-height: var(--min-height);
+  padding: var(--spacing-4, 1rem) 0;
+  border: none;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  color: var(--color);
+  font-family: var(--fontFamily-primary, system-ui, sans-serif);
+  font-size: var(--fontSize-base, 1rem);
+  font-weight: var(--fontWeight-medium, 500);
+  cursor: pointer;
+  transition:
+    color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
+    border-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease);
+
+  &:hover {
+    color: var(--ivds-text-primary, #121a24);
+    border-color: var(--ivds-border-strong, #a1adba);
+  }
+
+  @include focus-ring;
+
+  &[data-state='active'],
+  &--active {
+    color: var(--active-color);
+    border-color: var(--active-border-color);
+    font-weight: var(--fontWeight-semibold, 600);
+  }
+}
+
+@mixin tabs-content {
+  color: var(--ivds-text-secondary, #36414f);
+  padding: var(--spacing-6, 1.5rem) 0;
+}

@@ -1,0 +1,26 @@
+@use 'breadcrumb-mixin' as breadcrumb;
+
+.ivds-breadcrumb {
+  @include breadcrumb.breadcrumb-list;
+  
+  &__item {
+    @include breadcrumb.breadcrumb-item;
+  }
+  
+  &__link {
+    @include breadcrumb.breadcrumb-link;
+  }
+  
+  &__separator {
+    @include breadcrumb.breadcrumb-separator;
+    
+    svg {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+  
+  &__current {
+    @include breadcrumb.breadcrumb-current;
+  }
+}

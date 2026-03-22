@@ -1,0 +1,99 @@
+// Modal component mixins and private styles
+
+@use '../../base/focus' as *;
+
+@mixin modal-overlay {
+  // Per-component CSS variable API
+  --overlay-background: rgba(16, 24, 40, 0.48);
+  --overlay-blur: 3px;
+
+  position: fixed;
+  inset: 0;
+  z-index: var(--zIndex-modal, 1000);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-4, 1rem);
+  background-color: var(--overlay-background);
+  backdrop-filter: blur(var(--overlay-blur));
+}
+
+@mixin modal-backdrop {
+  position: absolute;
+  inset: 0;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+@mixin modal-container {
+  --background-color: var(--ivds-surface-base, #fff);
+  --border-color: var(--ivds-border-subtle, #e2e7ec);
+  --border-radius: var(--ivds-radius-m, 0.25rem);
+  --max-width: 640px;
+
+  width: 100%;
+  max-width: var(--max-width);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--ivds-shadow-lg, 0 8px 20px rgba(15, 23, 42, 0.10));
+  max-height: min(90vh, 920px);
+}
+
+@mixin modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-4, 1rem);
+  padding: var(--spacing-5, 1.25rem) var(--spacing-6, 1.5rem);
+  border-bottom: 1px solid var(--ivds-border-subtle, #e2e7ec);
+}
+
+@mixin modal-body {
+  padding: var(--spacing-6, 1.5rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  color: var(--ivds-text-secondary, #36414f);
+}
+
+@mixin modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--spacing-3, 0.75rem);
+  padding: var(--spacing-4, 1rem) var(--spacing-6, 1.5rem);
+  border-top: 1px solid var(--ivds-border-subtle, #e2e7ec);
+  background-color: var(--ivds-surface-muted, #f1f3f5);
+}
+
+@mixin modal-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid transparent;
+  border-radius: var(--ivds-radius-s, 0.125rem);
+  background: transparent;
+  color: var(--ivds-text-muted, #4d5968);
+  cursor: pointer;
+  transition:
+    color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
+    background-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
+    border-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease);
+
+  &:hover {
+    color: var(--ivds-text-primary, #121a24);
+    background-color: var(--ivds-surface-muted, #f1f3f5);
+    border-color: var(--ivds-border-subtle, #e2e7ec);
+  }
+
+  @include focus-ring;
+}

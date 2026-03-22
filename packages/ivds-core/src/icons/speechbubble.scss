@@ -1,0 +1,12 @@
+.ivds-icon--speechbubble {
+  --mask-image-speechbubble: url("data:image/svg+xml;charset=utf-8,%3Csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M19%204H5C2.79086%204%201%205.79086%201%208V16C1%2018.2091%202.79086%2020%205%2020H11C12.0636%2020%2012.9774%2020.3916%2013.7929%2021.2071L14.5%2021.9142L15.2071%2021.2071C16.0226%2020.3916%2016.9364%2020%2018%2020H19C21.2091%2020%2023%2018.2091%2023%2016V8C23%205.79086%2021.2091%204%2019%204ZM5%206H19C20.1046%206%2021%206.89543%2021%208V16C21%2017.1046%2020.1046%2018%2019%2018H18L17.8158%2018.0027C16.5936%2018.0387%2015.4812%2018.4339%2014.4995%2019.175C13.4698%2018.3969%2012.2948%2018%2011%2018H5C3.89543%2018%203%2017.1046%203%2016V8C3%206.89543%203.89543%206%205%206Z'%20fill='black'/%3E%3C/svg%3E");
+  --mask-image: var(--mask-image-speechbubble);
+}
+
+.ivds-icon-start--speechbubble {
+  --mask-image-before: var(--mask-image-speechbubble);
+}
+
+.ivds-icon-end--speechbubble {
+  --mask-image-after: var(--mask-image-speechbubble);
+}

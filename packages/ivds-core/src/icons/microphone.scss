@@ -1,0 +1,12 @@
+.ivds-icon--microphone {
+  --mask-image-microphone: url("data:image/svg+xml;charset=utf-8,%3Csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M7%2011.5C7%2014.2614%209.23858%2016.5%2012%2016.5C14.6888%2016.5%2016.8818%2014.3777%2016.9954%2011.7169L17%2011.5H19C19%2015.0261%2016.3928%2017.9433%2013.001%2018.429L13%2021H16V23H8V21H11V18.4291C7.68518%2017.955%205.11952%2015.1585%205.00406%2011.7407L5%2011.5H7ZM12%201C13.6569%201%2015%202.34315%2015%204V11.5C15%2013.1569%2013.6569%2014.5%2012%2014.5C10.3431%2014.5%209%2013.1569%209%2011.5V4C9%202.34315%2010.3431%201%2012%201Z'%20fill='black'/%3E%3C/svg%3E");
+  --mask-image: var(--mask-image-microphone);
+}
+
+.ivds-icon-start--microphone {
+  --mask-image-before: var(--mask-image-microphone);
+}
+
+.ivds-icon-end--microphone {
+  --mask-image-after: var(--mask-image-microphone);
+}

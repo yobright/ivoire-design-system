@@ -1,0 +1,42 @@
+// Footer component styles
+// Core styling for the IVDS footer including grid layouts, brand identity, and social links
+/* stylelint-disable no-descending-specificity */
+
+@use '_footer-mixin' as footer;
+
+.ivds-footer {
+  @include footer.footer-base;
+  
+  // Elements
+  &__grid {
+    @include footer.footer-grid;
+  }
+  
+  &__brand {
+    @include footer.footer-brand;
+  }
+  
+  &__section {
+    @include footer.footer-section;
+  }
+  
+  &__social {
+    @include footer.footer-social;
+  }
+  
+  &__bottom {
+    @include footer.footer-bottom;
+  }
+  
+  // Variants
+  &--light {
+    @include footer.footer-light;
+  }
+
+  // Nested container support
+  &__container {
+    width: 100%;
+    max-width: var(--container-max-width, 1440px);
+    margin: 0 auto;
+  }
+}

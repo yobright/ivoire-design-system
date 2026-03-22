@@ -1,0 +1,12 @@
+.ivds-icon--scroll-group {
+  --mask-image-scroll-group: url("data:image/svg+xml;charset=utf-8,%3Csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M2%2011C2%2013.2091%203.79086%2015%206%2015H22V5H10C10%202.79086%208.20914%201%206%201C3.79086%201%202%202.79086%202%205V11ZM20%207H10L7.41421%209.58579C7.05228%209.22386%206.55228%209%206%209C4.89543%209%204%209.89543%204%2011C4%2012.1046%204.89543%2013%206%2013H20V7ZM6%203C7.10457%203%208%203.89543%208%205V7.53513C7.41165%207.19479%206.72857%207%206%207C5.27143%207%204.58835%207.19479%204%207.53513V5C4%203.89543%204.89543%203%206%203Z'%20fill='black'/%3E%3Cpath%20d='M2%2014C2.00026%2016.2089%203.79102%2017.9995%206%2017.9995H22V15.9995H6C4.3644%2015.9995%202.91223%2015.2142%202%2014Z'%20fill='black'/%3E%3Cpath%20d='M6%2020.9995C3.79102%2020.9995%202.00026%2019.2089%202%2017C2.91223%2018.2142%204.3644%2018.9995%206%2018.9995H22V20.9995H6Z'%20fill='black'/%3E%3C/svg%3E");
+  --mask-image: var(--mask-image-scroll-group);
+}
+
+.ivds-icon-start--scroll-group {
+  --mask-image-before: var(--mask-image-scroll-group);
+}
+
+.ivds-icon-end--scroll-group {
+  --mask-image-after: var(--mask-image-scroll-group);
+}

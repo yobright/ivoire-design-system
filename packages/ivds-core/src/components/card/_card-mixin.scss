@@ -1,0 +1,208 @@
+// Card component mixins and private styles
+/* stylelint-disable no-descending-specificity */
+
+@use '../../base/focus' as *;
+
+@mixin card-base {
+  // Per-component CSS variable API
+  --background-color: var(--ivds-surface-base, #fff);
+  --border-color: var(--ivds-border-subtle, #e2e7ec);
+  --border-radius: var(--ivds-radius-m, 0.25rem);
+  --box-shadow: none;
+  --padding: var(--spacing-6, 1.5rem);
+  --hover-border-color: var(--color-brand-accent-500, #1a6bdb);
+  --hover-box-shadow: var(--ivds-shadow-md, 0 1px 2px rgba(7, 11, 16, 0.12));
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition:
+    border-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
+    box-shadow var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
+    background-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease);
+}
+
+@mixin card-variant($bg-color, $border-color: null, $shadow: null) {
+  --background-color: #{$bg-color};
+
+  @if $border-color {
+    --border-color: #{$border-color};
+  }
+
+  @if $shadow {
+    --box-shadow: #{$shadow};
+  }
+}
+
+@mixin card-variant-glass {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: var(--ivds-border-subtle, #e2e7ec);
+}
+
+@mixin card-variant-raised {
+  box-shadow: var(--ivds-shadow-md, 0 1px 2px rgba(7, 11, 16, 0.12));
+}
+
+@mixin card-section($padding: var(--spacing-6, 1.5rem)) {
+  padding: $padding;
+}
+
+@mixin card-header($padding: var(--spacing-6, 1.5rem), $border-bottom: true) {
+  @include card-section($padding);
+
+  @if $border-bottom {
+    border-bottom: 1px solid var(--ivds-border-subtle, #e2e7ec);
+  }
+}
+
+@mixin card-body($padding: var(--spacing-6, 1.5rem)) {
+  @include card-section($padding);
+
+  flex: 1;
+}
+
+@mixin card-footer(
+  $padding: var(--spacing-4, 1rem) var(--spacing-6, 1.5rem),
+  $bg-color: var(--ivds-surface-muted, #f1f3f5),
+  $border-top: true
+) {
+  @include card-section($padding);
+
+  background-color: $bg-color;
+
+  @if $border-top {
+    border-top: 1px solid var(--ivds-border-subtle, #e2e7ec);
+  }
+}
+
+@mixin card-media {
+  position: relative;
+  overflow: hidden;
+
+  img,
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--ivds-motion-normal, 250ms) var(--ivds-motion-ease, ease);
+  }
+}
+
+@mixin card-title($font-size: var(--fontSize-xl, 1.25rem), $font-weight: var(--fontWeight-semibold, 600)) {
+  margin: 0 0 var(--spacing-1, 0.25rem);
+  color: var(--ivds-text-primary, #121a24);
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: var(--lineHeight-tight, 1.25);
+}
+
+@mixin card-subtitle($font-size: var(--fontSize-sm, 0.875rem)) {
+  margin: 0 0 var(--spacing-4, 1rem);
+  color: var(--ivds-text-muted, #4d5968);
+  font-size: $font-size;
+  font-weight: var(--fontWeight-medium, 500);
+}
+
+@mixin card-content {
+  margin: 0;
+  color: var(--ivds-text-secondary, #36414f);
+  line-height: var(--lineHeight-relaxed, 1.625);
+}
+
+@mixin card-actions($justify: flex-start, $gap: var(--spacing-3, 0.75rem)) {
+  display: flex;
+  align-items: center;
+  justify-content: $justify;
+  flex-wrap: wrap;
+  gap: $gap;
+  margin-top: var(--spacing-4, 1rem);
+}
+
+@mixin card-compact {
+  .ivds-card__header {
+    @include card-header(var(--spacing-4, 1rem));
+  }
+
+  .ivds-card__body {
+    @include card-body(var(--spacing-4, 1rem));
+  }
+
+  .ivds-card__footer {
+    @include card-footer(var(--spacing-3, 0.75rem) var(--spacing-4, 1rem));
+  }
+}
+
+@mixin card-spacious {
+  .ivds-card__header {
+    @include card-header(var(--spacing-8, 2rem));
+  }
+
+  .ivds-card__body {
+    @include card-body(var(--spacing-8, 2rem));
+  }
+
+  .ivds-card__footer {
+    @include card-footer(var(--spacing-6, 1.5rem) var(--spacing-8, 2rem));
+  }
+}
+
+@mixin card-horizontal {
+  flex-direction: row;
+
+  .ivds-card__media {
+    width: 220px;
+    flex-shrink: 0;
+  }
+
+  .ivds-card__content-wrapper {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
+}
+
+@mixin card-overlay {
+  position: relative;
+
+  .ivds-card__overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    padding: var(--spacing-6, 1.5rem);
+    color: var(--ivds-text-on-strong, #fff);
+    background: linear-gradient(to bottom, rgba(18, 26, 36, 0.08) 0%, rgba(18, 26, 36, 0.82) 100%);
+
+    .ivds-card__title,
+    .ivds-card__subtitle,
+    .ivds-card__content {
+      color: inherit;
+    }
+  }
+}
+
+@mixin card-interactive {
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--hover-border-color);
+    box-shadow: var(--hover-box-shadow);
+
+    .ivds-card__media img {
+      transform: scale(1.01);
+    }
+  }
+
+  &:active {
+    box-shadow: var(--ivds-shadow-sm, 0 1px 0 rgba(7, 11, 16, 0.10));
+  }
+
+  @include focus-ring;
+}

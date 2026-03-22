@@ -1,0 +1,27 @@
+@use 'tabs-mixin' as tabs;
+
+.ivds-tabs {
+  display: block;
+  width: 100%;
+  
+  &__list {
+    @include tabs.tabs-list;
+  }
+  
+  &__trigger {
+    @include tabs.tab-trigger;
+  }
+  
+  &__content {
+    @include tabs.tabs-content;
+  }
+  
+  &--full-width &__list {
+    justify-content: stretch;
+  }
+  
+  &--full-width &__trigger {
+    flex: 1;
+    text-align: center;
+  }
+}

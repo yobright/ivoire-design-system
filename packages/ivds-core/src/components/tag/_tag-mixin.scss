@@ -1,0 +1,163 @@
+// Tag component mixins and private styles
+/* stylelint-disable no-descending-specificity */
+
+@use '../../base/focus' as *;
+
+@mixin tag-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  user-select: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-family: var(--fontFamily-primary, system-ui, sans-serif);
+  font-weight: var(--fontWeight-semibold, 600);
+  line-height: var(--lineHeight-tight, 1.25);
+  border: 1px solid transparent;
+  border-radius: var(--ivds-radius-s, 0.125rem);
+  transition:
+    background-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
+    border-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
+    color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease);
+
+  @include focus-ring;
+}
+
+@mixin tag-variant($bg-color, $text-color, $border-color: transparent, $hover-bg: null) {
+  background-color: $bg-color;
+  color: $text-color;
+  border-color: $border-color;
+
+  @if $hover-bg {
+    &:hover:not(:disabled) {
+      background-color: $hover-bg;
+    }
+  }
+}
+
+@mixin tag-variant-dot($dot-color) {
+  &::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: var(--borderRadius-full, 9999px);
+    margin-right: var(--spacing-2, 0.5rem);
+    background-color: $dot-color;
+  }
+}
+
+@mixin tag-with-icon($gap: var(--spacing-2, 0.5rem)) {
+  gap: $gap;
+
+  .ivds-tag__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    svg {
+      width: 1em;
+      height: 1em;
+      fill: currentcolor;
+    }
+  }
+}
+
+@mixin tag-size($padding-y, $padding-x, $font-size, $min-height: null) {
+  padding: $padding-y $padding-x;
+  font-size: $font-size;
+
+  @if $min-height {
+    min-height: $min-height;
+  }
+}
+
+@mixin tag-removable($remove-btn-color: currentcolor) {
+  padding-right: var(--spacing-1, 0.25rem);
+
+  .ivds-tag__remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: var(--spacing-2, 0.5rem);
+    padding: 2px;
+    border: none;
+    border-radius: var(--ivds-radius-xs, 0.125rem);
+    background-color: transparent;
+    color: $remove-btn-color;
+    cursor: pointer;
+    transition:
+      background-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
+      color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease);
+
+    &:hover {
+      background-color: rgba(16, 24, 40, 0.08);
+    }
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+
+@mixin tag-pill {
+  border-radius: var(--borderRadius-full, 9999px);
+}
+
+@mixin tag-interactive {
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    border-color: var(--ivds-border-strong, #a1adba);
+  }
+
+  &:active:not(:disabled) {
+    opacity: 0.9;
+  }
+}
+
+@mixin tag-link {
+  @include tag-interactive;
+
+  text-decoration: none;
+}
+
+@mixin tag-outlined($border-color, $text-color, $hover-bg: null) {
+  @include tag-variant(transparent, $text-color, $border-color, $hover-bg);
+}
+
+@mixin tag-solid($bg-color, $text-color, $hover-bg: null) {
+  @include tag-variant($bg-color, $text-color, $bg-color, $hover-bg);
+}
+
+@mixin tag-group($gap: var(--spacing-2, 0.5rem)) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $gap;
+}
+
+@mixin tag-small {
+  @include tag-size(var(--spacing-1, 0.25rem), var(--spacing-2, 0.5rem), var(--fontSize-xs, 0.75rem), 20px);
+}
+
+@mixin tag-large {
+  @include tag-size(var(--spacing-2, 0.5rem), var(--spacing-4, 1rem), var(--fontSize-base, 1rem), 32px);
+}
+
+@mixin tag-status-new {
+  @include tag-variant-dot(var(--color-semantic-success-500, #16a34a));
+}
+
+@mixin tag-status-updated {
+  @include tag-variant-dot(var(--color-semantic-info-500, #1f84d6));
+}
+
+@mixin tag-disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+}

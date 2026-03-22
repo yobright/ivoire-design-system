@@ -1,0 +1,70 @@
+// Checkbox component styles
+// Core styling for modern checkboxes, groups, and indeterminate states
+/* stylelint-disable no-descending-specificity */
+
+@use '_checkbox-mixin' as checkbox;
+
+.ivds-checkbox {
+  @include checkbox.checkbox-base;
+  
+  // Elements
+  &__input {
+    @include checkbox.checkbox-input;
+    
+    &:checked + .ivds-checkbox__box {
+      @include checkbox.checkbox-checked;
+    }
+    
+    &:focus-visible + .ivds-checkbox__box {
+      @include checkbox.checkbox-focus;
+    }
+    
+    &[aria-checked="mixed"] + .ivds-checkbox__box {
+      @include checkbox.checkbox-indeterminate;
+    }
+    
+    &:disabled + .ivds-checkbox__box,
+    &:disabled ~ .ivds-checkbox__label {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+  }
+  
+  &__box {
+    @include checkbox.checkbox-box(20px);
+  }
+  
+  &__label {
+    font-size: var(--fontSize-base, 1rem);
+    font-weight: var(--fontWeight-medium, 500);
+    color: var(--ivds-text-secondary, #36414f);
+  }
+  
+  // States
+  &--disabled {
+    @include checkbox.checkbox-disabled;
+  }
+  
+  &--error {
+    .ivds-checkbox__box {
+      border-color: var(--color-semantic-error-500, #d73a50);
+    }
+
+    .ivds-checkbox__label {
+      color: var(--color-semantic-error-700, #922036);
+    }
+  }
+}
+
+// Checkbox Group
+.ivds-checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3, 0.75rem);
+  
+  &--horizontal {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--spacing-6, 1.5rem);
+  }
+}

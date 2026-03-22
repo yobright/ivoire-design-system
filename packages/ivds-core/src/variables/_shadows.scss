@@ -1,0 +1,14 @@
+// Shadow design token imports
+// This file provides SCSS variable mappings for shadow tokens from @ivds/design-tokens
+// The CSS custom properties are imported at the top level in all.scss
+
+// SCSS variable mappings for easier development
+
+$shadow-none: var(--shadow-none) !default;
+$shadow-xs: var(--shadow-xs) !default;
+$shadow-sm: var(--shadow-sm) !default;
+$shadow-md: var(--shadow-md) !default;
+$shadow-lg: var(--shadow-lg) !default;
+$shadow-xl: var(--shadow-xl) !default;
+$shadow-2xl: var(--shadow-2xl) !default;
+$shadow-inner: var(--shadow-inner) !default;

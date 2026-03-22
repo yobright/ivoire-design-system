@@ -1,0 +1,71 @@
+// Switch (Toggle) component mixins and private styles
+/* stylelint-disable no-descending-specificity */
+
+@mixin switch-base {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-3, 0.75rem);
+  min-height: 48px;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--fontFamily-primary, system-ui, sans-serif);
+}
+
+@mixin switch-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+@mixin switch-track($width: 46px, $height: 26px) {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: $width;
+  height: $height;
+  padding: 2px;
+  border: 2px solid var(--ivds-border-strong, #a1adba);
+  border-radius: var(--borderRadius-full, 9999px);
+  background-color: var(--ivds-surface-muted, #f1f3f5);
+  transition:
+    background-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
+    border-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
+    box-shadow var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease);
+
+  &::after {
+    content: '';
+    width: calc($height - 6px);
+    height: calc($height - 6px);
+    border-radius: var(--borderRadius-full, 9999px);
+    background-color: #fff;
+    box-shadow: var(--ivds-shadow-sm, 0 1px 2px rgba(15, 23, 42, 0.08));
+    transition: transform var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease);
+  }
+}
+
+@mixin switch-checked($bg-color: var(--color-brand-accent-600, #1058b8)) {
+  background-color: $bg-color;
+  border-color: $bg-color;
+
+  &::after {
+    transform: translateX(20px);
+  }
+}
+
+@mixin switch-focus {
+  outline: var(--ivds-focus-ring-width, 3px) solid var(--ivds-focus-ring-color, var(--color-brand-accent-600, #1058b8));
+  outline-offset: var(--ivds-focus-ring-offset, 2px);
+  box-shadow: none;
+}
+
+@mixin switch-disabled {
+  opacity: 0.62;
+  cursor: not-allowed;
+
+  .ivds-switch__track {
+    border-color: var(--ivds-border-subtle, #e2e7ec);
+    background-color: var(--ivds-surface-muted, #f1f3f5);
+  }
+}

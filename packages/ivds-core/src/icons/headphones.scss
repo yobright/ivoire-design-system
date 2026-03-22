@@ -1,0 +1,12 @@
+.ivds-icon--headphones {
+  --mask-image-headphones: url("data:image/svg+xml;charset=utf-8,%3Csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M16%2014.5L16.0069%2014.3555C16.0796%2013.5949%2016.7203%2013%2017.5%2013H20C20%208.58172%2016.4183%205%2012%205C7.58172%205%204%208.58172%204%2013H6.5C7.32843%2013%208%2013.6716%208%2014.5V18C8%2019.6569%206.65685%2021%205%2021C3.34315%2021%202%2019.6569%202%2018V13C2%207.47715%206.47715%203%2012%203C17.5228%203%2022%207.47715%2022%2013V18C22%2019.6569%2020.6569%2021%2019%2021C17.3431%2021%2016%2019.6569%2016%2018V14.5Z'%20fill='black'/%3E%3C/svg%3E");
+  --mask-image: var(--mask-image-headphones);
+}
+
+.ivds-icon-start--headphones {
+  --mask-image-before: var(--mask-image-headphones);
+}
+
+.ivds-icon-end--headphones {
+  --mask-image-after: var(--mask-image-headphones);
+}

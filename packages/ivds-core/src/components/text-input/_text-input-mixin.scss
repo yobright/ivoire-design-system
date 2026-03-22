@@ -1,0 +1,233 @@
+// Text input component mixins and private styles
+/* stylelint-disable no-descending-specificity */
+
+@use '../../base/focus' as *;
+
+@mixin text-input-base {
+  // Per-component CSS variable API
+  --background-color: var(--ivds-surface-base, #fff);
+  --border-color: var(--ivds-border-strong, #a1adba);
+  --border-width: 2px;
+  --border-radius: var(--ivds-radius-s, 0.125rem);
+  --color: var(--ivds-text-primary, #121a24);
+  --placeholder-color: var(--ivds-text-muted, #4d5968);
+  --focus-border-color: var(--color-brand-accent-600, #1058b8);
+  --hover-border-color: var(--color-semantic-neutral-600, #4d5968);
+  --disabled-background-color: var(--ivds-surface-muted, #f1f3f5);
+  --disabled-border-color: var(--ivds-border-subtle, #e2e7ec);
+  --disabled-color: var(--ivds-text-muted, #4d5968);
+  --error-border-color: var(--color-semantic-error-500, #d73a50);
+  --success-border-color: var(--color-semantic-success-500, #19895d);
+
+  display: block;
+  width: 100%;
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--background-color);
+  color: var(--color);
+  font-family: var(--fontFamily-primary, system-ui, sans-serif);
+  font-size: var(--fontSize-base, 1rem);
+  line-height: var(--lineHeight-normal, 1.5);
+  transition:
+    border-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
+    background-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease);
+
+  &::placeholder {
+    color: var(--placeholder-color);
+  }
+
+  &:hover:not(:disabled, :focus) {
+    border-color: var(--hover-border-color);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--focus-border-color);
+  }
+
+  @include focus-ring;
+
+  &:disabled {
+    cursor: not-allowed;
+    color: var(--disabled-color);
+    border-color: var(--disabled-border-color);
+    background-color: var(--disabled-background-color);
+  }
+}
+
+@mixin text-input-size($padding-y, $padding-x, $font-size, $min-height: null) {
+  padding: $padding-y $padding-x;
+  font-size: $font-size;
+
+  @if $min-height {
+    min-height: $min-height;
+  }
+}
+
+@mixin text-input-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2, 0.5rem);
+}
+
+@mixin text-input-label {
+  display: block;
+  margin-bottom: var(--spacing-1, 0.25rem);
+  color: var(--ivds-text-primary, #121a24);
+  font-size: var(--fontSize-sm, 0.875rem);
+  font-weight: var(--fontWeight-semibold, 600);
+}
+
+@mixin text-input-helper {
+  margin-top: var(--spacing-1, 0.25rem);
+  color: var(--ivds-text-muted, #4d5968);
+  font-size: var(--fontSize-xs, 0.75rem);
+}
+
+@mixin text-input-error-msg {
+  margin-top: var(--spacing-1, 0.25rem);
+  color: var(--color-semantic-error-600, #b72a41);
+  font-size: var(--fontSize-xs, 0.75rem);
+  font-weight: var(--fontWeight-medium, 500);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1, 0.25rem);
+}
+
+@mixin text-input-error {
+  @include text-input-error-msg;
+}
+
+@mixin text-input-required {
+  &::after {
+    content: ' *';
+    color: var(--color-semantic-error-500, #d73a50);
+  }
+}
+
+@mixin text-input-with-icon($position: 'left', $icon-size: 1.125rem) {
+  position: relative;
+
+  .ivds-text-input__icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: $icon-size;
+    height: $icon-size;
+    color: var(--ivds-text-muted, #4d5968);
+    pointer-events: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    @if $position == 'left' {
+      left: var(--spacing-3, 0.75rem);
+    } @else {
+      right: var(--spacing-3, 0.75rem);
+    }
+  }
+
+  .ivds-text-input {
+    @if $position == 'left' {
+      padding-left: calc(#{$icon-size} + var(--spacing-6, 1.5rem));
+    } @else {
+      padding-right: calc(#{$icon-size} + var(--spacing-6, 1.5rem));
+    }
+  }
+}
+
+@mixin text-input-with-icon-left($icon-size: 1.125rem) {
+  @include text-input-with-icon('left', $icon-size);
+}
+
+@mixin text-input-with-icon-right($icon-size: 1.125rem) {
+  @include text-input-with-icon('right', $icon-size);
+}
+
+@mixin text-input-group {
+  display: flex;
+  align-items: stretch;
+
+  .ivds-text-input {
+    flex: 1;
+    border-radius: 0;
+
+    &:first-child {
+      border-top-left-radius: var(--ivds-radius-s, 0.125rem);
+      border-bottom-left-radius: var(--ivds-radius-s, 0.125rem);
+    }
+
+    &:last-child {
+      border-top-right-radius: var(--ivds-radius-s, 0.125rem);
+      border-bottom-right-radius: var(--ivds-radius-s, 0.125rem);
+    }
+
+    &:not(:first-child) {
+      border-left-width: 0;
+    }
+  }
+
+  .ivds-text-input__addon {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--spacing-3, 0.75rem);
+    background-color: var(--ivds-surface-muted, #f1f3f5);
+    border: 2px solid var(--ivds-border-strong, #a1adba);
+    color: var(--ivds-text-secondary, #36414f);
+    font-size: var(--fontSize-sm, 0.875rem);
+    white-space: nowrap;
+
+    &:first-child {
+      border-right-width: 0;
+      border-top-left-radius: var(--ivds-radius-s, 0.125rem);
+      border-bottom-left-radius: var(--ivds-radius-s, 0.125rem);
+    }
+
+    &:last-child {
+      border-left-width: 0;
+      border-top-right-radius: var(--ivds-radius-s, 0.125rem);
+      border-bottom-right-radius: var(--ivds-radius-s, 0.125rem);
+    }
+  }
+}
+
+@mixin text-input-state-error {
+  .ivds-text-input {
+    border-color: var(--color-semantic-error-500, #d73a50);
+
+    &:focus-visible {
+      outline-color: var(--color-semantic-error-500, #d73a50);
+    }
+  }
+
+  .ivds-text-input__label {
+    color: var(--color-semantic-error-700, #922036);
+  }
+}
+
+@mixin text-input-state($border-color, $focus-border-color: null, $focus-outline-color: null) {
+  border-color: $border-color;
+
+  @if $focus-border-color {
+    &:focus {
+      border-color: $focus-border-color;
+    }
+  }
+
+  @if $focus-outline-color {
+    &:focus-visible {
+      outline-color: $focus-outline-color;
+    }
+  }
+}
+
+@mixin text-input-state-success {
+  .ivds-text-input {
+    border-color: var(--color-semantic-success-500, #19895d);
+
+    &:focus-visible {
+      outline-color: var(--color-semantic-success-500, #19895d);
+    }
+  }
+}

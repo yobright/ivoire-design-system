@@ -1,0 +1,118 @@
+// Notification component styles
+// Provides styling for the IVDS notification component with all variants, dismissible functionality, and states
+
+@use '_notification-mixin' as notification;
+
+// Notification Base
+.ivds-notification {
+  @include notification.notification-base;
+  
+  // Notification elements
+  &__icon {
+    @include notification.notification-icon;
+  }
+  
+  &__content {
+    @include notification.notification-content;
+  }
+  
+  &__title {
+    @include notification.notification-title;
+  }
+  
+  &__message {
+    @include notification.notification-message;
+  }
+  
+  &__actions {
+    @include notification.notification-actions;
+  }
+  
+  // Dismiss button (added when dismissible)
+  &__dismiss {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    
+    svg {
+      width: 1rem;
+      height: 1rem;
+      fill: currentcolor;
+    }
+  }
+}
+
+// Notification Variants
+.ivds-notification--success {
+  @include notification.notification-variant(
+    var(--color-semantic-success-50, #edf9f4),
+    var(--color-semantic-success-500, #19895d),
+    var(--color-semantic-success-700, #0a573a),
+    var(--color-semantic-success-700, #0a573a)
+  );
+}
+
+.ivds-notification--warning {
+  @include notification.notification-variant(
+    var(--color-semantic-warning-50, #fff8eb),
+    var(--color-semantic-warning-500, #ce790b),
+    var(--color-semantic-warning-700, #834b08),
+    var(--color-semantic-warning-700, #834b08)
+  );
+}
+
+.ivds-notification--error {
+  @include notification.notification-variant(
+    var(--color-semantic-error-50, #fff1f2),
+    var(--color-semantic-error-500, #d73a50),
+    var(--color-semantic-error-700, #922036),
+    var(--color-semantic-error-700, #922036)
+  );
+}
+
+.ivds-notification--info {
+  @include notification.notification-variant(
+    var(--color-semantic-info-50, #edf4ff),
+    var(--color-semantic-info-500, #1f6fe5),
+    var(--color-semantic-info-700, #003d99),
+    var(--color-semantic-info-700, #003d99)
+  );
+}
+
+// Dismissible notifications
+.ivds-notification--dismissible {
+  @include notification.notification-dismissible;
+}
+
+// Size variants
+.ivds-notification--compact {
+  @include notification.notification-compact;
+}
+
+.ivds-notification--spacious {
+  @include notification.notification-spacious;
+}
+
+// Notifications with actions
+.ivds-notification--with-actions {
+  @include notification.notification-with-actions;
+}
+
+// Animation classes
+.ivds-notification--slide-in {
+  @include notification.notification-slide-in;
+}
+
+.ivds-notification--slide-out {
+  @include notification.notification-slide-out;
+}
+
+.ivds-notification--fade-in {
+  @include notification.notification-fade-in;
+}
+
+.ivds-notification--fade-out {
+  @include notification.notification-fade-out;
+}

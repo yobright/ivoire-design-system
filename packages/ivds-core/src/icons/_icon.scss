@@ -1,0 +1,82 @@
+/**
+ * IVDS Icon System
+ * Base icon styles using CSS mask-image for flexible, colorable icons
+ * Icons inherit color from parent via currentColor
+ */
+
+.ivds-icon {
+  background-color: currentcolor;
+  display: inline-block;
+  height: var(--icon-size, 1.5rem);
+  -webkit-mask-image: var(--mask-image);
+  mask-image: var(--mask-image);
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  width: var(--icon-size, 1.5rem);
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+/* Size variants */
+.ivds-icon--size-xs {
+  --icon-size: var(--spacing-s, 1rem);
+}
+
+.ivds-icon--size-s {
+  --icon-size: var(--spacing-m, 1.5rem);
+}
+
+.ivds-icon--size-m {
+  --icon-size: var(--spacing-l, 2rem);
+}
+
+.ivds-icon--size-l {
+  --icon-size: var(--spacing-xl, 2.5rem);
+}
+
+.ivds-icon--size-xl {
+  --icon-size: var(--spacing-2xl, 3rem);
+}
+
+/* Pseudo-element support for inline icons */
+[class*="ivds-icon-start--"]::before {
+  background-color: currentcolor;
+  content: "";
+  display: inline-flex;
+  height: var(--icon-size, 1.5rem);
+  -webkit-mask-image: var(--mask-image-before);
+  mask-image: var(--mask-image-before);
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  width: var(--icon-size, 1.5rem);
+  margin-inline-end: var(--spacing-xs, 0.5rem);
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+[class*="ivds-icon-end--"]::after {
+  background-color: currentcolor;
+  content: "";
+  display: inline-flex;
+  height: var(--icon-size, 1.5rem);
+  -webkit-mask-image: var(--mask-image-after);
+  mask-image: var(--mask-image-after);
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  width: var(--icon-size, 1.5rem);
+  margin-inline-start: var(--spacing-xs, 0.5rem);
+  vertical-align: middle;
+  flex-shrink: 0;
+}

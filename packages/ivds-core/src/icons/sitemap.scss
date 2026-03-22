@@ -1,0 +1,12 @@
+.ivds-icon--sitemap {
+  --mask-image-sitemap: url("data:image/svg+xml;charset=utf-8,%3Csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M15%203V9H13V11H20V15H22V21H16V15H18V13H13V15H15V21H9V15H11V13H6V15H8V21H2V15H4V11H11V9H9V3H15ZM6%2017H4V19H6V17ZM13%2017H11V19H13V17ZM20%2017H18V19H20V17Z'%20fill='black'/%3E%3C/svg%3E");
+  --mask-image: var(--mask-image-sitemap);
+}
+
+.ivds-icon-start--sitemap {
+  --mask-image-before: var(--mask-image-sitemap);
+}
+
+.ivds-icon-end--sitemap {
+  --mask-image-after: var(--mask-image-sitemap);
+}

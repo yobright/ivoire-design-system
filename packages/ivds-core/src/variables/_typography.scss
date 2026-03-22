@@ -1,0 +1,47 @@
+// Typography design token imports
+// This file provides SCSS variable mappings for typography tokens from @ivds/design-tokens
+// The CSS custom properties are imported at the top level in all.scss
+
+// SCSS variable mappings for easier development
+
+// Font families
+$fontFamily-primary: var(--typography-fontFamilies-primary) !default;
+$fontFamily-secondary: var(--typography-fontFamilies-secondary) !default;
+
+// Convenience aliases for easier usage
+$fontFamily-sans: var(--typography-fontFamilies-primary) !default;
+$fontFamily-serif: var(--typography-fontFamilies-secondary) !default;
+
+// Font sizes
+$fontSize-xs: var(--fontSize-xs) !default;
+$fontSize-sm: var(--fontSize-sm) !default;
+$fontSize-base: var(--fontSize-base) !default;
+$fontSize-lg: var(--fontSize-lg) !default;
+$fontSize-xl: var(--fontSize-xl) !default;
+$fontSize-2xl: var(--fontSize-2xl) !default;
+$fontSize-3xl: var(--fontSize-3xl) !default;
+$fontSize-4xl: var(--fontSize-4xl) !default;
+$fontSize-5xl: var(--fontSize-5xl) !default;
+$fontSize-6xl: var(--fontSize-6xl) !default;
+$fontSize-7xl: var(--fontSize-7xl) !default;
+$fontSize-8xl: var(--fontSize-8xl) !default;
+$fontSize-9xl: var(--fontSize-9xl) !default;
+
+// Font weights
+$fontWeight-thin: var(--fontWeight-thin) !default;
+$fontWeight-extralight: var(--fontWeight-extralight) !default;
+$fontWeight-light: var(--fontWeight-light) !default;
+$fontWeight-normal: var(--fontWeight-normal) !default;
+$fontWeight-medium: var(--fontWeight-medium) !default;
+$fontWeight-semibold: var(--fontWeight-semibold) !default;
+$fontWeight-bold: var(--fontWeight-bold) !default;
+$fontWeight-extrabold: var(--fontWeight-extrabold) !default;
+$fontWeight-black: var(--fontWeight-black) !default;
+
+// Line heights
+$lineHeight-none: var(--lineHeight-none) !default;
+$lineHeight-tight: var(--lineHeight-tight) !default;
+$lineHeight-snug: var(--lineHeight-snug) !default;
+$lineHeight-normal: var(--lineHeight-normal) !default;
+$lineHeight-relaxed: var(--lineHeight-relaxed) !default;
+$lineHeight-loose: var(--lineHeight-loose) !default;

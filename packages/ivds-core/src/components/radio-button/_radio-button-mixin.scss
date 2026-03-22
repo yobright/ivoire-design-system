@@ -1,0 +1,93 @@
+// Radio button component mixins and private styles
+/* stylelint-disable no-descending-specificity */
+
+@mixin radio-button-base {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-3, 0.75rem);
+  min-height: 48px;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--fontFamily-primary, system-ui, sans-serif);
+
+  &:hover .ivds-radio-button__circle {
+    border-color: var(--color-brand-accent-600, #1058b8);
+  }
+}
+
+@mixin radio-button-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+@mixin radio-button-circle($size: 20px) {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: $size;
+  height: $size;
+  border: 2px solid var(--ivds-border-strong, #a1adba);
+  border-radius: var(--borderRadius-full, 9999px);
+  background-color: var(--ivds-surface-base, #fff);
+  transition:
+    border-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
+    box-shadow var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease);
+
+  &::after {
+    content: '';
+    width: calc($size * 0.48);
+    height: calc($size * 0.48);
+    border-radius: var(--borderRadius-full, 9999px);
+    background-color: var(--color-brand-accent-600, #1058b8);
+    transform: scale(0);
+    transition: transform var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease);
+  }
+}
+
+@mixin radio-button-checked {
+  border-color: var(--color-brand-accent-600, #1058b8);
+
+  &::after {
+    transform: scale(1);
+  }
+}
+
+@mixin radio-button-focus {
+  outline: var(--ivds-focus-ring-width, 3px) solid var(--ivds-focus-ring-color, var(--color-brand-accent-600, #1058b8));
+  outline-offset: var(--ivds-focus-ring-offset, 2px);
+  box-shadow: none;
+}
+
+@mixin radio-button-disabled {
+  opacity: 0.62;
+  cursor: not-allowed;
+
+  .ivds-radio-button__circle {
+    border-color: var(--ivds-border-subtle, #e2e7ec);
+    background-color: var(--ivds-surface-muted, #f1f3f5);
+  }
+}
+
+@mixin radio-button-card {
+  padding: var(--spacing-4, 1rem) var(--spacing-6, 1.5rem);
+  border: 1px solid var(--ivds-border-subtle, #e2e7ec);
+  border-radius: var(--ivds-radius-s, 0.125rem);
+  background-color: var(--ivds-surface-base, #fff);
+  transition:
+    border-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
+    background-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease);
+
+  &:hover {
+    border-color: var(--color-brand-accent-600, #1058b8);
+    background-color: var(--color-brand-accent-50, #eef4ff);
+  }
+
+  &.ivds-radio-button--checked {
+    border-color: var(--color-brand-accent-600, #1058b8);
+    background-color: var(--color-brand-accent-50, #eef4ff);
+  }
+}

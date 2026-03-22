@@ -1,0 +1,92 @@
+// Checkbox component mixins and private styles
+/* stylelint-disable no-descending-specificity */
+
+@use '../../base/focus' as *;
+
+@mixin checkbox-base {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-3, 0.75rem);
+  min-height: 48px;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--fontFamily-primary, system-ui, sans-serif);
+
+  &:hover .ivds-checkbox__box {
+    border-color: var(--color-brand-accent-600, #1058b8);
+  }
+}
+
+@mixin checkbox-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+@mixin checkbox-box($size: 20px) {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: $size;
+  height: $size;
+  border: 2px solid var(--ivds-border-strong, #a1adba);
+  border-radius: var(--ivds-radius-xs, 0);
+  background-color: var(--ivds-surface-base, #fff);
+  transition:
+    border-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
+    background-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
+    box-shadow var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease);
+
+  &::after {
+    content: '';
+    width: 9px;
+    height: 5px;
+    border: 2px solid #fff;
+    border-top: none;
+    border-right: none;
+    transform: rotate(-45deg) scale(0);
+    transform-origin: center;
+    transition: transform var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease);
+  }
+}
+
+@mixin checkbox-checked {
+  border-color: var(--color-brand-accent-600, #1058b8);
+  background-color: var(--color-brand-accent-600, #1058b8);
+
+  &::after {
+    transform: rotate(-45deg) scale(1);
+  }
+}
+
+@mixin checkbox-indeterminate {
+  border-color: var(--color-brand-accent-600, #1058b8);
+  background-color: var(--color-brand-accent-600, #1058b8);
+
+  &::after {
+    width: 10px;
+    height: 2px;
+    border: none;
+    background-color: #fff;
+    transform: scaleX(1);
+  }
+}
+
+@mixin checkbox-focus {
+  outline: var(--ivds-focus-ring-width, 3px) solid var(--ivds-focus-ring-color, var(--color-brand-accent-600, #1058b8));
+  outline-offset: var(--ivds-focus-ring-offset, 2px);
+  box-shadow: none;
+}
+
+@mixin checkbox-disabled {
+  opacity: 0.62;
+  cursor: not-allowed;
+
+  .ivds-checkbox__box {
+    border-color: var(--ivds-border-subtle, #e2e7ec);
+    background-color: var(--ivds-surface-muted, #f1f3f5);
+  }
+}

@@ -1,0 +1,36 @@
+// SCSS compilation test for card mixins
+
+// Base card mixin with common styles
+@mixin card-base {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-semantic-neutral-50, #fafafa);
+  border-radius: var(--borderRadius-xl, 0.75rem);
+  overflow: hidden;
+  transition: box-shadow 0.15s ease-in-out, transform 0.15s ease-in-out;
+  box-shadow: var(--shadow-sm, 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1));
+}
+
+// Test compilation by using the mixins
+.test-card-base {
+  @include card-base;
+}
+
+.test-card-variant {
+  background-color: #ffffff;
+  border: var(--borderWidth-1, 1px) solid #e2e8f0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.test-card-section {
+  padding: 1rem;
+}
+
+.test-card-interactive {
+  cursor: pointer;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05));
+  }
+}

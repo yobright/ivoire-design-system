@@ -1,0 +1,15 @@
+// Border design token imports
+// This file provides SCSS variable mappings for border tokens from @ivds/design-tokens
+// The CSS custom properties are imported at the top level in all.scss
+
+// SCSS variable mappings for easier development
+
+$borderRadius-none: var(--borderRadius-none) !default;
+$borderRadius-xs: var(--borderRadius-xs) !default;
+$borderRadius-sm: var(--borderRadius-sm) !default;
+$borderRadius-md: var(--borderRadius-md) !default;
+$borderRadius-lg: var(--borderRadius-lg) !default;
+$borderRadius-xl: var(--borderRadius-xl) !default;
+$borderRadius-2xl: var(--borderRadius-2xl) !default;
+$borderRadius-3xl: var(--borderRadius-3xl) !default;
+$borderRadius-full: var(--borderRadius-full) !default;

@@ -1,0 +1,153 @@
+// Text input component styles
+// Provides styling for the IVDS text input component with all variants, sizes, and states
+
+@use '_text-input-mixin' as input;
+
+// Text Input Wrapper
+.ivds-text-input-wrapper {
+  @include input.text-input-wrapper;
+}
+
+// Text Input Base
+.ivds-text-input {
+  @include input.text-input-base;
+  @include input.text-input-size(var(--spacing-3, 0.75rem), var(--spacing-3, 0.75rem), var(--fontSize-base, 1rem), 48px);
+}
+
+// Text Input Label
+.ivds-text-input__label {
+  @include input.text-input-label;
+  
+  &--required {
+    @include input.text-input-required;
+  }
+}
+
+// Text Input Helper Text
+.ivds-text-input__helper {
+  @include input.text-input-helper;
+}
+
+// Text Input Error Text
+.ivds-text-input__error {
+  @include input.text-input-error;
+}
+
+// Text Input Sizes
+.ivds-text-input--small {
+  @include input.text-input-size(var(--spacing-2, 0.5rem), var(--spacing-3, 0.75rem), var(--fontSize-sm, 0.875rem), 32px);
+}
+
+.ivds-text-input--large {
+  @include input.text-input-size(var(--spacing-4, 1rem), var(--spacing-4, 1rem), var(--fontSize-lg, 1.125rem), 56px);
+}
+
+// Text Input States
+.ivds-text-input--error {
+  @include input.text-input-state(
+    var(--color-semantic-error-500, #d73a50),
+    var(--color-semantic-error-500, #d73a50),
+    var(--color-semantic-error-500, #d73a50)
+  );
+}
+
+.ivds-text-input--success {
+  @include input.text-input-state(
+    var(--color-semantic-success-500, #19895d),
+    var(--color-semantic-success-500, #19895d),
+    var(--color-semantic-success-500, #19895d)
+  );
+}
+
+.ivds-text-input--warning {
+  @include input.text-input-state(
+    var(--color-semantic-warning-500, #ce790b),
+    var(--color-semantic-warning-500, #ce790b),
+    var(--color-semantic-warning-500, #ce790b)
+  );
+}
+
+// Text Input with Icons
+.ivds-text-input-wrapper--icon-left {
+  @include input.text-input-with-icon-left;
+}
+
+.ivds-text-input-wrapper--icon-right {
+  @include input.text-input-with-icon-right;
+}
+
+.ivds-text-input__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  svg {
+    width: 100%;
+    height: 100%;
+    fill: currentcolor;
+  }
+}
+
+// Text Input Group (with addons)
+.ivds-text-input-group {
+  @include input.text-input-group;
+}
+
+// Text Input Variants
+.ivds-text-input--filled {
+  background-color: var(--ivds-surface-muted, #f1f3f5);
+  border-color: transparent;
+  
+  &:focus {
+    background-color: var(--ivds-surface-base, #fff);
+    border-color: var(--color-brand-accent-600, #1058b8);
+  }
+  
+  &:disabled {
+    background-color: var(--color-semantic-neutral-200, #e2e7ec);
+  }
+}
+
+.ivds-text-input--borderless {
+  border-color: transparent;
+  background-color: transparent;
+  
+  &:focus {
+    border-color: var(--color-brand-accent-600, #1058b8);
+    background-color: var(--ivds-surface-base, #fff);
+  }
+}
+
+// Textarea specific styles
+.ivds-text-input--textarea {
+  min-height: 120px;
+  resize: vertical;
+  
+  &--no-resize {
+    resize: none;
+  }
+  
+  &--auto-resize {
+    resize: none;
+    overflow: hidden;
+  }
+}
+
+// Full width modifier
+.ivds-text-input--full-width {
+  width: 100%;
+}
+
+// Readonly state
+.ivds-text-input[readonly] {
+  background-color: var(--ivds-surface-muted, #f1f3f5);
+  cursor: default;
+  
+  &:focus {
+    border-color: var(--ivds-border-strong, #a1adba);
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+}

@@ -1,0 +1,37 @@
+// SCSS compilation test for utility classes
+
+// Test basic utility classes compilation
+.test-spacing {
+  margin: var(--spacing-4, 1rem) !important;
+  padding: var(--spacing-2, 0.5rem) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.test-grid {
+  display: grid !important;
+  gap: var(--spacing-4, 1rem);
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+
+.test-flex {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: var(--spacing-4, 1rem) !important;
+}
+
+.test-typography {
+  font-size: var(--fontSize-lg, 1.125rem) !important;
+  font-weight: var(--fontWeight-semibold, 600) !important;
+  text-align: center !important;
+}
+
+.test-layout {
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: var(--spacing-4, 1rem) !important;
+  padding-right: var(--spacing-4, 1rem) !important;
+  max-width: 1024px !important;
+}

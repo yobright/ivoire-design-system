@@ -1,0 +1,176 @@
+// Breadcrumb component mixins and private styles
+// This file contains mixins for breadcrumb variants and internal utilities
+
+@use '../../variables/variables' as vars;
+@use '../../base/focus' as *;
+
+// Base breadcrumb mixin with common styles
+@mixin breadcrumb-base {
+  --separator-content: '/';
+  --separator-spacing: var(--spacing-2, 0.5rem);
+  --link-color: var(--color-brand-accent-700, #0b4593);
+  --link-color-hover: var(--color-brand-accent-600, #1058b8);
+  --current-color: var(--ivds-text-secondary, #36414f);
+  --separator-color: var(--ivds-border-strong, #a1adba);
+
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: var(--fontSize-sm, 0.875rem);
+  line-height: var(--lineHeight-normal, 1.5);
+}
+
+// Breadcrumb list mixin
+@mixin breadcrumb-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  gap: 0;
+}
+
+// Breadcrumb item mixin
+@mixin breadcrumb-item {
+  display: flex;
+  align-items: center;
+  
+  &:not(:last-child)::after {
+    content: var(--separator-content);
+    margin: 0 var(--separator-spacing);
+    color: var(--separator-color);
+    font-weight: var(--fontWeight-normal, 400);
+    user-select: none;
+    pointer-events: none;
+  }
+}
+
+// Breadcrumb link mixin
+@mixin breadcrumb-link {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: all var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease);
+  border-radius: var(--ivds-radius-xs, 0);
+  padding: var(--spacing-1, 0.25rem) var(--spacing-2, 0.5rem);
+  margin: calc(-1 * var(--spacing-1, 0.25rem)) calc(-1 * var(--spacing-2, 0.5rem));
+  
+  &:hover {
+    color: var(--link-color-hover);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.14em;
+    background-color: var(--color-brand-accent-50, #eef4ff);
+  }
+  
+  @include focus-ring;
+
+  &:focus-visible {
+    text-decoration: none;
+  }
+  
+  &:active {
+    background-color: var(--color-brand-accent-100, #dbe9ff);
+  }
+}
+
+// Current page mixin
+@mixin breadcrumb-current {
+  color: var(--current-color);
+  font-weight: var(--fontWeight-medium, 500);
+  padding: var(--spacing-1, 0.25rem) var(--spacing-2, 0.5rem);
+  margin: calc(-1 * var(--spacing-1, 0.25rem)) calc(-1 * var(--spacing-2, 0.5rem));
+}
+
+// Breadcrumb separator variants
+@mixin breadcrumb-separator-arrow {
+  --separator-content: '→';
+}
+
+@mixin breadcrumb-separator-chevron {
+  --separator-content: '›';
+}
+
+@mixin breadcrumb-separator-bullet {
+  --separator-content: '•';
+}
+
+// Breadcrumb size variants
+@mixin breadcrumb-small {
+  --separator-spacing: var(--spacing-1, 0.25rem);
+
+  font-size: var(--fontSize-xs, 0.75rem);
+}
+
+@mixin breadcrumb-large {
+  --separator-spacing: var(--spacing-3, 0.75rem);
+
+  font-size: var(--fontSize-base, 1rem);
+}
+
+// Breadcrumb theme variants
+@mixin breadcrumb-theme-dark {
+  --link-color: var(--color-brand-accent-300, #93bcff);
+  --link-color-hover: var(--color-brand-accent-200, #bfd7ff);
+  --current-color: var(--color-semantic-neutral-200, #e5e5e5);
+  --separator-color: var(--color-semantic-neutral-400, #a3a3a3);
+}
+
+@mixin breadcrumb-theme-muted {
+  --link-color: var(--color-semantic-neutral-600, #525252);
+  --link-color-hover: var(--color-semantic-neutral-700, #404040);
+  --current-color: var(--color-semantic-neutral-800, #262626);
+  --separator-color: var(--color-semantic-neutral-400, #a3a3a3);
+}
+
+// Breadcrumb with icons
+@mixin breadcrumb-with-icons {
+  .ivds-breadcrumb__link,
+  .ivds-breadcrumb__current {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-1, 0.25rem);
+  }
+  
+  .ivds-breadcrumb__icon {
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+  }
+}
+
+// Responsive breadcrumb behavior
+@mixin breadcrumb-responsive {
+  @media (max-width: 640px) {
+    .ivds-breadcrumb__list {
+      flex-wrap: wrap;
+    }
+    
+    .ivds-breadcrumb__item {
+      &:nth-last-child(2)::after {
+        content: '...';
+        margin: 0 var(--separator-spacing);
+        color: var(--separator-color);
+      }
+      
+      &:not(:last-child, :nth-last-child(2))::after {
+        display: none;
+      }
+      
+      &:not(:last-child, :nth-last-child(2)) {
+        display: none;
+      }
+    }
+  }
+}
+
+// Breadcrumb truncation for long paths
+@mixin breadcrumb-truncate {
+  .ivds-breadcrumb__link,
+  .ivds-breadcrumb__current {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

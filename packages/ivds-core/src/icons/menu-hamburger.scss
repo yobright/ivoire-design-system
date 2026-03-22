@@ -1,0 +1,12 @@
+.ivds-icon--menu-hamburger {
+  --mask-image-menu-hamburger: url("data:image/svg+xml;charset=utf-8,%3Csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M22%2017V19H2V17H22ZM22%2011V13H2V11H22ZM22%205V7H2V5H22Z'%20fill='black'/%3E%3C/svg%3E");
+  --mask-image: var(--mask-image-menu-hamburger);
+}
+
+.ivds-icon-start--menu-hamburger {
+  --mask-image-before: var(--mask-image-menu-hamburger);
+}
+
+.ivds-icon-end--menu-hamburger {
+  --mask-image-after: var(--mask-image-menu-hamburger);
+}

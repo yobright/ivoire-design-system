@@ -1,0 +1,12 @@
+.ivds-icon--shopping-cart {
+  --mask-image-shopping-cart: url("data:image/svg+xml;charset=utf-8,%3Csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M16.6%2013C17.3%2013%2018%2012.6%2018.3%2012L21.9%205.5C22.2%204.8%2021.8%204%2021%204H6.2L5.3%202H2V4H4L7.6%2011.6L6.2%2014C5.5%2015.3%206.4%2017%208%2017H20V15H8L9.1%2013H16.6ZM7.2%206H19.3L16.5%2011H9.5L7.2%206ZM8%2018C6.9%2018%206%2018.9%206%2020C6%2021.1%206.9%2022%208%2022C9.1%2022%2010%2021.1%2010%2020C10%2018.9%209.1%2018%208%2018ZM18%2018C16.9%2018%2016%2018.9%2016%2020C16%2021.1%2016.9%2022%2018%2022C19.1%2022%2020%2021.1%2020%2020C20%2018.9%2019.1%2018%2018%2018Z'%20fill='black'/%3E%3C/svg%3E");
+  --mask-image: var(--mask-image-shopping-cart);
+}
+
+.ivds-icon-start--shopping-cart {
+  --mask-image-before: var(--mask-image-shopping-cart);
+}
+
+.ivds-icon-end--shopping-cart {
+  --mask-image-after: var(--mask-image-shopping-cart);
+}

@@ -1,0 +1,12 @@
+.ivds-icon--vaccine {
+  --mask-image-vaccine: url("data:image/svg+xml;charset=utf-8,%3Csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M18.5429%204.4571L17.5%203.41421L18.9142%202L22.4142%205.5L21%206.91421L19.9571%205.87132L18.6753%207.15305L20.6213%209.099L11.099%2018.6213L9.84437%2017.3667L8.89843%2018.3127L8.2071%2017.6213L3.41421%2022.4142L2%2021L6.79289%2016.2071L6.07%2015.4842L7.01595%2014.5383L5.79289%2013.3152L15.3152%203.79289L17.2611%205.73884L18.5429%204.4571ZM8.62132%2013.3152L11.099%2015.7929L17.7929%209.099L15.3152%206.62132L8.62132%2013.3152Z'%20fill='black'/%3E%3C/svg%3E");
+  --mask-image: var(--mask-image-vaccine);
+}
+
+.ivds-icon-start--vaccine {
+  --mask-image-before: var(--mask-image-vaccine);
+}
+
+.ivds-icon-end--vaccine {
+  --mask-image-after: var(--mask-image-vaccine);
+}

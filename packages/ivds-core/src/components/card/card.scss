@@ -1,0 +1,193 @@
+// Card component styles
+// Provides styling for the IVDS card component with all variants, sections, and states
+
+@use '_card-mixin' as card;
+
+// Card Base
+.ivds-card {
+  @include card.card-base;
+  @include card.card-variant(
+    var(--ivds-surface-base, #fff),
+    var(--ivds-border-subtle, #e2e7ec),
+    none
+  );
+  
+  // Card sections
+  &__header {
+    @include card.card-header;
+  }
+  
+  &__body {
+    @include card.card-body;
+  }
+  
+  &__footer {
+    @include card.card-footer;
+  }
+  
+  &__media {
+    @include card.card-media;
+  }
+  
+  // Card content elements
+  &__title {
+    @include card.card-title;
+  }
+  
+  &__subtitle {
+    @include card.card-subtitle;
+  }
+  
+  &__content {
+    @include card.card-content;
+  }
+  
+  &__actions {
+    @include card.card-actions;
+  }
+  
+  // Content wrapper for horizontal cards
+  &__content-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  
+  // Overlay for media cards
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(var(--ivds-overlay-rgb, 18, 26, 36), 0.08) 0%, rgba(var(--ivds-overlay-rgb, 18, 26, 36), 0.82) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--spacing-6, 1.5rem);
+    color: var(--ivds-text-on-strong, #fff);
+    
+    .ivds-card__title,
+    .ivds-card__subtitle,
+    .ivds-card__content {
+      color: inherit;
+    }
+  }
+}
+
+// Card Variants
+.ivds-card--flat {
+  @include card.card-variant(
+    var(--ivds-surface-base, #fff),
+    transparent,
+    none
+  );
+}
+
+.ivds-card--bordered {
+  @include card.card-variant(
+    var(--ivds-surface-base, #fff),
+    var(--ivds-border-strong, #a1adba),
+    none
+  );
+}
+
+.ivds-card--elevated {
+  @include card.card-variant(
+    var(--ivds-surface-base, #fff),
+    var(--ivds-border-subtle, #e2e7ec),
+    var(--ivds-shadow-md, 0 1px 2px rgba(7, 11, 16, 0.12))
+  );
+}
+
+.ivds-card--floating {
+  @include card.card-variant(
+    var(--ivds-surface-base, #fff),
+    transparent,
+    var(--ivds-shadow-lg, 0 4px 10px rgba(7, 11, 16, 0.14))
+  );
+}
+
+// Interactive card
+.ivds-card--interactive {
+  @include card.card-interactive;
+}
+
+// Card sizes
+.ivds-card--compact {
+  @include card.card-compact;
+}
+
+.ivds-card--spacious {
+  @include card.card-spacious;
+}
+
+// Card layouts
+.ivds-card--horizontal {
+  @include card.card-horizontal;
+}
+
+.ivds-card--overlay {
+  @include card.card-overlay;
+}
+
+// Card semantic variants
+.ivds-card--success {
+  @include card.card-variant(
+    var(--color-semantic-success-50, #edf9f4),
+    var(--color-ui-success-200, #b8e9d2)
+  );
+  
+  .ivds-card__title {
+    color: var(--color-semantic-success-700, #0a573a);
+  }
+  
+  .ivds-card__content {
+    color: var(--color-semantic-success-600, #0f6f4a);
+  }
+}
+
+.ivds-card--warning {
+  @include card.card-variant(
+    var(--color-semantic-warning-50, #fff8eb),
+    var(--color-ui-warning-200, #f6d6a7)
+  );
+  
+  .ivds-card__title {
+    color: var(--color-semantic-warning-700, #834b08);
+  }
+  
+  .ivds-card__content {
+    color: var(--color-semantic-warning-600, #a76009);
+  }
+}
+
+.ivds-card--error {
+  @include card.card-variant(
+    var(--color-semantic-error-50, #fff1f2),
+    var(--color-ui-error-200, #f2b8c1)
+  );
+  
+  .ivds-card__title {
+    color: var(--color-semantic-error-700, #922036);
+  }
+  
+  .ivds-card__content {
+    color: var(--color-semantic-error-600, #b72a41);
+  }
+}
+
+.ivds-card--info {
+  @include card.card-variant(
+    var(--color-semantic-info-50, #edf4ff),
+    var(--color-ui-info-200, #bfd7ff)
+  );
+  
+  .ivds-card__title {
+    color: var(--color-semantic-info-700, #003d99);
+  }
+  
+  .ivds-card__content {
+    color: var(--color-semantic-info-600, #0050c8);
+  }
+}

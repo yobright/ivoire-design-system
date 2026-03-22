@@ -1,0 +1,12 @@
+.ivds-icon--layers {
+  --mask-image-layers: url("data:image/svg+xml;charset=utf-8,%3Csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M19%2014.5L21%2015.5L12%2020L3%2015.5L5%2014.5L12.0005%2018L19%2014.5ZM19%2011L21%2012L12%2016.5L3%2012L5%2011L12.0005%2014.5L19%2011ZM12%204L21%208.5L12%2013L3%208.5L12%204ZM12.0005%206L7%208.50052L12.0005%2011L17%208.50052L12.0005%206Z'%20fill='black'/%3E%3C/svg%3E");
+  --mask-image: var(--mask-image-layers);
+}
+
+.ivds-icon-start--layers {
+  --mask-image-before: var(--mask-image-layers);
+}
+
+.ivds-icon-end--layers {
+  --mask-image-after: var(--mask-image-layers);
+}

@@ -1,0 +1,12 @@
+.ivds-icon--angle-up {
+  --mask-image-angle-up: url("data:image/svg+xml;charset=utf-8,%3Csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M12%2011.5L17%2016.5L18.5%2015L12%208.5L5.5%2015L7%2016.5L12%2011.5Z'%20fill='black'/%3E%3C/svg%3E");
+  --mask-image: var(--mask-image-angle-up);
+}
+
+.ivds-icon-start--angle-up {
+  --mask-image-before: var(--mask-image-angle-up);
+}
+
+.ivds-icon-end--angle-up {
+  --mask-image-after: var(--mask-image-angle-up);
+}

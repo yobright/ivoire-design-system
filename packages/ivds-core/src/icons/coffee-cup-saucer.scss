@@ -1,0 +1,12 @@
+.ivds-icon--coffee-cup-saucer {
+  --mask-image-coffee-cup-saucer: url("data:image/svg+xml;charset=utf-8,%3Csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M16%205C16.5523%205%2017%205.44772%2017%206H19C20.6569%206%2022%207.79086%2022%2010C22%2012.1302%2020.7511%2013.8715%2019.1763%2013.9932L19%2014L16.8738%2014.0008C16.4295%2015.7256%2014.8636%2017%2013%2017H8C5.79086%2017%204%2015.2091%204%2013V6C4%205.44772%204.44772%205%205%205H16ZM17%2012H19L19.0588%2011.9966C19.5837%2011.9358%2020%2011.0651%2020%2010C20%208.89543%2019.5523%208%2019%208H17V12ZM2%2018H19C19%2019.1046%2018.1046%2020%2017%2020H4C2.89543%2020%202%2019.1046%202%2018Z'%20fill='black'/%3E%3C/svg%3E");
+  --mask-image: var(--mask-image-coffee-cup-saucer);
+}
+
+.ivds-icon-start--coffee-cup-saucer {
+  --mask-image-before: var(--mask-image-coffee-cup-saucer);
+}
+
+.ivds-icon-end--coffee-cup-saucer {
+  --mask-image-after: var(--mask-image-coffee-cup-saucer);
+}

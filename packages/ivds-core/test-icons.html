@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IVDS Icon System Test</title>
+  <link rel="stylesheet" href="lib/all.css">
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    h1 { color: #0f172a; }
+    h2 { color: #475569; margin-top: 2rem; }
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .icon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    .icon-item:hover {
+      border-color: #e13b1f;
+      background-color: #f8fafc;
+    }
+    .icon-name {
+      font-size: 0.75rem;
+      color: #64748b;
+      text-align: center;
+    }
+    .demo-section {
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: #f8fafc;
+      border-radius: 8px;
+    }
+    .size-demo {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .color-demo {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .button-demo {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎨 IVDS Icon System Test</h1>
+  <p>Testing the new Helsinki-style icon system with 201 icons!</p>
+
+  <h2>✅ Size Variants</h2>
+  <div class="demo-section">
+    <div class="size-demo">
+      <div>
+        <span class="ivds-icon ivds-icon--check ivds-icon--size-xs"></span>
+        <p>XS (1rem)</p>
+      </div>
+      <div>
+        <span class="ivds-icon ivds-icon--check ivds-icon--size-s"></span>
+        <p>S (1.5rem)</p>
+      </div>
+      <div>
+        <span class="ivds-icon ivds-icon--check ivds-icon--size-m"></span>
+        <p>M (2rem)</p>
+      </div>
+      <div>
+        <span class="ivds-icon ivds-icon--check ivds-icon--size-l"></span>
+        <p>L (2.5rem)</p>
+      </div>
+      <div>
+        <span class="ivds-icon ivds-icon--check ivds-icon--size-xl"></span>
+        <p>XL (3rem)</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>🎨 Color Customization</h2>
+  <div class="demo-section">
+    <div class="color-demo">
+      <span class="ivds-icon ivds-icon--heart-fill ivds-icon--size-l" style="color: #ef4444;"></span>
+      <span class="ivds-icon ivds-icon--check-circle-fill ivds-icon--size-l" style="color: #10b981;"></span>
+      <span class="ivds-icon ivds-icon--info-circle-fill ivds-icon--size-l" style="color: #3b82f6;"></span>
+      <span class="ivds-icon ivds-icon--alert-circle-fill ivds-icon--size-l" style="color: #f59e0b;"></span>
+      <span class="ivds-icon ivds-icon--star-fill ivds-icon--size-l" style="color: #8b5cf6;"></span>
+    </div>
+  </div>
+
+  <h2>🔘 Button Integration</h2>
+  <div class="demo-section">
+    <div class="button-demo">
+      <button class="ivds-button ivds-button--primary ivds-icon-start--check">
+        Save Changes
+      </button>
+      <button class="ivds-button ivds-button--primary ivds-icon-end--arrow-right">
+        Next Step
+      </button>
+      <button class="ivds-button ivds-button--secondary ivds-icon-start--download">
+        Download File
+      </button>
+    </div>
+  </div>
+
+  <h2>📦 Common Icons</h2>
+  <div class="icon-grid">
+    <div class="icon-item">
+      <span class="ivds-icon ivds-icon--check ivds-icon--size-l"></span>
+      <span class="icon-name">check</span>
+    </div>
+    <div class="icon-item">
+      <span class="ivds-icon ivds-icon--cross ivds-icon--size-l"></span>
+      <span class="icon-name">cross</span>
+    </div>
+    <div class="icon-item">
+      <span class="ivds-icon ivds-icon--info-circle ivds-icon--size-l"></span>
+      <span class="icon-name">info-circle</span>
+    </div>
+    <div class="icon-item">
+      <span class="ivds-icon ivds-icon--alert-circle ivds-icon--size-l"></span>
+      <span class="icon-name">alert-circle</span>
+    </div>
+    <div class="icon-item">
+      <span class="ivds-icon ivds-icon--arrow-left ivds-icon--size-l"></span>
+      <span class="icon-name">arrow-left</span>
+    </div>
+    <div class="icon-item">
+      <span class="ivds-icon ivds-icon--arrow-right ivds-icon--size-l"></span>
+      <span class="icon-name">arrow-right</span>
+    </div>
+    <div class="icon-item">
+      <span class="ivds-icon ivds-icon--search ivds-icon--size-l"></span>
+      <span class="icon-name">search</span>
+    </div>
+    <div class="icon-item">
+      <span class="ivds-icon ivds-icon--menu-hamburger ivds-icon--size-l"></span>
+      <span class="icon-name">menu-hamburger</span>
+    </div>
+    <div class="icon-item">
+      <span class="ivds-icon ivds-icon--home ivds-icon--size-l"></span>
+      <span class="icon-name">home</span>
+    </div>
+    <div class="icon-item">
+      <span class="ivds-icon ivds-icon--user ivds-icon--size-l"></span>
+      <span class="icon-name">user</span>
+    </div>
+    <div class="icon-item">
+      <span class="ivds-icon ivds-icon--heart ivds-icon--size-l"></span>
+      <span class="icon-name">heart</span>
+    </div>
+    <div class="icon-item">
+      <span class="ivds-icon ivds-icon--star ivds-icon--size-l"></span>
+      <span class="icon-name">star</span>
+    </div>
+  </div>
+
+  <p style="margin-top: 3rem; color: #64748b; text-align: center;">
+    ✅ Icon System Working! • 201 Icons Available • Full Color & Size Customization
+  </p>
+</body>
+</html>

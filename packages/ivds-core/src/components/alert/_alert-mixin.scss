@@ -1,0 +1,55 @@
+// Alert component mixins and private styles
+// Clear institutional banners for contextual messages.
+
+@mixin alert-base {
+  // Per-component CSS variable API
+  --background-color: var(--ivds-surface-base, #fff);
+  --border-color: var(--ivds-border-subtle, #e2e7ec);
+  --accent-color: var(--ivds-border-subtle, #e2e7ec);
+  --color: var(--ivds-text-secondary, #36414f);
+  --border-radius: var(--ivds-radius-s, 0.125rem);
+  --padding: var(--spacing-4, 1rem);
+
+  display: flex;
+  align-items: flex-start;
+  padding: var(--padding);
+  border: 1px solid var(--border-color);
+  border-left-width: 4px;
+  border-left-color: var(--accent-color);
+  border-radius: var(--border-radius);
+  background-color: var(--background-color);
+  color: var(--color);
+  position: relative;
+  font-family: var(--fontFamily-primary, system-ui, sans-serif);
+}
+
+@mixin alert-variant($bg-color, $accent-color, $text-color) {
+  --background-color: #{$bg-color};
+  --border-color: #{$accent-color};
+  --accent-color: #{$accent-color};
+  --color: #{$text-color};
+
+  .ivds-alert__icon {
+    color: var(--accent-color);
+  }
+}
+
+@mixin alert-title {
+  font-weight: var(--fontWeight-bold, 700);
+  margin-bottom: var(--spacing-1, 0.25rem);
+  display: block;
+}
+
+@mixin alert-content {
+  font-size: var(--fontSize-sm, 0.875rem);
+  line-height: var(--lineHeight-relaxed, 1.625);
+}
+
+@mixin alert-icon {
+  flex-shrink: 0;
+  margin-right: var(--spacing-3, 0.75rem);
+  margin-top: calc(var(--lineHeight-relaxed, 1.625) * 0.1em); 
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}

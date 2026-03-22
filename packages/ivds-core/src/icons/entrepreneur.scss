@@ -1,0 +1,12 @@
+.ivds-icon--entrepreneur {
+  --mask-image-entrepreneur: url("data:image/svg+xml;charset=utf-8,%3Csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M12%209C13.933%209%2015.5%207.433%2015.5%205.5C15.5%203.567%2013.933%202%2012%202C10.067%202%208.5%203.567%208.5%205.5C8.5%207.433%2010.067%209%2012%209ZM12%2011C15.0376%2011%2017.5%208.53757%2017.5%205.5C17.5%202.46243%2015.0376%200%2012%200C8.96243%200%206.5%202.46243%206.5%205.5C6.5%208.53757%208.96243%2011%2012%2011ZM18%2022H13V24H11V22H6V15H3C2.44772%2015%202%2015.4477%202%2016V24H0V16C0%2014.3431%201.34315%2013%203%2013H21C22.6569%2013%2024%2014.3431%2024%2016V24H22V16C22%2015.4477%2021.5523%2015%2021%2015H18V22ZM8%2017.1205V20H10.0568L8%2017.1205ZM16%2017.1205L13.9432%2020H16V17.1205ZM9%2015L12%2019.2795L15%2015H9Z'%20fill='black'/%3E%3C/svg%3E");
+  --mask-image: var(--mask-image-entrepreneur);
+}
+
+.ivds-icon-start--entrepreneur {
+  --mask-image-before: var(--mask-image-entrepreneur);
+}
+
+.ivds-icon-end--entrepreneur {
+  --mask-image-after: var(--mask-image-entrepreneur);
+}

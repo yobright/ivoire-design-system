@@ -1,0 +1,12 @@
+.ivds-icon--menu-dots {
+  --mask-image-menu-dots: url("data:image/svg+xml;charset=utf-8,%3Csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M12%2014C13.1046%2014%2014%2013.1046%2014%2012C14%2010.8954%2013.1046%2010%2012%2010C10.8954%2010%2010%2010.8954%2010%2012C10%2013.1046%2010.8954%2014%2012%2014ZM19%2014C20.1046%2014%2021%2013.1046%2021%2012C21%2010.8954%2020.1046%2010%2019%2010C17.8954%2010%2017%2010.8954%2017%2012C17%2013.1046%2017.8954%2014%2019%2014ZM5%2014C6.10457%2014%207%2013.1046%207%2012C7%2010.8954%206.10457%2010%205%2010C3.89543%2010%203%2010.8954%203%2012C3%2013.1046%203.89543%2014%205%2014Z'%20fill='black'/%3E%3C/svg%3E");
+  --mask-image: var(--mask-image-menu-dots);
+}
+
+.ivds-icon-start--menu-dots {
+  --mask-image-before: var(--mask-image-menu-dots);
+}
+
+.ivds-icon-end--menu-dots {
+  --mask-image-after: var(--mask-image-menu-dots);
+}

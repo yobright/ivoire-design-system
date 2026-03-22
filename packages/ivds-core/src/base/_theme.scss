@@ -1,0 +1,139 @@
+// Global IVDS theme contract
+// Civic modern direction inspired by institutional systems:
+// high contrast, strong typography, clear state feedback.
+
+:root {
+  color-scheme: light;
+
+  // Typography aliases for existing components
+  --fontFamily-primary: var(--typography-fontFamilies-primary, 'Inter', 'Noto Sans', sans-serif);
+  --fontFamily-secondary: var(--typography-fontFamilies-secondary, 'IBM Plex Sans', 'Inter', sans-serif);
+  --fontFamily-display: var(--typography-fontFamilies-display, 'IBM Plex Sans', 'Inter', sans-serif);
+
+  // Brand colors are defined by @ivds/design-tokens (all.css).
+  // No re-declaration here — tokens provide the full brand palette:
+  //   --color-brand-primary-{50..950}   (burnt orange)
+  //   --color-brand-secondary-{50..950} (green)
+  //   --color-brand-accent-{50..950}    (blue)
+
+  // Neutral aliases
+  --color-semantic-neutral-50: var(--color-ui-neutral-50, #f7f8fa);
+  --color-semantic-neutral-100: var(--color-ui-neutral-100, #f1f3f5);
+  --color-semantic-neutral-200: var(--color-ui-neutral-200, #e2e7ec);
+  --color-semantic-neutral-300: var(--color-ui-neutral-300, #cfd6dd);
+  --color-semantic-neutral-400: var(--color-ui-neutral-400, #a1adba);
+  --color-semantic-neutral-500: var(--color-ui-neutral-500, #6b7785);
+  --color-semantic-neutral-600: var(--color-ui-neutral-600, #4d5968);
+  --color-semantic-neutral-700: var(--color-ui-neutral-700, #36414f);
+  --color-semantic-neutral-800: var(--color-ui-neutral-800, #202a36);
+  --color-semantic-neutral-900: var(--color-ui-neutral-900, #121a24);
+
+  // Feedback aliases
+  --color-semantic-success-50: var(--color-ui-success-50, #edf9f4);
+  --color-semantic-success-500: var(--color-ui-success-500, #19895d);
+  --color-semantic-success-600: var(--color-ui-success-600, #0f6f4a);
+  --color-semantic-success-700: var(--color-ui-success-700, #0a573a);
+  --color-semantic-warning-50: var(--color-ui-warning-50, #fff8eb);
+  --color-semantic-warning-500: var(--color-ui-warning-500, #ce790b);
+  --color-semantic-warning-600: var(--color-ui-warning-600, #a76009);
+  --color-semantic-warning-700: var(--color-ui-warning-700, #834b08);
+  --color-semantic-error-50: var(--color-ui-error-50, #fff1f2);
+  --color-semantic-error-500: var(--color-ui-error-500, #d73a50);
+  --color-semantic-error-600: var(--color-ui-error-600, #b72a41);
+  --color-semantic-error-700: var(--color-ui-error-700, #922036);
+  --color-semantic-info-50: var(--color-ui-info-50, #edf4ff);
+  --color-semantic-info-500: var(--color-ui-info-500, #1f6fe5);
+  --color-semantic-info-600: var(--color-ui-info-600, #0050c8);
+  --color-semantic-info-700: var(--color-ui-info-700, #003d99);
+
+  // Surface + text system
+  --ivds-surface-page: var(--color-semantic-neutral-50);
+  --ivds-surface-base: #fff;
+  --ivds-surface-muted: var(--color-semantic-neutral-100);
+  --ivds-surface-strong: var(--color-semantic-neutral-900);
+  --ivds-border-subtle: var(--color-semantic-neutral-200);
+  --ivds-border-strong: var(--color-semantic-neutral-400);
+  --ivds-border-brand: var(--color-brand-accent-600);
+  --ivds-text-primary: var(--color-semantic-neutral-900);
+  --ivds-text-secondary: var(--color-semantic-neutral-800);
+  --ivds-text-muted: var(--color-semantic-neutral-600);
+  --ivds-text-on-strong: #fff;
+
+  // Interactive aliases
+  --ivds-interactive-primary-bg: var(--color-brand-accent-600);
+  --ivds-interactive-primary-bg-hover: var(--color-brand-accent-700);
+  --ivds-interactive-primary-bg-active: var(--color-brand-accent-800);
+  --ivds-interactive-primary-text: #fff;
+  --ivds-interactive-secondary-bg: #fff;
+  --ivds-interactive-secondary-bg-hover: var(--color-brand-accent-50);
+  --ivds-interactive-secondary-border: var(--color-brand-accent-600);
+  --ivds-interactive-secondary-text: var(--color-brand-accent-700);
+  --ivds-interactive-supplementary-bg: var(--color-semantic-neutral-100);
+  --ivds-interactive-supplementary-bg-hover: var(--color-semantic-neutral-200);
+  --ivds-interactive-supplementary-text: var(--color-brand-accent-700);
+
+  // Radius + shadow aliases
+  --ivds-radius-xs: var(--borderRadius-xs, 0);
+  --ivds-radius-s: var(--borderRadius-sm, 0.125rem);
+  --ivds-radius-m: var(--borderRadius-md, 0.25rem);
+  --ivds-radius-l: var(--borderRadius-lg, 0.375rem);
+  --ivds-shadow-sm: var(--shadow-xs, 0 1px 0 rgba(7, 11, 16, 0.10));
+  --ivds-shadow-md: var(--shadow-sm, 0 1px 2px rgba(7, 11, 16, 0.12));
+  --ivds-shadow-lg: var(--shadow-md, 0 4px 10px rgba(7, 11, 16, 0.14));
+
+  // Layout defaults
+  --container-max-width: 1240px;
+
+  // Focus treatment — outline-based (no box-shadow conflict with elevated components)
+  --ivds-focus-ring-color: var(--color-brand-accent-600, #1058b8);
+  --ivds-focus-ring-width: 3px;
+  --ivds-focus-ring-offset: 2px;
+  --ivds-focus-ring: 0 0 0 3px rgba(0, 80, 200, 0.30); // legacy alias
+
+  // Motion
+  --ivds-motion-fast: var(--animation-duration-fast, 150ms);
+  --ivds-motion-normal: var(--animation-duration-normal, 250ms);
+  --ivds-motion-ease: var(--animation-easing-easeOut, cubic-bezier(0, 0, 0.2, 1));
+}
+
+[data-ivds-theme='dark'] {
+  color-scheme: dark;
+
+  --ivds-surface-page: #0f1620;
+  --ivds-surface-base: #141e2a;
+  --ivds-surface-muted: #1c2734;
+  --ivds-surface-strong: #070b10;
+  --ivds-border-subtle: #283443;
+  --ivds-border-strong: #415065;
+  --ivds-text-primary: #f6f8fb;
+  --ivds-text-secondary: #dde3ea;
+  --ivds-text-muted: #b7c2ce;
+  --ivds-text-on-strong: #fff;
+  --ivds-interactive-primary-bg: var(--color-brand-accent-500);
+  --ivds-interactive-primary-bg-hover: var(--color-brand-accent-600);
+  --ivds-interactive-primary-bg-active: var(--color-brand-accent-700);
+  --ivds-interactive-secondary-bg: transparent;
+  --ivds-interactive-secondary-bg-hover: rgba(147, 188, 255, 0.15);
+  --ivds-interactive-secondary-border: var(--color-brand-accent-400);
+  --ivds-interactive-secondary-text: var(--color-brand-accent-300);
+  --ivds-interactive-supplementary-bg: rgba(255, 255, 255, 0.08);
+  --ivds-interactive-supplementary-bg-hover: rgba(255, 255, 255, 0.14);
+  --ivds-interactive-supplementary-text: #e7eefb;
+  --ivds-focus-ring-color: var(--color-brand-accent-400, #5a93f5);
+}
+
+.ivds-theme-surface {
+  background-color: var(--ivds-surface-base);
+  border: 1px solid var(--ivds-border-subtle);
+  border-radius: var(--ivds-radius-m);
+  box-shadow: var(--ivds-shadow-sm);
+}
+
+.ivds-theme-eyebrow {
+  display: inline-block;
+  color: var(--color-brand-accent-700, #0b4593);
+  font-size: var(--fontSize-xs, 0.75rem);
+  font-weight: var(--fontWeight-semibold, 600);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}

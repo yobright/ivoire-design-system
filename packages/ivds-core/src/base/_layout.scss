@@ -1,0 +1,82 @@
+// Base layout styles for IVDS Core
+
+@use '../variables/variables' as vars;
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+.ivds-container {
+  width: 100%;
+  max-width: var(--container-max-width, 1200px);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(var(--spacing-4, 1rem), 3vw, var(--spacing-8, 2rem));
+  padding-right: clamp(var(--spacing-4, 1rem), 3vw, var(--spacing-8, 2rem));
+
+  &--xs {
+    max-width: 540px;
+  }
+
+  &--sm {
+    max-width: 720px;
+  }
+
+  &--md {
+    max-width: 920px;
+  }
+
+  &--lg {
+    max-width: 1160px;
+  }
+
+  &--xl {
+    max-width: 1320px;
+  }
+}
+
+.ivds-layout {
+  width: 100%;
+  min-height: 100vh;
+
+  &--flex {
+    display: flex;
+  }
+
+  &--grid {
+    display: grid;
+  }
+
+  &--centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.ivds-section {
+  padding-top: clamp(var(--spacing-10, 2.5rem), 6vw, var(--spacing-16, 4rem));
+  padding-bottom: clamp(var(--spacing-10, 2.5rem), 6vw, var(--spacing-16, 4rem));
+}
+
+.ivds-stack {
+  display: grid;
+  gap: var(--spacing-6, 1.5rem);
+}
+
+.ivds-grid-shell {
+  display: grid;
+  gap: var(--spacing-6, 1.5rem);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}

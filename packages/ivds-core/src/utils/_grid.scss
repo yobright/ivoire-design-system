@@ -1,0 +1,211 @@
+// CSS Grid utility classes
+// Provides comprehensive grid system utilities with responsive support
+
+@use '../variables/variables' as vars;
+
+.ivds-grid {
+  display: grid !important;
+  gap: var(--spacing-4, 1rem);
+  
+  // Column variations
+  &--cols-1 { grid-template-columns: repeat(1, 1fr) !important; }
+  &--cols-2 { grid-template-columns: repeat(2, 1fr) !important; }
+  &--cols-3 { grid-template-columns: repeat(3, 1fr) !important; }
+  &--cols-4 { grid-template-columns: repeat(4, 1fr) !important; }
+  &--cols-5 { grid-template-columns: repeat(5, 1fr) !important; }
+  &--cols-6 { grid-template-columns: repeat(6, 1fr) !important; }
+  &--cols-7 { grid-template-columns: repeat(7, 1fr) !important; }
+  &--cols-8 { grid-template-columns: repeat(8, 1fr) !important; }
+  &--cols-9 { grid-template-columns: repeat(9, 1fr) !important; }
+  &--cols-10 { grid-template-columns: repeat(10, 1fr) !important; }
+  &--cols-11 { grid-template-columns: repeat(11, 1fr) !important; }
+  &--cols-12 { grid-template-columns: repeat(12, 1fr) !important; }
+  &--cols-none { grid-template-columns: none !important; }
+  
+  // Row variations
+  &--rows-1 { grid-template-rows: repeat(1, 1fr) !important; }
+  &--rows-2 { grid-template-rows: repeat(2, 1fr) !important; }
+  &--rows-3 { grid-template-rows: repeat(3, 1fr) !important; }
+  &--rows-4 { grid-template-rows: repeat(4, 1fr) !important; }
+  &--rows-5 { grid-template-rows: repeat(5, 1fr) !important; }
+  &--rows-6 { grid-template-rows: repeat(6, 1fr) !important; }
+  &--rows-none { grid-template-rows: none !important; }
+  
+  // Gap variations
+  &--gap-0 { gap: 0 !important; }
+  &--gap-1 { gap: var(--spacing-1, 0.25rem) !important; }
+  &--gap-2 { gap: var(--spacing-2, 0.5rem) !important; }
+  &--gap-3 { gap: var(--spacing-3, 0.75rem) !important; }
+  &--gap-4 { gap: var(--spacing-4, 1rem) !important; }
+  &--gap-5 { gap: var(--spacing-5, 1.25rem) !important; }
+  &--gap-6 { gap: var(--spacing-6, 1.5rem) !important; }
+  &--gap-8 { gap: var(--spacing-8, 2rem) !important; }
+  &--gap-10 { gap: var(--spacing-10, 2.5rem) !important; }
+  &--gap-12 { gap: var(--spacing-12, 3rem) !important; }
+  &--gap-16 { gap: var(--spacing-16, 4rem) !important; }
+  
+  // Column gap variations
+  &--gap-x-0 { column-gap: 0 !important; }
+  &--gap-x-1 { column-gap: var(--spacing-1, 0.25rem) !important; }
+  &--gap-x-2 { column-gap: var(--spacing-2, 0.5rem) !important; }
+  &--gap-x-3 { column-gap: var(--spacing-3, 0.75rem) !important; }
+  &--gap-x-4 { column-gap: var(--spacing-4, 1rem) !important; }
+  &--gap-x-6 { column-gap: var(--spacing-6, 1.5rem) !important; }
+  &--gap-x-8 { column-gap: var(--spacing-8, 2rem) !important; }
+  
+  // Row gap variations
+  &--gap-y-0 { row-gap: 0 !important; }
+  &--gap-y-1 { row-gap: var(--spacing-1, 0.25rem) !important; }
+  &--gap-y-2 { row-gap: var(--spacing-2, 0.5rem) !important; }
+  &--gap-y-3 { row-gap: var(--spacing-3, 0.75rem) !important; }
+  &--gap-y-4 { row-gap: var(--spacing-4, 1rem) !important; }
+  &--gap-y-6 { row-gap: var(--spacing-6, 1.5rem) !important; }
+  &--gap-y-8 { row-gap: var(--spacing-8, 2rem) !important; }
+}
+
+// Grid item utilities
+.ivds-grid-item {
+  // Column span
+  &--col-span-1 { grid-column: span 1 / span 1 !important; }
+  &--col-span-2 { grid-column: span 2 / span 2 !important; }
+  &--col-span-3 { grid-column: span 3 / span 3 !important; }
+  &--col-span-4 { grid-column: span 4 / span 4 !important; }
+  &--col-span-5 { grid-column: span 5 / span 5 !important; }
+  &--col-span-6 { grid-column: span 6 / span 6 !important; }
+  &--col-span-7 { grid-column: span 7 / span 7 !important; }
+  &--col-span-8 { grid-column: span 8 / span 8 !important; }
+  &--col-span-9 { grid-column: span 9 / span 9 !important; }
+  &--col-span-10 { grid-column: span 10 / span 10 !important; }
+  &--col-span-11 { grid-column: span 11 / span 11 !important; }
+  &--col-span-12 { grid-column: span 12 / span 12 !important; }
+  &--col-span-full { grid-column: 1 / -1 !important; }
+  
+  // Column start
+  &--col-start-1 { grid-column-start: 1 !important; }
+  &--col-start-2 { grid-column-start: 2 !important; }
+  &--col-start-3 { grid-column-start: 3 !important; }
+  &--col-start-4 { grid-column-start: 4 !important; }
+  &--col-start-5 { grid-column-start: 5 !important; }
+  &--col-start-6 { grid-column-start: 6 !important; }
+  &--col-start-7 { grid-column-start: 7 !important; }
+  &--col-start-8 { grid-column-start: 8 !important; }
+  &--col-start-9 { grid-column-start: 9 !important; }
+  &--col-start-10 { grid-column-start: 10 !important; }
+  &--col-start-11 { grid-column-start: 11 !important; }
+  &--col-start-12 { grid-column-start: 12 !important; }
+  &--col-start-13 { grid-column-start: 13 !important; }
+  &--col-start-auto { grid-column-start: auto !important; }
+  
+  // Column end
+  &--col-end-1 { grid-column-end: 1 !important; }
+  &--col-end-2 { grid-column-end: 2 !important; }
+  &--col-end-3 { grid-column-end: 3 !important; }
+  &--col-end-4 { grid-column-end: 4 !important; }
+  &--col-end-5 { grid-column-end: 5 !important; }
+  &--col-end-6 { grid-column-end: 6 !important; }
+  &--col-end-7 { grid-column-end: 7 !important; }
+  &--col-end-8 { grid-column-end: 8 !important; }
+  &--col-end-9 { grid-column-end: 9 !important; }
+  &--col-end-10 { grid-column-end: 10 !important; }
+  &--col-end-11 { grid-column-end: 11 !important; }
+  &--col-end-12 { grid-column-end: 12 !important; }
+  &--col-end-13 { grid-column-end: 13 !important; }
+  &--col-end-auto { grid-column-end: auto !important; }
+  
+  // Row span
+  &--row-span-1 { grid-row: span 1 / span 1 !important; }
+  &--row-span-2 { grid-row: span 2 / span 2 !important; }
+  &--row-span-3 { grid-row: span 3 / span 3 !important; }
+  &--row-span-4 { grid-row: span 4 / span 4 !important; }
+  &--row-span-5 { grid-row: span 5 / span 5 !important; }
+  &--row-span-6 { grid-row: span 6 / span 6 !important; }
+  &--row-span-full { grid-row: 1 / -1 !important; }
+  
+  // Row start
+  &--row-start-1 { grid-row-start: 1 !important; }
+  &--row-start-2 { grid-row-start: 2 !important; }
+  &--row-start-3 { grid-row-start: 3 !important; }
+  &--row-start-4 { grid-row-start: 4 !important; }
+  &--row-start-5 { grid-row-start: 5 !important; }
+  &--row-start-6 { grid-row-start: 6 !important; }
+  &--row-start-7 { grid-row-start: 7 !important; }
+  &--row-start-auto { grid-row-start: auto !important; }
+  
+  // Row end
+  &--row-end-1 { grid-row-end: 1 !important; }
+  &--row-end-2 { grid-row-end: 2 !important; }
+  &--row-end-3 { grid-row-end: 3 !important; }
+  &--row-end-4 { grid-row-end: 4 !important; }
+  &--row-end-5 { grid-row-end: 5 !important; }
+  &--row-end-6 { grid-row-end: 6 !important; }
+  &--row-end-7 { grid-row-end: 7 !important; }
+  &--row-end-auto { grid-row-end: auto !important; }
+}
+
+// Grid auto flow utilities
+.ivds-grid-flow-row { grid-auto-flow: row !important; }
+.ivds-grid-flow-col { grid-auto-flow: column !important; }
+.ivds-grid-flow-dense { grid-auto-flow: dense !important; }
+.ivds-grid-flow-row-dense { grid-auto-flow: row dense !important; }
+.ivds-grid-flow-col-dense { grid-auto-flow: column dense !important; }
+
+// Grid auto columns utilities
+.ivds-auto-cols-auto { grid-auto-columns: auto !important; }
+.ivds-auto-cols-min { grid-auto-columns: min-content !important; }
+.ivds-auto-cols-max { grid-auto-columns: max-content !important; }
+.ivds-auto-cols-fr { grid-auto-columns: minmax(0, 1fr) !important; }
+
+// Grid auto rows utilities
+.ivds-auto-rows-auto { grid-auto-rows: auto !important; }
+.ivds-auto-rows-min { grid-auto-rows: min-content !important; }
+.ivds-auto-rows-max { grid-auto-rows: max-content !important; }
+.ivds-auto-rows-fr { grid-auto-rows: minmax(0, 1fr) !important; }
+
+// Responsive grid utilities
+@media (min-width: 640px) {
+  .ivds-sm-grid--cols-1 { grid-template-columns: repeat(1, 1fr) !important; }
+  .ivds-sm-grid--cols-2 { grid-template-columns: repeat(2, 1fr) !important; }
+  .ivds-sm-grid--cols-3 { grid-template-columns: repeat(3, 1fr) !important; }
+  .ivds-sm-grid--cols-4 { grid-template-columns: repeat(4, 1fr) !important; }
+  .ivds-sm-grid--cols-6 { grid-template-columns: repeat(6, 1fr) !important; }
+  .ivds-sm-grid--cols-12 { grid-template-columns: repeat(12, 1fr) !important; }
+  
+  .ivds-sm-grid-item--col-span-1 { grid-column: span 1 / span 1 !important; }
+  .ivds-sm-grid-item--col-span-2 { grid-column: span 2 / span 2 !important; }
+  .ivds-sm-grid-item--col-span-3 { grid-column: span 3 / span 3 !important; }
+  .ivds-sm-grid-item--col-span-4 { grid-column: span 4 / span 4 !important; }
+  .ivds-sm-grid-item--col-span-6 { grid-column: span 6 / span 6 !important; }
+  .ivds-sm-grid-item--col-span-12 { grid-column: span 12 / span 12 !important; }
+}
+
+@media (min-width: 768px) {
+  .ivds-md-grid--cols-1 { grid-template-columns: repeat(1, 1fr) !important; }
+  .ivds-md-grid--cols-2 { grid-template-columns: repeat(2, 1fr) !important; }
+  .ivds-md-grid--cols-3 { grid-template-columns: repeat(3, 1fr) !important; }
+  .ivds-md-grid--cols-4 { grid-template-columns: repeat(4, 1fr) !important; }
+  .ivds-md-grid--cols-6 { grid-template-columns: repeat(6, 1fr) !important; }
+  .ivds-md-grid--cols-12 { grid-template-columns: repeat(12, 1fr) !important; }
+  
+  .ivds-md-grid-item--col-span-1 { grid-column: span 1 / span 1 !important; }
+  .ivds-md-grid-item--col-span-2 { grid-column: span 2 / span 2 !important; }
+  .ivds-md-grid-item--col-span-3 { grid-column: span 3 / span 3 !important; }
+  .ivds-md-grid-item--col-span-4 { grid-column: span 4 / span 4 !important; }
+  .ivds-md-grid-item--col-span-6 { grid-column: span 6 / span 6 !important; }
+  .ivds-md-grid-item--col-span-12 { grid-column: span 12 / span 12 !important; }
+}
+
+@media (min-width: 1024px) {
+  .ivds-lg-grid--cols-1 { grid-template-columns: repeat(1, 1fr) !important; }
+  .ivds-lg-grid--cols-2 { grid-template-columns: repeat(2, 1fr) !important; }
+  .ivds-lg-grid--cols-3 { grid-template-columns: repeat(3, 1fr) !important; }
+  .ivds-lg-grid--cols-4 { grid-template-columns: repeat(4, 1fr) !important; }
+  .ivds-lg-grid--cols-6 { grid-template-columns: repeat(6, 1fr) !important; }
+  .ivds-lg-grid--cols-12 { grid-template-columns: repeat(12, 1fr) !important; }
+  
+  .ivds-lg-grid-item--col-span-1 { grid-column: span 1 / span 1 !important; }
+  .ivds-lg-grid-item--col-span-2 { grid-column: span 2 / span 2 !important; }
+  .ivds-lg-grid-item--col-span-3 { grid-column: span 3 / span 3 !important; }
+  .ivds-lg-grid-item--col-span-4 { grid-column: span 4 / span 4 !important; }
+  .ivds-lg-grid-item--col-span-6 { grid-column: span 6 / span 6 !important; }
+  .ivds-lg-grid-item--col-span-12 { grid-column: span 12 / span 12 !important; }
+}

@@ -1,0 +1,61 @@
+// Radio button component styles
+// Core styling for modern radio buttons, groups, and interactive cards
+/* stylelint-disable no-descending-specificity */
+
+@use '_radio-button-mixin' as radio;
+
+.ivds-radio-button {
+  @include radio.radio-button-base;
+  
+  // Elements
+  &__input {
+    @include radio.radio-button-input;
+    
+    &:checked + .ivds-radio-button__circle {
+      @include radio.radio-button-checked;
+    }
+    
+    &:focus-visible + .ivds-radio-button__circle {
+      @include radio.radio-button-focus;
+    }
+    
+    &:disabled + .ivds-radio-button__circle,
+    &:disabled ~ .ivds-radio-button__label {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+  }
+  
+  &__circle {
+    @include radio.radio-button-circle(20px);
+  }
+  
+  &__label {
+    font-size: var(--fontSize-base, 1rem);
+    font-weight: var(--fontWeight-medium, 500);
+    color: var(--ivds-text-secondary, #36414f);
+  }
+  
+  // States
+  &--disabled {
+    @include radio.radio-button-disabled;
+  }
+  
+  // Variants
+  &--card {
+    @include radio.radio-button-card;
+  }
+}
+
+// Radio Group
+.ivds-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3, 0.75rem);
+  
+  &--horizontal {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--spacing-6, 1.5rem);
+  }
+}

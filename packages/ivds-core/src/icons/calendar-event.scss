@@ -1,0 +1,12 @@
+.ivds-icon--calendar-event {
+  --mask-image-calendar-event: url("data:image/svg+xml;charset=utf-8,%3Csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M15.4554%2022.2312L15.5475%2021.4986L15.8597%2019.0199L14.1757%2017.2064L13.6741%2016.6712L14.3907%2016.5309L16.8118%2016.0736L17.989%2013.8808L18.3371%2013.2312L18.6851%2013.8808L19.8624%2016.0736L22.2834%2016.5309L23%2016.6712L22.4984%2017.2064L20.8093%2019.0251L21.1215%2021.4986L21.2188%2022.2312L20.5585%2021.9143L18.3371%2020.849L16.1156%2021.9143L15.4554%2022.2312ZM17%202C17.5523%202%2018%202.44772%2018%203V4H22V12H20V11H4V19H13V21H2V4H6V3C6%202.44772%206.44772%202%207%202C7.55228%202%208%202.44772%208%203V4H16V3C16%202.44772%2016.4477%202%2017%202ZM20%206H4V9H20V6Z'%20fill='black'/%3E%3C/svg%3E");
+  --mask-image: var(--mask-image-calendar-event);
+}
+
+.ivds-icon-start--calendar-event {
+  --mask-image-before: var(--mask-image-calendar-event);
+}
+
+.ivds-icon-end--calendar-event {
+  --mask-image-after: var(--mask-image-calendar-event);
+}

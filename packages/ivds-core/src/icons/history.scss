@@ -1,0 +1,12 @@
+.ivds-icon--history {
+  --mask-image-history: url("data:image/svg+xml;charset=utf-8,%3Csvg%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20d='M4%209V3H6L5.99882%205.29274C7.59123%203.86699%209.69437%203%2012%203C16.9706%203%2021%207.02944%2021%2012C21%2016.9706%2016.9706%2021%2012%2021C7.02944%2021%203%2016.9706%203%2012H5C5%2015.866%208.13401%2019%2012%2019C15.866%2019%2019%2015.866%2019%2012C19%208.13401%2015.866%205%2012%205C10.0926%205%208.36334%205.76291%207.10078%207.00023L9.5%207V9H4Z'%20fill='black'/%3E%3Cpath%20d='M13%207L13.0006%2011.584L16.2426%2014.8284L14.8284%2016.2426L11.0007%2012.4138L11%207H13Z'%20fill='black'/%3E%3C/svg%3E");
+  --mask-image: var(--mask-image-history);
+}
+
+.ivds-icon-start--history {
+  --mask-image-before: var(--mask-image-history);
+}
+
+.ivds-icon-end--history {
+  --mask-image-after: var(--mask-image-history);
+}

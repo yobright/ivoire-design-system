@@ -1,0 +1,203 @@
+// Button component mixins and private styles
+/* stylelint-disable no-descending-specificity, at-rule-empty-line-before */
+
+@use '../../base/focus' as *;
+
+@keyframes ivds-button-spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@mixin button-base {
+  // Per-component CSS variable API
+  --background-color: transparent;
+  --color: var(--ivds-text-primary, #121a24);
+  --border-color: transparent;
+  --hover-background-color: transparent;
+  --hover-border-color: transparent;
+  --active-background-color: transparent;
+  --disabled-background-color: var(--ivds-surface-muted, #f1f3f5);
+  --disabled-border-color: var(--ivds-border-subtle, #e2e7ec);
+  --disabled-color: var(--ivds-text-muted, #6b7785);
+  --font-size: var(--fontSize-base, 1rem);
+  --min-height: 48px;
+  --padding-block: var(--spacing-3, 0.75rem);
+  --padding-inline: var(--spacing-6, 1.5rem);
+  --border-radius: var(--ivds-radius-s, 0.125rem);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2, 0.5rem);
+  min-width: 2.75rem;
+  min-height: var(--min-height);
+  padding: var(--padding-block) var(--padding-inline);
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--background-color);
+  color: var(--color);
+  font-family: var(--fontFamily-primary, system-ui, sans-serif);
+  font-size: var(--font-size);
+  font-weight: var(--fontWeight-bold, 700);
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  position: relative;
+  transition:
+    background-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
+    border-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
+    color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease);
+
+  @include focus-ring;
+
+  &:hover:not(:disabled, [aria-disabled='true']) {
+    background-color: var(--hover-background-color);
+    border-color: var(--hover-border-color);
+  }
+
+  &:active:not(:disabled, [aria-disabled='true']) {
+    background-color: var(--active-background-color);
+  }
+
+  &:disabled,
+  &[aria-disabled='true'] {
+    background-color: var(--disabled-background-color);
+    border-color: var(--disabled-border-color);
+    color: var(--disabled-color);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+@mixin button-variant(
+  $bg-color,
+  $text-color,
+  $border-color: transparent,
+  $hover-bg: null,
+  $hover-border: null,
+  $active-bg: null
+) {
+  --background-color: #{$bg-color};
+  --color: #{$text-color};
+  --border-color: #{$border-color};
+
+  @if $hover-bg {
+    --hover-background-color: #{$hover-bg};
+  }
+
+  @if $hover-border {
+    --hover-border-color: #{$hover-border};
+  }
+
+  @if $active-bg {
+    --active-background-color: #{$active-bg};
+  }
+}
+
+@mixin button-variant-gradient($gradient, $text-color: #fff, $hover-filter: brightness(0.95)) {
+  --border-color: transparent;
+  --color: #{$text-color};
+
+  background: $gradient;
+
+  &:hover:not(:disabled, [aria-disabled='true']) {
+    filter: $hover-filter;
+  }
+}
+
+@mixin button-variant-outline($border-color, $text-color, $hover-bg: null) {
+  --background-color: var(--ivds-interactive-secondary-bg, #fff);
+  --color: #{$text-color};
+  --border-color: #{$border-color};
+
+  @if $hover-bg {
+    --hover-background-color: #{$hover-bg};
+  }
+}
+
+@mixin button-variant-ghost($text-color, $hover-bg) {
+  --background-color: var(--ivds-interactive-supplementary-bg, #f1f3f5);
+  --border-color: transparent;
+  --color: #{$text-color};
+  --hover-background-color: #{$hover-bg};
+}
+
+@mixin button-variant-glass($text-color: var(--ivds-text-primary)) {
+  --background-color: var(--ivds-surface-base, #fff);
+  --border-color: var(--ivds-border-strong, #a1adba);
+  --color: #{$text-color};
+}
+
+@mixin button-size($padding-y, $padding-x, $font-size, $min-height: null) {
+  --padding-block: #{$padding-y};
+  --padding-inline: #{$padding-x};
+  --font-size: #{$font-size};
+
+  @if $min-height {
+    --min-height: #{$min-height};
+  }
+}
+
+@mixin button-icon-spacing($gap: var(--spacing-2, 0.5rem)) {
+  gap: $gap;
+
+  .ivds-button__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+}
+
+@mixin button-loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid currentcolor;
+    border-radius: 9999px;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    transform: translate(-50%, -50%);
+    animation: ivds-button-spin 0.7s linear infinite;
+    color: inherit;
+  }
+}
+
+@mixin button-full-width {
+  width: 100%;
+  justify-content: center;
+}
+
+@mixin button-icon-only($size: 48px) {
+  --min-height: #{$size};
+  --padding-block: 0;
+  --padding-inline: 0;
+
+  width: $size;
+  height: $size;
+
+  .ivds-button__icon {
+    margin: 0;
+  }
+
+  &--circular {
+    --border-radius: var(--borderRadius-full, 9999px);
+  }
+}
+
+@mixin button-pill {
+  border-radius: var(--borderRadius-full, 9999px);
+}
+
