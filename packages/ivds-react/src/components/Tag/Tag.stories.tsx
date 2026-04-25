@@ -17,7 +17,7 @@ const meta: Meta<typeof Tag> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger', 'info', 'neutral'],
+      options: ['primary', 'secondary', 'accent', 'tertiary', 'success', 'warning', 'danger', 'info', 'neutral'],
     },
     size: {
       control: 'select',
@@ -44,6 +44,7 @@ export const Variantes: Story = {
     <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
       <Tag variant="primary">Principal</Tag>
       <Tag variant="secondary">Secondaire</Tag>
+      <Tag variant="accent">Accent</Tag>
       <Tag variant="tertiary">Tertiaire</Tag>
       <Tag variant="success">Succès</Tag>
       <Tag variant="warning">Avertissement</Tag>
@@ -67,16 +68,16 @@ export const Tailles: Story = {
 export const Supprimable: Story = {
   render: () => {
     const [tags, setTags] = useState([
-      { id: 1, label: 'React', variant: 'primary' as const },
-      { id: 2, label: 'TypeScript', variant: 'info' as const },
-      { id: 3, label: 'Système de design', variant: 'success' as const },
-      { id: 4, label: 'Storybook', variant: 'warning' as const },
+      { id: 1, label: 'Audit', variant: 'primary' as const },
+      { id: 2, label: 'Prototype', variant: 'info' as const },
+      { id: 3, label: 'Lancement', variant: 'success' as const },
+      { id: 4, label: 'À valider', variant: 'warning' as const },
     ]);
-    
+
     const removeTag = (id: number) => {
       setTags(tags.filter(tag => tag.id !== id));
     };
-    
+
     return (
       <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
         {tags.map((tag) => (
@@ -90,7 +91,7 @@ export const Supprimable: Story = {
           </Tag>
         ))}
         {tags.length === 0 && (
-          <p style={{ color: '#666', fontStyle: 'italic' }}>Toutes les étiquettes ont été supprimées !</p>
+          <p style={{ color: '#666', fontStyle: 'italic' }}>Toutes les étiquettes ont été supprimées.</p>
         )}
       </div>
     );
@@ -98,19 +99,26 @@ export const Supprimable: Story = {
 };
 
 export const Cliquable: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-      <Tag variant="primary" onClick={() => alert('Étiquette principale cliquée !')}>
-        Principal cliquable
-      </Tag>
-      <Tag variant="secondary" onClick={() => alert('Étiquette secondaire cliquée !')}>
-        Secondaire cliquable
-      </Tag>
-      <Tag variant="success" disabled onClick={() => alert('Cette action ne doit pas se déclencher')}>
-        Cliquable désactivé
-      </Tag>
-    </div>
-  ),
+  render: () => {
+    const [active, setActive] = useState('principal');
+
+    return (
+      <div style={{ display: 'grid', gap: '0.75rem' }}>
+        <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+          <Tag variant={active === 'principal' ? 'primary' : 'neutral'} onClick={() => setActive('principal')}>
+            Parcours Principal
+          </Tag>
+          <Tag variant={active === 'secondaire' ? 'secondary' : 'neutral'} onClick={() => setActive('secondaire')}>
+            Parcours Secondaire
+          </Tag>
+          <Tag variant="success" disabled onClick={() => setActive('disabled')}>
+            Désactivé
+          </Tag>
+        </div>
+        <span>Filtre actif: {active}</span>
+      </div>
+    );
+  },
 };
 
 export const AvecIcones: Story = {
@@ -123,9 +131,9 @@ export const AvecIcones: Story = {
         Terminé
       </Tag>
       <Tag variant="warning" icon="⚠️">
-        Warning
+        Attention
       </Tag>
-      <Tag variant="danger" icon="🔥" removable onRemove={() => alert('Supprimé !')}>
+      <Tag variant="danger" icon="🔥" removable onRemove={() => undefined}>
         Sujet chaud
       </Tag>
     </div>
@@ -133,28 +141,38 @@ export const AvecIcones: Story = {
 };
 
 export const Etats: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-        <Tag>Normal</Tag>
-        <Tag disabled>Désactivé</Tag>
-        <Tag removable onRemove={() => alert('Supprimé !')}>Supprimable</Tag>
-        <Tag removable disabled onRemove={() => alert('Should not fire')}>Disabled Removable</Tag>
+  render: () => {
+    const [items, setItems] = useState(['Normal', 'Supprimable', 'Cliquable & Supprimable']);
+
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+          <Tag>Normal</Tag>
+          <Tag disabled>Désactivé</Tag>
+          {items.includes('Supprimable') && (
+            <Tag removable onRemove={() => setItems((current) => current.filter((item) => item !== 'Supprimable'))}>
+              Supprimable
+            </Tag>
+          )}
+          <Tag removable disabled onRemove={() => undefined}>Suppression désactivée</Tag>
+        </div>
+        
+        <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+          <Tag onClick={() => undefined}>Cliquable</Tag>
+          <Tag onClick={() => undefined} disabled>Cliquable désactivé</Tag>
+          {items.includes('Cliquable & Supprimable') && (
+            <Tag
+              onClick={() => undefined}
+              removable
+              onRemove={() => setItems((current) => current.filter((item) => item !== 'Cliquable & Supprimable'))}
+            >
+              Cliquable & Supprimable
+            </Tag>
+          )}
+        </div>
       </div>
-      
-      <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-        <Tag onClick={() => alert('Clicked!')}>Cliquable</Tag>
-        <Tag onClick={() => alert('Should not fire')} disabled>Cliquable désactivé</Tag>
-        <Tag 
-          onClick={() => alert('Étiquette cliquée !')} 
-          removable 
-          onRemove={() => alert('Étiquette supprimée !')}
-        >
-          Clickable & Removable
-        </Tag>
-      </div>
-    </div>
-  ),
+    );
+  },
 };
 
 export const ListeEtiquettes: Story = {

@@ -16,7 +16,7 @@ const meta: Meta<typeof Badge> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['neutral', 'primary', 'success', 'warning', 'error', 'outline'],
+      options: ['neutral', 'primary', 'accent', 'premium', 'success', 'warning', 'error', 'outline'],
     },
     showDot: { control: 'boolean' },
   },
@@ -37,6 +37,8 @@ export const Variantes: Story = {
     <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
       <Badge variant="neutral">Neutral</Badge>
       <Badge variant="primary">Principal</Badge>
+      <Badge variant="accent">Accent</Badge>
+      <Badge variant="premium">Premium</Badge>
       <Badge variant="success">Succès</Badge>
       <Badge variant="warning">Avertissement</Badge>
       <Badge variant="error">Error</Badge>

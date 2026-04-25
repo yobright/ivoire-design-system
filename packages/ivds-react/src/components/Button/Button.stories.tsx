@@ -16,7 +16,7 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'secondary', 'tertiary', 'success', 'warning', 'danger', 'info'],
+      options: ['primary', 'secondary', 'accent', 'tertiary', 'success', 'warning', 'danger', 'info', 'gradient-primary', 'gradient-sunset', 'glass'],
     },
     size: {
       control: 'select',
@@ -56,11 +56,14 @@ export const Variantes: Story = {
     <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
       <Button variant="primary">Principal</Button>
       <Button variant="secondary">Secondaire</Button>
+      <Button variant="accent">Accent</Button>
       <Button variant="tertiary">Tertiaire</Button>
       <Button variant="success">Succès</Button>
       <Button variant="warning">Avertissement</Button>
       <Button variant="danger">Danger</Button>
       <Button variant="info">Info</Button>
+      <Button variant="gradient-primary">Gradient</Button>
+      <Button variant="glass">Glass</Button>
     </div>
   ),
 };
@@ -90,7 +93,7 @@ export const AvecIcone: Story = {
     <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
       <Button icon="→">Icône à gauche</Button>
       <Button icon="←" iconPosition="right">Icône à droite</Button>
-      <Button icon="✓" iconOnly />
+      <Button icon="✓" iconOnly aria-label="Valider" />
     </div>
   ),
 };

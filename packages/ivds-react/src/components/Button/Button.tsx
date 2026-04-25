@@ -1,7 +1,9 @@
 import React, { forwardRef } from 'react';
 import { BaseComponentProps, ButtonVariant, Size } from '../../utils/types';
 
-export interface ButtonProps extends BaseComponentProps {
+export interface ButtonProps
+  extends BaseComponentProps,
+    Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof BaseComponentProps | 'onClick' | 'children' | 'type'> {
   /** Button variant - solid, gradient, outline, ghost, or glass */
   variant?: ButtonVariant;
   /** Button size */
@@ -32,6 +34,8 @@ export interface ButtonProps extends BaseComponentProps {
   iconPosition?: 'left' | 'right';
   /** If icon should be treated as an arrow (will animate on hover) */
   iconIsArrow?: boolean;
+  /** Accessible label, required for icon-only usage */
+  'aria-label'?: string;
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -54,17 +58,19 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       iconRight,
       iconPosition = 'left',
       iconIsArrow = false,
+      'aria-label': ariaLabel,
       'data-testid': testId,
       ...props
     },
     ref
   ) => {
     const baseClass = 'ivds-button';
-    
+
     // Normalize size and variant aliases
     const normalizedSize = size === 'sm' ? 'small' : size === 'lg' ? 'large' : size;
     const isPill = pill || shape === 'pill';
     const isIconOnly = iconOnly || shape === 'icon-only';
+    const resolvedAriaLabel = ariaLabel ?? (isIconOnly && typeof children === 'string' ? children : undefined);
 
     const classes = [
       baseClass,
@@ -90,7 +96,17 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     const renderContent = () => {
       if (isIconOnly) {
-        return leftIcon || rightIcon || icon || children;
+        const iconOnlyContent = leftIcon || rightIcon || icon || children;
+
+        if (typeof iconOnlyContent === 'string') {
+          return <span className={`${baseClass}__text`}>{iconOnlyContent}</span>;
+        }
+
+        return iconOnlyContent ? (
+          <span className={`${baseClass}__icon`} aria-hidden="true">
+            {iconOnlyContent}
+          </span>
+        ) : null;
       }
 
       const leftIconClasses = [
@@ -129,8 +145,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={disabled || loading}
         onClick={handleClick}
         data-testid={testId}
-        aria-disabled={disabled || loading}
-        aria-busy={loading}
+        aria-label={resolvedAriaLabel}
+        aria-disabled={disabled || loading || undefined}
+        aria-busy={loading || undefined}
         {...props}
       >
         {renderContent()}

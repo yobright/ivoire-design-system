@@ -29,8 +29,8 @@ type Story = StoryObj<typeof meta>;
 
 export const ParDefaut: Story = {
   args: {
-    label: 'Mode contraste eleve',
-    helperText: 'Active le mode de lisibilite renforcee.',
+    label: 'Mode contraste élevé',
+    helperText: 'Active le mode de lisibilité renforcée.',
   },
 };
 
@@ -49,11 +49,23 @@ export const Controle: Story = {
     const [enabled, setEnabled] = useState(false);
 
     return (
-      <Switch
-        label={enabled ? 'Notifications actives' : 'Notifications inactives'}
-        checked={enabled}
-        onChange={(event) => setEnabled(event.target.checked)}
-      />
+      <div style={{ display: 'grid', gap: '0.75rem' }}>
+        <Switch
+          label={enabled ? 'Notifications actives' : 'Notifications inactives'}
+          helperText="Choisissez si l’équipe reçoit les alertes produit."
+          checked={enabled}
+          onChange={(event) => setEnabled(event.target.checked)}
+        />
+        <span>{enabled ? 'Les alertes sont activées.' : 'Les alertes sont désactivées.'}</span>
+      </div>
     );
+  },
+};
+
+export const SansLabel: Story = {
+  args: {
+    'aria-label': 'Activer les notifications produit',
+    defaultChecked: true,
+    helperText: 'Exemple sans libellé visuel.',
   },
 };

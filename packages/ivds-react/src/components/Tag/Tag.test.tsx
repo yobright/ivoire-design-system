@@ -30,10 +30,9 @@ describe('Tag', () => {
     const tag = screen.getByText('Clickable tag').closest('.ivds-tag');
     
     expect(tag).toHaveClass('ivds-tag--clickable');
-    expect(tag).toHaveAttribute('role', 'button');
-    expect(tag).toHaveAttribute('tabIndex', '0');
-    
-    fireEvent.click(tag!);
+
+    const button = screen.getByRole('button');
+    fireEvent.click(button);
     expect(handleClick).toHaveBeenCalled();
   });
 

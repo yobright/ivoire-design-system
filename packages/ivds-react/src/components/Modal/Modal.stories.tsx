@@ -35,14 +35,21 @@ export const ParDefaut: Story = {
 
     return (
       <>
-        <Button onClick={() => setOpen(true)}>Open modal</Button>
+        <Button onClick={() => setOpen(true)}>Ouvrir la modale</Button>
         <Modal
           {...args}
           isOpen={open}
           onClose={() => setOpen(false)}
-          title="Demande de passeport"
+          title="Planifier un atelier"
+          description="Validez le prochain sprint design avec votre équipe."
+          footer={(
+            <>
+              <Button variant="secondary" onClick={() => setOpen(false)}>Annuler</Button>
+              <Button onClick={() => setOpen(false)}>Confirmer</Button>
+            </>
+          )}
         >
-          Cette action ouvre le parcours de demande de passeport officiel.
+          Votre équipe recevra l’ordre du jour, les objectifs et le lien de participation.
         </Modal>
       </>
     );
@@ -54,8 +61,14 @@ export const Grande: Story = {
     const [open, setOpen] = useState(true);
 
     return (
-      <Modal isOpen={open} onClose={() => setOpen(false)} title="Informations" size="lg">
-        Contenu detaille pour les instructions ministerielles.
+      <Modal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        title="Détails du parcours"
+        description="Passez en revue les livrables attendus avant validation."
+        size="lg"
+      >
+        Cette modale large accueille un contenu éditorial plus dense, des points de décision et des éléments de suivi produit.
       </Modal>
     );
   },

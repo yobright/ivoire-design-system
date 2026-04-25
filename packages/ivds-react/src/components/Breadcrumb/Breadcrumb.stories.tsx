@@ -21,8 +21,8 @@ type Story = StoryObj<typeof meta>;
 
 const items = [
   { label: 'Accueil', href: '/' },
-  { label: 'Gouvernement', href: '/gouvernement' },
-  { label: 'Institutions', isCurrent: true },
+  { label: 'Design System', href: '/design-system' },
+  { label: 'Composants', isCurrent: true },
 ];
 
 export const ParDefaut: Story = {

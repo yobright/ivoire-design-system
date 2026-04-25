@@ -8,12 +8,12 @@ describe('Notification', () => {
     render(<Notification>Basic notification</Notification>);
     
     expect(screen.getByText('Basic notification')).toBeInTheDocument();
-    expect(screen.getByRole('alert')).toBeInTheDocument();
+    expect(screen.getByRole('status')).toBeInTheDocument();
   });
 
   it('applies type classes correctly', () => {
     render(<Notification type="success">Success message</Notification>);
-    const notification = screen.getByRole('alert');
+    const notification = screen.getByRole('status');
     
     expect(notification).toHaveClass('ivds-notification--success');
   });
@@ -55,7 +55,7 @@ describe('Notification', () => {
       </Notification>
     );
     
-    const notification = screen.getByRole('alert');
+    const notification = screen.getByRole('status');
     const dismissButton = screen.getByLabelText('Dismiss notification');
     
     expect(notification).toHaveClass('ivds-notification--dismissible');
@@ -78,5 +78,11 @@ describe('Notification', () => {
       expect(screen.getByText(icon)).toBeInTheDocument();
       unmount();
     });
+  });
+
+  it('uses alert semantics for error notifications', () => {
+    render(<Notification type="error">Error message</Notification>);
+
+    expect(screen.getByRole('alert')).toBeInTheDocument();
   });
 });

@@ -39,28 +39,28 @@ function HeaderTemplate(args: ComponentProps<typeof Header>): JSX.Element {
   return (
     <>
       <HeaderUniversalBar>
-        <a href="#">gouv.ci</a>
+        <a href="#">Documentation</a>
       </HeaderUniversalBar>
 
       <HeaderActionBar>
         <Button size="small" variant="secondary">
-          Ecrire au Gouvernement
+          Contacter l’équipe
         </Button>
       </HeaderActionBar>
 
       <Header {...args}>
         <HeaderBrand>
-          <strong>IVDS</strong>
+          <strong>Ivoire DS</strong>
         </HeaderBrand>
 
-        <HeaderNav>
-          <a href="#">Accueil</a>
-          <a href="#">Actualites</a>
-          <a href="#">e-Services</a>
+        <HeaderNav aria-label="Navigation principale">
+          <a href="#" aria-current="page">Fondations</a>
+          <a href="#">Composants</a>
+          <a href="#">Guidelines</a>
         </HeaderNav>
 
         <HeaderActions>
-          <Button size="small">Connexion</Button>
+          <Button size="small">Commencer</Button>
         </HeaderActions>
       </Header>
     </>

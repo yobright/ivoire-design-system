@@ -1,10 +1,13 @@
-import React, { forwardRef, useState } from 'react';
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { BaseComponentProps, Size } from '../../utils/types';
 import { useStableId } from '../../utils/useStableId';
 
-export interface CheckboxProps extends BaseComponentProps {
+export interface CheckboxProps
+  extends BaseComponentProps,
+    Omit<React.InputHTMLAttributes<HTMLInputElement>, keyof BaseComponentProps | 'size' | 'children' | 'type' | 'onChange'> {
   /** Checkbox label */
   label?: string;
+
   /** Whether the checkbox is checked */
   checked?: boolean;
   /** Default checked state for uncontrolled component */
@@ -23,12 +26,16 @@ export interface CheckboxProps extends BaseComponentProps {
   name?: string;
   /** Change handler */
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  /** Whether the checkbox has an error */
-  error?: boolean;
   /** Focus handler */
   onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
   /** Blur handler */
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
+  /** Aria-label for accessibility */
+  'aria-label'?: string;
+  /** Data-testid for testing */
+  'data-testid'?: string;
+  /** Error state */
+  error?: boolean;
 }
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
@@ -47,6 +54,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       onChange,
       onFocus,
       onBlur,
+      'aria-label': ariaLabel,
       'data-testid': testId,
       children,
       error,
@@ -55,14 +63,20 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     ref
   ) => {
     const [internalChecked, setInternalChecked] = useState(defaultChecked);
+    const inputRef = useRef<HTMLInputElement | null>(null);
 
     const isControlled = checked !== undefined;
     const isChecked = isControlled ? checked : internalChecked;
 
     const baseClass = 'ivds-checkbox';
+    const normalizedSize = size === 'xs' || size === 'sm' || size === 'small'
+      ? 'small'
+      : size === 'lg' || size === 'xl' || size === 'large'
+        ? 'large'
+        : 'medium';
     const labelClasses = [
       baseClass,
-      size !== 'medium' && `${baseClass}--${size}`,
+      normalizedSize !== 'medium' && `${baseClass}--${normalizedSize}`,
       disabled && `${baseClass}--disabled`,
       isChecked && `${baseClass}--checked`,
       indeterminate && `${baseClass}--indeterminate`,
@@ -80,18 +94,28 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     };
 
     const inputId = useStableId(props.id, 'ivds-checkbox');
+    const resolvedAriaLabel = ariaLabel ?? (!label && typeof children === 'string' ? children : undefined);
 
-    // Set indeterminate property on the input element
-    React.useEffect(() => {
-      if (ref && typeof ref === 'object' && ref.current) {
-        ref.current.indeterminate = indeterminate;
+    useEffect(() => {
+      if (inputRef.current) {
+        inputRef.current.indeterminate = indeterminate;
       }
-    }, [indeterminate, ref]);
+    }, [indeterminate]);
+
+    const handleRef = (node: HTMLInputElement | null) => {
+      inputRef.current = node;
+
+      if (typeof ref === 'function') {
+        ref(node);
+      } else if (ref) {
+        ref.current = node;
+      }
+    };
 
     return (
       <label className={labelClasses} htmlFor={inputId}>
         <input
-          ref={ref}
+          ref={handleRef}
           id={inputId}
           type="checkbox"
           className={`${baseClass}__input`}
@@ -104,6 +128,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           onFocus={onFocus}
           onBlur={onBlur}
           data-testid={testId}
+          aria-label={resolvedAriaLabel}
           aria-checked={indeterminate ? 'mixed' : isChecked}
           aria-invalid={error || undefined}
           {...props}
@@ -115,14 +140,13 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           <span
             className={[
               `${baseClass}__label`,
-              required && 'ivds-checkbox-label--required',
+              required && `${baseClass}__label--required`,
             ]
               .filter(Boolean)
               .join(' ')}
           >
             {label}
             {children}
-            {required && <span className={`${baseClass}__required`}>*</span>}
           </span>
         )}
       </label>

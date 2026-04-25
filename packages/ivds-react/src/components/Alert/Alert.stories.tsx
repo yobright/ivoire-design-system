@@ -16,7 +16,7 @@ const meta: Meta<typeof Alert> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['info', 'success', 'warning', 'error', 'orange'],
+      options: ['info', 'success', 'warning', 'error', 'brand'],
     },
   },
 };
@@ -40,6 +40,16 @@ export const Variantes: Story = {
       <Alert variant="success">Demande enregistree avec succes.</Alert>
       <Alert variant="warning">Pensez a verifier vos pieces justificatives.</Alert>
       <Alert variant="error">Une erreur est survenue pendant la soumission.</Alert>
+      <Alert variant="brand">Nouveau parcours de souscription disponible.</Alert>
     </div>
   ),
+};
+
+export const Dismissible: Story = {
+  args: {
+    variant: 'info',
+    title: 'Information',
+    dismissible: true,
+    children: 'Vous pouvez fermer cette alerte via le bouton de fermeture.',
+  },
 };

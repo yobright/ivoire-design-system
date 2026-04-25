@@ -1,9 +1,11 @@
 import React from 'react';
 import { BaseComponentProps } from '../../utils/types';
 
-export interface BadgeProps extends BaseComponentProps {
+export interface BadgeProps
+  extends BaseComponentProps,
+    Omit<React.HTMLAttributes<HTMLSpanElement>, keyof BaseComponentProps | 'children'> {
   /** Badge variant */
-  variant?: 'neutral' | 'primary' | 'success' | 'warning' | 'error' | 'outline';
+  variant?: 'neutral' | 'primary' | 'accent' | 'premium' | 'success' | 'warning' | 'error' | 'outline';
   /** Whether to show a dot inside the badge */
   showDot?: boolean;
 }

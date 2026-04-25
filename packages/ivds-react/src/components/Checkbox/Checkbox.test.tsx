@@ -35,7 +35,7 @@ describe('Checkbox', () => {
     render(<Checkbox required label="Required" />);
     const label = screen.getByText('Required');
     
-    expect(label).toHaveClass('ivds-checkbox-label--required');
+    expect(label).toHaveClass('ivds-checkbox__label--required');
   });
 
   it('renders children as label when no label prop', () => {

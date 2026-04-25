@@ -1,7 +1,9 @@
 import React from 'react';
 import { BaseComponentProps } from '../../utils/types';
 
-export interface HeaderProps extends BaseComponentProps {
+export interface HeaderProps
+  extends BaseComponentProps,
+    Omit<React.HTMLAttributes<HTMLElement>, keyof BaseComponentProps | 'children'> {
   /** Whether the header is sticky */
   sticky?: boolean;
   /** Whether to use glassmorphism */
@@ -54,20 +56,26 @@ export const Header: React.FC<HeaderProps> = ({
   );
 };
 
-export const HeaderBrand: React.FC<BaseComponentProps> = ({ children, className = '', ...props }) => (
-  <div className={`ivds-header__brand ${className}`} {...props}>
+export const HeaderBrand: React.FC<
+  BaseComponentProps & Omit<React.HTMLAttributes<HTMLDivElement>, keyof BaseComponentProps | 'children'>
+> = ({ children, className = '', ...props }) => (
+  <div className={['ivds-header__brand', className].filter(Boolean).join(' ')} {...props}>
     {children}
   </div>
 );
 
-export const HeaderNav: React.FC<BaseComponentProps> = ({ children, className = '', ...props }) => (
-  <nav className={`ivds-header__nav ${className}`} {...props}>
+export const HeaderNav: React.FC<
+  BaseComponentProps & Omit<React.HTMLAttributes<HTMLElement>, keyof BaseComponentProps | 'children'>
+> = ({ children, className = '', ...props }) => (
+  <nav className={['ivds-header__nav', className].filter(Boolean).join(' ')} {...props}>
     {children}
   </nav>
 );
 
-export const HeaderActions: React.FC<BaseComponentProps> = ({ children, className = '', ...props }) => (
-  <div className={`ivds-header__actions ${className}`} {...props}>
+export const HeaderActions: React.FC<
+  BaseComponentProps & Omit<React.HTMLAttributes<HTMLDivElement>, keyof BaseComponentProps | 'children'>
+> = ({ children, className = '', ...props }) => (
+  <div className={['ivds-header__actions', className].filter(Boolean).join(' ')} {...props}>
     {children}
   </div>
 );
@@ -77,16 +85,20 @@ HeaderBrand.displayName = 'HeaderBrand';
 HeaderNav.displayName = 'HeaderNav';
 HeaderActions.displayName = 'HeaderActions';
 
-export const HeaderUniversalBar: React.FC<BaseComponentProps> = ({ children, className = '', ...props }) => (
-  <div className={`ivds-header__universal-bar ${className}`} {...props}>
+export const HeaderUniversalBar: React.FC<
+  BaseComponentProps & Omit<React.HTMLAttributes<HTMLDivElement>, keyof BaseComponentProps | 'children'>
+> = ({ children, className = '', ...props }) => (
+  <div className={['ivds-header__universal-bar', className].filter(Boolean).join(' ')} {...props}>
     <div className="ivds-header__container">
       {children}
     </div>
   </div>
 );
 
-export const HeaderActionBar: React.FC<BaseComponentProps> = ({ children, className = '', ...props }) => (
-  <div className={`ivds-header__action-bar ${className}`} {...props}>
+export const HeaderActionBar: React.FC<
+  BaseComponentProps & Omit<React.HTMLAttributes<HTMLDivElement>, keyof BaseComponentProps | 'children'>
+> = ({ children, className = '', ...props }) => (
+  <div className={['ivds-header__action-bar', className].filter(Boolean).join(' ')} {...props}>
     <div className="ivds-header__container">
       {children}
     </div>

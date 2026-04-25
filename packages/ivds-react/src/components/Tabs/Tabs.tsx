@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { BaseComponentProps } from '../../utils/types';
+import { useStableId } from '../../utils/useStableId';
 
 export interface TabItem {
   id: string;
@@ -8,7 +9,9 @@ export interface TabItem {
   disabled?: boolean;
 }
 
-export interface TabsProps extends BaseComponentProps {
+export interface TabsProps
+  extends BaseComponentProps,
+    Omit<React.HTMLAttributes<HTMLDivElement>, keyof BaseComponentProps | 'children' | 'onChange'> {
   /** Array of tab items */
   items: TabItem[];
   /** Initially active tab ID */
@@ -28,10 +31,12 @@ export const Tabs: React.FC<TabsProps> = ({
   ariaLabel,
   onChange,
   className = '',
+  'aria-label': ariaLabelProp,
   'data-testid': testId,
   ...props
 }) => {
   const tabsRef = useRef<Array<HTMLButtonElement | null>>([]);
+  const tabsId = useStableId(props.id, 'ivds-tabs');
 
   const getInitialActiveId = useCallback(() => {
     const defaultItem = items.find((item) => item.id === defaultActiveId && !item.disabled);
@@ -118,6 +123,7 @@ export const Tabs: React.FC<TabsProps> = ({
   };
 
   const baseClass = 'ivds-tabs';
+  const resolvedAriaLabel = ariaLabel ?? ariaLabelProp;
   const classes = [
     baseClass,
     fullWidth && `${baseClass}--full-width`,
@@ -126,15 +132,15 @@ export const Tabs: React.FC<TabsProps> = ({
 
   return (
     <div className={classes} data-testid={testId} {...props}>
-      <div className={`${baseClass}__list`} role="tablist" aria-label={ariaLabel}>
+      <div className={`${baseClass}__list`} role="tablist" aria-label={resolvedAriaLabel}>
         {items.map((item, index) => (
           <button
             key={item.id}
             role="tab"
             type="button"
             aria-selected={activeId === item.id}
-            aria-controls={`${baseClass}__content-${item.id}`}
-            id={`${baseClass}__tab-${item.id}`}
+            aria-controls={`${tabsId}-panel-${item.id}`}
+            id={`${tabsId}-tab-${item.id}`}
             className={`${baseClass}__trigger ${activeId === item.id ? `${baseClass}__trigger--active` : ''}`}
             onClick={() => !item.disabled && handleTabClick(item.id)}
             onKeyDown={(event) => handleKeyDown(event, index)}
@@ -153,9 +159,11 @@ export const Tabs: React.FC<TabsProps> = ({
           <div
             key={item.id}
             role="tabpanel"
-            id={`${baseClass}__content-${item.id}`}
-            aria-labelledby={`${baseClass}__tab-${item.id}`}
+            id={`${tabsId}-panel-${item.id}`}
+            aria-labelledby={`${tabsId}-tab-${item.id}`}
+            className={`${baseClass}__panel`}
             hidden={item.id !== activeId}
+            tabIndex={item.id === activeId ? 0 : undefined}
           >
             {item.content}
           </div>

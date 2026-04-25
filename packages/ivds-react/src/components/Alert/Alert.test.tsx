@@ -7,7 +7,7 @@ describe('Alert', () => {
   it('renders default alert variant', () => {
     render(<Alert>Body</Alert>);
 
-    const alert = screen.getByRole('alert');
+    const alert = screen.getByRole('status');
     expect(alert).toHaveClass('ivds-alert');
     expect(alert).toHaveClass('ivds-alert--info');
     expect(screen.getByText('Body')).toBeInTheDocument();
@@ -22,7 +22,7 @@ describe('Alert', () => {
 
     expect(screen.getByText('Attention')).toHaveClass('ivds-alert__title');
     expect(screen.getByText('!')).toHaveClass('ivds-alert__icon');
-    expect(screen.getByRole('alert')).toHaveClass('ivds-alert--warning');
+    expect(screen.getByRole('status')).toHaveClass('ivds-alert--warning');
   });
 
   it('applies custom class and test id', () => {

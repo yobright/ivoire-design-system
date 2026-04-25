@@ -24,7 +24,7 @@ describe('TextInput', () => {
     render(<TextInput label="Email" required />);
     const label = screen.getByText('Email');
     
-    expect(label).toHaveClass('ivds-text-input-label--required');
+    expect(label).toHaveClass('ivds-text-input__label--required');
   });
 
   it('handles controlled input', () => {

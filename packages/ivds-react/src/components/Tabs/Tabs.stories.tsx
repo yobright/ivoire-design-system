@@ -24,19 +24,19 @@ type Story = StoryObj<typeof meta>;
 
 const items = [
   {
-    id: 'politique',
-    label: 'Politique',
-    content: 'Dernieres decisions institutionnelles et comptes rendus.',
+    id: 'apercu',
+    label: 'Aperçu',
+    content: 'Vision produit, objectifs du trimestre et prochaine étape de validation.',
   },
   {
-    id: 'economie',
-    label: 'Economie',
-    content: 'Indicateurs macroeconomiques et chantiers prioritaires.',
+    id: 'livrables',
+    label: 'Livrables',
+    content: 'Maquettes, spécifications et composants prêts pour l’implémentation.',
   },
   {
-    id: 'sante',
-    label: 'Sante',
-    content: 'Programmes de prevention et d acces aux soins.',
+    id: 'mesure',
+    label: 'Mesure',
+    content: 'Indicateurs de performance et suivi d’adoption après lancement.',
     disabled: true,
   },
 ];
@@ -44,7 +44,7 @@ const items = [
 export const ParDefaut: Story = {
   args: {
     items,
-    ariaLabel: 'Navigation des sections',
+    ariaLabel: 'Navigation des sections du projet',
   },
 };
 
@@ -52,7 +52,7 @@ export const PleineLargeur: Story = {
   args: {
     items,
     fullWidth: true,
-    defaultActiveId: 'economie',
-    ariaLabel: 'Navigation des sections',
+    defaultActiveId: 'livrables',
+    ariaLabel: 'Navigation des sections du projet',
   },
 };

@@ -83,7 +83,7 @@ export const LandingPageExample = () => {
           <span style={{ color: 'var(--color-brand-primary-500, #f97316)' }}>Sharp Elements</span>
         </h1>
         <p style={{ fontSize: '20px', color: '#64748b', maxWidth: 600, margin: '0 auto 40px' }}>
-          Build robust interfaces using our HDS-inspired design system. 
+          Build robust interfaces using the Ivoire Design System. 
           Professional orange, flat aesthetics, and industrial precision.
         </p>
         

@@ -23,11 +23,11 @@ export const Horizontale: Story = {
   render: () => (
     <Navigation aria-label="Navigation principale">
       <NavigationLink href="#" active>
-        Accueil
+        Vue d’ensemble
       </NavigationLink>
-      <NavigationLink href="#">Gouvernement</NavigationLink>
-      <NavigationLink href="#">Publications</NavigationLink>
-      <NavigationLink href="#">Agenda</NavigationLink>
+      <NavigationLink href="#">Composants</NavigationLink>
+      <NavigationLink href="#">Tokens</NavigationLink>
+      <NavigationLink href="#">Ressources</NavigationLink>
     </Navigation>
   ),
 };
@@ -37,10 +37,10 @@ export const Laterale: Story = {
     <div style={{ maxWidth: '260px' }}>
       <SideNav aria-label="Section navigation">
         <SideNavItem href="#" active>
-          e-Services
+          Fondations
         </SideNavItem>
-        <SideNavItem href="#">Passeport</SideNavItem>
-        <SideNavItem href="#">Vaccination</SideNavItem>
+        <SideNavItem href="#">Composants</SideNavItem>
+        <SideNavItem href="#">Guidelines</SideNavItem>
       </SideNav>
     </div>
   ),

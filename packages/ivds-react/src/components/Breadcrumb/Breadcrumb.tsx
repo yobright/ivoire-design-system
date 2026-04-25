@@ -7,7 +7,9 @@ export interface BreadcrumbItem {
   isCurrent?: boolean;
 }
 
-export interface BreadcrumbProps extends BaseComponentProps {
+export interface BreadcrumbProps
+  extends BaseComponentProps,
+    Omit<React.HTMLAttributes<HTMLElement>, keyof BaseComponentProps | 'children'> {
   /** Array of breadcrumb items */
   items: BreadcrumbItem[];
   /** Optional custom separator */
@@ -16,18 +18,21 @@ export interface BreadcrumbProps extends BaseComponentProps {
 
 export const Breadcrumb: React.FC<BreadcrumbProps> = ({
   items,
-  separator = ' / ',
+  separator = '/',
   className = '',
+  'aria-label': ariaLabel,
   'data-testid': testId,
   ...props
 }) => {
   const baseClass = 'ivds-breadcrumb';
+  const classes = [baseClass, className].filter(Boolean).join(' ');
+  const resolvedAriaLabel = ariaLabel ?? 'Breadcrumb';
   
   return (
-    <nav className={`${baseClass} ${className}`} aria-label="Breadcrumb" data-testid={testId} {...props}>
+    <nav className={classes} aria-label={resolvedAriaLabel} data-testid={testId} {...props}>
       <ol className={`${baseClass}__list`}>
         {items.map((item, index) => (
-          <li key={index} className={`${baseClass}__item`}>
+          <li key={`${item.href ?? 'current'}-${item.label}`} className={`${baseClass}__item`}>
             {item.href && !item.isCurrent ? (
               <a href={item.href} className={`${baseClass}__link`}>
                 {item.label}

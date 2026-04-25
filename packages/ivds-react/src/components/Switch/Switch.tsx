@@ -2,7 +2,9 @@ import React, { forwardRef } from 'react';
 import { BaseComponentProps, Size } from '../../utils/types';
 import { useStableId } from '../../utils/useStableId';
 
-export interface SwitchProps extends BaseComponentProps {
+export interface SwitchProps
+  extends BaseComponentProps,
+    Omit<React.InputHTMLAttributes<HTMLInputElement>, keyof BaseComponentProps | 'size' | 'children' | 'type' | 'onChange'> {
   /** Switch label */
   label?: string;
   /** Whether the switch is checked */
@@ -36,6 +38,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
       name,
       id,
       onChange,
+      'aria-label': ariaLabel,
       'data-testid': testId,
       children,
       ...props
@@ -44,10 +47,17 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
   ) => {
     const switchId = useStableId(id, 'ivds-switch');
     const baseClass = 'ivds-switch';
+    const wrapperClass = `${baseClass}-wrapper`;
+    const normalizedSize = size === 'xs' || size === 'sm' || size === 'small'
+      ? 'small'
+      : size === 'lg' || size === 'xl' || size === 'large'
+        ? 'large'
+        : 'medium';
+    const resolvedAriaLabel = ariaLabel ?? (!label && typeof children === 'string' ? children : undefined);
     
     const containerClasses = [
       baseClass,
-      size !== 'medium' && `${baseClass}--${size}`,
+      normalizedSize !== 'medium' && `${baseClass}--${normalizedSize}`,
       disabled && `${baseClass}--disabled`,
       className,
     ]
@@ -55,7 +65,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
       .join(' ');
 
     return (
-      <div className={`${baseClass}-wrapper`}>
+      <div className={wrapperClass}>
         <label className={containerClasses} htmlFor={switchId}>
           <input
             ref={ref}
@@ -68,6 +78,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             disabled={disabled}
             onChange={onChange}
             data-testid={testId}
+            aria-label={resolvedAriaLabel}
             aria-describedby={helperText ? `${switchId}-helper` : undefined}
             {...props}
           />

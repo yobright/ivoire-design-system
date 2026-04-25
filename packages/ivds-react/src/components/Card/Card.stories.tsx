@@ -17,7 +17,7 @@ const meta: Meta<typeof Card> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['elevated', 'flat', 'bordered'],
+      options: ['elevated', 'flat', 'bordered', 'floating', 'glass', 'glass-dark', 'premium'],
     },
     interactive: { control: 'boolean' },
     disabled: { control: 'boolean' },
@@ -113,6 +113,14 @@ export const Variantes: Story = {
         <h4 style={{ margin: '0 0 0.5rem 0' }}>Bordered</h4>
         <p style={{ margin: 0 }}>Carte avec style bordé.</p>
       </Card>
+      <Card variant="glass" style={{ width: '200px' }}>
+        <h4 style={{ margin: '0 0 0.5rem 0' }}>Glass</h4>
+        <p style={{ margin: 0 }}>Surface légère pour hero ou overlays.</p>
+      </Card>
+      <Card variant="premium" style={{ width: '200px' }}>
+        <h4 style={{ margin: '0 0 0.5rem 0' }}>Premium</h4>
+        <p style={{ margin: 0 }}>Carte mise en avant avec gradient marque.</p>
+      </Card>
     </div>
   ),
 };
@@ -122,16 +130,18 @@ export const Interactif: Story = {
     <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
       <Card 
         interactive 
-        onClick={() => alert('Carte cliquée !')}
+        onClick={() => undefined}
+        aria-label="Ouvrir la carte interactive"
         style={{ width: '200px' }}
       >
         <h4 style={{ margin: '0 0 0.5rem 0' }}>Carte interactive</h4>
-        <p style={{ margin: 0 }}>Cliquez ou utilisez Entrée/Espace lorsque la carte est focalisée.</p>
+        <p style={{ margin: 0 }}>La carte est maintenant rendue comme un vrai bouton interactif.</p>
       </Card>
       <Card 
         interactive 
         disabled
-        onClick={() => alert('This should not fire')}
+        onClick={() => undefined}
+        aria-label="Carte interactive désactivée"
         style={{ width: '200px' }}
       >
         <h4 style={{ margin: '0 0 0.5rem 0' }}>Interaction désactivée</h4>

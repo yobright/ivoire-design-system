@@ -29,16 +29,16 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const defaultOptions = [
-  { label: 'Choisir un service', value: '' },
-  { label: 'Demande de passeport', value: 'passport' },
-  { label: 'e-Vaccination', value: 'vaccination' },
-  { label: 'CNPS', value: 'cnps' },
+  { label: 'Audit Design System', value: 'audit' },
+  { label: 'Refonte Expérience Produit', value: 'revamp' },
+  { label: 'Sprint de Marque', value: 'brand-sprint' },
 ];
 
 export const ParDefaut: Story = {
   args: {
-    label: 'Service',
-    helperText: 'Selectionnez une option',
+    label: 'Parcours',
+    helperText: 'Choisissez le parcours adapté à votre équipe.',
+    placeholder: 'Sélectionnez un parcours…',
     options: defaultOptions,
     defaultValue: '',
   },
@@ -46,9 +46,10 @@ export const ParDefaut: Story = {
 
 export const EtatErreur: Story = {
   args: {
-    label: 'Service',
+    label: 'Parcours',
+    placeholder: 'Sélectionnez un parcours…',
     options: defaultOptions,
-    error: 'Ce champ est obligatoire.',
+    error: 'Sélectionnez un parcours pour continuer.',
     required: true,
     defaultValue: '',
   },
@@ -57,9 +58,9 @@ export const EtatErreur: Story = {
 export const Tailles: Story = {
   render: () => (
     <div style={{ display: 'grid', gap: '1rem', width: '320px' }}>
-      <Select label="Petit" size="small" options={defaultOptions} defaultValue="" />
-      <Select label="Moyen" size="medium" options={defaultOptions} defaultValue="" />
-      <Select label="Grand" size="large" options={defaultOptions} defaultValue="" />
+      <Select label="Petit" size="small" placeholder="Choisissez…" options={defaultOptions} defaultValue="" />
+      <Select label="Moyen" size="medium" placeholder="Choisissez…" options={defaultOptions} defaultValue="" />
+      <Select label="Grand" size="large" placeholder="Choisissez…" options={defaultOptions} defaultValue="" />
     </div>
   ),
 };

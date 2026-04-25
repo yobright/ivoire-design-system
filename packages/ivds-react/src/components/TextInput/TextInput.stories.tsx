@@ -41,7 +41,7 @@ type Story = StoryObj<typeof meta>;
 export const ParDefaut: Story = {
   args: {
     label: 'Email',
-    placeholder: 'Enter your email',
+    placeholder: 'nom@example.com…',
   },
 };
 
@@ -54,8 +54,8 @@ export const Controle: Story = {
         label="Controlled Input"
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        placeholder="Type something..."
-        helperText={`Character count: ${value.length}`}
+        placeholder="Saisissez du texte…"
+        helperText={`Nombre de caractères: ${value.length}`}
       />
     );
   },
@@ -79,13 +79,19 @@ export const Etats: Story = {
       <TextInput label="Read Only" value="Read only value" readOnly />
       <TextInput 
         label="Error" 
-        placeholder="Error state" 
+        placeholder="Champ requis…" 
         error 
         errorMessage="Ce champ est requis" 
       />
       <TextInput 
+        label="Warning" 
+        placeholder="Format recommandé…" 
+        warning
+        helperText="Utilisez le format international si possible."
+      />
+      <TextInput 
         label="Avec aide" 
-        placeholder="Avec texte d'aide" 
+        placeholder="Renseignez une valeur…" 
         helperText="Ceci est un texte d'aide" 
       />
     </div>
@@ -98,14 +104,14 @@ export const AvecIcones: Story = {
       <TextInput 
         label="Email" 
         type="email"
-        placeholder="Enter email" 
+        placeholder="nom@example.com…" 
         icon="@" 
         iconPosition="left"
       />
       <TextInput 
         label="Search" 
         type="search"
-        placeholder="Search..." 
+        placeholder="Rechercher…" 
         icon="🔍" 
         iconPosition="right"
       />
@@ -117,11 +123,11 @@ export const TypesMessages: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '300px' }}>
       <TextInput label="Text" type="text" placeholder="Text input" />
-      <TextInput label="Email" type="email" placeholder="email@example.com" />
-      <TextInput label="Password" type="password" placeholder="Password" />
-      <TextInput label="Number" type="number" placeholder="123" />
-      <TextInput label="Tel" type="tel" placeholder="+1 (555) 123-4567" />
-      <TextInput label="URL" type="url" placeholder="https://example.com" />
+      <TextInput label="Email" type="email" placeholder="nom@example.com…" />
+      <TextInput label="Password" type="password" placeholder="Votre mot de passe…" />
+      <TextInput label="Number" type="number" placeholder="123…" />
+      <TextInput label="Tel" type="tel" placeholder="+225 01 23 45 67 89…" />
+      <TextInput label="URL" type="url" placeholder="https://example.com…" />
     </div>
   ),
 };
@@ -133,7 +139,7 @@ export const ZoneTexte: Story = {
         label="Message"
         multiline
         rows={4}
-        placeholder="Enter your message here..."
+        placeholder="Décrivez votre besoin…"
         helperText="Maximum 500 characters"
         maxLength={500}
       />

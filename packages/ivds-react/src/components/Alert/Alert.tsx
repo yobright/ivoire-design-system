@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { BaseComponentProps } from '../../utils/types';
 
-export interface AlertProps extends BaseComponentProps {
-  /** Alert variant - info, success, warning, error, or orange */
-  variant?: 'info' | 'success' | 'warning' | 'error' | 'orange';
+export interface AlertProps
+  extends BaseComponentProps,
+    Omit<React.HTMLAttributes<HTMLDivElement>, keyof BaseComponentProps | 'children'> {
+  /** Alert variant - info, success, warning, error, brand, or legacy orange */
+  variant?: 'info' | 'success' | 'warning' | 'error' | 'brand' | 'orange';
   /** Optional title for the alert */
   title?: string;
   /** Optional icon to display */
@@ -12,6 +14,10 @@ export interface AlertProps extends BaseComponentProps {
   dismissible?: boolean;
   /** Callback for when the alert is dismissed */
   onDismiss?: () => void;
+  /** Live region politeness */
+  live?: 'polite' | 'assertive' | 'off';
+  /** Accessible label for the dismiss button */
+  dismissLabel?: string;
 }
 
 export const Alert: React.FC<AlertProps> = ({
@@ -20,6 +26,8 @@ export const Alert: React.FC<AlertProps> = ({
   icon,
   dismissible = false,
   onDismiss,
+  live,
+  dismissLabel = 'Dismiss alert',
   children,
   className = '',
   'data-testid': testId,
@@ -33,6 +41,8 @@ export const Alert: React.FC<AlertProps> = ({
   ].filter(Boolean).join(' ');
 
   const [isVisible, setIsVisible] = useState(true);
+  const resolvedLive = live ?? (variant === 'error' ? 'assertive' : 'polite');
+  const resolvedRole = resolvedLive === 'assertive' ? 'alert' : resolvedLive === 'off' ? undefined : 'status';
 
   const handleDismiss = () => {
     setIsVisible(false);
@@ -44,8 +54,8 @@ export const Alert: React.FC<AlertProps> = ({
   }
 
   return (
-    <div className={classes} role="alert" data-testid={testId} {...props}>
-      {icon && <span className={`${baseClass}__icon`}>{icon}</span>}
+    <div className={classes} role={resolvedRole} aria-live={resolvedLive === 'off' ? undefined : resolvedLive} data-testid={testId} {...props}>
+      {icon && <span className={`${baseClass}__icon`} aria-hidden="true">{icon}</span>}
       <div className={`${baseClass}__body`}>
         {title && <span className={`${baseClass}__title`}>{title}</span>}
         <div className={`${baseClass}__content`}>{children}</div>
@@ -54,7 +64,7 @@ export const Alert: React.FC<AlertProps> = ({
         <button
           className={`${baseClass}__dismiss`}
           onClick={handleDismiss}
-          aria-label="Dismiss alert"
+          aria-label={dismissLabel}
           type="button"
         >
           ×

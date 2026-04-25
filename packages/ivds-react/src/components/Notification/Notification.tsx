@@ -1,9 +1,12 @@
 import React, { forwardRef, useState } from 'react';
 import { BaseComponentProps } from '../../utils/types';
 
-export interface NotificationProps extends BaseComponentProps {
+export interface NotificationProps
+  extends BaseComponentProps,
+    Omit<React.HTMLAttributes<HTMLDivElement>, keyof BaseComponentProps | 'children'> {
   /** Notification type */
   type?: 'info' | 'success' | 'warning' | 'error';
+
   /** Notification title */
   title?: string;
   /** Whether the notification can be dismissed */
@@ -20,6 +23,8 @@ export interface NotificationProps extends BaseComponentProps {
   onDismiss?: () => void;
   /** Action buttons */
   actions?: React.ReactNode;
+  /** Accessible label for the dismiss button */
+  dismissLabel?: string;
 }
 
 export const Notification = forwardRef<HTMLDivElement, NotificationProps>(
@@ -34,15 +39,19 @@ export const Notification = forwardRef<HTMLDivElement, NotificationProps>(
       showIcon = true,
       onDismiss,
       actions,
+      dismissLabel = 'Dismiss notification',
       className = '',
       children,
+      role,
+      'aria-live': ariaLive,
       'data-testid': testId,
       ...props
     },
     ref
   ) => {
+
     const [internalVisible, setInternalVisible] = useState(defaultVisible);
-    
+
     const isControlled = visible !== undefined;
     const isVisible = isControlled ? visible : internalVisible;
 
@@ -51,10 +60,13 @@ export const Notification = forwardRef<HTMLDivElement, NotificationProps>(
       baseClass,
       `${baseClass}--${type}`,
       dismissible && `${baseClass}--dismissible`,
+      actions && `${baseClass}--with-actions`,
       className,
     ]
       .filter(Boolean)
       .join(' ');
+    const resolvedLive = ariaLive ?? (type === 'error' ? 'assertive' : 'polite');
+    const resolvedRole = role ?? (resolvedLive === 'assertive' ? 'alert' : 'status');
 
     const handleDismiss = () => {
       if (!isControlled) {
@@ -80,42 +92,42 @@ export const Notification = forwardRef<HTMLDivElement, NotificationProps>(
       <div
         ref={ref}
         className={notificationClasses}
-        role="alert"
-        aria-live="polite"
+        role={resolvedRole}
+        aria-live={resolvedLive}
         data-testid={testId}
         {...props}
       >
         {showIcon && displayIcon && (
-          <div className={`${baseClass}__icon`}>
+          <div className={`${baseClass}__icon`} aria-hidden="true">
             {displayIcon}
           </div>
         )}
-        
+
         <div className={`${baseClass}__content`}>
           {title && (
             <div className={`${baseClass}__title`}>
               {title}
             </div>
           )}
-          
+
           {children && (
             <div className={`${baseClass}__message`}>
               {children}
             </div>
           )}
-          
+
           {actions && (
             <div className={`${baseClass}__actions`}>
               {actions}
             </div>
           )}
         </div>
-        
+
         {dismissible && (
           <button
             className={`${baseClass}__dismiss`}
             onClick={handleDismiss}
-            aria-label="Dismiss notification"
+            aria-label={dismissLabel}
             type="button"
           >
             ×

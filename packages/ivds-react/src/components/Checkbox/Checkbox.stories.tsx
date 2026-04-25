@@ -43,11 +43,11 @@ export const Controle: Story = {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <Checkbox
-          label="Controlled checkbox"
+          label="Recevoir les nouveautés produit"
           checked={checked}
           onChange={(e) => setChecked(e.target.checked)}
         />
-        <p>Checked: {checked ? 'Yes' : 'No'}</p>
+        <p>Sélectionné: {checked ? 'Oui' : 'Non'}</p>
       </div>
     );
   },
@@ -66,12 +66,13 @@ export const Tailles: Story = {
 export const Etats: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <Checkbox label="Unchecked" />
-      <Checkbox label="Checked" defaultChecked />
-      <Checkbox label="Indeterminate" indeterminate />
+      <Checkbox label="Non sélectionné" />
+      <Checkbox label="Sélectionné" defaultChecked />
+      <Checkbox label="Partiellement sélectionné" indeterminate />
       <Checkbox label="Désactivé unchecked" disabled />
       <Checkbox label="Désactivé checked" disabled defaultChecked />
-      <Checkbox label="Required field" required />
+      <Checkbox label="Consentement requis" required />
+      <Checkbox label="Erreur de validation" error />
     </div>
   ),
 };
@@ -123,8 +124,8 @@ export const GroupeCasesACocher: Story = {
 export const SansLabel: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-      <Checkbox />
-      <span>Checkbox without built-in label</span>
+      <Checkbox aria-label="Recevoir la newsletter" />
+      <span>Case à cocher sans libellé visuel</span>
     </div>
   ),
 };

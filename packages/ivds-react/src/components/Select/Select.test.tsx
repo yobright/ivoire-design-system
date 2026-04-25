@@ -20,7 +20,7 @@ describe('Select', () => {
   it('shows required indicator', () => {
     const { container } = render(<Select label="Required" required options={options} defaultValue="" />);
 
-    expect(container.querySelector('.ivds-select__required')).toBeInTheDocument();
+    expect(container.querySelector('.ivds-select__label--required')).toBeInTheDocument();
   });
 
   it('renders helper text and error text', () => {

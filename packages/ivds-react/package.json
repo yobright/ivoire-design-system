@@ -1,6 +1,6 @@
 {
   "name": "@ivds/react",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "React components for the Ivoire Design System",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -35,11 +35,6 @@
       "import": "./lib/hooks/index.js",
       "require": "./lib/hooks/index.js",
       "types": "./lib/hooks/index.d.ts"
-    },
-    "./gov": {
-      "import": "./lib/gov/index.js",
-      "require": "./lib/gov/index.js",
-      "types": "./lib/gov/index.d.ts"
     },
     "./package.json": "./package.json"
   },
@@ -113,7 +108,7 @@
     "ivds",
     "ivoire"
   ],
-  "author": "IVDS Team",
+  "author": "Bright Studio",
   "license": "MIT",
   "repository": {
     "type": "git",

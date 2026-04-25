@@ -5,6 +5,8 @@ import { useStableId } from '../../utils/useStableId';
 export interface TextInputProps extends BaseComponentProps {
   /** Input label */
   label?: string;
+  /** Input name */
+  name?: string;
   /** Input placeholder */
   placeholder?: string;
   /** Input value */
@@ -12,7 +14,7 @@ export interface TextInputProps extends BaseComponentProps {
   /** Default value for uncontrolled component */
   defaultValue?: string;
   /** Input type */
-  type?: 'text' | 'email' | 'password' | 'tel' | 'url' | 'search' | 'number';
+  type?: 'text' | 'email' | 'password' | 'tel' | 'url' | 'search' | 'number' | 'date' | 'time';
   /** Input size */
   size?: Size;
   /** Whether the input is disabled */
@@ -29,10 +31,15 @@ export interface TextInputProps extends BaseComponentProps {
   errorText?: string;
   /** Whether the input has a success state */
   success?: boolean;
+  /** Whether the input has a warning state */
+  warning?: boolean;
   /** Helper text to display */
   helperText?: string;
   /** Maximum length of input */
   maxLength?: number;
+  min?: string | number;
+  max?: string | number;
+  step?: string | number;
   /** Icon to display (legacy, use iconLeft or iconRight instead) */
   icon?: React.ReactNode;
   /** Position of the icon (legacy) */
@@ -41,10 +48,20 @@ export interface TextInputProps extends BaseComponentProps {
   iconLeft?: React.ReactNode;
   /** Icon to display on the right */
   iconRight?: React.ReactNode;
+  actionLeft?: React.ReactNode;
+  actionRight?: React.ReactNode;
   /** Whether this is a textarea */
   multiline?: boolean;
   /** Number of rows for textarea */
   rows?: number;
+  /** Browser autocomplete hint */
+  autoComplete?: string;
+  /** Browser input mode hint */
+  inputMode?: React.HTMLAttributes<HTMLInputElement>['inputMode'];
+  /** Spellcheck behavior */
+  spellCheck?: boolean;
+  /** Accessible label when no visible label is rendered */
+  'aria-label'?: string;
   /** Change handler */
   onChange?: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   /** Focus handler */
@@ -69,18 +86,26 @@ export const TextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Text
       errorMessage,
       errorText,
       success = false,
+      warning = false,
       helperText,
       maxLength,
       icon,
       iconPosition = 'left',
       iconLeft,
       iconRight,
+      actionLeft,
+      actionRight,
       multiline = false,
       rows = 4,
+      name,
+      autoComplete,
+      inputMode,
+      spellCheck,
       className = '',
       onChange,
       onFocus,
       onBlur,
+      'aria-label': ariaLabel,
       'data-testid': testId,
       ...props
     },
@@ -95,25 +120,67 @@ export const TextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Text
     const hasError = !!error || !!errorMessage || !!errorText;
     const normalizedErrorText = typeof error === 'string' ? error : errorText || errorMessage;
     const hasSuccess = success && !hasError;
+    const hasWarning = warning && !hasError && !hasSuccess;
 
     const leftIcon = iconLeft || (icon && iconPosition === 'left' ? icon : null);
     const rightIcon = iconRight || (icon && iconPosition === 'right' ? icon : null);
 
     const baseClass = 'ivds-text-input';
     const wrapperClass = 'ivds-text-input-wrapper';
+    const normalizedSize = size === 'xs' || size === 'sm' || size === 'small'
+      ? 'small'
+      : size === 'lg' || size === 'xl' || size === 'large'
+        ? 'large'
+        : 'medium';
+    const resolvedAutoComplete = autoComplete ?? (
+      type === 'email'
+        ? 'email'
+        : type === 'password'
+          ? 'current-password'
+          : type === 'tel'
+            ? 'tel'
+            : type === 'url'
+              ? 'url'
+              : 'off'
+    );
+    const resolvedInputMode = inputMode ?? (
+      type === 'email'
+        ? 'email'
+        : type === 'tel'
+          ? 'tel'
+          : type === 'url'
+            ? 'url'
+            : type === 'number'
+              ? 'decimal'
+              : type === 'search'
+                ? 'search'
+                : undefined
+    );
+    const resolvedSpellCheck = spellCheck ?? !(type === 'email' || type === 'password' || type === 'url');
+    const resolvedAriaLabel = ariaLabel ?? (!label ? placeholder : undefined);
     
     const inputClasses = [
       baseClass,
       multiline && `${baseClass}--textarea`,
-      size !== 'medium' && `${baseClass}--${size}`,
+      normalizedSize !== 'medium' && `${baseClass}--${normalizedSize}`,
       hasError && `${baseClass}--error`,
       hasSuccess && `${baseClass}--success`,
+      hasWarning && `${baseClass}--warning`,
       disabled && `${baseClass}--disabled`,
       focused && `${baseClass}--focused`,
       (leftIcon || rightIcon) && `${baseClass}--with-icon`,
       leftIcon && `${baseClass}--with-icon-left`,
       rightIcon && `${baseClass}--with-icon-right`,
       className,
+    ]
+      .filter(Boolean)
+      .join(' ');
+    const inputWrapperClasses = [
+      `${baseClass}__input-wrapper`,
+      leftIcon && `${baseClass}__input-wrapper--icon-left`,
+      rightIcon && `${baseClass}__input-wrapper--icon-right`,
+      actionLeft && `${baseClass}__input-wrapper--action-left`,
+      actionRight && `${baseClass}__input-wrapper--action-right`,
     ]
       .filter(Boolean)
       .join(' ');
@@ -140,17 +207,22 @@ export const TextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Text
     const commonProps = {
       id: inputId,
       className: inputClasses,
+      name,
       value: inputValue,
       placeholder,
       disabled,
       required,
       readOnly,
+      autoComplete: resolvedAutoComplete,
+      inputMode: resolvedInputMode,
+      spellCheck: resolvedSpellCheck,
       maxLength,
       onChange: handleChange,
       onFocus: handleFocus,
       onBlur: handleBlur,
       'data-testid': testId,
-      'aria-invalid': hasError,
+      'aria-label': resolvedAriaLabel,
+      'aria-invalid': hasError || undefined,
       'aria-describedby': [
         normalizedErrorText && `${inputId}-error`,
         helperText && `${inputId}-helper`,
@@ -178,20 +250,25 @@ export const TextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Text
           <label
             className={[
               `${baseClass}__label`,
-              required && 'ivds-text-input-label--required',
+              required && `${baseClass}__label--required`,
             ]
               .filter(Boolean)
               .join(' ')}
             htmlFor={inputId}
           >
             {label}
-            {required && <span className={`${baseClass}__required`}>*</span>}
           </label>
         )}
         
-        <div className={`${baseClass}__input-wrapper`}>
+        <div className={inputWrapperClasses}>
+          {actionLeft && (
+            <div className={`${baseClass}__action ${baseClass}__action--left`}>
+              {actionLeft}
+            </div>
+          )}
+
           {leftIcon && (
-            <span className={`${baseClass}__icon ${baseClass}__icon--left`}>
+            <span className={`${baseClass}__icon ${baseClass}__icon--left`} aria-hidden="true">
               {leftIcon}
             </span>
           )}
@@ -199,14 +276,20 @@ export const TextInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, Text
           {InputElement}
           
           {rightIcon && (
-            <span className={`${baseClass}__icon ${baseClass}__icon--right`}>
+            <span className={`${baseClass}__icon ${baseClass}__icon--right`} aria-hidden="true">
               {rightIcon}
             </span>
+          )}
+
+          {actionRight && (
+            <div className={`${baseClass}__action ${baseClass}__action--right`}>
+              {actionRight}
+            </div>
           )}
         </div>
 
         {normalizedErrorText && (
-          <div className={`${baseClass}__error`} id={`${inputId}-error`}>
+          <div className={`${baseClass}__error`} id={`${inputId}-error`} aria-live="polite">
             {normalizedErrorText}
           </div>
         )}

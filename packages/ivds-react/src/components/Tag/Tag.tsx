@@ -1,13 +1,16 @@
 import React, { forwardRef } from 'react';
 import { BaseComponentProps, Size, Variant } from '../../utils/types';
 
-export interface TagProps extends BaseComponentProps {
+export interface TagProps
+  extends BaseComponentProps,
+    Omit<React.HTMLAttributes<HTMLSpanElement>, keyof BaseComponentProps | 'onClick' | 'children'> {
   /** Tag variant */
-  variant?: Variant | 'neutral';
+  variant?: Variant | 'error';
   /** Tag size */
   size?: Size;
   /** Tag shape */
   shape?: 'default' | 'pill';
+
   /** Whether the tag can be removed */
   removable?: boolean;
   /** Whether the tag is disabled */
@@ -15,9 +18,11 @@ export interface TagProps extends BaseComponentProps {
   /** Remove handler */
   onRemove?: () => void;
   /** Click handler */
-  onClick?: (event: React.MouseEvent<HTMLSpanElement>) => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   /** Icon to display */
   icon?: React.ReactNode;
+  /** Accessible label for the remove button */
+  removeButtonLabel?: string;
 }
 
 export const Tag = forwardRef<HTMLSpanElement, TagProps>(
@@ -31,18 +36,25 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(
       onRemove,
       onClick,
       icon,
+      removeButtonLabel = 'Remove tag',
       className = '',
       children,
+      'aria-label': ariaLabel,
       'data-testid': testId,
       ...props
     },
     ref
   ) => {
     const baseClass = 'ivds-tag';
+    const normalizedSize = size === 'xs' || size === 'sm' || size === 'small'
+      ? 'small'
+      : size === 'lg' || size === 'xl' || size === 'large'
+        ? 'large'
+        : 'medium';
     const tagClasses = [
       baseClass,
       `${baseClass}--${variant}`,
-      size !== 'medium' && `${baseClass}--${size}`,
+      normalizedSize !== 'medium' && `${baseClass}--${normalizedSize}`,
       shape === 'pill' && `${baseClass}--pill`,
       disabled && `${baseClass}--disabled`,
       onClick && !disabled && `${baseClass}--clickable`,
@@ -52,7 +64,7 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(
       .filter(Boolean)
       .join(' ');
 
-    const handleClick = (event: React.MouseEvent<HTMLSpanElement>) => {
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
       if (!disabled && onClick) {
         onClick(event);
       }
@@ -65,27 +77,10 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(
       }
     };
 
-    const handleKeyDown = (event: React.KeyboardEvent<HTMLSpanElement>) => {
-      if (!disabled && onClick && (event.key === 'Enter' || event.key === ' ')) {
-        event.preventDefault();
-        (event.currentTarget as HTMLSpanElement).click();
-      }
-    };
-
-    return (
-      <span
-        ref={ref}
-        className={tagClasses}
-        onClick={onClick ? handleClick : undefined}
-        onKeyDown={onClick ? handleKeyDown : undefined}
-        tabIndex={onClick && !disabled ? 0 : undefined}
-        role={onClick ? 'button' : undefined}
-        aria-disabled={disabled}
-        data-testid={testId}
-        {...props}
-      >
+    const content = (
+      <>
         {icon && (
-          <span className={`${baseClass}__icon`}>
+          <span className={`${baseClass}__icon`} aria-hidden="true">
             {icon}
           </span>
         )}
@@ -93,13 +88,38 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(
         <span className={`${baseClass}__text`}>
           {children}
         </span>
+      </>
+    );
+
+    return (
+      <span
+        ref={ref}
+        className={tagClasses}
+        aria-disabled={disabled || undefined}
+        aria-label={!onClick ? ariaLabel : undefined}
+        data-testid={testId}
+        {...props}
+      >
+        {onClick ? (
+          <button
+            type="button"
+            className={`${baseClass}__action`}
+            onClick={handleClick}
+            disabled={disabled}
+            aria-label={ariaLabel}
+          >
+            {content}
+          </button>
+        ) : (
+          content
+        )}
         
         {removable && (
           <button
             className={`${baseClass}__remove`}
             onClick={handleRemove}
             disabled={disabled}
-            aria-label="Remove tag"
+            aria-label={removeButtonLabel}
             type="button"
           >
             ×

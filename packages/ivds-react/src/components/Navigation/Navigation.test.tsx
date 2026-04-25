@@ -19,6 +19,7 @@ describe('Navigation', () => {
 
     const activeLink = screen.getByRole('link', { name: 'News' });
     expect(activeLink).toHaveClass('ivds-navigation__link--active');
+    expect(activeLink).toHaveAttribute('aria-current', 'page');
     expect(activeLink).toHaveAttribute('href', '/news');
   });
 
@@ -34,6 +35,7 @@ describe('Navigation', () => {
 
     expect(screen.getByRole('navigation', { name: 'Section navigation' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Services' })).toHaveClass('ivds-side-nav__link--active');
+    expect(screen.getByRole('link', { name: 'Services' })).toHaveAttribute('aria-current', 'page');
     expect(screen.getByRole('link', { name: 'Agenda' })).toHaveAttribute('href', '/agenda');
   });
 });

@@ -8,7 +8,9 @@ export interface SelectOption {
   disabled?: boolean;
 }
 
-export interface SelectProps extends BaseComponentProps {
+export interface SelectProps
+  extends BaseComponentProps,
+    Omit<React.SelectHTMLAttributes<HTMLSelectElement>, keyof BaseComponentProps | 'children' | 'size' | 'onChange'> {
   /** Select label */
   label?: string;
   /** Helper text */
@@ -21,6 +23,8 @@ export interface SelectProps extends BaseComponentProps {
   defaultValue?: string | number;
   /** Options for select */
   options?: SelectOption[];
+  /** Placeholder option label */
+  placeholder?: string;
   /** Whether the select is disabled */
   disabled?: boolean;
   /** Whether the select is required */
@@ -48,6 +52,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
       value,
       defaultValue,
       options = [],
+      placeholder,
       disabled = false,
       required = false,
       size = 'medium',
@@ -58,6 +63,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
       name,
       id,
       children,
+      'aria-label': ariaLabel,
       'data-testid': testId,
       ...props
     },
@@ -65,19 +71,25 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   ) => {
     const selectId = useStableId(id, 'ivds-select');
     const isError = !!error;
+    const normalizedSize = size === 'xs' || size === 'sm' || size === 'small'
+      ? 'small'
+      : size === 'lg' || size === 'xl' || size === 'large'
+        ? 'large'
+        : 'medium';
     const descriptionId =
       isError && typeof error === 'string'
         ? `${selectId}-error`
         : helperText
         ? `${selectId}-helper`
         : undefined;
+    const resolvedAriaLabel = ariaLabel ?? (!label ? placeholder : undefined);
 
     const baseClass = 'ivds-select';
     const wrapperClass = 'ivds-select-wrapper';
     
     const selectClasses = [
       baseClass,
-      size !== 'medium' && `${baseClass}--${size}`,
+      normalizedSize !== 'medium' && `${baseClass}--${normalizedSize}`,
       isError && `${baseClass}--error`,
       className,
     ]
@@ -87,9 +99,16 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
     return (
       <div className={wrapperClass}>
         {label && (
-          <label htmlFor={selectId} className={`${baseClass}__label`}>
+          <label
+            htmlFor={selectId}
+            className={[
+              `${baseClass}__label`,
+              required && `${baseClass}__label--required`,
+            ]
+              .filter(Boolean)
+              .join(' ')}
+          >
             {label}
-            {required && <span className={`${baseClass}__required`}>*</span>}
           </label>
         )}
         <select
@@ -105,10 +124,16 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
           onFocus={onFocus}
           onBlur={onBlur}
           data-testid={testId}
+          aria-label={resolvedAriaLabel}
           aria-invalid={isError || undefined}
           aria-describedby={descriptionId}
           {...props}
         >
+          {placeholder && (
+            <option value="" disabled={required} hidden={required}>
+              {placeholder}
+            </option>
+          )}
           {options.map((option) => (
             <option key={option.value} value={option.value} disabled={option.disabled}>
               {option.label}
@@ -117,7 +142,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
           {children}
         </select>
         {isError && typeof error === 'string' ? (
-          <span className={`${baseClass}__error-msg`} id={`${selectId}-error`}>
+          <span className={`${baseClass}__error-msg`} id={`${selectId}-error`} aria-live="polite">
             {error}
           </span>
         ) : (

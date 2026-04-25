@@ -31,14 +31,14 @@ type Story = StoryObj<typeof meta>;
 
 export const ParDefaut: Story = {
   args: {
-    children: 'Ceci est un message de notification par défaut.',
+    children: 'Votre espace de travail a bien été synchronisé.',
   },
 };
 
 export const AvecTitre: Story = {
   args: {
-    title: 'Titre de la notification',
-    children: 'Cette notification contient un titre et un message.',
+    title: 'Sprint confirmé',
+    children: 'L’équipe a reçu l’ordre du jour et les participants ont été notifiés.',
   },
 };
 
@@ -46,16 +46,16 @@ export const TypesMessages: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '400px' }}>
       <Notification type="info" title="Information">
-        Ceci est un message d'information.
+        Les nouvelles décisions produit sont disponibles.
       </Notification>
       <Notification type="success" title="Succès">
-        Opération terminée avec succès !
+        La publication a été envoyée avec succès.
       </Notification>
       <Notification type="warning" title="Avertissement">
-        Veuillez vérifier vos informations avant de continuer.
+        Vérifiez les contenus avant la mise en ligne.
       </Notification>
-      <Notification type="error" title="Error">
-        Une erreur est survenue lors du traitement de votre demande.
+      <Notification type="error" title="Erreur">
+        Une erreur est survenue lors de la synchronisation des livrables.
       </Notification>
     </div>
   ),
@@ -74,11 +74,11 @@ export const Fermable: Story = {
             dismissible
             onDismiss={() => setVisible(false)}
           >
-            Vous pouvez fermer cette notification en cliquant sur le bouton ×.
+            Fermez cette notification quand vous avez pris connaissance de l’information.
           </Notification>
         ) : (
           <div style={{ textAlign: 'center', padding: '2rem', color: '#666' }}>
-            <p>Notification fermée !</p>
+            <p>Notification fermée.</p>
             <Button onClick={() => setVisible(true)}>Afficher à nouveau</Button>
           </div>
         )}
@@ -92,7 +92,7 @@ export const AvecActions: Story = {
     <div style={{ width: '400px' }}>
       <Notification
         type="warning"
-        title="Confirmerer l'action"
+        title="Confirmer l’action"
         actions={
           <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.5rem' }}>
             <Button size="small" variant="primary">
@@ -104,7 +104,7 @@ export const AvecActions: Story = {
           </div>
         }
       >
-        Confirmerez-vous la suppression de cet élément ? Cette action est irréversible.
+        Confirmez-vous la suppression de cet élément ? Cette action est irréversible.
       </Notification>
     </div>
   ),
@@ -113,10 +113,10 @@ export const AvecActions: Story = {
 export const IconePersonnalisee: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '400px' }}>
-      <Notification type="info" icon="🔔" title="Custom Icon">
+      <Notification type="info" icon="🔔" title="Icône personnalisée">
         Cette notification utilise une icône personnalisée.
       </Notification>
-      <Notification type="success" icon={null} title="No Icon">
+      <Notification type="success" icon={null} title="Sans icône">
         Cette notification n'a pas d'icône.
       </Notification>
     </div>
@@ -130,9 +130,9 @@ export const Controle: Story = {
       type: 'info' | 'success' | 'warning' | 'error';
       message: string;
     }>>([
-      { id: 1, type: 'info' as const, message: 'Première notification' },
-      { id: 2, type: 'success' as const, message: 'Deuxième notification' },
-      { id: 3, type: 'warning' as const, message: 'Troisième notification' },
+      { id: 1, type: 'info' as const, message: 'Nouveau commentaire reçu' },
+      { id: 2, type: 'success' as const, message: 'Prototype validé' },
+      { id: 3, type: 'warning' as const, message: 'Relecture en attente' },
     ]);
     
     const removeNotification = (id: number) => {

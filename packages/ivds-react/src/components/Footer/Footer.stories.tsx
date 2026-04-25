@@ -32,37 +32,37 @@ export const ParDefaut: Story = {
   render: (args) => (
     <Footer {...args}>
       <FooterBrand>
-        <strong>Portail Officiel</strong>
+        <strong>Ivoire Design System</strong>
       </FooterBrand>
 
-      <FooterSection title="Primature">
+      <FooterSection title="Fondations">
         <li>
-          <a href="#">Premier Ministre</a>
+          <a href="#">Couleurs</a>
         </li>
         <li>
-          <a href="#">Discours</a>
+          <a href="#">Typographie</a>
         </li>
       </FooterSection>
 
-      <FooterSection title="Gouvernement">
+      <FooterSection title="Ressources">
         <li>
-          <a href="#">Institutions</a>
+          <a href="#">Documentation</a>
         </li>
         <li>
-          <a href="#">Agenda</a>
+          <a href="#">Storybook</a>
         </li>
       </FooterSection>
 
       <FooterSocial>
-        <a href="#" aria-label="X">
-          X
+        <a href="#" aria-label="GitHub">
+          GH
         </a>
         <a href="#" aria-label="LinkedIn">
-          LinkedIn
+          in
         </a>
       </FooterSocial>
 
-      <FooterBottom>Copyright 2026 - Portail officiel du Gouvernement de Cote d'Ivoire</FooterBottom>
+      <FooterBottom>© 2026 Ivoire Design System</FooterBottom>
     </Footer>
   ),
 };
@@ -75,13 +75,13 @@ export const Clair: Story = {
   },
   render: (args) => (
     <Footer {...args}>
-      <FooterBrand>IVDS</FooterBrand>
-      <FooterSection title="Publications">
+      <FooterBrand>Ivoire DS</FooterBrand>
+      <FooterSection title="Contenu">
         <li>
-          <a href="#">Documents</a>
+          <a href="#">Articles</a>
         </li>
       </FooterSection>
-      <FooterBottom>Mentions legales</FooterBottom>
+      <FooterBottom>Mentions légales</FooterBottom>
     </Footer>
   ),
 };

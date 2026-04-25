@@ -20,12 +20,11 @@ describe('Card', () => {
   it('handles interactive cards', () => {
     const handleClick = jest.fn();
     render(<Card interactive onClick={handleClick}>Interactive card</Card>);
-    const card = screen.getByText('Interactive card').closest('.ivds-card');
+    const card = screen.getByRole('button');
     
     expect(card).toHaveClass('ivds-card--interactive');
-    expect(card).toHaveAttribute('role', 'button');
     
-    fireEvent.click(card!);
+    fireEvent.click(card);
     expect(handleClick).toHaveBeenCalled();
   });
 
@@ -65,10 +64,7 @@ describe('Card', () => {
       </Card>
     );
     
-    const header = screen.getByText('Header').closest('.ivds-card__header');
-    const footer = screen.getByText('Footer').closest('.ivds-card__footer');
-    
-    expect(header).toHaveClass('ivds-card__header--compact');
-    expect(footer).toHaveClass('ivds-card__footer--compact');
+    const card = screen.getByText('Content').closest('.ivds-card');
+    expect(card).toHaveClass('ivds-card--compact');
   });
 });

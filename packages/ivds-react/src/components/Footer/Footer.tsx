@@ -1,7 +1,10 @@
 import React from 'react';
 import { BaseComponentProps } from '../../utils/types';
+import { useStableId } from '../../utils/useStableId';
 
-export interface FooterProps extends BaseComponentProps {
+export interface FooterProps
+  extends BaseComponentProps,
+    Omit<React.HTMLAttributes<HTMLElement>, keyof BaseComponentProps | 'children'> {
   /** Whether to use light theme */
   light?: boolean;
   /** Number of columns in the grid */
@@ -48,34 +51,56 @@ export const Footer: React.FC<FooterProps> = ({
   );
 };
 
-export const FooterBrand: React.FC<BaseComponentProps> = ({ children, className = '', ...props }) => (
-  <div className={`ivds-footer__brand ${className}`} {...props}>
+export const FooterBrand: React.FC<
+  BaseComponentProps & Omit<React.HTMLAttributes<HTMLDivElement>, keyof BaseComponentProps | 'children'>
+> = ({ children, className = '', ...props }) => (
+  <div className={['ivds-footer__brand', className].filter(Boolean).join(' ')} {...props}>
     {children}
   </div>
 );
 
-export const FooterSection: React.FC<BaseComponentProps & { title?: string }> = ({ 
-  title, 
-  children, 
-  className = '', 
-  ...props 
-}) => (
-  <div className={`ivds-footer__section ${className}`} {...props}>
-    {title && <h4 className="ivds-footer__section-title">{title}</h4>}
-    <ul className="ivds-footer__section-list">
-      {children}
-    </ul>
-  </div>
-);
+export interface FooterSectionProps
+  extends BaseComponentProps,
+    Omit<React.HTMLAttributes<HTMLElement>, keyof BaseComponentProps | 'children' | 'title'> {
+  title?: React.ReactNode;
+}
 
-export const FooterSocial: React.FC<BaseComponentProps> = ({ children, className = '', ...props }) => (
-  <div className={`ivds-footer__social ${className}`} {...props}>
+export const FooterSection: React.FC<FooterSectionProps> = ({
+  title,
+  children,
+  className = '',
+  id,
+  ...props
+}) => {
+  const titleId = useStableId(id ? `${id}-title` : undefined, 'ivds-footer-section');
+
+  return (
+    <section
+      id={id}
+      className={['ivds-footer__section', className].filter(Boolean).join(' ')}
+      aria-labelledby={title ? titleId : undefined}
+      {...props}
+    >
+      {title && <h4 id={titleId} className="ivds-footer__section-title">{title}</h4>}
+      <ul className="ivds-footer__section-list">
+        {children}
+      </ul>
+    </section>
+  );
+};
+
+export const FooterSocial: React.FC<
+  BaseComponentProps & Omit<React.HTMLAttributes<HTMLDivElement>, keyof BaseComponentProps | 'children'>
+> = ({ children, className = '', ...props }) => (
+  <div className={['ivds-footer__social', className].filter(Boolean).join(' ')} {...props}>
     {children}
   </div>
 );
 
-export const FooterBottom: React.FC<BaseComponentProps> = ({ children, className = '', ...props }) => (
-  <div className={`ivds-footer__bottom ${className}`} {...props}>
+export const FooterBottom: React.FC<
+  BaseComponentProps & Omit<React.HTMLAttributes<HTMLDivElement>, keyof BaseComponentProps | 'children'>
+> = ({ children, className = '', ...props }) => (
+  <div className={['ivds-footer__bottom', className].filter(Boolean).join(' ')} {...props}>
     {children}
   </div>
 );

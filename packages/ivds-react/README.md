@@ -47,6 +47,16 @@ function App() {
 |-----------|-------------------|
 | `Button` | variant, size, loading, disabled, fullWidth, iconLeft, iconRight |
 | `TextInput` | label, type, error, success, helperText, iconLeft, multiline |
+| `TextArea` | label, rows, error, helperText |
+| `NumberInput` | label, min, max, step, onValueChange |
+| `PasswordInput` | label, includeShowPasswordButton, initiallyRevealed |
+| `PhoneInput` | label, helperText, autoComplete |
+| `DateInput` | label, min, max, helperText |
+| `TimeInput` | label, step, helperText |
+| `Fieldset` | legend, description, helperText, error |
+| `SelectionGroup` | legend, direction, error |
+| `ErrorSummary` | title, description, errors |
+| `FileInput` | label, buttonLabel, multiple, error |
 | `Checkbox` | label, checked, disabled |
 | `RadioButton` | label, value, checked, disabled |
 | `Select` | label, options, value, onChange |
@@ -58,6 +68,22 @@ function App() {
 | Composant | Props principales |
 |-----------|-------------------|
 | `Card` | variant (elevated, flat, bordered), interactive, compact |
+| `LoadingSpinner` | small, multicolor, loadingText |
+| `StatusLabel` | type, iconStart |
+| `Tooltip` | placement, small, boxShadow, buttonLabel |
+| `ToggleButton` | label, checked, onChange, variant, tooltip |
+| `Accordion` | heading, headingLevel, initiallyOpen, card, size |
+| `Hero` | title, text, imageSrc, variant, centeredContent, actions |
+| `Highlight` | text, type (highlight/quote), size, reference |
+| `Linkbox` | href, heading, text, imgSrc, external, border |
+| `Table` | cols, rows, heading, dense, striped |
+| `Stepper` | steps, selectedStep, small, onStepClick |
+| `StepByStep` | title, steps, numberedList, helpText |
+| `CookieConsent` | title, description, actions |
+| `Logo` | src, alt, size |
+| `ImageWithCard` | src, cardLayout, cardAlignment, fullWidth |
+| `Login` | title, description, actions, footer |
+| `Koros` | type, dense, flipVertical |
 | `Modal` | open, onClose, title, size |
 | `Tabs` | activeTab, onChange, items |
 | `Alert` | variant (success, warning, error, info), closeable |
@@ -69,61 +95,81 @@ function App() {
 
 | Composant | Props principales |
 |-----------|-------------------|
-| `Header` | sticky, glass, dark |
-| `Header.Brand` | Logo et nom du site |
-| `Header.Nav` | Liens de navigation |
-| `Footer` | Pied de page multi-sections |
-| `Navigation` | items, activeItem |
+| `Header` | sticky, glass, scrolled, dark, maxWidth |
+| `HeaderBrand` | Bloc de marque du header |
+| `HeaderNav` | Navigation principale du header |
+| `HeaderActions` | Zone d'actions du header |
+| `Footer` | light, columns, maxWidth |
+| `Navigation` | Navigation horizontale composee de `NavigationLink` |
+| `SideNav` | Navigation laterale composee de `SideNavItem` |
+| `SideNavigation` | Alias explicite de la navigation laterale |
 
 ### Utilitaires
 
 | Composant | Description |
 |-----------|-------------|
+| `Container` | Contrainte de largeur et gutters coherents |
+| `Columns` | Mise en colonnes responsive ou fixe |
+| `Section` | Bloc de section themable avec contenu contraint |
+| `Link` | Lien inline ou habille en bouton |
+| `Pagination` | Pagination accessible pour listes et resultats |
 | `Box` | Conteneur generique avec props de spacing |
 | `Flex` | Conteneur flexbox |
 | `Grid` | Conteneur grille CSS |
 
 ---
 
-## Composants gouvernementaux
-
-Les composants gov sont conçus pour les portails publics ivoiriens, avec support bilingue natif :
+## Exemple de structure
 
 ```tsx
 import {
-  GovShell,
-  GovHeader,
-  GovLanguageSwitcher,
-  GovPrimaryNav,
-  GovTopPromo,
-  GovFlashTicker,
-  GovServiceDirectory,
-  GovNewsPanel,
-  GovAgendaPanel,
-  GovMegaFooter,
-} from '@ivds/react/gov';
-```
+  Header,
+  HeaderBrand,
+  HeaderNav,
+  HeaderActions,
+  Navigation,
+  NavigationLink,
+  Footer,
+  FooterBrand,
+  FooterSection,
+  FooterBottom,
+  Button,
+} from '@ivds/react';
 
-### Exemple complet
-
-```tsx
-function PortailGouv() {
+function PortailProduit() {
   return (
-    <GovShell locale="fr">
-      <GovHeader siteName="Portail des Services Publics">
-        <GovLanguageSwitcher currentLang="fr" />
-      </GovHeader>
-      <GovPrimaryNav items={navigation} />
-      <GovTopPromo
-        title="Bienvenue sur le portail des services publics"
-        cta={{ label: 'Decouvrir nos services', href: '/services' }}
-      />
-      <main>
-        <GovServiceDirectory services={services} />
-        <GovNewsPanel articles={actualites} />
-      </main>
-      <GovMegaFooter columns={footer} />
-    </GovShell>
+    <>
+      <Header sticky glass>
+        <HeaderBrand>
+          <strong>Ivoire DS</strong>
+        </HeaderBrand>
+
+        <HeaderNav aria-label="Navigation principale">
+          <a href="#" aria-current="page">Fondations</a>
+          <a href="#">Composants</a>
+          <a href="#">Guidelines</a>
+        </HeaderNav>
+
+        <HeaderActions>
+          <Button size="small">Commencer</Button>
+        </HeaderActions>
+      </Header>
+
+      <Navigation aria-label="Navigation secondaire">
+        <NavigationLink href="#" active>Vue d’ensemble</NavigationLink>
+        <NavigationLink href="#">Documentation</NavigationLink>
+        <NavigationLink href="#">Ressources</NavigationLink>
+      </Navigation>
+
+      <Footer>
+        <FooterBrand>Ivoire Design System</FooterBrand>
+        <FooterSection title="Ressources">
+          <li><a href="#">Storybook</a></li>
+          <li><a href="#">Guidelines</a></li>
+        </FooterSection>
+        <FooterBottom>© 2026 Ivoire Design System</FooterBottom>
+      </Footer>
+    </>
   );
 }
 ```
