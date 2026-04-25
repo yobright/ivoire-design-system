@@ -1,6 +1,6 @@
 // Global IVDS theme contract
-// Civic modern direction inspired by institutional systems:
-// high contrast, strong typography, clear state feedback.
+// Neutral, product-first foundation inspired by large public design systems
+// and adapted to a modern African visual language.
 
 :root {
   color-scheme: light;
@@ -10,130 +10,172 @@
   --fontFamily-secondary: var(--typography-fontFamilies-secondary, 'IBM Plex Sans', 'Inter', sans-serif);
   --fontFamily-display: var(--typography-fontFamilies-display, 'IBM Plex Sans', 'Inter', sans-serif);
 
-  // Brand colors are defined by @ivds/design-tokens (all.css).
-  // No re-declaration here — tokens provide the full brand palette:
-  //   --color-brand-primary-{50..950}   (burnt orange)
-  //   --color-brand-secondary-{50..950} (green)
-  //   --color-brand-accent-{50..950}    (blue)
+  // Brand aliases
+  --ivds-brand-primary: var(--color-brand-primary-500, #ff9f1c);
+  --ivds-brand-secondary: var(--color-brand-secondary-500, #2ec4b6);
+  --ivds-brand-accent: var(--color-brand-accent-500, #14b8a6);
+  --ivds-brand-premium: var(--color-brand-premium-500, #f4a261);
+  --ivds-brand-earth: var(--color-brand-earth-500, #9b2226);
 
   // Neutral aliases
-  --color-semantic-neutral-50: var(--color-ui-neutral-50, #f7f8fa);
-  --color-semantic-neutral-100: var(--color-ui-neutral-100, #f1f3f5);
-  --color-semantic-neutral-200: var(--color-ui-neutral-200, #e2e7ec);
-  --color-semantic-neutral-300: var(--color-ui-neutral-300, #cfd6dd);
-  --color-semantic-neutral-400: var(--color-ui-neutral-400, #a1adba);
-  --color-semantic-neutral-500: var(--color-ui-neutral-500, #6b7785);
-  --color-semantic-neutral-600: var(--color-ui-neutral-600, #4d5968);
-  --color-semantic-neutral-700: var(--color-ui-neutral-700, #36414f);
-  --color-semantic-neutral-800: var(--color-ui-neutral-800, #202a36);
-  --color-semantic-neutral-900: var(--color-ui-neutral-900, #121a24);
+  --color-semantic-neutral-50: var(--color-ui-neutral-50, #fafaf8);
+  --color-semantic-neutral-100: var(--color-ui-neutral-100, #f5f5f0);
+  --color-semantic-neutral-200: var(--color-ui-neutral-200, #e7e5dd);
+  --color-semantic-neutral-300: var(--color-ui-neutral-300, #d6d3c7);
+  --color-semantic-neutral-400: var(--color-ui-neutral-400, #a8a29e);
+  --color-semantic-neutral-500: var(--color-ui-neutral-500, #78716c);
+  --color-semantic-neutral-600: var(--color-ui-neutral-600, #57534e);
+  --color-semantic-neutral-700: var(--color-ui-neutral-700, #44403c);
+  --color-semantic-neutral-800: var(--color-ui-neutral-800, #292524);
+  --color-semantic-neutral-900: var(--color-ui-neutral-900, #1c1917);
+  --color-semantic-neutral-950: var(--color-ui-neutral-950, #0c0a09);
 
   // Feedback aliases
-  --color-semantic-success-50: var(--color-ui-success-50, #edf9f4);
-  --color-semantic-success-500: var(--color-ui-success-500, #19895d);
-  --color-semantic-success-600: var(--color-ui-success-600, #0f6f4a);
-  --color-semantic-success-700: var(--color-ui-success-700, #0a573a);
-  --color-semantic-warning-50: var(--color-ui-warning-50, #fff8eb);
-  --color-semantic-warning-500: var(--color-ui-warning-500, #ce790b);
-  --color-semantic-warning-600: var(--color-ui-warning-600, #a76009);
-  --color-semantic-warning-700: var(--color-ui-warning-700, #834b08);
-  --color-semantic-error-50: var(--color-ui-error-50, #fff1f2);
-  --color-semantic-error-500: var(--color-ui-error-500, #d73a50);
-  --color-semantic-error-600: var(--color-ui-error-600, #b72a41);
-  --color-semantic-error-700: var(--color-ui-error-700, #922036);
-  --color-semantic-info-50: var(--color-ui-info-50, #edf4ff);
-  --color-semantic-info-500: var(--color-ui-info-500, #1f6fe5);
-  --color-semantic-info-600: var(--color-ui-info-600, #0050c8);
-  --color-semantic-info-700: var(--color-ui-info-700, #003d99);
+  --color-semantic-success-50: var(--color-ui-success-50, #effaf3);
+  --color-semantic-success-500: var(--color-ui-success-500, #2a9d5b);
+  --color-semantic-success-600: var(--color-ui-success-600, #1f7a47);
+  --color-semantic-success-700: var(--color-ui-success-700, #185f38);
+  --color-semantic-success-foreground: var(--color-ui-success-foreground, #fff);
+  --color-semantic-warning-50: var(--color-ui-warning-50, #fff7ed);
+  --color-semantic-warning-500: var(--color-ui-warning-500, #ff9f1c);
+  --color-semantic-warning-600: var(--color-ui-warning-600, #f08c00);
+  --color-semantic-warning-700: var(--color-ui-warning-700, #e67700);
+  --color-semantic-warning-foreground: var(--color-ui-warning-foreground, #000);
+  --color-semantic-error-50: var(--color-ui-error-50, #fdf2f2);
+  --color-semantic-error-500: var(--color-ui-error-500, #9b2226);
+  --color-semantic-error-600: var(--color-ui-error-600, #7f1d1d);
+  --color-semantic-error-700: var(--color-ui-error-700, #6b0f1a);
+  --color-semantic-error-foreground: var(--color-ui-error-foreground, #fff);
+  --color-semantic-destructive-50: var(--color-semantic-error-50, #fdf2f2);
+  --color-semantic-destructive-500: var(--color-semantic-error-500, #9b2226);
+  --color-semantic-destructive-600: var(--color-semantic-error-600, #7f1d1d);
+  --color-semantic-destructive-700: var(--color-semantic-error-700, #6b0f1a);
+  --color-semantic-destructive-foreground: var(--color-semantic-error-foreground, #fff);
+  --color-semantic-info-50: var(--color-ui-info-50, #f0fdfa);
+  --color-semantic-info-500: var(--color-ui-info-500, #14b8a6);
+  --color-semantic-info-600: var(--color-ui-info-600, #0f766e);
+  --color-semantic-info-700: var(--color-ui-info-700, #115e59);
+  --color-semantic-info-foreground: var(--color-ui-info-foreground, #1c1917);
 
   // Surface + text system
-  --ivds-surface-page: var(--color-semantic-neutral-50);
-  --ivds-surface-base: #fff;
-  --ivds-surface-muted: var(--color-semantic-neutral-100);
-  --ivds-surface-strong: var(--color-semantic-neutral-900);
-  --ivds-border-subtle: var(--color-semantic-neutral-200);
-  --ivds-border-strong: var(--color-semantic-neutral-400);
-  --ivds-border-brand: var(--color-brand-accent-600);
-  --ivds-text-primary: var(--color-semantic-neutral-900);
-  --ivds-text-secondary: var(--color-semantic-neutral-800);
-  --ivds-text-muted: var(--color-semantic-neutral-600);
+  --ivds-surface-page: var(--color-semantic-surface-secondary, #fafaf8);
+  --ivds-surface-base: var(--color-semantic-surface-primary, #fff);
+  --ivds-surface-muted: var(--color-semantic-surface-tertiary, #f5f5f0);
+  --ivds-surface-strong: var(--color-semantic-surface-inverse, #1c1917);
+  --ivds-surface-accent: var(--color-brand-primary-50, #fff4e6);
+  --ivds-surface-secondary-accent: var(--color-brand-secondary-50, #ecfdf9);
+  --ivds-surface-premium: var(--color-brand-premium-50, #fff8e1);
+  --ivds-border-subtle: var(--color-semantic-neutral-200, #e7e5dd);
+  --ivds-border-strong: var(--color-semantic-neutral-300, #d6d3c7);
+  --ivds-border-brand: var(--color-brand-accent-400, #2dd4bf);
+  --ivds-border-primary: var(--color-brand-primary-300, #ffc078);
+  --ivds-text-primary: var(--color-semantic-neutral-900, #1c1917);
+  --ivds-text-secondary: var(--color-semantic-neutral-700, #44403c);
+  --ivds-text-muted: var(--color-semantic-neutral-500, #78716c);
   --ivds-text-on-strong: #fff;
+  --ivds-text-on-brand: #fff;
 
   // Interactive aliases
-  --ivds-interactive-primary-bg: var(--color-brand-accent-600);
-  --ivds-interactive-primary-bg-hover: var(--color-brand-accent-700);
-  --ivds-interactive-primary-bg-active: var(--color-brand-accent-800);
+  --ivds-interactive-primary-bg: var(--color-brand-primary-500, #ff9f1c);
+  --ivds-interactive-primary-bg-hover: var(--color-brand-primary-600, #f08c00);
+  --ivds-interactive-primary-bg-active: var(--color-brand-primary-700, #e67700);
   --ivds-interactive-primary-text: #fff;
+  --ivds-interactive-primary-shadow: var(--shadow-md, 0 4px 12px rgba(0, 0, 0, 0.08));
   --ivds-interactive-secondary-bg: #fff;
-  --ivds-interactive-secondary-bg-hover: var(--color-brand-accent-50);
-  --ivds-interactive-secondary-border: var(--color-brand-accent-600);
-  --ivds-interactive-secondary-text: var(--color-brand-accent-700);
-  --ivds-interactive-supplementary-bg: var(--color-semantic-neutral-100);
-  --ivds-interactive-supplementary-bg-hover: var(--color-semantic-neutral-200);
-  --ivds-interactive-supplementary-text: var(--color-brand-accent-700);
+  --ivds-interactive-secondary-bg-hover: var(--color-brand-secondary-50, #ecfdf9);
+  --ivds-interactive-secondary-border: var(--color-brand-secondary-600, #14b8a6);
+  --ivds-interactive-secondary-text: var(--color-brand-secondary-800, #115e59);
+  --ivds-interactive-accent-bg: var(--color-brand-accent-500, #14b8a6);
+  --ivds-interactive-accent-bg-hover: var(--color-brand-accent-600, #0f766e);
+  --ivds-interactive-accent-bg-active: var(--color-brand-accent-700, #115e59);
+  --ivds-interactive-accent-text: #fff;
+  --ivds-interactive-supplementary-bg: transparent;
+  --ivds-interactive-supplementary-bg-hover: var(--color-semantic-neutral-100, #f5f5f0);
+  --ivds-interactive-supplementary-text: var(--ivds-text-primary, #1c1917);
+
+  // Gradient aliases
+  --ivds-gradient-primary: var(--color-brand-gradient-primary, linear-gradient(135deg, #ff9f1c 0%, #2ec4b6 100%));
+  --ivds-gradient-sunset: var(--color-brand-gradient-sunset, linear-gradient(135deg, #ff9f1c 0%, #f4a261 50%, #e76f51 100%));
+  --ivds-gradient-nature: var(--color-brand-gradient-nature, linear-gradient(135deg, #2ec4b6 0%, #283618 100%));
+  --ivds-gradient-premium: var(--color-brand-gradient-premium, linear-gradient(135deg, #f4a261 0%, #ff9f1c 100%));
 
   // Radius + shadow aliases
-  --ivds-radius-xs: var(--borderRadius-xs, 0);
-  --ivds-radius-s: var(--borderRadius-sm, 0.125rem);
-  --ivds-radius-m: var(--borderRadius-md, 0.25rem);
-  --ivds-radius-l: var(--borderRadius-lg, 0.375rem);
-  --ivds-shadow-sm: var(--shadow-xs, 0 1px 0 rgba(7, 11, 16, 0.10));
-  --ivds-shadow-md: var(--shadow-sm, 0 1px 2px rgba(7, 11, 16, 0.12));
-  --ivds-shadow-lg: var(--shadow-md, 0 4px 10px rgba(7, 11, 16, 0.14));
+  --ivds-radius-xs: var(--borderRadius-xs, 0.0625rem);
+  --ivds-radius-s: var(--borderRadius-lg, 0.375rem);
+  --ivds-radius-m: var(--borderRadius-2xl, 0.625rem);
+  --ivds-radius-l: var(--borderRadius-4xl, 1rem);
+  --ivds-shadow-xs: var(--shadow-xs, 0 1px 2px rgba(0, 0, 0, 0.04));
+  --ivds-shadow-sm: var(--shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.05));
+  --ivds-shadow-md: var(--shadow-md, 0 4px 12px rgba(0, 0, 0, 0.08));
+  --ivds-shadow-lg: var(--shadow-lg, 0 10px 25px rgba(0, 0, 0, 0.12));
+  --ivds-shadow-xl: var(--shadow-xl, 0 20px 40px rgba(0, 0, 0, 0.15));
 
   // Layout defaults
-  --container-max-width: 1240px;
+  --container-max-width: 1280px;
 
   // Focus treatment — outline-based (no box-shadow conflict with elevated components)
-  --ivds-focus-ring-color: var(--color-brand-accent-600, #1058b8);
+  --ivds-focus-ring-color: var(--color-brand-accent-500, #14b8a6);
   --ivds-focus-ring-width: 3px;
   --ivds-focus-ring-offset: 2px;
-  --ivds-focus-ring: 0 0 0 3px rgba(0, 80, 200, 0.30); // legacy alias
+  --ivds-focus-ring: var(--shadow-glow-secondary, 0 0 0 3px rgba(46, 196, 182, 0.28));
 
   // Motion
   --ivds-motion-fast: var(--animation-duration-fast, 150ms);
   --ivds-motion-normal: var(--animation-duration-normal, 250ms);
-  --ivds-motion-ease: var(--animation-easing-easeOut, cubic-bezier(0, 0, 0.2, 1));
+  --ivds-motion-slow: var(--animation-duration-slow, 400ms);
+  --ivds-motion-ease: var(--animation-easing-standard, cubic-bezier(0.4, 0, 0.2, 1));
+  --ivds-motion-smooth: var(--animation-easing-smooth, cubic-bezier(0.25, 0.8, 0.25, 1));
+  --ivds-motion-bounce: var(--animation-easing-bounce, cubic-bezier(0.34, 1.56, 0.64, 1));
+  --ivds-transition-colors: var(--animation-transition-colors, color 150ms cubic-bezier(0.4, 0, 0.2, 1), background-color 150ms cubic-bezier(0.4, 0, 0.2, 1), border-color 150ms cubic-bezier(0.4, 0, 0.2, 1));
+  --ivds-transition-surface: var(--animation-transition-surface, background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1), transform 250ms cubic-bezier(0.4, 0, 0.2, 1));
+  --ivds-transition-transform: var(--animation-transition-transform, transform 250ms cubic-bezier(0.34, 1.56, 0.64, 1));
 }
 
 [data-ivds-theme='dark'] {
   color-scheme: dark;
 
-  --ivds-surface-page: #0f1620;
-  --ivds-surface-base: #141e2a;
-  --ivds-surface-muted: #1c2734;
-  --ivds-surface-strong: #070b10;
-  --ivds-border-subtle: #283443;
-  --ivds-border-strong: #415065;
-  --ivds-text-primary: #f6f8fb;
-  --ivds-text-secondary: #dde3ea;
-  --ivds-text-muted: #b7c2ce;
+  --ivds-surface-page: #120f0d;
+  --ivds-surface-base: #1a1613;
+  --ivds-surface-muted: #241f1b;
+  --ivds-surface-strong: #0c0a09;
+  --ivds-border-subtle: #3f3a36;
+  --ivds-border-strong: #57534e;
+  --ivds-border-brand: var(--color-brand-accent-400, #2dd4bf);
+  --ivds-text-primary: #f8f5f1;
+  --ivds-text-secondary: #e7e5dd;
+  --ivds-text-muted: #d6d3c7;
   --ivds-text-on-strong: #fff;
-  --ivds-interactive-primary-bg: var(--color-brand-accent-500);
-  --ivds-interactive-primary-bg-hover: var(--color-brand-accent-600);
-  --ivds-interactive-primary-bg-active: var(--color-brand-accent-700);
+  --ivds-text-on-brand: #fff;
+  --ivds-interactive-primary-bg: var(--color-brand-primary-500, #ff9f1c);
+  --ivds-interactive-primary-bg-hover: var(--color-brand-primary-400, #ffb457);
+  --ivds-interactive-primary-bg-active: var(--color-brand-primary-600, #f08c00);
   --ivds-interactive-secondary-bg: transparent;
-  --ivds-interactive-secondary-bg-hover: rgba(147, 188, 255, 0.15);
-  --ivds-interactive-secondary-border: var(--color-brand-accent-400);
-  --ivds-interactive-secondary-text: var(--color-brand-accent-300);
-  --ivds-interactive-supplementary-bg: rgba(255, 255, 255, 0.08);
-  --ivds-interactive-supplementary-bg-hover: rgba(255, 255, 255, 0.14);
-  --ivds-interactive-supplementary-text: #e7eefb;
-  --ivds-focus-ring-color: var(--color-brand-accent-400, #5a93f5);
+  --ivds-interactive-secondary-bg-hover: rgba(46, 196, 182, 0.14);
+  --ivds-interactive-secondary-border: var(--color-brand-secondary-400, #34d399);
+  --ivds-interactive-secondary-text: var(--color-brand-accent-300, #5eead4);
+  --ivds-interactive-accent-bg: var(--color-brand-accent-500, #14b8a6);
+  --ivds-interactive-accent-bg-hover: var(--color-brand-accent-400, #2dd4bf);
+  --ivds-interactive-accent-bg-active: var(--color-brand-accent-600, #0f766e);
+  --ivds-interactive-supplementary-bg: rgba(255, 255, 255, 0.06);
+  --ivds-interactive-supplementary-bg-hover: rgba(255, 255, 255, 0.12);
+  --ivds-interactive-supplementary-text: #f8f5f1;
+  --ivds-focus-ring-color: var(--color-brand-accent-300, #5eead4);
+  --ivds-focus-ring: var(--shadow-glow-secondary, 0 0 0 3px rgba(46, 196, 182, 0.28));
 }
 
 .ivds-theme-surface {
   background-color: var(--ivds-surface-base);
   border: 1px solid var(--ivds-border-subtle);
-  border-radius: var(--ivds-radius-m);
+  border-radius: var(--ivds-radius-l);
   box-shadow: var(--ivds-shadow-sm);
+  transition: var(--ivds-transition-surface);
 }
 
 .ivds-theme-eyebrow {
   display: inline-block;
-  color: var(--color-brand-accent-700, #0b4593);
+  color: var(--color-brand-primary-700, #e67700);
   font-size: var(--fontSize-xs, 0.75rem);
   font-weight: var(--fontWeight-semibold, 600);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }

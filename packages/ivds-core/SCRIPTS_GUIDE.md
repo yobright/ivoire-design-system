@@ -233,7 +233,7 @@ yarn test:coverage
 ---
 
 ### `yarn scss-tests`
-Alias for `yarn test` (Helsinki compatibility).
+Alias for `yarn test`.
 
 ```bash
 yarn scss-tests

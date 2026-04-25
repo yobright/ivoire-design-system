@@ -14,35 +14,35 @@ body {
 }
 
 main {
-  flex: 1;
+  flex: 1 0 auto;
 }
 
 .ivds-container {
   width: 100%;
-  max-width: var(--container-max-width, 1200px);
+  max-width: var(--container-max-width, var(--breakpoint-container-width-xl, 1248px));
   margin-left: auto;
   margin-right: auto;
-  padding-left: clamp(var(--spacing-4, 1rem), 3vw, var(--spacing-8, 2rem));
-  padding-right: clamp(var(--spacing-4, 1rem), 3vw, var(--spacing-8, 2rem));
+  padding-left: max(env(safe-area-inset-left), clamp(var(--spacing-4, 1rem), 3vw, var(--spacing-8, 2rem)));
+  padding-right: max(env(safe-area-inset-right), clamp(var(--spacing-4, 1rem), 3vw, var(--spacing-8, 2rem)));
 
   &--xs {
-    max-width: 540px;
+    max-width: var(--breakpoint-container-width-xs, 320px);
   }
 
   &--sm {
-    max-width: 720px;
+    max-width: var(--breakpoint-container-width-s, 576px);
   }
 
   &--md {
-    max-width: 920px;
+    max-width: var(--breakpoint-container-width-m, 768px);
   }
 
   &--lg {
-    max-width: 1160px;
+    max-width: var(--breakpoint-container-width-l, 992px);
   }
 
   &--xl {
-    max-width: 1320px;
+    max-width: var(--breakpoint-container-width-2xl, 1440px);
   }
 }
 
@@ -66,8 +66,8 @@ main {
 }
 
 .ivds-section {
-  padding-top: clamp(var(--spacing-10, 2.5rem), 6vw, var(--spacing-16, 4rem));
-  padding-bottom: clamp(var(--spacing-10, 2.5rem), 6vw, var(--spacing-16, 4rem));
+  padding-top: clamp(var(--spacing-layout-s, 2rem), 6vw, var(--spacing-layout-xl, 6rem));
+  padding-bottom: clamp(var(--spacing-layout-s, 2rem), 6vw, var(--spacing-layout-xl, 6rem));
 }
 
 .ivds-stack {

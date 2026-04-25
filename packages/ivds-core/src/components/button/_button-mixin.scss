@@ -12,19 +12,24 @@
 @mixin button-base {
   // Per-component CSS variable API
   --background-color: transparent;
-  --color: var(--ivds-text-primary, #121a24);
+  --color: var(--ivds-text-primary, #1c1917);
   --border-color: transparent;
   --hover-background-color: transparent;
   --hover-border-color: transparent;
   --active-background-color: transparent;
-  --disabled-background-color: var(--ivds-surface-muted, #f1f3f5);
-  --disabled-border-color: var(--ivds-border-subtle, #e2e7ec);
-  --disabled-color: var(--ivds-text-muted, #6b7785);
+  --box-shadow: none;
+  --hover-box-shadow: var(--box-shadow);
+  --hover-transform: translateY(-2px);
+  --active-transform: translateY(0) scale(0.98);
+  --loading-indicator-color: var(--color);
+  --disabled-background-color: var(--ivds-surface-muted, #f5f5f0);
+  --disabled-border-color: var(--ivds-border-subtle, #e7e5dd);
+  --disabled-color: var(--ivds-text-muted, #78716c);
   --font-size: var(--fontSize-base, 1rem);
   --min-height: 48px;
   --padding-block: var(--spacing-3, 0.75rem);
   --padding-inline: var(--spacing-6, 1.5rem);
-  --border-radius: var(--ivds-radius-s, 0.125rem);
+  --border-radius: var(--ivds-radius-l, 1rem);
 
   display: inline-flex;
   align-items: center;
@@ -36,20 +41,21 @@
   border: 2px solid var(--border-color);
   border-radius: var(--border-radius);
   background-color: var(--background-color);
+  box-shadow: var(--box-shadow);
   color: var(--color);
   font-family: var(--fontFamily-primary, system-ui, sans-serif);
   font-size: var(--font-size);
-  font-weight: var(--fontWeight-bold, 700);
+  font-weight: var(--fontWeight-semibold, 600);
   letter-spacing: 0.01em;
   line-height: 1.1;
   text-decoration: none;
+  text-align: center;
   cursor: pointer;
   user-select: none;
   white-space: nowrap;
   position: relative;
   transition:
-    background-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
-    border-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
+    var(--ivds-transition-surface, background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1), transform 250ms cubic-bezier(0.4, 0, 0.2, 1)),
     color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease);
 
   @include focus-ring;
@@ -57,19 +63,24 @@
   &:hover:not(:disabled, [aria-disabled='true']) {
     background-color: var(--hover-background-color);
     border-color: var(--hover-border-color);
+    box-shadow: var(--hover-box-shadow);
+    transform: var(--hover-transform);
   }
 
   &:active:not(:disabled, [aria-disabled='true']) {
     background-color: var(--active-background-color);
+    transform: var(--active-transform);
   }
 
   &:disabled,
   &[aria-disabled='true'] {
     background-color: var(--disabled-background-color);
     border-color: var(--disabled-border-color);
+    box-shadow: none;
     color: var(--disabled-color);
     cursor: not-allowed;
     pointer-events: none;
+    transform: none;
   }
 }
 
@@ -98,15 +109,15 @@
   }
 }
 
-@mixin button-variant-gradient($gradient, $text-color: #fff, $hover-filter: brightness(0.95)) {
+@mixin button-variant-gradient($gradient, $text-color: #fff) {
+  --background-color: transparent;
   --border-color: transparent;
   --color: #{$text-color};
+  --box-shadow: var(--ivds-shadow-md, 0 4px 12px rgba(0, 0, 0, 0.08));
+  --hover-box-shadow: var(--ivds-shadow-lg, 0 10px 25px rgba(0, 0, 0, 0.12));
 
-  background: $gradient;
-
-  &:hover:not(:disabled, [aria-disabled='true']) {
-    filter: $hover-filter;
-  }
+  background-image: $gradient;
+  background-color: transparent;
 }
 
 @mixin button-variant-outline($border-color, $text-color, $hover-bg: null) {
@@ -130,6 +141,8 @@
   --background-color: var(--ivds-surface-base, #fff);
   --border-color: var(--ivds-border-strong, #a1adba);
   --color: #{$text-color};
+  --box-shadow: var(--ivds-shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.05));
+  --hover-box-shadow: var(--ivds-shadow-md, 0 4px 12px rgba(0, 0, 0, 0.08));
 }
 
 @mixin button-size($padding-y, $padding-x, $font-size, $min-height: null) {
@@ -165,13 +178,13 @@
     left: 50%;
     width: 1rem;
     height: 1rem;
-    border: 2px solid currentcolor;
+    border: 2px solid var(--loading-indicator-color, currentcolor);
     border-radius: 9999px;
     border-right-color: transparent;
     border-bottom-color: transparent;
     transform: translate(-50%, -50%);
     animation: ivds-button-spin 0.7s linear infinite;
-    color: inherit;
+    color: var(--loading-indicator-color, currentcolor);
   }
 }
 

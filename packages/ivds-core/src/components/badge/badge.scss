@@ -10,47 +10,63 @@
   // Variants
   &--neutral {
     @include badge.badge-variant(
-      var(--color-semantic-neutral-100, #f1f3f5),
-      var(--color-semantic-neutral-700, #36414f),
-      var(--color-semantic-neutral-300, #cfd6dd)
+      var(--color-semantic-neutral-100, #f5f5f0),
+      var(--color-semantic-neutral-700, #44403c),
+      var(--color-semantic-neutral-300, #d6d3c7)
     );
   }
   
   &--primary {
     @include badge.badge-variant(
-      var(--color-brand-accent-50, #eef4ff),
-      var(--color-brand-accent-700, #0b4593),
-      var(--color-brand-accent-200, #bfd7ff)
+      var(--color-brand-primary-50, #fff4e6),
+      var(--color-brand-primary-700, #e67700),
+      var(--color-brand-primary-200, #ffd8a8)
+    );
+  }
+
+  &--accent {
+    @include badge.badge-variant(
+      var(--color-brand-accent-50, #f0fdfa),
+      var(--color-brand-accent-700, #115e59),
+      var(--color-brand-accent-200, #99f6e4)
+    );
+  }
+
+  &--premium {
+    @include badge.badge-variant(
+      var(--color-brand-premium-50, #fff8e1),
+      var(--color-brand-premium-800, #b45309),
+      var(--color-brand-premium-200, #ffe082)
     );
   }
   
   &--success {
     @include badge.badge-variant(
-      var(--color-semantic-success-50, #edf9f4),
-      var(--color-semantic-success-700, #0a573a),
-      var(--color-ui-success-200, #b8e9d2)
+      var(--color-semantic-success-50, #effaf3),
+      var(--color-semantic-success-700, #185f38),
+      var(--color-ui-success-200, #b4e5c7)
     );
   }
   
   &--warning {
     @include badge.badge-variant(
-      var(--color-semantic-warning-50, #fff8eb),
-      var(--color-semantic-warning-700, #834b08),
-      var(--color-ui-warning-200, #f6d6a7)
+      var(--color-semantic-warning-50, #fff7ed),
+      var(--color-semantic-warning-700, #e67700),
+      var(--color-ui-warning-200, #fed7aa)
     );
   }
   
   &--error {
     @include badge.badge-variant(
-      var(--color-semantic-error-50, #fff1f2),
-      var(--color-semantic-error-700, #922036),
-      var(--color-ui-error-200, #f2b8c1)
+      var(--color-semantic-error-50, #fdf2f2),
+      var(--color-semantic-error-700, #6b0f1a),
+      var(--color-ui-error-200, #fbd5d5)
     );
   }
   
   &--outline {
     background-color: transparent;
-    border: 1px solid var(--ivds-border-strong, #a1adba);
-    color: var(--ivds-text-secondary, #36414f);
+    border: 1px solid var(--ivds-border-strong, #d6d3c7);
+    color: var(--ivds-text-secondary, #44403c);
   }
 }

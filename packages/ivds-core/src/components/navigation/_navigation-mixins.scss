@@ -6,6 +6,8 @@
 @mixin navigation-base {
   display: flex;
   align-items: center;
+  width: 100%;
+  min-width: 0;
   font-family: var(--fontFamily-primary, system-ui, sans-serif);
 }
 
@@ -13,9 +15,11 @@
   display: flex;
   list-style: none;
   align-items: center;
-  gap: var(--spacing-3, 0.75rem);
+  flex-wrap: wrap;
+  gap: var(--spacing-4, 1rem);
   padding: 0;
   margin: 0;
+  min-width: 0;
 }
 
 @mixin navigation-link {
@@ -23,27 +27,29 @@
   display: inline-flex;
   align-items: center;
   gap: var(--spacing-2, 0.5rem);
-  min-height: 42px;
-  padding: var(--spacing-2, 0.5rem) 0;
+  min-height: 44px;
+  padding: var(--spacing-2, 0.5rem) var(--spacing-1, 0.25rem);
+  border-radius: var(--ivds-radius-s, 0.375rem);
   border-bottom: 3px solid transparent;
-  color: var(--ivds-text-secondary, #36414f);
+  color: var(--ivds-text-secondary, #44403c);
   font-size: var(--fontSize-base, 1rem);
   font-weight: var(--fontWeight-medium, 500);
   text-decoration: none;
-  transition:
-    color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
-    border-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease);
+  white-space: nowrap;
+  transition: var(--ivds-transition-surface, background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1), transform 250ms cubic-bezier(0.4, 0, 0.2, 1));
+  touch-action: manipulation;
 
   &:hover {
-    color: var(--ivds-text-primary, #121a24);
-    border-color: var(--ivds-border-strong, #a1adba);
+    color: var(--ivds-text-primary, #1c1917);
+    border-color: var(--ivds-border-strong, #d6d3c7);
   }
 
   @include focus-ring;
 
-  &.ivds-navigation__link--active {
-    color: var(--color-brand-accent-700, #0b4593);
-    border-color: var(--color-brand-accent-600, #1058b8);
+  &.ivds-navigation__link--active,
+  &[aria-current='page'] {
+    color: var(--color-brand-accent-700, #115e59);
+    border-color: var(--color-brand-accent-500, #14b8a6);
     font-weight: var(--fontWeight-semibold, 600);
   }
 }
@@ -51,36 +57,65 @@
 @mixin side-navigation-base {
   display: flex;
   flex-direction: column;
-  width: 300px;
-  height: 100%;
-  padding: var(--spacing-6, 1.5rem);
+  width: 100%;
+  max-width: 320px;
+  padding: var(--spacing-5, 1.25rem);
   background-color: var(--ivds-surface-base, #fff);
-  border-right: 1px solid var(--ivds-border-subtle, #e2e7ec);
+  border: 1px solid var(--ivds-border-subtle, #e7e5dd);
+  border-radius: var(--ivds-radius-l, 1rem);
+  box-shadow: var(--ivds-shadow-sm, 0 1px 2px rgba(15, 23, 42, 0.08));
+}
+
+@mixin side-navigation-list {
+  display: grid;
+  gap: var(--spacing-2, 0.5rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 @mixin side-navigation-item {
   width: 100%;
+}
 
-  .ivds-side-nav__link {
-    width: 100%;
-    justify-content: flex-start;
-    min-height: 42px;
-    padding: var(--spacing-2, 0.5rem) var(--spacing-3, 0.75rem);
-    border-radius: var(--ivds-radius-s, 0.125rem);
+@mixin side-navigation-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 44px;
+  padding: var(--spacing-3, 0.75rem) var(--spacing-4, 1rem);
+  border-radius: var(--ivds-radius-m, 0.625rem);
+  color: var(--ivds-text-secondary, #44403c);
+  font-size: var(--fontSize-sm, 0.875rem);
+  font-weight: var(--fontWeight-medium, 500);
+  text-decoration: none;
+  transition: var(--ivds-transition-surface, background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1), transform 250ms cubic-bezier(0.4, 0, 0.2, 1));
+  touch-action: manipulation;
 
-    &--active {
-      background-color: var(--color-brand-accent-50, #eef4ff);
-      color: var(--color-brand-accent-700, #0b4593);
+  &:hover {
+    background-color: var(--ivds-surface-muted, #f5f5f0);
+    color: var(--ivds-text-primary, #1c1917);
+  }
 
-      &::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 8px;
-        bottom: 8px;
-        width: 3px;
-        background-color: var(--color-brand-accent-600, #1058b8);
-      }
+  @include focus-ring;
+
+  &.ivds-side-nav__link--active,
+  &[aria-current='page'] {
+    background-color: var(--color-brand-accent-50, #f0fdfa);
+    color: var(--color-brand-accent-700, #115e59);
+    font-weight: var(--fontWeight-semibold, 600);
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      bottom: 10px;
+      width: 3px;
+      border-radius: var(--borderRadius-full, 9999px);
+      background-color: var(--color-brand-accent-500, #14b8a6);
     }
   }
 }

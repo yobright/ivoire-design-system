@@ -1,0 +1,21 @@
+.ivds-koros {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  color: var(--ivds-koros-color, var(--color-brand-primary-600, #1058b8));
+}
+
+.ivds-koros svg {
+  display: block;
+  width: 100%;
+  fill: currentcolor;
+}
+
+.ivds-koros--flip {
+  transform: scaleY(-1);
+}
+
+.ivds-koros--dense svg {
+  height: 12px;
+}

@@ -1,0 +1,128 @@
+.ivds-toggle-button {
+  --toggle-button-color: var(--color-semantic-success-600, #0f6f4a);
+  --toggle-button-hover-color: var(--color-semantic-success-700, #0a573a);
+
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 100%;
+}
+
+.ivds-toggle-button--inline {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.ivds-toggle-button__header {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-width: 0;
+}
+
+.ivds-toggle-button__label {
+  min-width: 0;
+  color: var(--ivds-text-primary, #111827);
+  font-size: var(--fontSize-md, 1rem);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.ivds-toggle-button__tooltip-button {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.ivds-toggle-button__control {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 4rem;
+  min-width: 4rem;
+  height: 2rem;
+  padding: 0.25rem;
+  border: 0;
+  border-radius: 9999px;
+  background-color: var(--ivds-surface-muted, #e5e7eb);
+  color: var(--color-semantic-error-600, #b91c1c);
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.ivds-toggle-button__control:hover {
+  background-color: var(--ivds-border-strong, #cbd5e1);
+}
+
+.ivds-toggle-button__control:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ivds-focus-ring, rgba(37, 99, 235, 0.35));
+}
+
+.ivds-toggle-button__control:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.ivds-toggle-button__control--checked {
+  background-color: var(--toggle-button-color);
+  color: #fff;
+}
+
+.ivds-toggle-button__control--checked:hover {
+  background-color: var(--toggle-button-hover-color);
+}
+
+.ivds-toggle-button__thumb {
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 9999px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.18);
+  transition: transform 0.2s ease;
+}
+
+.ivds-toggle-button__control--checked .ivds-toggle-button__thumb {
+  transform: translateX(2rem);
+}
+
+.ivds-toggle-button__icon {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+}
+
+.ivds-toggle-button__icon svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.ivds-toggle-button__icon--on {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.ivds-toggle-button__control--checked .ivds-toggle-button__icon--off {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.ivds-toggle-button__control--checked .ivds-toggle-button__icon--on {
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ivds-toggle-button__control,
+  .ivds-toggle-button__thumb {
+    transition: none;
+  }
+}

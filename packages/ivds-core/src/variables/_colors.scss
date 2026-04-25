@@ -24,13 +24,13 @@ $color-brand-green-light: $color-brand-green-light !default;
 $color-brand-green-medium-light: $color-brand-green-medium-light !default;
 $color-brand-green-dark: $color-brand-green-dark !default;
 
-// Cocoa - Representing cocoa production
+// Cocoa / Earth - Terre battue accent
 $color-brand-cocoa: $color-brand-cocoa !default;
 $color-brand-cocoa-light: $color-brand-cocoa-light !default;
 $color-brand-cocoa-medium-light: $color-brand-cocoa-medium-light !default;
 $color-brand-cocoa-dark: $color-brand-cocoa-dark !default;
 
-// Gold - Representing savanna landscapes
+// Gold / Premium - Or africain accent
 $color-brand-gold: $color-brand-gold !default;
 $color-brand-gold-light: $color-brand-gold-light !default;
 $color-brand-gold-medium-light: $color-brand-gold-medium-light !default;
@@ -53,6 +53,15 @@ $color-brand-primary-dark: $color-brand-orange-dark !default;
 $color-brand-secondary: $color-brand-green !default;
 $color-brand-secondary-light: $color-brand-green-light !default;
 $color-brand-secondary-dark: $color-brand-green-dark !default;
+
+// New semantic aliases for modern documentation and theme contracts
+$color-brand-earth: $color-brand-cocoa !default;
+$color-brand-earth-light: $color-brand-cocoa-light !default;
+$color-brand-earth-dark: $color-brand-cocoa-dark !default;
+
+$color-brand-premium: $color-brand-gold !default;
+$color-brand-premium-light: $color-brand-gold-light !default;
+$color-brand-premium-dark: $color-brand-gold-dark !default;
 
 // ============================================
 // UI COLORS - BASE (Neutrals, Black, White)

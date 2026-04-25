@@ -1,5 +1,5 @@
 // Pagination component stories for Storybook
-// Showcases pagination patterns and navigation controls following Helsinki Design System patterns
+// Showcases pagination patterns and navigation controls
 
 import './pagination.scss';
 
@@ -9,7 +9,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'CSS-only pagination component using IVDS design tokens with orange primary color. Provides accessible navigation controls for paginated content with proper ARIA attributes and keyboard support, following Helsinki Design System patterns.'
+        component: 'CSS-only pagination component using IVDS design tokens with orange primary color. Provides accessible navigation controls for paginated content with proper ARIA attributes and keyboard support.'
       }
     },
     a11y: {

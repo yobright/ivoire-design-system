@@ -1,0 +1,43 @@
+.ivds-fieldset {
+  display: grid;
+  gap: var(--spacing-3, 0.75rem);
+  min-width: 0;
+  margin: 0;
+  padding: var(--spacing-5, 1.25rem);
+  border: 1px solid var(--ivds-border-subtle, #e7e5dd);
+  border-radius: var(--ivds-radius-l, 1rem);
+  background: var(--ivds-surface-base, #fff);
+
+  &__legend {
+    padding-inline: var(--spacing-2, 0.5rem);
+    color: var(--ivds-text-primary, #1c1917);
+    font-size: var(--fontSize-sm, 0.875rem);
+    font-weight: var(--fontWeight-semibold, 600);
+  }
+
+  &__description {
+    color: var(--ivds-text-secondary, #44403c);
+    font-size: var(--fontSize-sm, 0.875rem);
+  }
+
+  &__content {
+    display: grid;
+    gap: var(--spacing-3, 0.75rem);
+    min-width: 0;
+  }
+
+  &__helper {
+    color: var(--ivds-text-muted, #78716c);
+    font-size: var(--fontSize-xs, 0.75rem);
+  }
+
+  &__error {
+    color: var(--color-semantic-error-600, #7f1d1d);
+    font-size: var(--fontSize-xs, 0.75rem);
+    font-weight: var(--fontWeight-medium, 500);
+  }
+
+  &--error {
+    border-color: var(--color-semantic-error-500, #9b2226);
+  }
+}

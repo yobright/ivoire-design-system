@@ -1,0 +1,97 @@
+.ivds-accordion {
+  border-bottom: 1px solid var(--ivds-border-default, #e2e8f0);
+}
+
+.ivds-accordion--card {
+  border: 1px solid var(--ivds-border-default, #e2e8f0);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.ivds-accordion__header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border: 0;
+  background: transparent;
+  color: var(--ivds-text-primary, #111827);
+  font: inherit;
+  font-size: var(--fontSize-md, 1rem);
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: start;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.2s ease;
+}
+
+.ivds-accordion__header:hover {
+  background-color: var(--ivds-surface-muted, #f8fafc);
+}
+
+.ivds-accordion__header:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 3px var(--ivds-focus-ring, rgba(37, 99, 235, 0.35));
+}
+
+.ivds-accordion__header-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: transform 0.2s ease;
+}
+
+.ivds-accordion__header-icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.ivds-accordion__header-icon--open {
+  transform: rotate(180deg);
+}
+
+.ivds-accordion__content {
+  padding: 0 1.25rem 1rem;
+  color: var(--ivds-text-secondary, #4b5563);
+  font-size: var(--fontSize-sm, 0.875rem);
+  line-height: 1.625;
+}
+
+.ivds-accordion__close {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem 1.25rem 1rem;
+}
+
+.ivds-accordion--small .ivds-accordion__header {
+  padding: 0.75rem 1rem;
+  font-size: var(--fontSize-sm, 0.875rem);
+}
+
+.ivds-accordion--small .ivds-accordion__content {
+  padding: 0 1rem 0.75rem;
+  font-size: 0.8125rem;
+}
+
+.ivds-accordion--large .ivds-accordion__header {
+  padding: 1.25rem 1.5rem;
+  font-size: var(--fontSize-lg, 1.125rem);
+}
+
+.ivds-accordion--large .ivds-accordion__content {
+  padding: 0 1.5rem 1.25rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ivds-accordion__header,
+  .ivds-accordion__header-icon {
+    transition: none;
+  }
+}

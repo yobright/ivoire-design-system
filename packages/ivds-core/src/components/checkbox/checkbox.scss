@@ -35,9 +35,37 @@
   }
   
   &__label {
+    display: inline-flex;
+    min-width: 0;
     font-size: var(--fontSize-base, 1rem);
     font-weight: var(--fontWeight-medium, 500);
-    color: var(--ivds-text-secondary, #36414f);
+    color: var(--ivds-text-secondary, #44403c);
+    overflow-wrap: break-word;
+
+    &--required::after {
+      content: ' *';
+      color: var(--color-semantic-error-500, #9b2226);
+    }
+  }
+
+  &--small {
+    .ivds-checkbox__box {
+      @include checkbox.checkbox-box(18px);
+    }
+
+    .ivds-checkbox__label {
+      font-size: var(--fontSize-sm, 0.875rem);
+    }
+  }
+
+  &--large {
+    .ivds-checkbox__box {
+      @include checkbox.checkbox-box(22px);
+    }
+
+    .ivds-checkbox__label {
+      font-size: var(--fontSize-lg, 1.125rem);
+    }
   }
   
   // States
@@ -47,11 +75,11 @@
   
   &--error {
     .ivds-checkbox__box {
-      border-color: var(--color-semantic-error-500, #d73a50);
+      border-color: var(--color-semantic-error-500, #9b2226);
     }
 
     .ivds-checkbox__label {
-      color: var(--color-semantic-error-700, #922036);
+      color: var(--color-semantic-error-700, #6b0f1a);
     }
   }
 }

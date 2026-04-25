@@ -4,12 +4,24 @@
 // Form components
 @use './button/button.scss';
 @use './text-input/text-input.scss';
+@use './fieldset/fieldset.scss';
+@use './selection-group/selection-group.scss';
+@use './error-summary/error-summary.scss';
+@use './file-input/file-input.scss';
 @use './checkbox/checkbox.scss';
 @use './radio-button/radio-button.scss';
 @use './switch/switch.scss';
 @use './select/select.scss';
 
 // Content and layout components
+@use './container/container.scss';
+@use './columns/columns.scss';
+@use './section/section.scss';
+@use './link/link.scss';
+@use './loading-spinner/loading-spinner.scss';
+@use './status-label/status-label.scss';
+@use './tooltip/tooltip.scss';
+@use './toggle-button/toggle-button.scss';
 @use './card/card.scss';
 @use './notification/notification.scss';
 @use './tag/tag.scss';
@@ -22,6 +34,20 @@
 @use './breadcrumb/breadcrumb.scss';
 @use './navigation/navigation.scss';
 @use './pagination/pagination.scss';
+
+// Composite / display components
+@use './accordion/accordion.scss';
+@use './hero/hero.scss';
+@use './highlight/highlight.scss';
+@use './linkbox/linkbox.scss';
+@use './table/table.scss';
+@use './stepper/stepper.scss';
+@use './step-by-step/step-by-step.scss';
+@use './cookie-consent/cookie-consent.scss';
+@use './logo/logo.scss';
+@use './image-with-card/image-with-card.scss';
+@use './login/login.scss';
+@use './koros/koros.scss';
 
 // Structural components
 @use './header/header.scss';

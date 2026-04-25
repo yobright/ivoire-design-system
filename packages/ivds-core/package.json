@@ -1,6 +1,6 @@
 {
   "name": "@ivds/core",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Core styles for the Ivoire Design System",
   "main": "lib/base.css",
   "style": "lib/all.css",
@@ -74,18 +74,6 @@
     "./icons/*": {
       "style": "./lib/icons/*.css",
       "default": "./lib/icons/*.css"
-    },
-    "./gov": {
-      "style": "./lib/gov/gov.css",
-      "default": "./lib/gov/gov.css"
-    },
-    "./gov.min": {
-      "style": "./lib/gov/gov.min.css",
-      "default": "./lib/gov/gov.min.css"
-    },
-    "./gov/*": {
-      "style": "./lib/gov/*.css",
-      "default": "./lib/gov/*.css"
     },
     "./variables": {
       "style": "./lib/variables/variables.css",
@@ -179,7 +167,7 @@
     "ivds",
     "ivoire"
   ],
-  "author": "IVDS Team",
+  "author": "Bright Studio",
   "license": "MIT",
   "repository": {
     "type": "git",

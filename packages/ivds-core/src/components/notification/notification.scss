@@ -35,6 +35,9 @@
     justify-content: center;
     width: 1.5rem;
     height: 1.5rem;
+    color: var(--ivds-text-muted, #78716c);
+    font-size: 1rem;
+    line-height: 1;
     
     svg {
       width: 1rem;
@@ -47,37 +50,37 @@
 // Notification Variants
 .ivds-notification--success {
   @include notification.notification-variant(
-    var(--color-semantic-success-50, #edf9f4),
-    var(--color-semantic-success-500, #19895d),
-    var(--color-semantic-success-700, #0a573a),
-    var(--color-semantic-success-700, #0a573a)
+    var(--color-semantic-success-50, #effaf3),
+    var(--color-semantic-success-500, #2a9d5b),
+    var(--color-semantic-success-700, #185f38),
+    var(--color-semantic-success-700, #185f38)
   );
 }
 
 .ivds-notification--warning {
   @include notification.notification-variant(
-    var(--color-semantic-warning-50, #fff8eb),
-    var(--color-semantic-warning-500, #ce790b),
-    var(--color-semantic-warning-700, #834b08),
-    var(--color-semantic-warning-700, #834b08)
+    var(--color-semantic-warning-50, #fff7ed),
+    var(--color-semantic-warning-500, #ff9f1c),
+    var(--color-semantic-warning-700, #c2410c),
+    var(--color-semantic-warning-700, #c2410c)
   );
 }
 
 .ivds-notification--error {
   @include notification.notification-variant(
-    var(--color-semantic-error-50, #fff1f2),
-    var(--color-semantic-error-500, #d73a50),
-    var(--color-semantic-error-700, #922036),
-    var(--color-semantic-error-700, #922036)
+    var(--color-semantic-error-50, #fdf2f2),
+    var(--color-semantic-error-500, #9b2226),
+    var(--color-semantic-error-700, #6b0f1a),
+    var(--color-semantic-error-700, #6b0f1a)
   );
 }
 
 .ivds-notification--info {
   @include notification.notification-variant(
-    var(--color-semantic-info-50, #edf4ff),
-    var(--color-semantic-info-500, #1f6fe5),
-    var(--color-semantic-info-700, #003d99),
-    var(--color-semantic-info-700, #003d99)
+    var(--color-semantic-info-50, #eff6ff),
+    var(--color-semantic-info-500, #1f84d6),
+    var(--color-semantic-info-700, #075985),
+    var(--color-semantic-info-700, #075985)
   );
 }
 

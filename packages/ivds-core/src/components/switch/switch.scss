@@ -4,8 +4,19 @@
 
 @use '_switch-mixin' as sw;
 
+.ivds-switch-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2, 0.5rem);
+  width: 100%;
+}
+
 .ivds-switch {
   @include sw.switch-base;
+
+  &:hover .ivds-switch__track {
+    border-color: var(--color-brand-accent-500, #14b8a6);
+  }
   
   // Elements
   &__input {
@@ -22,6 +33,11 @@
     &:disabled + .ivds-switch__track {
       cursor: not-allowed;
     }
+
+    &:disabled ~ .ivds-switch__label {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
   }
   
   &__track {
@@ -29,15 +45,26 @@
   }
   
   &__label {
+    min-width: 0;
     font-size: var(--fontSize-base, 1rem);
     font-weight: var(--fontWeight-medium, 500);
-    color: var(--ivds-text-secondary, #36414f);
+    color: var(--ivds-text-secondary, #44403c);
+    overflow-wrap: break-word;
+  }
+
+  &__helper {
+    color: var(--ivds-text-muted, #78716c);
+    font-size: var(--fontSize-xs, 0.75rem);
   }
   
   // Sizes
   &--small {
     .ivds-switch__track {
       @include sw.switch-track(36px, 20px);
+    }
+
+    .ivds-switch__label {
+      font-size: var(--fontSize-sm, 0.875rem);
     }
     
     .ivds-switch__input:checked + .ivds-switch__track::after {
@@ -48,6 +75,10 @@
   &--large {
     .ivds-switch__track {
       @include sw.switch-track(52px, 28px);
+    }
+
+    .ivds-switch__label {
+      font-size: var(--fontSize-lg, 1.125rem);
     }
     
     .ivds-switch__input:checked + .ivds-switch__track::after {

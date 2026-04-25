@@ -8,11 +8,15 @@
   @include tag.tag-size(var(--spacing-1, 0.25rem), var(--spacing-3, 0.75rem), var(--fontSize-sm, 0.875rem), 24px);
   @include tag.tag-with-icon;
   @include tag.tag-variant(
-    var(--ivds-surface-muted, #f1f3f5),
-    var(--ivds-text-secondary, #36414f),
-    var(--ivds-border-subtle, #e2e7ec),
-    var(--color-semantic-neutral-200, #e2e7ec)
+    var(--ivds-surface-muted, #f5f5f0),
+    var(--ivds-text-secondary, #44403c),
+    var(--ivds-border-subtle, #e7e5dd),
+    var(--color-semantic-neutral-100, #fafaf9)
   );
+
+  &__action {
+    @include tag.tag-action;
+  }
 
   &__icon {
     display: inline-flex;
@@ -29,6 +33,9 @@
 
   &__text {
     flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   &__remove {
@@ -36,6 +43,7 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    color: currentcolor;
 
     svg {
       width: 0.875em;
@@ -47,46 +55,66 @@
 
 .ivds-tag--primary {
   @include tag.tag-variant(
-    var(--color-brand-accent-50, #eef4ff),
-    var(--color-brand-accent-700, #0b4593),
-    var(--color-brand-accent-200, #bfd7ff),
-    var(--color-brand-accent-100, #dbe9ff)
+    var(--color-brand-primary-50, #fff4e6),
+    var(--color-brand-primary-700, #e67700),
+    var(--color-brand-primary-200, #ffd8a8),
+    var(--color-brand-primary-100, #ffe8cc)
+  );
+}
+
+.ivds-tag--secondary,
+.ivds-tag--accent {
+  @include tag.tag-variant(
+    var(--color-brand-accent-50, #f0fdfa),
+    var(--color-brand-accent-700, #115e59),
+    var(--color-brand-accent-200, #99f6e4),
+    var(--color-brand-accent-100, #ccfbf1)
+  );
+}
+
+.ivds-tag--tertiary {
+  @include tag.tag-variant(
+    var(--color-brand-premium-50, #fff8e1),
+    var(--color-brand-premium-800, #b45309),
+    var(--color-brand-premium-200, #ffe082),
+    var(--color-brand-premium-100, #ffecb3)
   );
 }
 
 .ivds-tag--success {
   @include tag.tag-variant(
-    var(--color-semantic-success-50, #edf9f4),
-    var(--color-semantic-success-700, #0a573a),
-    var(--color-ui-success-200, #b8e9d2),
-    var(--color-ui-success-100, #d6f3e5)
+    var(--color-semantic-success-50, #effaf3),
+    var(--color-semantic-success-700, #185f38),
+    var(--color-ui-success-200, #b4e5c7),
+    var(--color-ui-success-100, #d9f2e3)
   );
 }
 
 .ivds-tag--warning {
   @include tag.tag-variant(
-    var(--color-semantic-warning-50, #fff8eb),
-    var(--color-semantic-warning-700, #834b08),
-    var(--color-ui-warning-200, #f6d6a7),
-    var(--color-ui-warning-100, #fcebcf)
+    var(--color-semantic-warning-50, #fff7ed),
+    var(--color-semantic-warning-700, #c2410c),
+    var(--color-ui-warning-200, #fed7aa),
+    var(--color-ui-warning-100, #ffedd5)
   );
 }
 
+.ivds-tag--danger,
 .ivds-tag--error {
   @include tag.tag-variant(
-    var(--color-semantic-error-50, #fff1f2),
-    var(--color-semantic-error-700, #922036),
-    var(--color-ui-error-200, #f2b8c1),
-    var(--color-ui-error-100, #f9dbe0)
+    var(--color-semantic-error-50, #fdf2f2),
+    var(--color-semantic-error-700, #6b0f1a),
+    var(--color-ui-error-200, #fbd5d5),
+    var(--color-ui-error-100, #fee2e2)
   );
 }
 
 .ivds-tag--info {
   @include tag.tag-variant(
-    var(--color-semantic-info-50, #edf4ff),
-    var(--color-semantic-info-700, #003d99),
-    var(--color-ui-info-200, #bfd7ff),
-    var(--color-ui-info-100, #dbe9ff)
+    var(--color-semantic-info-50, #eff6ff),
+    var(--color-semantic-info-700, #075985),
+    var(--color-ui-info-200, #bfdbfe),
+    var(--color-ui-info-100, #dbeafe)
   );
 }
 
@@ -198,6 +226,10 @@
   @include tag.tag-large;
 }
 
+.ivds-tag--pill {
+  @include tag.tag-pill;
+}
+
 .ivds-tag--removable {
   @include tag.tag-removable;
 }
@@ -206,7 +238,8 @@
   @include tag.tag-link;
 }
 
-.ivds-tag--interactive {
+.ivds-tag--interactive,
+.ivds-tag--clickable {
   @include tag.tag-interactive;
 }
 

@@ -6,6 +6,10 @@
 
 .ivds-navigation {
   @include nav.navigation-base;
+
+  &__item {
+    min-width: 0;
+  }
   
   &__list {
     @include nav.navigation-list;
@@ -19,18 +23,17 @@
 // Side Navigation
 .ivds-side-nav {
   @include nav.side-navigation-base;
+
+  &__list {
+    @include nav.side-navigation-list;
+  }
   
   &__item {
     @include nav.side-navigation-item;
   }
-}
 
-// Tabs
-.ivds-tabs {
-  @include nav.tabs-base;
-  
-  &__item {
-    @include nav.tab-item;
+  &__link {
+    @include nav.side-navigation-link;
   }
 }
 

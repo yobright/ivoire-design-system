@@ -1,5 +1,5 @@
 // Navigation component stories for Storybook
-// Showcases navigation patterns and layouts following Helsinki Design System patterns
+// Showcases navigation patterns and layouts
 
 import './navigation.scss';
 
@@ -9,7 +9,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'CSS-only navigation component using IVDS design tokens with orange primary color. Provides flexible navigation patterns with proper semantic structure and accessibility features, following Helsinki Design System patterns.'
+        component: 'CSS-only navigation component using IVDS design tokens with orange primary color. Provides flexible navigation patterns with proper semantic structure and accessibility features.'
       }
     },
     a11y: {

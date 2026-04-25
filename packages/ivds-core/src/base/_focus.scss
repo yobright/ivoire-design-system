@@ -1,8 +1,8 @@
-// Unified focus ring mixin
-// Uses outline instead of box-shadow to avoid conflicts with elevated components (Card, Modal).
-// Inspired by Helsinki Design System: 3px solid outline with 2px offset.
+// Unified focus treatment for IVDS.
+// Uses outlines instead of box-shadows to avoid conflicts with elevated surfaces
+// such as cards, drawers, dialogs, and notifications.
 
-@mixin focus-ring($offset: var(--ivds-focus-ring-offset, 2px), $width: var(--ivds-focus-ring-width, 3px), $color: var(--ivds-focus-ring-color, var(--color-brand-accent-600, #1058b8))) {
+@mixin focus-ring($offset: var(--ivds-focus-ring-offset, 2px), $width: var(--ivds-focus-ring-width, 3px), $color: var(--ivds-focus-ring-color, var(--color-brand-accent-500, #14b8a6))) {
   &:focus-visible {
     outline: #{$width} solid #{$color};
     outline-offset: #{$offset};
@@ -15,9 +15,9 @@
   }
 }
 
-// Variant for components where the focus indicator is on a sibling element
-// (e.g., checkbox input:focus-visible + .checkbox__box)
-@mixin focus-ring-on-sibling($selector, $offset: var(--ivds-focus-ring-offset, 2px), $width: var(--ivds-focus-ring-width, 3px), $color: var(--ivds-focus-ring-color, var(--color-brand-accent-600, #1058b8))) {
+// Variant for components where the focus indicator is rendered on a sibling element
+// (for example checkbox input:focus-visible + .checkbox__box).
+@mixin focus-ring-on-sibling($selector, $offset: var(--ivds-focus-ring-offset, 2px), $width: var(--ivds-focus-ring-width, 3px), $color: var(--ivds-focus-ring-color, var(--color-brand-accent-500, #14b8a6))) {
   &:focus-visible + #{$selector} {
     outline: #{$width} solid #{$color};
     outline-offset: #{$offset};
@@ -27,5 +27,13 @@
   &:focus:not(:focus-visible) + #{$selector} {
     outline: none;
     box-shadow: none;
+  }
+}
+
+// Variant for compound controls that should react when any nested field receives focus.
+@mixin focus-ring-within($offset: var(--ivds-focus-ring-offset, 2px), $width: var(--ivds-focus-ring-width, 3px), $color: var(--ivds-focus-ring-color, var(--color-brand-accent-500, #14b8a6))) {
+  &:focus-within {
+    outline: #{$width} solid #{$color};
+    outline-offset: #{$offset};
   }
 }

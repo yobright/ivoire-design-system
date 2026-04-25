@@ -1,0 +1,39 @@
+.ivds-highlight {
+  --ivds-highlight-accent: var(--color-brand-accent-600, #1058b8);
+  --ivds-highlight-color: var(--ivds-text-primary, #111827);
+
+  position: relative;
+  margin: 0;
+  padding: 0 0 0 1.5rem;
+  border-left: 4px solid var(--ivds-highlight-accent);
+  color: var(--ivds-highlight-color);
+}
+
+.ivds-highlight__blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+.ivds-highlight__text {
+  font-size: var(--fontSize-lg, 1.125rem);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.ivds-highlight__text--quote {
+  font-style: italic;
+}
+
+.ivds-highlight__reference {
+  margin-top: 0.5rem;
+  font-size: var(--fontSize-sm, 0.875rem);
+  color: var(--ivds-text-secondary, #4b5563);
+}
+
+.ivds-highlight--s .ivds-highlight__text {
+  font-size: var(--fontSize-md, 1rem);
+}
+
+.ivds-highlight--l .ivds-highlight__text {
+  font-size: var(--fontSize-xl, 1.25rem);
+}

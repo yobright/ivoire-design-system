@@ -1,5 +1,5 @@
 // Breadcrumb component stories for Storybook
-// Showcases breadcrumb navigation patterns and accessibility features following Helsinki Design System patterns
+// Showcases breadcrumb navigation patterns and accessibility features
 
 import './breadcrumb.scss';
 
@@ -9,7 +9,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'CSS-only breadcrumb navigation component using IVDS design tokens. Provides accessible navigation hierarchy with proper ARIA attributes, following Helsinki Design System patterns with CSS custom properties for theming.'
+        component: 'CSS-only breadcrumb navigation component using IVDS design tokens. Provides accessible navigation hierarchy with proper ARIA attributes, with CSS custom properties for theming.'
       }
     },
     a11y: {

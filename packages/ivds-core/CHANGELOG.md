@@ -7,23 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-04-13
+
 ### Added
-- Nothing yet.
+- SCSS styles for form components: textarea, number-input, password-input, phone-input, date-input, time-input, fieldset, selection-group, error-summary, file-input
+- SCSS styles for layout components: container, columns, section, link, pagination
+- SCSS styles for composite components: loading-spinner, status-label, tooltip, toggle-button, accordion, hero, highlight, linkbox, table, stepper, step-by-step, cookie-consent, logo, image-with-card, login, koros
+- All new components registered in `all.scss` bundle
 
 ### Changed
-- N/A
-
-### Deprecated
-- N/A
-
-### Removed
-- N/A
-
-### Fixed
-- N/A
-
-### Security
-- N/A
+- Removed legacy references from story descriptions and SCSS comments
 
 ## [1.0.0] - 2026-03-12
 

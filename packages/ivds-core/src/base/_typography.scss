@@ -31,6 +31,8 @@ h6 {
   font-weight: var(--fontWeight-semibold, 600);
   letter-spacing: -0.01em;
   line-height: var(--lineHeight-tight, 1.25);
+  scroll-margin-top: var(--spacing-layout-s, 2rem);
+  text-wrap: balance;
 }
 
 h1 {
@@ -62,6 +64,7 @@ p {
   margin: 0 0 vars.$spacing-4;
   color: var(--ivds-text-secondary);
   max-width: 72ch;
+  overflow-wrap: break-word;
 
   &:last-child {
     margin-bottom: 0;
@@ -69,17 +72,19 @@ p {
 }
 
 a {
-  color: var(--color-brand-accent-700, #0b4593);
+  color: var(--color-brand-accent-700, #115e59);
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 0.16em;
   transition:
     color var(--ivds-motion-fast) var(--ivds-motion-ease),
-    text-decoration-color var(--ivds-motion-fast) var(--ivds-motion-ease);
+    text-decoration-color var(--ivds-motion-fast) var(--ivds-motion-ease),
+    text-underline-offset var(--ivds-motion-fast) var(--ivds-motion-ease);
 
   &:hover {
-    color: var(--color-brand-accent-600, #1058b8);
+    color: var(--color-brand-accent-800, #134e4a);
     text-decoration-color: currentcolor;
+    text-underline-offset: 0.2em;
   }
 
   @include focus-ring;

@@ -15,9 +15,14 @@
   &__content {
     @include tabs.tabs-content;
   }
+
+  &__panel {
+    min-width: 0;
+    outline: none;
+  }
   
   &--full-width &__list {
-    justify-content: stretch;
+    width: 100%;
   }
   
   &--full-width &__trigger {

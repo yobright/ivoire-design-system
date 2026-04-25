@@ -1,0 +1,11 @@
+.ivds-selection-group {
+  display: grid;
+  gap: var(--spacing-3, 0.75rem);
+  min-width: 0;
+
+  &--horizontal {
+    grid-auto-flow: column;
+    grid-template-columns: repeat(auto-fit, minmax(max-content, 1fr));
+    align-items: start;
+  }
+}

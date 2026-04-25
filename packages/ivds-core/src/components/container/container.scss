@@ -1,0 +1,37 @@
+.ivds-container {
+  --ivds-container-max-width: var(--container-max-width, 1440px);
+
+  width: 100%;
+  max-width: var(--ivds-container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--spacing-6, 1.5rem);
+  min-width: 0;
+
+  @media (max-width: var(--breakpoint-lg, 1024px)) {
+    padding-inline: var(--spacing-4, 1rem);
+  }
+
+  &--align-with-header {
+    padding-inline: var(--spacing-6, 1.5rem);
+
+    @media (max-width: var(--breakpoint-lg, 1024px)) {
+      padding-inline: var(--spacing-4, 1rem);
+    }
+  }
+
+  &--narrow {
+    --ivds-container-max-width: 960px;
+  }
+
+  &--wide {
+    --ivds-container-max-width: 1600px;
+  }
+
+  &--full {
+    --ivds-container-max-width: none;
+  }
+
+  &--flush {
+    padding-inline: 0;
+  }
+}

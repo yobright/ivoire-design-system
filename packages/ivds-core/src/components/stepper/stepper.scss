@@ -1,0 +1,90 @@
+.ivds-stepper {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0.75rem 1rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ivds-stepper__step {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.ivds-stepper__step + .ivds-stepper__step::before {
+  content: '';
+  display: block;
+  width: 2rem;
+  height: 2px;
+  margin-inline-end: 0.5rem;
+  background-color: var(--ivds-border-default, #e2e8f0);
+  flex-shrink: 0;
+}
+
+.ivds-stepper__circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  border: 2px solid var(--ivds-border-default, #e2e8f0);
+  background-color: transparent;
+  color: var(--ivds-text-secondary, #4b5563);
+  font-size: var(--fontSize-sm, 0.875rem);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.ivds-stepper__circle--available {
+  border-color: var(--color-brand-accent-600, #1058b8);
+  color: var(--color-brand-accent-600, #1058b8);
+  cursor: pointer;
+}
+
+.ivds-stepper__circle--selected {
+  border-color: var(--color-brand-accent-600, #1058b8);
+  background-color: var(--color-brand-accent-600, #1058b8);
+  color: #fff;
+}
+
+.ivds-stepper__circle--completed {
+  border-color: var(--color-semantic-success-600, #0f6f4a);
+  background-color: var(--color-semantic-success-600, #0f6f4a);
+  color: #fff;
+}
+
+.ivds-stepper__circle--disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.ivds-stepper__circle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ivds-focus-ring, rgba(37, 99, 235, 0.35));
+}
+
+.ivds-stepper__label {
+  font-size: var(--fontSize-sm, 0.875rem);
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--ivds-text-secondary, #4b5563);
+}
+
+.ivds-stepper__step--selected .ivds-stepper__label {
+  color: var(--ivds-text-primary, #111827);
+  font-weight: 600;
+}
+
+.ivds-stepper--small .ivds-stepper__circle {
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 0.75rem;
+}
+
+.ivds-stepper--small .ivds-stepper__label {
+  font-size: 0.75rem;
+}

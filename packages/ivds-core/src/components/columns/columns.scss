@@ -1,0 +1,23 @@
+.ivds-columns {
+  --ivds-columns-count: 2;
+  --ivds-columns-gap: var(--spacing-6, 1.5rem);
+  --ivds-columns-min-width: 16rem;
+
+  display: grid;
+  grid-template-columns: repeat(var(--ivds-columns-count), minmax(0, 1fr));
+  gap: var(--ivds-columns-gap);
+  align-items: start;
+  min-width: 0;
+
+  > * {
+    min-width: 0;
+  }
+
+  &--responsive {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--ivds-columns-min-width)), 1fr));
+  }
+
+  &--dense {
+    grid-auto-flow: dense;
+  }
+}

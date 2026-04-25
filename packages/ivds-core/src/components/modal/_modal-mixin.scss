@@ -4,8 +4,8 @@
 
 @mixin modal-overlay {
   // Per-component CSS variable API
-  --overlay-background: rgba(16, 24, 40, 0.48);
-  --overlay-blur: 3px;
+  --overlay-background: rgba(28, 25, 23, 0.52);
+  --overlay-blur: 6px;
 
   position: fixed;
   inset: 0;
@@ -30,8 +30,8 @@
 
 @mixin modal-container {
   --background-color: var(--ivds-surface-base, #fff);
-  --border-color: var(--ivds-border-subtle, #e2e7ec);
-  --border-radius: var(--ivds-radius-m, 0.25rem);
+  --border-color: var(--ivds-border-subtle, #e7e5dd);
+  --border-radius: var(--ivds-radius-l, 1rem);
   --max-width: 640px;
 
   width: 100%;
@@ -43,8 +43,9 @@
   background-color: var(--background-color);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
-  box-shadow: var(--ivds-shadow-lg, 0 8px 20px rgba(15, 23, 42, 0.10));
+  box-shadow: var(--ivds-shadow-lg, 0 20px 45px rgba(28, 25, 23, 0.18));
   max-height: min(90vh, 920px);
+  overflow: hidden;
 }
 
 @mixin modal-header {
@@ -53,14 +54,14 @@
   justify-content: space-between;
   gap: var(--spacing-4, 1rem);
   padding: var(--spacing-5, 1.25rem) var(--spacing-6, 1.5rem);
-  border-bottom: 1px solid var(--ivds-border-subtle, #e2e7ec);
+  border-bottom: 1px solid var(--ivds-border-subtle, #e7e5dd);
 }
 
 @mixin modal-body {
   padding: var(--spacing-6, 1.5rem);
   overflow-y: auto;
   overscroll-behavior: contain;
-  color: var(--ivds-text-secondary, #36414f);
+  color: var(--ivds-text-secondary, #44403c);
 }
 
 @mixin modal-footer {
@@ -69,8 +70,8 @@
   justify-content: flex-end;
   gap: var(--spacing-3, 0.75rem);
   padding: var(--spacing-4, 1rem) var(--spacing-6, 1.5rem);
-  border-top: 1px solid var(--ivds-border-subtle, #e2e7ec);
-  background-color: var(--ivds-surface-muted, #f1f3f5);
+  border-top: 1px solid var(--ivds-border-subtle, #e7e5dd);
+  background-color: var(--ivds-surface-muted, #f5f5f0);
 }
 
 @mixin modal-close {
@@ -80,19 +81,17 @@
   width: 2.5rem;
   height: 2.5rem;
   border: 1px solid transparent;
-  border-radius: var(--ivds-radius-s, 0.125rem);
+  border-radius: var(--ivds-radius-m, 0.625rem);
   background: transparent;
-  color: var(--ivds-text-muted, #4d5968);
+  color: var(--ivds-text-muted, #78716c);
   cursor: pointer;
-  transition:
-    color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
-    background-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
-    border-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease);
+  transition: var(--ivds-transition-surface, background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1), transform 250ms cubic-bezier(0.4, 0, 0.2, 1));
+  touch-action: manipulation;
 
   &:hover {
-    color: var(--ivds-text-primary, #121a24);
-    background-color: var(--ivds-surface-muted, #f1f3f5);
-    border-color: var(--ivds-border-subtle, #e2e7ec);
+    color: var(--ivds-text-primary, #1c1917);
+    background-color: var(--color-semantic-neutral-100, #fafaf9);
+    border-color: var(--ivds-border-subtle, #d6d3c7);
   }
 
   @include focus-ring;

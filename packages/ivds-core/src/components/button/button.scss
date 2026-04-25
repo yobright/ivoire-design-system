@@ -51,172 +51,198 @@
 
 .ivds-button--primary {
   @include btn.button-variant(
-    var(--ivds-interactive-primary-bg, #1058b8),
+    var(--ivds-interactive-primary-bg, #ff9f1c),
     var(--ivds-interactive-primary-text, #fff),
-    var(--ivds-interactive-primary-bg, #1058b8),
-    var(--ivds-interactive-primary-bg-hover, #0b4593),
-    var(--ivds-interactive-primary-bg-hover, #0b4593),
-    var(--ivds-interactive-primary-bg-active, #083775)
+    var(--ivds-interactive-primary-bg, #ff9f1c),
+    var(--ivds-interactive-primary-bg-hover, #f08c00),
+    var(--ivds-interactive-primary-bg-hover, #f08c00),
+    var(--ivds-interactive-primary-bg-active, #e67700)
   );
+
+  --box-shadow: var(--ivds-interactive-primary-shadow, var(--ivds-shadow-md, 0 4px 12px rgba(0, 0, 0, 0.08)));
+  --hover-box-shadow: var(--ivds-shadow-lg, 0 10px 25px rgba(0, 0, 0, 0.12));
+  --loading-indicator-color: var(--ivds-interactive-primary-text, #fff);
 }
 
 .ivds-button--secondary {
   @include btn.button-variant-outline(
-    var(--ivds-interactive-secondary-border, #1058b8),
-    var(--ivds-interactive-secondary-text, #0b4593),
-    var(--ivds-interactive-secondary-bg-hover, #eef4ff)
+    var(--ivds-interactive-secondary-border, #14b8a6),
+    var(--ivds-interactive-secondary-text, #115e59),
+    var(--ivds-interactive-secondary-bg-hover, #ecfdf9)
   );
 }
 
 .ivds-button--accent {
   @include btn.button-variant(
-    var(--color-brand-accent-500, #1a6bdb),
+    var(--ivds-interactive-accent-bg, #14b8a6),
     #fff,
-    var(--color-brand-accent-500, #1a6bdb),
-    var(--color-brand-accent-600, #1058b8),
-    var(--color-brand-accent-600, #1058b8),
-    var(--color-brand-accent-600, #1058b8)
+    var(--ivds-interactive-accent-bg, #14b8a6),
+    var(--ivds-interactive-accent-bg-hover, #0f766e),
+    var(--ivds-interactive-accent-bg-hover, #0f766e),
+    var(--ivds-interactive-accent-bg-active, #115e59)
   );
+
+  --loading-indicator-color: #fff;
 }
 
 .ivds-button--success {
   @include btn.button-variant(
-    var(--color-semantic-success-600, #0f6f4a),
-    #fff,
-    var(--color-semantic-success-600, #0f6f4a),
-    var(--color-semantic-success-700, #0a573a),
-    var(--color-semantic-success-700, #0a573a),
-    var(--color-semantic-success-700, #0a573a)
+    var(--color-semantic-success-600, #1f7a47),
+    var(--color-semantic-success-foreground, #fff),
+    var(--color-semantic-success-600, #1f7a47),
+    var(--color-semantic-success-700, #185f38),
+    var(--color-semantic-success-700, #185f38),
+    var(--color-semantic-success-700, #185f38)
   );
+
+  --loading-indicator-color: var(--color-semantic-success-foreground, #fff);
 }
 
 .ivds-button--warning {
   @include btn.button-variant(
-    var(--color-semantic-warning-500, #ce790b),
-    #fff,
-    var(--color-semantic-warning-500, #ce790b),
-    var(--color-semantic-warning-600, #a76009),
-    var(--color-semantic-warning-600, #a76009),
-    var(--color-semantic-warning-600, #a76009)
+    var(--color-semantic-warning-500, #ff9f1c),
+    var(--color-semantic-warning-foreground, #000),
+    var(--color-semantic-warning-500, #ff9f1c),
+    var(--color-semantic-warning-600, #f08c00),
+    var(--color-semantic-warning-600, #f08c00),
+    var(--color-semantic-warning-700, #e67700)
   );
+
+  --loading-indicator-color: var(--color-semantic-warning-foreground, #000);
 }
 
 .ivds-button--danger {
   @include btn.button-variant(
-    var(--color-semantic-error-500, #d73a50),
-    #fff,
-    var(--color-semantic-error-500, #d73a50),
-    var(--color-semantic-error-600, #b72a41),
-    var(--color-semantic-error-600, #b72a41),
-    var(--color-semantic-error-600, #b72a41)
+    var(--color-semantic-destructive-500, #9b2226),
+    var(--color-semantic-destructive-foreground, #fff),
+    var(--color-semantic-destructive-500, #9b2226),
+    var(--color-semantic-destructive-600, #7f1d1d),
+    var(--color-semantic-destructive-600, #7f1d1d),
+    var(--color-semantic-destructive-700, #6b0f1a)
   );
+
+  --loading-indicator-color: var(--color-semantic-destructive-foreground, #fff);
 }
 
 .ivds-button--info {
   @include btn.button-variant(
-    var(--color-semantic-info-600, #0050c8),
-    #fff,
-    var(--color-semantic-info-600, #0050c8),
-    var(--color-semantic-info-700, #003d99),
-    var(--color-semantic-info-700, #003d99),
-    var(--color-semantic-info-700, #003d99)
+    var(--color-semantic-info-600, #0f766e),
+    var(--color-semantic-info-foreground, #1c1917),
+    var(--color-semantic-info-600, #0f766e),
+    var(--color-semantic-info-700, #115e59),
+    var(--color-semantic-info-700, #115e59),
+    var(--color-semantic-info-700, #115e59)
   );
+
+  --loading-indicator-color: var(--color-semantic-info-foreground, #1c1917);
 }
 
 .ivds-button--neutral {
   @include btn.button-variant(
-    var(--color-semantic-neutral-900, #121a24),
+    var(--color-semantic-neutral-900, #1c1917),
     #fff,
-    var(--color-semantic-neutral-900, #121a24),
-    var(--color-semantic-neutral-800, #202a36),
-    var(--color-semantic-neutral-800, #202a36),
-    var(--color-semantic-neutral-800, #202a36)
+    var(--color-semantic-neutral-900, #1c1917),
+    var(--color-semantic-neutral-800, #292524),
+    var(--color-semantic-neutral-800, #292524),
+    var(--color-semantic-neutral-800, #292524)
   );
+
+  --loading-indicator-color: #fff;
 }
 
 .ivds-button--gradient-primary {
   @include btn.button-variant-gradient(
-    linear-gradient(135deg, var(--color-brand-accent-500, #1a6bdb) 0%, var(--color-brand-accent-700, #0b4593) 100%),
+    var(--ivds-gradient-primary, linear-gradient(135deg, #ff9f1c 0%, #2ec4b6 100%)),
     #fff
   );
+
+  --loading-indicator-color: #fff;
 }
 
 .ivds-button--gradient-secondary {
   @include btn.button-variant-gradient(
-    linear-gradient(135deg, var(--color-brand-secondary-500, #007a4d) 0%, var(--color-brand-secondary-700, #004d31) 100%),
+    var(--ivds-gradient-nature, linear-gradient(135deg, #2ec4b6 0%, #283618 100%)),
     #fff
   );
+
+  --loading-indicator-color: #fff;
 }
 
 .ivds-button--gradient-mixed {
   @include btn.button-variant-gradient(
-    linear-gradient(135deg, var(--color-brand-primary-500, #cc5500) 0%, var(--color-brand-accent-600, #1058b8) 100%),
+    var(--ivds-gradient-primary, linear-gradient(135deg, #ff9f1c 0%, #2ec4b6 100%)),
     #fff
   );
+
+  --loading-indicator-color: #fff;
 }
 
 .ivds-button--gradient-sunset {
   @include btn.button-variant-gradient(
-    linear-gradient(135deg, var(--color-brand-primary-500, #cc5500) 0%, var(--color-semantic-error-600, #b72a41) 100%),
+    var(--ivds-gradient-sunset, linear-gradient(135deg, #ff9f1c 0%, #f4a261 50%, #e76f51 100%)),
     #fff
   );
+
+  --loading-indicator-color: #fff;
 }
 
 .ivds-button--gradient-ocean {
   @include btn.button-variant-gradient(
-    linear-gradient(135deg, var(--color-brand-accent-500, #1a6bdb) 0%, var(--color-brand-accent-700, #0b4593) 100%),
+    linear-gradient(135deg, var(--color-brand-accent-400, #2dd4bf) 0%, var(--color-brand-secondary-700, #0f766e) 100%),
     #fff
   );
+
+  --loading-indicator-color: #fff;
 }
 
 .ivds-button--outline-primary {
   @include btn.button-variant-outline(
-    var(--color-brand-accent-600, #1058b8),
-    var(--color-brand-accent-700, #0b4593),
-    var(--color-brand-accent-50, #eef4ff)
+    var(--color-brand-primary-600, #f08c00),
+    var(--color-brand-primary-700, #e67700),
+    var(--color-brand-primary-50, #fff4e6)
   );
 }
 
 .ivds-button--outline-secondary {
   @include btn.button-variant-outline(
-    var(--color-brand-secondary-600, #006640),
-    var(--color-brand-secondary-700, #005234),
-    var(--color-brand-secondary-50, #eef8f3)
+    var(--color-brand-secondary-600, #14b8a6),
+    var(--color-brand-secondary-800, #115e59),
+    var(--color-brand-secondary-50, #ecfdf9)
   );
 }
 
 .ivds-button--outline-neutral {
   @include btn.button-variant-outline(
-    var(--color-semantic-neutral-500, #6b7785),
-    var(--color-semantic-neutral-800, #202a36),
-    var(--color-semantic-neutral-100, #f1f3f5)
+    var(--color-semantic-neutral-400, #a8a29e),
+    var(--color-semantic-neutral-800, #292524),
+    var(--color-semantic-neutral-100, #f5f5f0)
   );
 }
 
 .ivds-button--ghost-primary {
   @include btn.button-variant-ghost(
-    var(--color-brand-accent-700, #0b4593),
-    var(--ivds-interactive-supplementary-bg-hover, #e2e7ec)
+    var(--color-brand-primary-700, #e67700),
+    var(--color-brand-primary-50, #fff4e6)
   );
 }
 
 .ivds-button--ghost-secondary {
   @include btn.button-variant-ghost(
-    var(--color-brand-secondary-700, #005234),
-    var(--color-semantic-neutral-200, #e2e7ec)
+    var(--color-brand-secondary-800, #115e59),
+    var(--color-brand-secondary-50, #ecfdf9)
   );
 }
 
 .ivds-button--ghost-neutral {
   @include btn.button-variant-ghost(
-    var(--color-semantic-neutral-800, #202a36),
-    var(--color-semantic-neutral-200, #e2e7ec)
+    var(--color-semantic-neutral-800, #292524),
+    var(--color-semantic-neutral-100, #f5f5f0)
   );
 }
 
 .ivds-button--tertiary,
 .ivds-button--supplementary {
-  @extend .ivds-button--ghost-primary;
+  @extend .ivds-button--ghost-neutral;
 }
 
 .ivds-button--ghost {
@@ -229,12 +255,14 @@
 
 .ivds-button--glass-dark {
   @include btn.button-variant(
-    var(--color-semantic-neutral-900, #121a24),
+    var(--color-semantic-neutral-900, #1c1917),
     #fff,
-    var(--color-semantic-neutral-900, #121a24),
-    var(--color-semantic-neutral-800, #202a36),
-    var(--color-semantic-neutral-800, #202a36)
+    var(--color-semantic-neutral-900, #1c1917),
+    var(--color-semantic-neutral-800, #292524),
+    var(--color-semantic-neutral-800, #292524)
   );
+
+  --loading-indicator-color: #fff;
 }
 
 .ivds-button--xs {

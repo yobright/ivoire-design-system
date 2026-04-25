@@ -1,0 +1,82 @@
+.ivds-step-by-step {
+  max-width: 40rem;
+}
+
+.ivds-step-by-step__title {
+  margin: 0 0 0.25rem;
+  font-size: var(--fontSize-xl, 1.25rem);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.ivds-step-by-step__help {
+  margin: 0 0 1.25rem;
+  color: var(--ivds-text-secondary, #4b5563);
+  font-size: var(--fontSize-sm, 0.875rem);
+  line-height: 1.5;
+}
+
+.ivds-step-by-step__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: sbs-counter;
+}
+
+.ivds-step-by-step__list--numbered {
+  counter-reset: sbs-counter;
+}
+
+.ivds-step-by-step__item {
+  position: relative;
+  padding: 0 0 1.5rem 2.5rem;
+  border-left: 2px solid var(--ivds-border-default, #e2e8f0);
+}
+
+.ivds-step-by-step__item:last-child {
+  border-left-color: transparent;
+  padding-bottom: 0;
+}
+
+.ivds-step-by-step__item::before {
+  position: absolute;
+  top: 0;
+  left: -0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 9999px;
+  background-color: var(--color-brand-accent-600, #1058b8);
+  color: #fff;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.ivds-step-by-step__list--numbered .ivds-step-by-step__item::before {
+  counter-increment: sbs-counter;
+  content: counter(sbs-counter);
+}
+
+.ivds-step-by-step__list:not(.ivds-step-by-step__list--numbered) .ivds-step-by-step__item::before {
+  content: '';
+  width: 0.75rem;
+  height: 0.75rem;
+  left: -0.375rem;
+}
+
+.ivds-step-by-step__item-title {
+  margin: 0 0 0.25rem;
+  font-weight: 600;
+  font-size: var(--fontSize-md, 1rem);
+  line-height: 1.5;
+}
+
+.ivds-step-by-step__item-description {
+  margin: 0;
+  color: var(--ivds-text-secondary, #4b5563);
+  font-size: var(--fontSize-sm, 0.875rem);
+  line-height: 1.625;
+}

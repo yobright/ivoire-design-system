@@ -24,6 +24,10 @@ ol[role='list'] {
 }
 
 // Set core root defaults
+html {
+  text-size-adjust: 100%;
+}
+
 html:focus-within {
   scroll-behavior: smooth;
 }
@@ -33,6 +37,7 @@ body {
   min-height: 100vh;
   text-rendering: optimizespeed;
   line-height: 1.5;
+  overflow-x: hidden;
 }
 
 // A elements that don't have a class get default styles
@@ -45,6 +50,7 @@ img,
 picture {
   max-width: 100%;
   display: block;
+  height: auto;
 }
 
 // Inherit fonts for inputs and buttons
@@ -53,14 +59,28 @@ button,
 textarea,
 select {
   font: inherit;
+  color: inherit;
+}
+
+button,
+[type='button'],
+[type='submit'],
+[type='reset'] {
+  touch-action: manipulation;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--ivds-text-muted, #78716c);
+  opacity: 1;
 }
 
 // Remove all animations, transitions and smooth scroll for people that prefer not to see them
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
-   scroll-behavior: auto;
+    scroll-behavior: auto;
   }
-  
+
   *,
   *::before,
   *::after {
@@ -76,7 +96,7 @@ select {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  
+
   *,
   *::before,
   *::after {

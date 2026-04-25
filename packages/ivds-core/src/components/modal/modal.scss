@@ -16,12 +16,24 @@
   &__header {
     @include modal.modal-header;
   }
+
+  &__heading {
+    display: grid;
+    gap: var(--spacing-1, 0.25rem);
+    min-width: 0;
+  }
   
   &__title {
     margin: 0;
     font-size: var(--fontSize-xl, 1.25rem);
     font-weight: var(--fontWeight-bold, 700);
-    color: var(--ivds-text-primary, #121a24);
+    color: var(--ivds-text-primary, #1c1917);
+  }
+
+  &__description {
+    margin: 0;
+    font-size: var(--fontSize-sm, 0.875rem);
+    color: var(--ivds-text-muted, #78716c);
   }
   
   &__close {
@@ -51,8 +63,10 @@
   &--full &__container { 
     max-width: none; 
     height: 100%; 
+    max-height: none;
     margin: 0;
     border: none;
+    border-radius: 0;
     box-shadow: none;
   }
 }

@@ -7,20 +7,19 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: var(--spacing-2, 0.5rem);
+  min-width: 0;
+  max-width: 100%;
   white-space: nowrap;
   user-select: none;
   text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
   font-family: var(--fontFamily-primary, system-ui, sans-serif);
   font-weight: var(--fontWeight-semibold, 600);
   line-height: var(--lineHeight-tight, 1.25);
   border: 1px solid transparent;
-  border-radius: var(--ivds-radius-s, 0.125rem);
-  transition:
-    background-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
-    border-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
-    color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease);
+  border-radius: var(--ivds-radius-m, 0.625rem);
+  touch-action: manipulation;
+  transition: var(--ivds-transition-surface, background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1), transform 250ms cubic-bezier(0.4, 0, 0.2, 1));
 
   @include focus-ring;
 }
@@ -35,6 +34,30 @@
       background-color: $hover-bg;
     }
   }
+}
+
+@mixin tag-action {
+  display: inline-flex;
+  align-items: center;
+  gap: inherit;
+  min-width: 0;
+  padding: 0;
+  border: none;
+  border-radius: inherit;
+  background-color: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  appearance: none;
+  cursor: pointer;
+  text-align: left;
+  touch-action: manipulation;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  @include focus-ring;
 }
 
 @mixin tag-variant-dot($dot-color) {
@@ -75,25 +98,18 @@
 }
 
 @mixin tag-removable($remove-btn-color: currentcolor) {
-  padding-right: var(--spacing-1, 0.25rem);
+  padding-right: var(--spacing-2, 0.5rem);
 
   .ivds-tag__remove {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    @include tag-action;
+
     margin-left: var(--spacing-2, 0.5rem);
     padding: 2px;
-    border: none;
-    border-radius: var(--ivds-radius-xs, 0.125rem);
-    background-color: transparent;
     color: $remove-btn-color;
-    cursor: pointer;
-    transition:
-      background-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
-      color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease);
+    font-size: 1rem;
 
     &:hover {
-      background-color: rgba(16, 24, 40, 0.08);
+      background-color: rgba(28, 25, 23, 0.08);
     }
 
     svg {
@@ -108,14 +124,14 @@
 }
 
 @mixin tag-interactive {
-  cursor: pointer;
+  cursor: default;
 
-  &:hover:not(:disabled) {
-    border-color: var(--ivds-border-strong, #a1adba);
+  &:hover:not(.ivds-tag--disabled) {
+    border-color: var(--ivds-border-strong, #d6d3c7);
   }
 
-  &:active:not(:disabled) {
-    opacity: 0.9;
+  &:active:not(.ivds-tag--disabled) {
+    opacity: 0.94;
   }
 }
 

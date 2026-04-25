@@ -8,15 +8,15 @@
   align-items: center;
   justify-content: center;
   gap: var(--spacing-1, 0.25rem);
-  padding: 0 var(--spacing-2, 0.5rem);
+  padding: 0.125rem var(--spacing-2, 0.5rem);
   font-family: var(--fontFamily-primary, system-ui, sans-serif);
   font-size: var(--fontSize-xs, 0.75rem);
   font-weight: var(--fontWeight-semibold, 600);
   line-height: normal;
-  border-radius: var(--ivds-radius-s, 0.125rem);
+  border-radius: var(--borderRadius-full, 9999px);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  min-height: 20px;
+  letter-spacing: 0.06em;
+  min-height: 1.5rem;
   border: 1px solid transparent;
 }
 

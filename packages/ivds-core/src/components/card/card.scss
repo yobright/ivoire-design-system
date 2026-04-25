@@ -8,8 +8,8 @@
   @include card.card-base;
   @include card.card-variant(
     var(--ivds-surface-base, #fff),
-    var(--ivds-border-subtle, #e2e7ec),
-    none
+    var(--ivds-border-subtle, #e7e5dd),
+    var(--ivds-shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.05))
   );
   
   // Card sections
@@ -87,7 +87,7 @@
 .ivds-card--bordered {
   @include card.card-variant(
     var(--ivds-surface-base, #fff),
-    var(--ivds-border-strong, #a1adba),
+    var(--ivds-border-strong, #d6d3c7),
     none
   );
 }
@@ -95,8 +95,8 @@
 .ivds-card--elevated {
   @include card.card-variant(
     var(--ivds-surface-base, #fff),
-    var(--ivds-border-subtle, #e2e7ec),
-    var(--ivds-shadow-md, 0 1px 2px rgba(7, 11, 16, 0.12))
+    var(--ivds-border-subtle, #e7e5dd),
+    var(--ivds-shadow-md, 0 4px 12px rgba(0, 0, 0, 0.08))
   );
 }
 
@@ -104,8 +104,40 @@
   @include card.card-variant(
     var(--ivds-surface-base, #fff),
     transparent,
-    var(--ivds-shadow-lg, 0 4px 10px rgba(7, 11, 16, 0.14))
+    var(--ivds-shadow-xl, 0 20px 40px rgba(0, 0, 0, 0.15))
   );
+}
+
+.ivds-card--glass {
+  @include card.card-variant-glass;
+
+  box-shadow: var(--ivds-shadow-md, 0 4px 12px rgba(0, 0, 0, 0.08));
+}
+
+.ivds-card--glass-dark {
+  background: linear-gradient(135deg, rgba(28, 25, 23, 0.88) 0%, rgba(12, 10, 9, 0.92) 100%);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: var(--ivds-shadow-lg, 0 10px 25px rgba(0, 0, 0, 0.12));
+  color: var(--ivds-text-on-strong, #fff);
+
+  .ivds-card__title,
+  .ivds-card__subtitle,
+  .ivds-card__content {
+    color: inherit;
+  }
+}
+
+.ivds-card--premium {
+  background-image: var(--ivds-gradient-premium, linear-gradient(135deg, #f4a261 0%, #ff9f1c 100%));
+  border-color: transparent;
+  box-shadow: var(--ivds-shadow-lg, 0 10px 25px rgba(0, 0, 0, 0.12));
+  color: var(--ivds-text-on-brand, #fff);
+
+  .ivds-card__title,
+  .ivds-card__subtitle,
+  .ivds-card__content {
+    color: inherit;
+  }
 }
 
 // Interactive card
@@ -134,60 +166,60 @@
 // Card semantic variants
 .ivds-card--success {
   @include card.card-variant(
-    var(--color-semantic-success-50, #edf9f4),
-    var(--color-ui-success-200, #b8e9d2)
+    var(--color-semantic-success-50, #effaf3),
+    var(--color-ui-success-200, #b4e5c7)
   );
-  
+
   .ivds-card__title {
-    color: var(--color-semantic-success-700, #0a573a);
+    color: var(--color-semantic-success-700, #185f38);
   }
-  
+
   .ivds-card__content {
-    color: var(--color-semantic-success-600, #0f6f4a);
+    color: var(--color-semantic-success-600, #1f7a47);
   }
 }
 
 .ivds-card--warning {
   @include card.card-variant(
-    var(--color-semantic-warning-50, #fff8eb),
-    var(--color-ui-warning-200, #f6d6a7)
+    var(--color-semantic-warning-50, #fff7ed),
+    var(--color-ui-warning-200, #fed7aa)
   );
-  
+
   .ivds-card__title {
-    color: var(--color-semantic-warning-700, #834b08);
+    color: var(--color-semantic-warning-700, #e67700);
   }
-  
+
   .ivds-card__content {
-    color: var(--color-semantic-warning-600, #a76009);
+    color: var(--color-semantic-warning-600, #f08c00);
   }
 }
 
 .ivds-card--error {
   @include card.card-variant(
-    var(--color-semantic-error-50, #fff1f2),
-    var(--color-ui-error-200, #f2b8c1)
+    var(--color-semantic-error-50, #fdf2f2),
+    var(--color-ui-error-200, #fbd5d5)
   );
-  
+
   .ivds-card__title {
-    color: var(--color-semantic-error-700, #922036);
+    color: var(--color-semantic-error-700, #6b0f1a);
   }
-  
+
   .ivds-card__content {
-    color: var(--color-semantic-error-600, #b72a41);
+    color: var(--color-semantic-error-600, #7f1d1d);
   }
 }
 
 .ivds-card--info {
   @include card.card-variant(
-    var(--color-semantic-info-50, #edf4ff),
-    var(--color-ui-info-200, #bfd7ff)
+    var(--color-semantic-info-50, #f0fdfa),
+    var(--color-ui-info-200, #99f6e4)
   );
-  
+
   .ivds-card__title {
-    color: var(--color-semantic-info-700, #003d99);
+    color: var(--color-semantic-info-700, #115e59);
   }
-  
+
   .ivds-card__content {
-    color: var(--color-semantic-info-600, #0050c8);
+    color: var(--color-semantic-info-600, #0f766e);
   }
 }

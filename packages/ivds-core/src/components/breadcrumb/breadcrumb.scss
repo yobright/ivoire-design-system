@@ -1,7 +1,11 @@
 @use 'breadcrumb-mixin' as breadcrumb;
 
 .ivds-breadcrumb {
-  @include breadcrumb.breadcrumb-list;
+  @include breadcrumb.breadcrumb-base;
+
+  &__list {
+    @include breadcrumb.breadcrumb-list;
+  }
   
   &__item {
     @include breadcrumb.breadcrumb-item;

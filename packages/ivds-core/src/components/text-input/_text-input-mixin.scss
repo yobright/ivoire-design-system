@@ -6,18 +6,18 @@
 @mixin text-input-base {
   // Per-component CSS variable API
   --background-color: var(--ivds-surface-base, #fff);
-  --border-color: var(--ivds-border-strong, #a1adba);
+  --border-color: var(--ivds-border-strong, #d6d3c7);
   --border-width: 2px;
-  --border-radius: var(--ivds-radius-s, 0.125rem);
-  --color: var(--ivds-text-primary, #121a24);
-  --placeholder-color: var(--ivds-text-muted, #4d5968);
-  --focus-border-color: var(--color-brand-accent-600, #1058b8);
-  --hover-border-color: var(--color-semantic-neutral-600, #4d5968);
-  --disabled-background-color: var(--ivds-surface-muted, #f1f3f5);
-  --disabled-border-color: var(--ivds-border-subtle, #e2e7ec);
-  --disabled-color: var(--ivds-text-muted, #4d5968);
-  --error-border-color: var(--color-semantic-error-500, #d73a50);
-  --success-border-color: var(--color-semantic-success-500, #19895d);
+  --border-radius: var(--ivds-radius-m, 0.625rem);
+  --color: var(--ivds-text-primary, #1c1917);
+  --placeholder-color: var(--ivds-text-muted, #78716c);
+  --focus-border-color: var(--color-brand-accent-500, #14b8a6);
+  --hover-border-color: var(--color-semantic-neutral-500, #78716c);
+  --disabled-background-color: var(--ivds-surface-muted, #f5f5f0);
+  --disabled-border-color: var(--ivds-border-subtle, #e7e5dd);
+  --disabled-color: var(--ivds-text-muted, #78716c);
+  --error-border-color: var(--color-semantic-error-500, #9b2226);
+  --success-border-color: var(--color-semantic-success-500, #2a9d5b);
 
   display: block;
   width: 100%;
@@ -25,15 +25,15 @@
   border-radius: var(--border-radius);
   background-color: var(--background-color);
   color: var(--color);
+  appearance: none;
   font-family: var(--fontFamily-primary, system-ui, sans-serif);
   font-size: var(--fontSize-base, 1rem);
   line-height: var(--lineHeight-normal, 1.5);
-  transition:
-    border-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
-    background-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease);
+  transition: var(--ivds-transition-surface, background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1), transform 250ms cubic-bezier(0.4, 0, 0.2, 1));
 
   &::placeholder {
     color: var(--placeholder-color);
+    opacity: 1;
   }
 
   &:hover:not(:disabled, :focus) {
@@ -69,25 +69,26 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-2, 0.5rem);
+  width: 100%;
 }
 
 @mixin text-input-label {
   display: block;
   margin-bottom: var(--spacing-1, 0.25rem);
-  color: var(--ivds-text-primary, #121a24);
+  color: var(--ivds-text-primary, #1c1917);
   font-size: var(--fontSize-sm, 0.875rem);
   font-weight: var(--fontWeight-semibold, 600);
 }
 
 @mixin text-input-helper {
   margin-top: var(--spacing-1, 0.25rem);
-  color: var(--ivds-text-muted, #4d5968);
+  color: var(--ivds-text-muted, #78716c);
   font-size: var(--fontSize-xs, 0.75rem);
 }
 
 @mixin text-input-error-msg {
   margin-top: var(--spacing-1, 0.25rem);
-  color: var(--color-semantic-error-600, #b72a41);
+  color: var(--color-semantic-error-600, #7f1d1d);
   font-size: var(--fontSize-xs, 0.75rem);
   font-weight: var(--fontWeight-medium, 500);
   display: inline-flex;
@@ -102,7 +103,7 @@
 @mixin text-input-required {
   &::after {
     content: ' *';
-    color: var(--color-semantic-error-500, #d73a50);
+    color: var(--color-semantic-error-500, #9b2226);
   }
 }
 
@@ -115,7 +116,7 @@
     transform: translateY(-50%);
     width: $icon-size;
     height: $icon-size;
-    color: var(--ivds-text-muted, #4d5968);
+    color: var(--ivds-text-muted, #78716c);
     pointer-events: none;
     display: inline-flex;
     align-items: center;
@@ -172,22 +173,22 @@
     display: inline-flex;
     align-items: center;
     padding: var(--spacing-3, 0.75rem);
-    background-color: var(--ivds-surface-muted, #f1f3f5);
-    border: 2px solid var(--ivds-border-strong, #a1adba);
-    color: var(--ivds-text-secondary, #36414f);
+    background-color: var(--ivds-surface-muted, #f5f5f0);
+    border: 2px solid var(--ivds-border-strong, #d6d3c7);
+    color: var(--ivds-text-secondary, #44403c);
     font-size: var(--fontSize-sm, 0.875rem);
     white-space: nowrap;
 
     &:first-child {
       border-right-width: 0;
-      border-top-left-radius: var(--ivds-radius-s, 0.125rem);
-      border-bottom-left-radius: var(--ivds-radius-s, 0.125rem);
+      border-top-left-radius: var(--ivds-radius-m, 0.625rem);
+      border-bottom-left-radius: var(--ivds-radius-m, 0.625rem);
     }
 
     &:last-child {
       border-left-width: 0;
-      border-top-right-radius: var(--ivds-radius-s, 0.125rem);
-      border-bottom-right-radius: var(--ivds-radius-s, 0.125rem);
+      border-top-right-radius: var(--ivds-radius-m, 0.625rem);
+      border-bottom-right-radius: var(--ivds-radius-m, 0.625rem);
     }
   }
 }
@@ -202,7 +203,7 @@
   }
 
   .ivds-text-input__label {
-    color: var(--color-semantic-error-700, #922036);
+    color: var(--color-semantic-error-700, #6b0f1a);
   }
 }
 
@@ -224,10 +225,10 @@
 
 @mixin text-input-state-success {
   .ivds-text-input {
-    border-color: var(--color-semantic-success-500, #19895d);
+    border-color: var(--color-semantic-success-500, #2a9d5b);
 
     &:focus-visible {
-      outline-color: var(--color-semantic-success-500, #19895d);
+      outline-color: var(--color-semantic-success-500, #2a9d5b);
     }
   }
 }

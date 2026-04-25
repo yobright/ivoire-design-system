@@ -5,7 +5,7 @@ addons.setConfig({
   theme: {
     ...themes.light,
     brandTitle: 'IVDS Core — Ivoire Design System',
-    brandUrl: 'https://babiverse.github.io/ivoire-design-system',
+    brandUrl: 'https://yobright.github.io/ivoire-design-system',
     brandImage: undefined,
     brandTarget: '_self',
 

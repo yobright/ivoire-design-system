@@ -2,6 +2,20 @@
 
 Core styles for the Ivoire Design System (IVDS). This package provides CSS-only component styles and utilities that consume design tokens from `@ivds/design-tokens`.
 
+## Theme contract
+
+`@ivds/core` now exposes a semantic theme contract designed for a neutral, product-first design system:
+
+- **Primary CTA**: orange (`--ivds-interactive-primary-*`)
+- **Secondary action**: teal (`--ivds-interactive-secondary-*`)
+- **Premium highlight**: gold gradients and premium surfaces
+- **Destructive states**: earth / terre battue palette
+- **Surfaces**: `--ivds-surface-*`
+- **Text**: `--ivds-text-*`
+- **Motion**: `--ivds-motion-*` and `--ivds-transition-*`
+
+This layer is the stable API consumed by components. When possible, customize the theme contract rather than patching individual component rules.
+
 ## Installation
 
 ```bash
@@ -41,9 +55,6 @@ Import only what you need:
 @import '@ivds/core/components/button';
 @import '@ivds/core/components/card';
 
-/* Government namespace patterns */
-@import '@ivds/core/gov';
-
 /* Icons */
 @import '@ivds/core/icons';
 ```
@@ -77,11 +88,10 @@ Use IVDS components with CSS classes:
 
 ## Available Components
 
-- **Form Components**: Button, Text Input, Checkbox, Radio Button
-- **Layout Components**: Card, Notification, Tag
+- **Form Components**: Button, Text Input, Fieldset, Selection Group, Error Summary, File Input, Checkbox, Radio Button
+- **Layout Components**: Container, Columns, Section, Link, Card, Notification, Tag, Tooltip, Toggle Button, Accordion, Hero, Highlight, Linkbox, Table, Stepper, Step By Step, Cookie Consent, Logo, Image With Card, Login, Koros
 - **Navigation Components**: Breadcrumb, Navigation, Pagination
 - **Structural Components**: Header, Footer
-- **Government Patterns**: Gov shell, promo, flash ticker, primary nav, news/agenda panels, service directory, mega footer
 - **Utilities**: Spacing, Typography, Layout, Grid, Flexbox
 - **Icons**: Essential icon set with base styling
 
@@ -91,11 +101,18 @@ IVDS Core uses CSS custom properties from `@ivds/design-tokens`. You can customi
 
 ```css
 :root {
-  --color-brand-primary-500: #your-brand-color;
-  --fontFamily-sans: 'Your Font', system-ui, sans-serif;
-  --spacing-4: 1.5rem; /* Custom spacing */
+  --ivds-interactive-primary-bg: var(--color-brand-primary-500);
+  --ivds-interactive-secondary-border: var(--color-brand-secondary-600);
+  --ivds-surface-base: #ffffff;
+  --ivds-text-primary: var(--color-semantic-neutral-900);
 }
 ```
+
+### Recommended customization strategy
+
+1. Override design tokens when you need to extend the IVDS identity.
+2. Override `--ivds-*` theme aliases when you want to reskin the system safely.
+3. Override component selectors only as a last resort.
 
 ## Framework Integration
 

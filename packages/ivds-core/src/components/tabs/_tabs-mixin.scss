@@ -4,8 +4,8 @@
 
 @mixin tabs-list {
   // Per-component CSS variable API
-  --border-color: var(--ivds-border-subtle, #e2e7ec);
-  --gap: var(--spacing-6, 1.5rem);
+  --border-color: var(--ivds-border-subtle, #e7e5dd);
+  --gap: var(--spacing-5, 1.25rem);
 
   display: flex;
   flex-wrap: wrap;
@@ -14,9 +14,9 @@
 }
 
 @mixin tab-trigger {
-  --color: var(--ivds-text-muted, #4d5968);
-  --active-color: var(--color-brand-accent-700, #0b4593);
-  --active-border-color: var(--color-brand-accent-600, #1058b8);
+  --color: var(--ivds-text-muted, #78716c);
+  --active-color: var(--color-brand-accent-700, #115e59);
+  --active-border-color: var(--color-brand-accent-500, #14b8a6);
   --min-height: 48px;
 
   position: relative;
@@ -30,13 +30,17 @@
   font-size: var(--fontSize-base, 1rem);
   font-weight: var(--fontWeight-medium, 500);
   cursor: pointer;
-  transition:
-    color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
-    border-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease);
+  transition: var(--ivds-transition-surface, background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1), transform 250ms cubic-bezier(0.4, 0, 0.2, 1));
+  touch-action: manipulation;
 
-  &:hover {
-    color: var(--ivds-text-primary, #121a24);
-    border-color: var(--ivds-border-strong, #a1adba);
+  &:disabled {
+    color: var(--ivds-text-muted, #a8a29e);
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    color: var(--ivds-text-primary, #1c1917);
+    border-color: var(--ivds-border-strong, #d6d3c7);
   }
 
   @include focus-ring;
@@ -50,6 +54,6 @@
 }
 
 @mixin tabs-content {
-  color: var(--ivds-text-secondary, #36414f);
-  padding: var(--spacing-6, 1.5rem) 0;
+  color: var(--ivds-text-secondary, #44403c);
+  padding: var(--spacing-6, 1.5rem) 0 0;
 }

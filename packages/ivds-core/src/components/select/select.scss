@@ -16,7 +16,7 @@
     padding-top: var(--spacing-2, 0.5rem);
     padding-bottom: var(--spacing-2, 0.5rem);
     font-size: var(--fontSize-sm, 0.875rem);
-    border-radius: var(--ivds-radius-s, 0.125rem);
+    border-radius: var(--ivds-radius-s, 0.375rem);
   }
   
   &--large {
@@ -38,10 +38,21 @@
 .ivds-select__label {
   font-size: var(--fontSize-sm, 0.875rem);
   font-weight: var(--fontWeight-semibold, 600);
-  color: var(--ivds-text-primary, #121a24);
+  color: var(--ivds-text-primary, #1c1917);
+
+  &--required::after {
+    content: ' *';
+    color: var(--color-semantic-error-500, #9b2226);
+  }
 }
 
 .ivds-select__helper {
   font-size: var(--fontSize-xs, 0.75rem);
-  color: var(--ivds-text-muted, #4d5968);
+  color: var(--ivds-text-muted, #78716c);
+}
+
+.ivds-select__error-msg {
+  font-size: var(--fontSize-xs, 0.75rem);
+  font-weight: var(--fontWeight-medium, 500);
+  color: var(--color-semantic-error-600, #7f1d1d);
 }
