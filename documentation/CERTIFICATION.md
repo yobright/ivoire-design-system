@@ -1,48 +1,51 @@
-# Outil de certification IVDS
+# Verification qualite IVDS
 
-IVDS inclut un script de certification qui evalue la conformite d'un site aux bonnes pratiques du design system. Il produit un score sur 100.
+IVDS s'appuie sur une verification continue de la qualite via les tests des tokens, du Core SCSS, des composants React et des exports publics.
 
-> **Note** : cet outil est fourni a titre experimental. Il mesure l'adoption des tokens et la presence des fichiers requis, pas la qualite visuelle ou fonctionnelle du site.
+> **Note** : cette verification mesure surtout la coherence technique du design system. Elle complete, sans les remplacer, les revues visuelles et les audits d'accessibilite reels.
 
 ---
 
-## Modele de score
+## Axes de verification
 
-Le score est calcule sur 4 axes :
+Les controles portent sur 4 axes :
 
 | Axe | Poids | Ce qu'il mesure |
 |-----|-------|-----------------|
-| Accessibilite | 40% | Score injecte (Lighthouse, Axe, etc.) |
-| Performance | 30% | Score injecte (Lighthouse, etc.) |
-| Design / Tokens | 20% | Absence de couleurs hardcodees dans les styles |
-| Integration | 10% | Presence des schemas et fichiers de donnees |
+| Accessibilite | Revue externe | Tests a11y, navigation clavier, roles/labels |
+| Performance | Revue externe | Profils Storybook, poids CSS/JS, rendu |
+| Design / Tokens | Verification interne | Usage des tokens et absence de regressions grossieres |
+| Integration | Verification interne | Tests, typings et coherence des exports |
 
 ---
 
 ## Utilisation
 
 ```bash
-# Mode par defaut — a11y et perf valent 70 par defaut
-yarn certify:gov
+# Validation des tokens
+yarn test:tokens
 
-# Injecter des scores mesures
-IVDS_A11Y_SCORE=92 IVDS_PERF_SCORE=88 yarn certify:gov
+# Validation SCSS Core
+yarn test:core
 
-# Mode strict — echoue si score < 85
-IVDS_A11Y_SCORE=92 IVDS_PERF_SCORE=88 yarn certify:gov --strict
+# Validation React
+yarn test:react
+
+# Audit de couverture des exports React
+yarn audit:react-coverage:strict
 ```
 
 ---
 
 ## Verifications automatiques
 
-1. **Schemas** — les schemas JSON de `schemas/gov/` doivent exister
-2. **Starters** — les deux starters doivent contenir leurs fichiers
-3. **Donnees** — les fichiers `landing.*.json` sont valides contre le schema
-4. **Tokens** — scan des fichiers CSS pour des couleurs hex hardcodees
+1. **Tokens** — les artefacts design tokens se compilent sans erreur
+2. **Core** — les composants SCSS passent les tests et restent alignes avec les mixins
+3. **React** — les composants et leurs tests restent valides apres refactor
+4. **Exports** — la couverture et la surface publique restent coherentes
 
 ---
 
 ## Sorties
 
-Les rapports sont generes dans `reports/` en formats JSON et Markdown.
+Les sorties dependent des outils lances : console, rapports de couverture et journaux des runners de test.

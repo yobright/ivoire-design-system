@@ -14,7 +14,7 @@ Ce guide vous accompagne pour travailler avec IVDS, que ce soit pour personnalis
 
 ```bash
 # Cloner le repo
-git clone https://github.com/babiverse/ivoire-design-system.git
+git clone https://github.com/yobright/ivoire-design-system.git
 cd ivoire-design-system
 
 # Installer les dependances
@@ -48,7 +48,6 @@ ivoire-design-system/
       src/
         base/              Reset CSS, contrat de theme
         components/        Composants SCSS (button, card, header, etc.)
-        gov/               Patterns gouvernementaux (header, footer, nav...)
         variables/         Variables SCSS mappees sur les tokens
         utils/             Utilitaires CSS (flexbox, grid, spacing...)
       lib/                 CSS compile et minifie
@@ -56,15 +55,9 @@ ivoire-design-system/
     ivds-react/
       src/
         components/        Composants React (Button, Card, Header, etc.)
-        theme/             ThemeProvider, presets
-        gov/               Composants gov React (GovHeader, GovShell, etc.)
         hooks/             Hooks utilitaires
         utils/             Types partages
       .storybook/          Configuration Storybook
-
-  starters/
-    gov-html/              Starter HTML/CSS sans build
-    gov-next/              Starter Next.js 14
 
   documentation/           Ce dossier
   scripts/                 Scripts de certification et d'audit
@@ -88,22 +81,6 @@ yarn dev:react
 ```
 
 Le Storybook React inclut des pages de documentation sur les tokens (couleurs, typographie, espacement) dans la section "Fondations".
-
-### Starters
-
-Pour tester un site complet localement :
-
-```bash
-# Starter HTML (aucun build requis)
-cd starters/gov-html
-yarn install
-python3 -m http.server 3000
-
-# Starter Next.js
-cd starters/gov-next
-yarn install
-yarn dev
-```
 
 ---
 
@@ -193,11 +170,10 @@ function App({ children }) {
 
 | Categorie | Composants |
 |-----------|-----------|
-| **Formulaires** | Button, TextInput, Checkbox, RadioButton, Select, Switch, Tag |
-| **Mise en page** | Card, Modal, Tabs, Breadcrumb, Alert, Badge, Notification |
-| **Structure** | Header, Footer, Navigation (horizontale et laterale) |
-| **Utilitaires** | Box, Flex, Grid |
-| **Gov** | GovShell, GovHeader, GovPrimaryNav, GovServiceDirectory, GovNewsPanel, GovAgendaPanel, GovMegaFooter, GovLanguageSwitcher, GovFlashTicker, GovTopPromo |
+| **Formulaires** | Button, TextInput, TextArea, NumberInput, PasswordInput, PhoneInput, DateInput, TimeInput, Fieldset, SelectionGroup, ErrorSummary, FileInput, Checkbox, RadioButton, Select, Switch, Tag |
+| **Mise en page** | Card, Modal, Tabs, Breadcrumb, Alert, Badge, Notification, Pagination, LoadingSpinner, StatusLabel, Tooltip, ToggleButton, Accordion, Hero, Highlight, Linkbox, Table, Stepper, StepByStep, CookieConsent, Logo, ImageWithCard, Login, Koros |
+| **Structure** | Header, Footer, Navigation (horizontale et laterale), SideNavigation |
+| **Utilitaires** | Container, Columns, Section, Link, Box, Flex, Grid |
 
 ### Exemple : formulaire de demande
 
@@ -228,25 +204,55 @@ function FormulaireDemande() {
 }
 ```
 
-### Exemple : portail gouvernemental
+### Exemple : shell editorial
 
 ```tsx
-import { GovShell, GovHeader, GovPrimaryNav, GovServiceDirectory, GovMegaFooter } from '@ivds/react/gov';
+import {
+  Header,
+  HeaderBrand,
+  HeaderNav,
+  HeaderActions,
+  Navigation,
+  NavigationLink,
+  Footer,
+  FooterBrand,
+  FooterSection,
+  FooterBottom,
+  Button,
+} from '@ivds/react';
 
-function PortailMinistere() {
+function PortailMarque() {
   return (
-    <GovShell locale="fr">
-      <GovHeader siteName="Ministere de l'Education Nationale" />
-      <GovPrimaryNav items={[
-        { label: 'Accueil', href: '/', active: true },
-        { label: 'Services', href: '/services' },
-        { label: 'Actualites', href: '/actualites' },
-      ]} />
-      <main>
-        <GovServiceDirectory title="Nos services en ligne" services={services} />
-      </main>
-      <GovMegaFooter columns={footerColumns} />
-    </GovShell>
+    <>
+      <Header sticky glass>
+        <HeaderBrand>
+          <strong>Ivoire DS</strong>
+        </HeaderBrand>
+        <HeaderNav aria-label="Navigation principale">
+          <a href="#" aria-current="page">Fondations</a>
+          <a href="#">Composants</a>
+          <a href="#">Guidelines</a>
+        </HeaderNav>
+        <HeaderActions>
+          <Button size="small">Commencer</Button>
+        </HeaderActions>
+      </Header>
+
+      <Navigation aria-label="Navigation secondaire">
+        <NavigationLink href="#" active>Vue d’ensemble</NavigationLink>
+        <NavigationLink href="#">Documentation</NavigationLink>
+        <NavigationLink href="#">Ressources</NavigationLink>
+      </Navigation>
+
+      <Footer>
+        <FooterBrand>Ivoire Design System</FooterBrand>
+        <FooterSection title="Ressources">
+          <li><a href="#">Storybook</a></li>
+          <li><a href="#">Guidelines</a></li>
+        </FooterSection>
+        <FooterBottom>© 2026 Ivoire Design System</FooterBottom>
+      </Footer>
+    </>
   );
 }
 ```
@@ -312,14 +318,13 @@ Regles : TypeScript, `forwardRef`, attributs ARIA, tests > 75%, story Storybook.
 yarn test:tokens          # Validation des tokens
 yarn test:core            # Tests SCSS (sass-true)
 yarn test:react           # Tests React (Jest + Testing Library)
-yarn test:gov-starters    # Tests des starters
-yarn certify:gov          # Certification gouvernementale
+yarn audit:react-coverage # Audit de couverture des exports React
 ```
 
 ---
 
 ## Ressources
 
-- [Standard gouvernemental](GOV_STANDARD.md)
+- [Recommandations pour les sites institutionnels](GOV_STANDARD.md)
 - [Certification](CERTIFICATION.md)
 - [Contribution](../CONTRIBUTING.md)

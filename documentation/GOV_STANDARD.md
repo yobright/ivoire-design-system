@@ -34,7 +34,7 @@ Page d'authentification pour les services securises. Composants utiles : `TextIn
 
 ## Contrats de donnees
 
-Des schemas JSON sont fournis dans `schemas/gov/` pour structurer les donnees de contenu (navigation, actualites, services, etc.). Les starters `gov-html` et `gov-next` incluent des exemples de fichiers de donnees valides.
+Structurez les contenus (navigation, actualites, services, pages transactionnelles) avec des contrats de donnees explicites dans votre projet, afin de separer la couche contenu de la couche presentation.
 
 ---
 
@@ -61,4 +61,4 @@ Des schemas JSON sont fournis dans `schemas/gov/` pour structurer les donnees de
 
 ## Bilinguisme
 
-Les starters supportent le francais et l'anglais via des fichiers de donnees separes (`*.fr.json`, `*.en.json`) et l'attribut `lang` sur l'element HTML racine.
+Prenez en charge le francais et l'anglais via des sources de contenu localisees et l'attribut `lang` sur l'element HTML racine.

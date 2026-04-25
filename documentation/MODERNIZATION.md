@@ -1,6 +1,6 @@
-# Suivi de progression IVDS V1
+# Suivi de progression IVDS
 
-Ce document suit l'avancement de l'implementation du standard gouvernemental V1.
+Ce document suit l'avancement de la modernisation du design system IVDS.
 
 ---
 
@@ -12,9 +12,7 @@ Ce document suit l'avancement de l'implementation du standard gouvernemental V1.
 - [x] Composants Core CSS : 20+ composants avec patterns BEM
 - [x] Composants React : 20 composants avec TypeScript, forwardRef, ARIA
 - [x] ThemeProvider : modes light/dark, injection de tokens custom
-- [x] Composants gov : GovShell, GovHeader, GovPrimaryNav, GovServiceDirectory, GovNewsPanel, GovAgendaPanel, GovMegaFooter, GovLanguageSwitcher, GovFlashTicker, GovTopPromo
-- [x] Starters : gov-html (zero build) + gov-next (Next.js 14 App Router)
-- [x] Schemas JSON : 7 contrats de donnees gov
+- [x] Composants structurels modernises : Header, Footer, Navigation, Breadcrumb, Notification
 - [x] CI/CD : lint, test, certification, release tag-based, visual regression
 
 ## Stabilisation (termine)
@@ -35,13 +33,13 @@ Ce document suit l'avancement de l'implementation du standard gouvernemental V1.
 - [x] Theme Storybook IVDS : manager + preview brandes pour Core et React
 - [x] Pages MDX documentation : Introduction, Couleurs, Typographie, Espacement
 - [x] Documentation complete reecrite en francais
-- [ ] Presets de theme : gov-default + gov-dark
+- [ ] Presets de theme documentes pour les usages produit
 
 ## Travail restant pour V1
 
 - [ ] Integration Lighthouse CI pour scores a11y/performance reels
 - [ ] Activation du mode strict de certification
-- [ ] Tests E2E pour les starters (Playwright)
+- [ ] Tests E2E pour les parcours documentes (Playwright)
 - [ ] Baselines de regression visuelle (Chromatic)
 - [ ] Augmentation des seuils de couverture (80/85/85/85)
 
@@ -52,11 +50,10 @@ Ce document suit l'avancement de l'implementation du standard gouvernemental V1.
 | Metrique | Valeur |
 |----------|--------|
 | Composants React | 20 |
-| Composants Gov | 10 |
-| Stories Storybook | 40 (Core 17 + React 23) |
+| Composants structurels modernises | 5 |
+| Stories Storybook | 40+ |
 | Tests unitaires | 105 |
 | Suites de test | 22 React + 4 Core |
 | Tokens CSS generes | 316 custom properties |
-| Score certification | 79/100 (mode souple, scores par defaut) |
-| Design tokens | 100% |
-| Integration | 100% |
+| Validation exports React | Active |
+| Validation design tokens | Active |
