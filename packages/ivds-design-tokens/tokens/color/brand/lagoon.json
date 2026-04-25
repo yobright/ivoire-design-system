@@ -2,24 +2,24 @@
   "color": {
     "brand": {
       "lagoon": {
-        "value": "#1a6bdb",
+        "value": "#2ec4b6",
         "type": "color",
-        "comment": "Civic blue accent for links and actions"
+        "comment": "Accent teal — coastal lagoons, modernity"
       },
       "lagoon-light": {
-        "value": "#eef4ff",
+        "value": "#e6fcf5",
         "type": "color",
-        "comment": "Light lagoon for backgrounds"
+        "comment": "Light teal for backgrounds"
       },
       "lagoon-medium-light": {
-        "value": "#bdd5ff",
+        "value": "#63e6be",
         "type": "color",
-        "comment": "Medium light lagoon"
+        "comment": "Medium light teal"
       },
       "lagoon-dark": {
-        "value": "#0b4593",
+        "value": "#0ca678",
         "type": "color",
-        "comment": "Dark lagoon for emphasis"
+        "comment": "Dark teal for emphasis"
       }
     }
   }

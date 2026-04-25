@@ -2,24 +2,24 @@
   "color": {
     "brand": {
       "cocoa": {
-        "value": "#6b4423",
+        "value": "#9b2226",
         "type": "color",
-        "comment": "Cocoa brown - representing Ivory Coast's cocoa production"
+        "comment": "Terre battue — ancrage, authenticité"
       },
       "cocoa-light": {
-        "value": "#f5f0eb",
+        "value": "#fdf2f2",
         "type": "color",
-        "comment": "Light cocoa for backgrounds"
+        "comment": "Light earth for backgrounds"
       },
       "cocoa-medium-light": {
-        "value": "#d4b8a0",
+        "value": "#fbd5d5",
         "type": "color",
-        "comment": "Medium light cocoa"
+        "comment": "Medium light earth"
       },
       "cocoa-dark": {
-        "value": "#4a2f18",
+        "value": "#6b0f1a",
         "type": "color",
-        "comment": "Dark cocoa for emphasis"
+        "comment": "Dark earth for emphasis"
       }
     }
   }

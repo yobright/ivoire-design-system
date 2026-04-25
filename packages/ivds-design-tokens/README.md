@@ -1,6 +1,15 @@
 # @ivds/design-tokens
 
-Les tokens de design du Ivoire Design System. Ce package fournit les couleurs, la typographie, les espacements, l'elevation, les animations et plus encore, dans tous les formats dont vous avez besoin.
+Les tokens de design du Ivoire Design System. Ce package fournit la couche fondation du systeme : couleurs, typographie, espacements, elevation, animation, surfaces et alias semantiques, dans tous les formats utiles a une implementation produit.
+
+## Direction visuelle
+
+La fondation actuelle suit 4 principes :
+
+- **Langage visuel africain moderne** : une base neutre rechauffee, un orange vibrant pour les CTA et un teal structurel pour la lisibilite produit.
+- **Systeme scalable produit** : les tokens de marque restent expressifs, mais la consommation recommandee passe par les tokens semantiques.
+- **Signature reconnaissable** : les gradients `primary`, `sunset`, `nature` et `premium` servent de marqueurs identitaires.
+- **Neutralite d'usage** : aucune convention gouvernementale n'est necessaire pour utiliser la librairie dans un produit prive, public ou editorial.
 
 ## Installation
 
@@ -57,7 +66,7 @@ Les tokens sont generes en plusieurs formats pour s'adapter a votre stack :
 ```tsx
 import tokens from '@ivds/design-tokens';
 
-const primary = tokens.color.brand.primary['500']; // '#CC5500'
+const primary = tokens.color.brand.primary['500']; // '#ff9f1c'
 const fontBody = tokens.typography.fontFamilies.primary;
 const spacing = tokens.spacing.m; // '1.5rem'
 ```
@@ -85,14 +94,24 @@ Vous pouvez importer uniquement ce dont vous avez besoin :
 
 | Categorie | Tokens | Description |
 |-----------|--------|-------------|
-| Brand primary | `--color-brand-primary-50` a `950` | Burnt orange `#CC5500` — identite ivoirienne |
-| Brand secondary | `--color-brand-secondary-50` a `950` | Vert institutionnel `#007a4d` |
-| Brand accent | `--color-brand-accent-50` a `950` | Bleu lagune `#1a6bdb` |
-| Brand cocoa | `--color-brand-cocoa` | Brun cacao `#6b4423` |
-| Brand gold | `--color-brand-gold` | Or savane `#d4af37` |
-| Semantic | `--color-semantic-success/warning/error/info-*` | Couleurs de feedback |
-| UI base | `--color-ui-neutral-*` | Echelle de gris neutre |
-| UI feedback | `--color-ui-success/warning/error/info-*` | Palette feedback IVDS |
+| Brand primary | `--color-brand-primary-50` a `950` | Orange vibrant `#ff9f1c` pour les CTA et highlights |
+| Brand secondary | `--color-brand-secondary-50` a `950` | Teal moderne `#2ec4b6` pour la structure et les actions secondaires |
+| Brand accent | `--color-brand-accent-50` a `950` | Teal interactif `#14b8a6` pour liens, focus et surfaces actives |
+| Brand premium | `--color-brand-premium-50` a `950` | Or africain `#f4a261` pour l'offre, les badges premium et les mises en valeur |
+| Brand earth | `--color-brand-earth-50` a `950` | Terre battue `#9b2226` pour l'ancrage visuel et les usages destructifs |
+| Semantic | `--color-semantic-success/warning/error/destructive/info-*` | Etats de feedback et foregrounds associes |
+| Semantic surfaces | `--color-semantic-surface-primary/secondary/tertiary/inverse` | Surfaces de base pour UI light/dark |
+| UI base | `--color-ui-neutral-*` | Echelle neutre rechauffee pour 70% de l'interface |
+| UI feedback | `--color-ui-success/warning/error/info-*` | Palette feedback harmonisee avec la marque |
+
+### Gradients signature
+
+| Token | Usage |
+|-------|-------|
+| `--color-brand-gradient-primary` | Hero sections, CTA majeurs |
+| `--color-brand-gradient-sunset` | Editorial, onboarding, promos |
+| `--color-brand-gradient-nature` | Sections produit, narration, bloc de confiance |
+| `--color-brand-gradient-premium` | Pricing, offre premium, badges distintifs |
 
 ### Typographie
 
@@ -116,10 +135,20 @@ Vous pouvez importer uniquement ce dont vous avez besoin :
 
 | Token | Valeur |
 |-------|--------|
-| `--shadow-none` a `--shadow-2xl` | 7 niveaux d'ombre |
-| `--glow-primary/secondary/accent` | Halos colores pour le focus |
+| `--shadow-none` a `--shadow-2xl` | Ombres propres et progressives pour surfaces et overlays |
+| `--shadow-glow-primary/secondary/accent` | Halos colores pour le focus et les etats actifs |
 | `--blur-sm` a `--blur-2xl` | Effets de flou |
 | `--backdrop-glass/frosted` | Effets de fond |
+
+### Motion
+
+| Token | Description |
+|-------|-------------|
+| `--animation-duration-fast/normal/slow` | Rythme de base : 150ms, 250ms, 400ms |
+| `--animation-easing-standard` | Courbe par defaut pour les transitions UI |
+| `--animation-easing-smooth` | Courbe plus organique pour mouvements continus |
+| `--animation-easing-bounce` | Courbe de micro-rebond pour feedback premium |
+| `--animation-transition-colors/surface/transform` | Transitions explicites sans `transition: all` |
 
 ### Autres
 
@@ -154,6 +183,15 @@ import { ThemeProvider } from '@ivds/react/theme';
 ## Build
 
 Les tokens sont generes par [Style Dictionary](https://amzn.github.io/style-dictionary/) a partir des fichiers JSON dans `tokens/`.
+
+### Architecture d'implementation
+
+- **Couche marque** : `tokens/color/brand*.json`
+- **Couche feedback et surfaces** : `tokens/color/semantic.json` et `tokens/color/ui/*`
+- **Couche motion** : `tokens/animation/animation.json`
+- **Couche elevation** : `tokens/elevation/shadows.json`
+
+Cette separation permet de reproduire l'organisation des design systems de reference tout en gardant une identite IVDS propre.
 
 ```bash
 yarn build         # Generer tous les formats

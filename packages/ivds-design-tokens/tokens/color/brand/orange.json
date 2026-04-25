@@ -2,22 +2,22 @@
   "color": {
     "brand": {
       "orange": {
-        "value": "#CC5500",
+        "value": "#ff9f1c",
         "type": "color",
-        "comment": "Primary brand — burnt orange, terre ivoirienne"
+        "comment": "Primary brand — vibrant African orange"
       },
       "orange-light": {
-        "value": "#fef5ee",
+        "value": "#fff4e6",
         "type": "color",
         "comment": "Light orange for backgrounds"
       },
       "orange-medium-light": {
-        "value": "#f8cda8",
+        "value": "#ffd8a8",
         "type": "color",
         "comment": "Medium light orange"
       },
       "orange-dark": {
-        "value": "#8f3b00",
+        "value": "#e67700",
         "type": "color",
         "comment": "Dark orange for emphasis"
       }

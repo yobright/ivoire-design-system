@@ -2,24 +2,24 @@
   "color": {
     "brand": {
       "green": {
-        "value": "#007a4d",
+        "value": "#2ec4b6",
         "type": "color",
-        "comment": "Secondary brand color - institutional green"
+        "comment": "Secondary brand — teal green, nature & growth"
       },
       "green-light": {
-        "value": "#edf8f3",
+        "value": "#e6fcf5",
         "type": "color",
         "comment": "Light green for backgrounds"
       },
       "green-medium-light": {
-        "value": "#b5dfc6",
+        "value": "#96f2d7",
         "type": "color",
         "comment": "Medium light green"
       },
       "green-dark": {
-        "value": "#004d31",
+        "value": "#283618",
         "type": "color",
-        "comment": "Dark green for emphasis"
+        "comment": "Dark green for emphasis — deep nature"
       }
     }
   }

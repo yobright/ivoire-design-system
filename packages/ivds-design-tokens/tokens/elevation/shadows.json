@@ -1,19 +1,19 @@
 {
   "shadow": {
     "none": { "value": "none" },
-    "xs": { "value": "0 1px 0 rgba(7, 11, 16, 0.10)" },
-    "sm": { "value": "0 1px 2px rgba(7, 11, 16, 0.12)" },
-    "md": { "value": "0 4px 10px rgba(7, 11, 16, 0.14)" },
-    "lg": { "value": "0 8px 20px rgba(7, 11, 16, 0.16)" },
-    "xl": { "value": "0 14px 32px rgba(7, 11, 16, 0.18)" },
-    "2xl": { "value": "0 24px 56px rgba(7, 11, 16, 0.22)" },
-    "inner": { "value": "inset 0 1px 2px rgba(7, 11, 16, 0.12)" },
+    "xs": { "value": "0 1px 2px rgba(0, 0, 0, 0.04)" },
+    "sm": { "value": "0 1px 2px rgba(0, 0, 0, 0.05)" },
+    "md": { "value": "0 4px 12px rgba(0, 0, 0, 0.08)" },
+    "lg": { "value": "0 10px 25px rgba(0, 0, 0, 0.12)" },
+    "xl": { "value": "0 20px 40px rgba(0, 0, 0, 0.15)" },
+    "2xl": { "value": "0 28px 60px rgba(0, 0, 0, 0.18)" },
+    "inner": { "value": "inset 0 1px 2px rgba(0, 0, 0, 0.08)" },
     "glow": {
-      "primary": { "value": "0 0 0 3px rgba(0, 80, 200, 0.30)" },
-      "secondary": { "value": "0 0 0 3px rgba(0, 122, 77, 0.24)" },
-      "accent": { "value": "0 0 0 3px rgba(0, 80, 200, 0.30)" }
+      "primary": { "value": "0 0 0 3px rgba(255, 159, 28, 0.28)" },
+      "secondary": { "value": "0 0 0 3px rgba(46, 196, 182, 0.28)" },
+      "accent": { "value": "0 0 0 3px rgba(244, 162, 97, 0.28)" }
     },
-    "glass": { "value": "0 8px 24px rgba(7, 11, 16, 0.14)" }
+    "glass": { "value": "0 12px 30px rgba(0, 0, 0, 0.12)" }
   },
   "blur": {
     "none": { "value": "blur(0)" },
@@ -22,10 +22,10 @@
     "lg": { "value": "blur(8px)" },
     "xl": { "value": "blur(12px)" },
     "2xl": { "value": "blur(18px)" },
-    "glass": { "value": "blur(8px) saturate(120%)" }
+    "glass": { "value": "blur(10px) saturate(125%)" }
   },
   "backdrop": {
-    "glass": { "value": "blur(8px) saturate(120%)" },
-    "frosted": { "value": "blur(4px) brightness(1.02)" }
+    "glass": { "value": "blur(10px) saturate(125%)" },
+    "frosted": { "value": "blur(6px) brightness(1.02)" }
   }
 }

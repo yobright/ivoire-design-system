@@ -62,7 +62,7 @@
   "bugs": {
     "url": "https://github.com/yobright/ivoire-design-system/issues"
   },
-  "author": "IVDS Team",
+  "author": "Bright Studio",
   "engines": {
     "node": ">=22.13.1"
   },
