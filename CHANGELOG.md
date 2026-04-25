@@ -7,23 +7,37 @@ Le projet suit le [Versionnage semantique](https://semver.org/lang/fr/).
 
 ## [Non publie]
 
+---
+
+## [1.1.0] - 2026-04-13
+
 ### Ajoute
-- Focus ring unifie par outline (remplacement du box-shadow) sur tous les composants interactifs
+- **30+ nouveaux composants** React et Core SCSS :
+  - Formulaires : TextArea, NumberInput, PasswordInput, PhoneInput, DateInput, TimeInput, Fieldset, SelectionGroup, ErrorSummary, FileInput
+  - Mise en page : Container, Columns, Section, Link, Pagination, LoadingSpinner, StatusLabel, Tooltip, ToggleButton
+  - Composite : Accordion, Hero, Highlight, Linkbox, Table, Stepper, StepByStep, CookieConsent, Logo, ImageWithCard, Login, Koros
+  - Structure : SideNavigation
+- Stories Storybook pour chaque nouveau composant
+- 16 nouvelles suites de tests (37 suites, 172 tests au total)
+- Focus ring unifie par outline sur tous les composants interactifs
 - API CSS par composant : chaque composant expose des custom properties sur son element racine
 - Token `touch-target-min` (48px, WCAG 2.2 AA)
 - Tokens d'opacite et de z-index
 - `aria-describedby` composable sur TextInput (error + helper)
 
+### Corrige
+- 6 suites de tests pre-existantes realignees (Alert, Tag, Card, TextInput, Select, Checkbox)
+
 ### Modifie
 - **Couleur primary** : `#e6730d` -> `#CC5500` (burnt orange) — palette complete recalculee
 - **Typographie** : `Public Sans` -> `Inter` (body), `IBM Plex Sans` (headings)
-- **Couleurs accent** : fallbacks alignes sur les valeurs reelles des tokens (`#1058b8` pour accent-600)
+- **Couleurs accent** : fallbacks alignes sur les valeurs reelles des tokens
 - **Min-height** de tous les composants interactifs portee a 48px minimum
-- Suppression des variables CSS auto-referencees dans `_theme.scss`
-- Border-radius xs : `0` -> `0.0625rem` (1px)
+- Nettoyage des references internes obsoletes dans la documentation
 
 ### Supprime
 - Mixin `button-ripple` (inutilise)
+- References a des systemes tiers dans la documentation et les commentaires de code
 
 ---
 
@@ -38,7 +52,6 @@ Le projet suit le [Versionnage semantique](https://semver.org/lang/fr/).
 - 20 composants React avec TypeScript et forwardRef
 - ThemeProvider avec modes light/dark
 - Storybook pour Core (HTML) et React
-- Starters : `gov-html` (HTML/CSS) et `gov-next` (Next.js 14)
 
 ---
 

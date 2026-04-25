@@ -8,7 +8,7 @@ Merci de votre interet pour Ivoire Design System. Ce projet est en phase de fond
 
 ### Signaler un bug
 
-1. Verifiez dans les [issues existantes](https://github.com/babiverse/ivoire-design-system/issues) que le bug n'a pas deja ete signale
+1. Verifiez dans les [issues existantes](https://github.com/yobright/ivoire-design-system/issues) que le bug n'a pas deja ete signale
 2. Creez une nouvelle issue avec :
    - Une description claire du probleme
    - Les etapes pour reproduire
@@ -116,5 +116,5 @@ N'oubliez pas d'ajouter l'export dans `packages/ivds-react/src/index.ts`.
 
 ## Questions ?
 
-- Ouvrez une [Discussion GitHub](https://github.com/babiverse/ivoire-design-system/discussions)
+- Ouvrez une [Discussion GitHub](https://github.com/yobright/ivoire-design-system/discussions)
 - Consultez le [Guide de developpement](documentation/DEVELOPMENT.md)

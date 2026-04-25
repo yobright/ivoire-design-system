@@ -58,7 +58,13 @@ function App() {
 
 ### React (`@ivds/react`)
 
-Button, TextInput, Select, Checkbox, RadioButton, Switch, Card, Alert, Badge, Tag, Notification, Tabs, Modal, Header, Footer, Navigation, Breadcrumb, Box, Flex, Grid.
+**Formulaires** : Button, TextInput, TextArea, NumberInput, PasswordInput, PhoneInput, DateInput, TimeInput, Fieldset, SelectionGroup, ErrorSummary, FileInput, Checkbox, RadioButton, Select, Switch, Tag
+
+**Mise en page** : Card, Modal, Tabs, Alert, Badge, Notification, Breadcrumb, Pagination, LoadingSpinner, StatusLabel, Tooltip, ToggleButton, Accordion, Hero, Highlight, Linkbox, Table, Stepper, StepByStep, CookieConsent, Logo, ImageWithCard, Login, Koros
+
+**Structure** : Header, Footer, Navigation, SideNavigation
+
+**Utilitaires** : Container, Columns, Section, Link, Box, Flex, Grid
 
 Chaque composant supporte `forwardRef`, le typage TypeScript complet, et les attributs ARIA.
 
@@ -121,10 +127,8 @@ ivoire-design-system/
     ivds-design-tokens/    Tokens JSON -> CSS / SCSS / JS / TypeScript
     ivds-core/             Composants SCSS + utilitaires
     ivds-react/            Composants React + ThemeProvider
-  starters/
-    gov-html/              Starter HTML/CSS
-    gov-next/              Starter Next.js 14
   documentation/           Guides et conventions
+  scripts/                 Outils d'audit et d'automatisation
 ```
 
 ## Contribution
