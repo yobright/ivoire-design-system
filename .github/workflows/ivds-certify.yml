@@ -1,4 +1,4 @@
-name: IVDS Gov Certification
+name: IVDS Institutional Certification
 
 on:
   pull_request:
@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  certify-gov:
+  certify-institutional:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -30,8 +30,8 @@ jobs:
           yarn build:tokens
           yarn build:core
 
-      - name: Run IVDS certification (soft gate)
-        run: yarn certify:gov
+      - name: Run IVDS certification
+        run: yarn certify:institutional:strict
 
       - name: Upload certification artifacts
         uses: actions/upload-artifact@v4

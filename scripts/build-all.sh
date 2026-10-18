@@ -96,5 +96,6 @@ echo ""
 echo "Next steps:"
 echo "1. Run pre-release check: ./scripts/pre-release-check.sh"
 echo "2. Test packages locally"
-echo "3. Commit and tag: git commit -m 'chore: release v1.0.0' && git tag v1.0.0"
+TARGET_VERSION=$(node -p "require('./packages/ivds-design-tokens/package.json').version")
+echo "3. Commit and tag: git commit -m 'chore: release v$TARGET_VERSION' && git tag v$TARGET_VERSION"
 echo ""

@@ -57,8 +57,8 @@ jobs:
           yarn lint
           yarn test
 
-      - name: Generate React coverage baseline matrix
-        run: yarn audit:react-coverage
+      - name: Check React coverage matrix
+        run: yarn audit:react-coverage:strict
 
       - name: Check bundle sizes
         run: |

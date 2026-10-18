@@ -1,77 +1,89 @@
 #!/bin/bash
 
 # IVDS Update Versions Script
-# Updates all package versions to 1.0.0
+# Usage: ./scripts/update-versions.sh 1.2.1
 
-set -e
+set -euo pipefail
 
-echo "📝 Updating IVDS packages to v1.0.0"
-echo "===================================="
-echo ""
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$ROOT_DIR"
 
-NEW_VERSION="1.0.0"
+if [[ $# -ne 1 ]]; then
+  echo "Usage: ./scripts/update-versions.sh <new-version>"
+  echo "Example: ./scripts/update-versions.sh 1.2.1"
+  exit 1
+fi
 
-# Colors
+NEW_VERSION="$1"
+
+if [[ ! "$NEW_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$ ]]; then
+  echo "Invalid semver version: $NEW_VERSION"
+  exit 1
+fi
+
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 NC='\033[0m'
 
 info() {
-    echo -e "${BLUE}ℹ${NC} $1"
+  echo -e "${BLUE}[info]${NC} $1"
 }
 
 success() {
-    echo -e "${GREEN}✓${NC} $1"
+  echo -e "${GREEN}[ok]${NC} $1"
 }
 
-# Update Design Tokens
-info "Updating @ivds/design-tokens to $NEW_VERSION..."
-cd packages/ivds-design-tokens
-npm version $NEW_VERSION --no-git-tag-version
-success "Updated @ivds/design-tokens"
-cd ../..
+update_package_version() {
+  local package_dir="$1"
+  local package_name="$2"
 
-# Update Core
-info "Updating @ivds/core to $NEW_VERSION..."
-cd packages/ivds-core
-npm version $NEW_VERSION --no-git-tag-version
-# Update peerDependency
-node -e "
+  info "Updating $package_name to $NEW_VERSION..."
+  (
+    cd "$package_dir"
+    npm version "$NEW_VERSION" --no-git-tag-version
+  )
+  success "Updated $package_name"
+}
+
+update_json_peer_dependencies() {
+  local package_file="$1"
+
+  node - "$package_file" "$NEW_VERSION" <<'NODE'
 const fs = require('fs');
-const pkg = require('./package.json');
-pkg.peerDependencies['@ivds/design-tokens'] = '^$NEW_VERSION';
-fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 2) + '\n');
-"
-success "Updated @ivds/core"
-cd ../..
 
-# Update React
-info "Updating @ivds/react to $NEW_VERSION..."
-cd packages/ivds-react
-npm version $NEW_VERSION --no-git-tag-version
-# Update peerDependencies
-node -e "
-const fs = require('fs');
-const pkg = require('./package.json');
-pkg.peerDependencies['@ivds/core'] = '^$NEW_VERSION';
-pkg.peerDependencies['@ivds/design-tokens'] = '^$NEW_VERSION';
-fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 2) + '\n');
-"
-success "Updated @ivds/react"
-cd ../..
+const [packageFile, version] = process.argv.slice(2);
+const pkg = JSON.parse(fs.readFileSync(packageFile, 'utf8'));
 
-# Update root package.json
-info "Updating root package.json..."
-npm version $NEW_VERSION --no-git-tag-version
-success "Updated root package.json"
+if (pkg.peerDependencies?.['@ivds/design-tokens']) {
+  pkg.peerDependencies['@ivds/design-tokens'] = `^${version}`;
+}
+
+if (pkg.peerDependencies?.['@ivds/core']) {
+  pkg.peerDependencies['@ivds/core'] = `^${version}`;
+}
+
+fs.writeFileSync(packageFile, `${JSON.stringify(pkg, null, 2)}\n`);
+NODE
+}
+
+echo "Updating IVDS packages to v$NEW_VERSION"
+echo "======================================="
+echo ""
+
+update_package_version "packages/ivds-design-tokens" "@ivds/design-tokens"
+
+update_package_version "packages/ivds-core" "@ivds/core"
+update_json_peer_dependencies "packages/ivds-core/package.json"
+
+update_package_version "packages/ivds-react" "@ivds/react"
+update_json_peer_dependencies "packages/ivds-react/package.json"
 
 echo ""
-echo "===================================="
-echo -e "${GREEN}✓ All packages updated to v$NEW_VERSION${NC}"
-echo "===================================="
+echo "======================================="
+echo -e "${GREEN}[ok] All packages updated to v$NEW_VERSION${NC}"
+echo "======================================="
 echo ""
 echo "Next steps:"
 echo "1. Review changes: git diff"
 echo "2. Build all packages: ./scripts/build-all.sh"
 echo "3. Run pre-release check: ./scripts/pre-release-check.sh"
-echo ""
