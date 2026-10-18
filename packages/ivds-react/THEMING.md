@@ -34,7 +34,7 @@ Tous les composants qui utilisent ces tokens seront automatiquement mis a jour.
 
 ## Methode 2 : ThemeProvider React
 
-Le ThemeProvider offre plus de controle, avec le basculement light/dark et l'injection dynamique de tokens.
+Le ThemeProvider offre plus de controle, avec les presets officiels `default`, `dark`, `high-contrast` et l'injection dynamique de tokens.
 
 ### Setup de base
 
@@ -44,7 +44,7 @@ import { ThemeProvider } from '@ivds/react/theme';
 
 function App({ children }) {
   return (
-    <ThemeProvider mode="light">
+    <ThemeProvider mode="default">
       {children}
     </ThemeProvider>
   );
@@ -63,28 +63,38 @@ const tokensMinistere = {
 
 function AppMinistere({ children }) {
   return (
-    <ThemeProvider mode="light" tokens={tokensMinistere}>
+    <ThemeProvider mode="default" tokens={tokensMinistere}>
       {children}
     </ThemeProvider>
   );
 }
 ```
 
-### Basculer le theme
+### Basculer le preset
 
 ```tsx
 import { useTheme } from '@ivds/react/theme';
 
 function SwitchTheme() {
-  const { mode, setMode } = useTheme();
+  const { preset, setPreset } = useTheme();
 
   return (
-    <button onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}>
-      Passer en mode {mode === 'light' ? 'sombre' : 'clair'}
-    </button>
+    <>
+      <button type="button" onClick={() => setPreset('default')} aria-pressed={preset === 'default'}>
+        Default
+      </button>
+      <button type="button" onClick={() => setPreset('dark')} aria-pressed={preset === 'dark'}>
+        Sombre
+      </button>
+      <button type="button" onClick={() => setPreset('high-contrast')} aria-pressed={preset === 'high-contrast'}>
+        Haut contraste
+      </button>
+    </>
   );
 }
 ```
+
+`light` reste accepte comme alias retrocompatible, mais `default`, `dark` et `high-contrast` sont les presets recommandes.
 
 ---
 
@@ -94,21 +104,24 @@ function SwitchTheme() {
 
 | Prop | Type | Defaut | Description |
 |------|------|--------|-------------|
-| `mode` | `'light' \| 'dark'` | `'light'` | Mode de theme |
+| `mode` | `'default' \| 'dark' \| 'high-contrast' \| 'light'` | `'default'` | Preset de theme (`light` = alias retrocompatible de `default`) |
 | `tokens` | `Record<string, string>` | `{}` | Tokens CSS custom a injecter |
-| `target` | `'root' \| 'scoped'` | `'root'` | Ou appliquer : document entier ou conteneur local |
+| `target` | `'root' \| 'scoped'` | `'scoped'` | Ou appliquer : document entier ou conteneur local |
+| `attributeName` | `string` | `'data-ivds-theme'` | Attribut DOM qui porte le preset actif |
 | `children` | `ReactNode` | — | Contenu de l'application |
 
 ### Hook useTheme
 
 ```tsx
-const { mode, setMode } = useTheme();
+const { mode, preset, setMode, setPreset } = useTheme();
 ```
 
 | Retour | Type | Description |
 |--------|------|-------------|
-| `mode` | `'light' \| 'dark'` | Mode actuel |
-| `setMode` | `(mode) => void` | Changer le mode |
+| `mode` | `'default' \| 'dark' \| 'high-contrast' \| 'light'` | Valeur courante, avec compatibilite alias |
+| `preset` | `'default' \| 'dark' \| 'high-contrast'` | Preset resolu applique au DOM |
+| `setMode` | `(mode) => void` | Changer le mode ou utiliser l'alias `light` |
+| `setPreset` | `(preset) => void` | Changer directement le preset officiel |
 
 ---
 

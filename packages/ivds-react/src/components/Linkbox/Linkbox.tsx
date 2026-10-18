@@ -1,10 +1,10 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { IconArrowRight, IconExternalLink } from '../../icons';
 import { BaseComponentProps } from '../../utils/types';
 
 export interface LinkboxProps
   extends BaseComponentProps,
-    Omit<React.HTMLAttributes<HTMLDivElement>, keyof BaseComponentProps | 'children'> {
+    Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof BaseComponentProps | 'children' | 'href'> {
   href: string;
   heading?: string;
   headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
@@ -37,8 +37,8 @@ export const Linkbox: React.FC<LinkboxProps> = ({
   'data-testid': testId,
   ...props
 }) => {
-  const linkRef = useRef<HTMLAnchorElement>(null);
   const HeadingTag = `h${headingLevel}` as keyof JSX.IntrinsicElements;
+  const accessibleLabel = linkAriaLabel || linkboxAriaLabel;
 
   const classes = [
     'ivds-linkbox',
@@ -49,23 +49,13 @@ export const Linkbox: React.FC<LinkboxProps> = ({
     .filter(Boolean)
     .join(' ');
 
-  const handleClick = () => {
-    linkRef.current?.click();
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter') {
-      linkRef.current?.click();
-    }
-  };
-
   return (
-    <div
-      role="region"
-      aria-label={linkboxAriaLabel}
+    <a
+      href={href}
+      aria-label={accessibleLabel}
       className={classes}
-      onClick={handleClick}
-      onKeyDown={handleKeyDown}
+      target={openInNewTab ? '_blank' : undefined}
+      rel={openInNewTab || external ? 'noopener noreferrer' : undefined}
       data-testid={testId}
       {...props}
     >
@@ -74,18 +64,11 @@ export const Linkbox: React.FC<LinkboxProps> = ({
         {heading && <HeadingTag className="ivds-linkbox__heading">{heading}</HeadingTag>}
         {text && <p className="ivds-linkbox__text">{text}</p>}
         {children}
-        <a
-          ref={linkRef}
-          href={href}
-          className="ivds-linkbox__link"
-          aria-label={linkAriaLabel}
-          target={openInNewTab ? '_blank' : undefined}
-          rel={openInNewTab || external ? 'noopener noreferrer' : undefined}
-        >
+        <span className="ivds-linkbox__link" aria-hidden="true">
           {external ? <IconExternalLink /> : <IconArrowRight />}
-        </a>
+        </span>
       </div>
-    </div>
+    </a>
   );
 };
 

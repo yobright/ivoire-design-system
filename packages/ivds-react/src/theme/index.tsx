@@ -1,15 +1,18 @@
 import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
-export type IvdsThemeMode = 'light' | 'dark';
+export type IvdsThemePreset = 'default' | 'dark' | 'high-contrast';
+export type IvdsThemeMode = 'light' | IvdsThemePreset;
 export type IvdsThemeTarget = 'root' | 'scoped';
 export type IvdsThemeTokens = Record<string, string | number>;
 
 export interface ThemeContextValue {
   mode: IvdsThemeMode;
+  preset: IvdsThemePreset;
   tokens: IvdsThemeTokens;
   target: IvdsThemeTarget;
   attributeName: string;
   setMode: (mode: IvdsThemeMode) => void;
+  setPreset: (preset: IvdsThemePreset) => void;
   setTokens: (tokens: IvdsThemeTokens) => void;
 }
 
@@ -23,11 +26,13 @@ export interface ThemeProviderProps {
 }
 
 const DEFAULT_THEME_CONTEXT: ThemeContextValue = {
-  mode: 'light',
+  mode: 'default',
+  preset: 'default',
   tokens: {},
   target: 'scoped',
   attributeName: 'data-ivds-theme',
   setMode: () => undefined,
+  setPreset: () => undefined,
   setTokens: () => undefined,
 };
 
@@ -35,6 +40,7 @@ const ThemeContext = createContext<ThemeContextValue>(DEFAULT_THEME_CONTEXT);
 const EMPTY_TOKENS: IvdsThemeTokens = {};
 
 const normalizeTokenName = (name: string): string => (name.startsWith('--') ? name : `--${name}`);
+const resolveThemeMode = (mode: IvdsThemeMode): IvdsThemePreset => (mode === 'light' ? 'default' : mode);
 
 const areTokensEqual = (a: IvdsThemeTokens, b: IvdsThemeTokens): boolean => {
   const aEntries = Object.entries(a);
@@ -54,7 +60,7 @@ const toCssTokenMap = (tokens: IvdsThemeTokens): Record<string, string> =>
   }, {});
 
 export function ThemeProvider({
-  mode = 'light',
+  mode = 'default',
   tokens = EMPTY_TOKENS,
   target = 'scoped',
   attributeName = 'data-ivds-theme',
@@ -64,6 +70,8 @@ export function ThemeProvider({
   const [currentMode, setCurrentMode] = useState<IvdsThemeMode>(mode);
   const [currentTokens, setCurrentTokens] = useState<IvdsThemeTokens>(tokens);
   const cssTokenMap = useMemo(() => toCssTokenMap(currentTokens), [currentTokens]);
+  const resolvedMode = useMemo<IvdsThemePreset>(() => resolveThemeMode(currentMode), [currentMode]);
+  const scopedThemeAttribute = useMemo<Record<string, string>>(() => ({ [attributeName]: resolvedMode }), [attributeName, resolvedMode]);
 
   useEffect(() => {
     setCurrentMode((previousMode) => (previousMode === mode ? previousMode : mode));
@@ -79,7 +87,7 @@ export function ThemeProvider({
     }
 
     const root = document.documentElement;
-    root.setAttribute(attributeName, currentMode);
+    root.setAttribute(attributeName, resolvedMode);
     const entries = Object.entries(cssTokenMap);
 
     entries.forEach(([tokenName, tokenValue]) => {
@@ -92,18 +100,20 @@ export function ThemeProvider({
       });
       root.removeAttribute(attributeName);
     };
-  }, [attributeName, cssTokenMap, currentMode, target]);
+  }, [attributeName, cssTokenMap, resolvedMode, target]);
 
   const value = useMemo<ThemeContextValue>(
     () => ({
       mode: currentMode,
+      preset: resolvedMode,
       tokens: currentTokens,
       target,
       attributeName,
-      setMode: setCurrentMode,
-      setTokens: setCurrentTokens,
+      setMode: (nextMode) => setCurrentMode(nextMode),
+      setPreset: (nextPreset) => setCurrentMode(nextPreset),
+      setTokens: (nextTokens) => setCurrentTokens(nextTokens),
     }),
-    [attributeName, currentMode, currentTokens, target],
+    [attributeName, currentMode, currentTokens, resolvedMode, target],
   );
 
   if (target === 'root') {
@@ -112,7 +122,7 @@ export function ThemeProvider({
 
   return (
     <ThemeContext.Provider value={value}>
-      <div className={className} data-ivds-theme={currentMode} style={cssTokenMap as React.CSSProperties}>
+      <div {...scopedThemeAttribute} className={className} style={cssTokenMap as React.CSSProperties}>
         {children}
       </div>
     </ThemeContext.Provider>

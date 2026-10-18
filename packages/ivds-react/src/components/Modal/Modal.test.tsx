@@ -34,8 +34,8 @@ describe('Modal', () => {
       </Modal>,
     );
 
-    fireEvent.click(screen.getByRole('button', { name: 'Close modal overlay' }));
-    fireEvent.click(screen.getByRole('button', { name: 'Close modal' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Fermer la zone de dialogue' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Fermer la fenetre modale' }));
 
     expect(onClose).toHaveBeenCalledTimes(2);
   });
@@ -60,7 +60,7 @@ describe('Modal', () => {
       </Modal>,
     );
 
-    expect(screen.queryByRole('button', { name: 'Close modal' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Fermer la fenetre modale' })).not.toBeInTheDocument();
 
     rerender(
       <Modal isOpen={false} onClose={() => undefined} title="Modal title" showCloseButton={false}>
@@ -69,5 +69,22 @@ describe('Modal', () => {
     );
 
     expect(document.body.style.overflow).toBe('');
+  });
+
+  it('allows localized close labels', () => {
+    render(
+      <Modal
+        isOpen
+        onClose={() => undefined}
+        title="Modal title"
+        closeButtonLabel="Dismiss dialog"
+        closeOverlayLabel="Dismiss overlay"
+      >
+        Body
+      </Modal>,
+    );
+
+    expect(screen.getByRole('button', { name: 'Dismiss dialog' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Dismiss overlay' })).toBeInTheDocument();
   });
 });

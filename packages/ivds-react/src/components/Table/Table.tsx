@@ -22,6 +22,7 @@ export interface TableProps
   headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
   dense?: boolean;
   striped?: boolean;
+  sortButtonLabel?: (column: TableColumn, direction: SortDirection) => string;
 }
 
 export const Table: React.FC<TableProps> = ({
@@ -32,6 +33,11 @@ export const Table: React.FC<TableProps> = ({
   headingLevel = 2,
   dense = false,
   striped = false,
+  sortButtonLabel = (column, direction) => {
+    if (direction === 'asc') return `Trier ${column.headerName} par ordre decroissant`;
+    if (direction === 'desc') return `Annuler le tri par ${column.headerName}`;
+    return `Trier ${column.headerName} par ordre croissant`;
+  },
   className = '',
   id,
   'data-testid': testId,
@@ -85,24 +91,34 @@ export const Table: React.FC<TableProps> = ({
         {caption && <caption>{caption}</caption>}
         <thead>
           <tr>
-            {cols.map((col) => (
-              <th key={col.key} scope="col">
-                {col.isSortable ? (
-                  <button
-                    type="button"
-                    className="ivds-table__sort-button"
-                    aria-label={`Trier par ${col.headerName}`}
-                    onClick={() => handleSort(col.key)}
-                  >
-                    {col.headerName}
-                    {sortKey === col.key && sortDir === 'asc' && <IconChevronUp />}
-                    {sortKey === col.key && sortDir === 'desc' && <IconChevronDown />}
-                  </button>
-                ) : (
-                  col.headerName
-                )}
-              </th>
-            ))}
+            {cols.map((col) => {
+              const currentSortDir = sortKey === col.key ? sortDir : 'none';
+              const ariaSort =
+                col.isSortable && currentSortDir !== 'none'
+                  ? currentSortDir === 'asc'
+                    ? 'ascending'
+                    : 'descending'
+                  : undefined;
+
+              return (
+                <th key={col.key} scope="col" aria-sort={ariaSort}>
+                  {col.isSortable ? (
+                    <button
+                      type="button"
+                      className="ivds-table__sort-button"
+                      aria-label={sortButtonLabel(col, currentSortDir)}
+                      onClick={() => handleSort(col.key)}
+                    >
+                      {col.headerName}
+                      {sortKey === col.key && sortDir === 'asc' && <IconChevronUp />}
+                      {sortKey === col.key && sortDir === 'desc' && <IconChevronDown />}
+                    </button>
+                  ) : (
+                    col.headerName
+                  )}
+                </th>
+              );
+            })}
           </tr>
         </thead>
         <tbody>

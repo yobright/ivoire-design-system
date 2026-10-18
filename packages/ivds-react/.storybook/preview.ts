@@ -1,9 +1,11 @@
-import type { Preview } from '@storybook/react-vite';
 import React from 'react';
 import { ThemeProvider, type IvdsThemeMode } from '../src/theme';
 
 // Import design tokens first — defines all CSS custom properties
 import '@ivds/design-tokens/lib/all.css';
+import '@ivds/design-tokens/lib/default.css';
+import '@ivds/design-tokens/lib/dark.css';
+import '@ivds/design-tokens/lib/high-contrast.css';
 
 // Import IVDS Core styles
 import '@ivds/core';
@@ -14,14 +16,13 @@ fontLink.rel = 'stylesheet';
 fontLink.href = 'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Inter:wght@300;400;500;600;700&display=swap';
 document.head.appendChild(fontLink);
 
-const preview: Preview = {
+const preview = {
     decorators: [
-        (Story, context) => {
-            const mode = (context.globals.ivdsTheme as IvdsThemeMode) || 'light';
+        (Story: any, context: any) => {
+            const mode = (context.globals.ivdsTheme as IvdsThemeMode) || 'default';
             return React.createElement(
                 ThemeProvider,
-                { mode, target: 'scoped' },
-                React.createElement(Story),
+                { mode, target: 'scoped', children: React.createElement(Story) },
             );
         },
     ],
@@ -122,13 +123,14 @@ const preview: Preview = {
     globalTypes: {
         ivdsTheme: {
             description: 'Theme global des composants',
-            defaultValue: 'light',
+            defaultValue: 'default',
             toolbar: {
                 title: 'Thème',
                 icon: 'paintbrush',
                 items: [
-                    { value: 'light', title: 'Clair' },
+                    { value: 'default', title: 'Default' },
                     { value: 'dark', title: 'Sombre' },
+                    { value: 'high-contrast', title: 'Haut contraste' },
                 ],
                 dynamicTitle: true,
             },

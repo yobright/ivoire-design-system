@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-05-16
+
+### Added
+- `high-contrast` preset support in `ThemeProvider`
+- Unit tests for all documented React component directories
+- Accessibility and release-status documentation links
+
+### Fixed
+- Hero background image now uses `aria-hidden` only when no alternative text is provided
+
+### Changed
+- npm package now publishes compiled JavaScript and type declarations without source stories or tests
+- Internal peer dependencies on `@ivds/core` and `@ivds/design-tokens` updated to `^1.2.0`
+
 ## [1.1.0] - 2026-04-13
 
 ### Added

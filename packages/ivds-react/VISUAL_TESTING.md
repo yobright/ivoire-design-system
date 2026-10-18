@@ -62,7 +62,7 @@ yarn test:all
 Create `.visual.test.ts` files in component directories:
 
 ```typescript
-import { test, expect } from '@playwright/test';
+import { test, expect } from 'playwright/test';
 
 test.describe('Component Visual Tests', () => {
   test('should render correctly', async ({ page }) => {

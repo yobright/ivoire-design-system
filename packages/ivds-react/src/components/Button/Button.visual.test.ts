@@ -1,14 +1,14 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from 'playwright/test';
 
 test.describe('Button Visual Tests', () => {
   test.beforeEach(async ({ page }) => {
     // Navigate to the Button stories
-    await page.goto('/iframe.html?id=components-button--default');
+    await page.goto('/iframe.html?id=react-bouton--par-defaut');
     await page.waitForLoadState('networkidle');
   });
 
   test('should render default button correctly', async ({ page }) => {
-    const button = page.locator('[data-testid="button"]').first();
+    const button = page.getByRole('button', { name: 'Bouton' }).first();
     await expect(button).toBeVisible();
     
     // Take screenshot for visual comparison
@@ -17,7 +17,7 @@ test.describe('Button Visual Tests', () => {
 
   test('should render all button variants correctly', async ({ page }) => {
     // Navigate to the variants story
-    await page.goto('/iframe.html?id=components-button--all-variants');
+    await page.goto('/iframe.html?id=react-bouton--variantes');
     await page.waitForLoadState('networkidle');
     
     // Take screenshot of all variants
@@ -26,7 +26,7 @@ test.describe('Button Visual Tests', () => {
 
   test('should render all button sizes correctly', async ({ page }) => {
     // Navigate to the sizes story
-    await page.goto('/iframe.html?id=components-button--all-sizes');
+    await page.goto('/iframe.html?id=react-bouton--tailles');
     await page.waitForLoadState('networkidle');
     
     // Take screenshot of all sizes
@@ -34,7 +34,7 @@ test.describe('Button Visual Tests', () => {
   });
 
   test('should show hover state correctly', async ({ page }) => {
-    const button = page.locator('[data-testid="button"]').first();
+    const button = page.getByRole('button', { name: 'Bouton' }).first();
     
     // Hover over the button
     await button.hover();
@@ -44,7 +44,7 @@ test.describe('Button Visual Tests', () => {
   });
 
   test('should show focus state correctly', async ({ page }) => {
-    const button = page.locator('[data-testid="button"]').first();
+    const button = page.getByRole('button', { name: 'Bouton' }).first();
     
     // Focus the button
     await button.focus();
@@ -55,7 +55,7 @@ test.describe('Button Visual Tests', () => {
 
   test('should render disabled state correctly', async ({ page }) => {
     // Navigate to the disabled story
-    await page.goto('/iframe.html?id=components-button--disabled');
+    await page.goto('/iframe.html?id=react-bouton--etats');
     await page.waitForLoadState('networkidle');
     
     // Take screenshot of disabled state
@@ -64,7 +64,7 @@ test.describe('Button Visual Tests', () => {
 
   test('should render loading state correctly', async ({ page }) => {
     // Navigate to the loading story
-    await page.goto('/iframe.html?id=components-button--loading');
+    await page.goto('/iframe.html?id=react-bouton--etats');
     await page.waitForLoadState('networkidle');
     
     // Wait for loading animation to be visible

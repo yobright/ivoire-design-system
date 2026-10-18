@@ -43,7 +43,7 @@ export const Hero: React.FC<HeroProps> = ({
     <section className={classes} data-testid={testId} {...props}>
       {imageSrc && resolvedVariant === 'backgroundImage' && (
         <>
-          <img className="ivds-hero__image" src={imageSrc} alt={imageAlt} aria-hidden="true" loading="lazy" />
+          <img className="ivds-hero__image" src={imageSrc} alt={imageAlt ?? ''} aria-hidden={imageAlt ? undefined : true} loading="lazy" />
           <div className="ivds-hero__overlay" aria-hidden="true" />
         </>
       )}

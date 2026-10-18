@@ -23,15 +23,23 @@ describe('Table', () => {
 
   it('renders sortable column button', () => {
     render(<Table cols={cols} rows={rows} />);
-    expect(screen.getByRole('button', { name: /Trier par Nom/ })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Trier Nom par ordre croissant/ })).toBeInTheDocument();
   });
 
   it('sorts rows on click', () => {
     render(<Table cols={cols} rows={rows} />);
-    const sortBtn = screen.getByRole('button', { name: /Trier par Nom/ });
+    const sortBtn = screen.getByRole('button', { name: /Trier Nom par ordre croissant/ });
     fireEvent.click(sortBtn);
     const cells = screen.getAllByRole('cell');
     expect(cells[0]).toHaveTextContent('Alice');
+  });
+
+  it('exposes aria-sort on the active sortable header', () => {
+    render(<Table cols={cols} rows={rows} />);
+    fireEvent.click(screen.getByRole('button', { name: /Trier Nom par ordre croissant/ }));
+
+    expect(screen.getByRole('columnheader', { name: /Nom/ })).toHaveAttribute('aria-sort', 'ascending');
+    expect(screen.getByRole('button', { name: /Trier Nom par ordre decroissant/ })).toBeInTheDocument();
   });
 
   it('applies dense class', () => {

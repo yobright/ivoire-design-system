@@ -16,6 +16,8 @@ export interface StepperProps
   selectedStep?: number;
   small?: boolean;
   onStepClick?: (event: React.MouseEvent<HTMLButtonElement>, stepIndex: number) => void;
+  ariaLabel?: string;
+  getStepAriaLabel?: (step: StepItem, stepIndex: number, stepCount: number) => string;
 }
 
 export const Stepper: React.FC<StepperProps> = ({
@@ -23,6 +25,9 @@ export const Stepper: React.FC<StepperProps> = ({
   selectedStep,
   small = false,
   onStepClick,
+  ariaLabel = 'Progression',
+  getStepAriaLabel = (step, stepIndex, stepCount) =>
+    `${step.label} — étape ${stepIndex + 1} sur ${stepCount}`,
   className = '',
   'data-testid': testId,
   ...props
@@ -30,7 +35,7 @@ export const Stepper: React.FC<StepperProps> = ({
   const classes = ['ivds-stepper', small && 'ivds-stepper--small', className].filter(Boolean).join(' ');
 
   return (
-    <nav className={classes} aria-label="Progression" data-testid={testId} {...props}>
+    <nav className={classes} aria-label={ariaLabel} data-testid={testId} {...props}>
       {steps.map((step, idx) => {
         const isSelected = selectedStep === idx || step.state === 'selected';
         const stateClass = `ivds-stepper__circle--${step.state}`;
@@ -43,7 +48,7 @@ export const Stepper: React.FC<StepperProps> = ({
               type="button"
               className={`ivds-stepper__circle ${stateClass}`}
               aria-current={isSelected ? 'step' : undefined}
-              aria-label={`${step.label} \u2014 etape ${idx + 1} sur ${steps.length}`}
+              aria-label={getStepAriaLabel(step, idx, steps.length)}
               onClick={(e) => onStepClick?.(e, idx)}
             >
               {circleContent}
@@ -52,7 +57,7 @@ export const Stepper: React.FC<StepperProps> = ({
             <span
               className={`ivds-stepper__circle ${stateClass}`}
               aria-current={isSelected ? 'step' : undefined}
-              aria-label={`${step.label} \u2014 etape ${idx + 1} sur ${steps.length}`}
+              aria-label={getStepAriaLabel(step, idx, steps.length)}
             >
               {circleContent}
             </span>

@@ -74,8 +74,8 @@ export type ButtonVariant =
 // Shape variants for buttons
 export type ButtonShape = 'default' | 'pill' | 'icon-only';
 
-// Theme mode for light/dark theme switching
-export type ThemeMode = 'light' | 'dark' | 'auto';
+// Theme mode for IVDS preset switching with compatibility aliases
+export type ThemeMode = 'default' | 'dark' | 'high-contrast' | 'light' | 'auto';
 
 // Notification/alert severity levels
 export type Severity = 'info' | 'success' | 'warning' | 'error';

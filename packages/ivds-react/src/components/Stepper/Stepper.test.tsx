@@ -42,4 +42,17 @@ describe('Stepper', () => {
     render(<Stepper steps={steps} />);
     expect(screen.getByRole('navigation')).toBeInTheDocument();
   });
+
+  it('allows localized navigation and step labels', () => {
+    render(
+      <Stepper
+        steps={steps}
+        ariaLabel="Checkout progress"
+        getStepAriaLabel={(step, index, total) => `${step.label}: step ${index + 1} of ${total}`}
+      />,
+    );
+
+    expect(screen.getByRole('navigation', { name: 'Checkout progress' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Info: step 1 of 4' })).toBeInTheDocument();
+  });
 });

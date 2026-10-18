@@ -1,0 +1,34 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Pilotage/Maturite des composants" />
+
+# Maturite des composants
+
+Cette matrice rend visible le statut de release des familles React. Elle doit etre lue avec les criteres de `documentation/RELEASE-PHASES.md` et le contrat de `documentation/ACCESSIBILITY-CONTRACT.md`.
+
+## Statuts
+
+| Statut | Usage recommande |
+|--------|------------------|
+| `Stable` | Production possible avec verification du contexte produit |
+| `Beta` | Projet pilote ou production controlee avec revue clavier, responsive et contenu |
+| `Draft` | Exploration interne, API encore mobile |
+| `Deprecated` | Usage deconseille, migration attendue |
+
+## Matrice actuelle
+
+| Famille | Composants | Statut | Preuves disponibles | Vigilance avant production |
+|---------|------------|--------|---------------------|----------------------------|
+| Theming et layout | `ThemeProvider`, `Container`, `Columns`, `Section`, `Box`, `Flex`, `Grid`, `Link` | `Stable` | Exports types, stories, tests, presets de theme | Verifier les tokens custom et les contrastes du produit |
+| Structure et navigation | `Header`, `Footer`, `Navigation`, `SideNavigation`, `Breadcrumb`, `Pagination` | `Stable` | Stories, tests, patterns de navigation | Synchroniser l'etat actif avec le routing reel |
+| Formulaires fondamentaux | `Button`, `TextInput`, `Checkbox`, `RadioButton`, `Select`, `Switch`, `Fieldset`, `SelectionGroup`, `ErrorSummary` | `Stable` | Stories, tests, pattern validation | Relier erreurs, labels et focus au flux applicatif |
+| Inputs avances | `DateInput`, `TimeInput`, `PhoneInput`, `NumberInput`, `PasswordInput`, `FileInput`, `TextArea` | `Beta` | Stories, tests composants | Valider formats, i18n, masques et erreurs backend |
+| Feedback et etats | `Alert`, `Notification`, `LoadingSpinner`, `StatusLabel`, `Badge`, `Tag`, `Tooltip` | `Beta` | Stories, tests composants, pattern feedback | Annonces live, priorite du message et contenus reels |
+| Composites et contenu | `Card`, `Modal`, `Tabs`, `Accordion`, `Table`, `Stepper`, `StepByStep`, `Hero`, `Highlight`, `Linkbox`, `CookieConsent`, `Logo`, `ImageWithCard`, `Login`, `Koros`, `ToggleButton` | `Beta` | Stories et tests composants | Focus management, responsive, contenus longs et imbrications interactives |
+
+## Prochaines preuves attendues
+
+- Baselines visuelles sur les composants critiques.
+- Parcours E2E pour les patterns formulaire, navigation et feedback.
+- Notes `when to use / when not to use` detaillees dans les stories critiques.
+- Verification a11y mesuree sur Storybook et sur parcours integres.

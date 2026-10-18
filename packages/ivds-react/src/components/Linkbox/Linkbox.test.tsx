@@ -18,9 +18,9 @@ describe('Linkbox', () => {
     expect(screen.getByText('Description')).toBeInTheDocument();
   });
 
-  it('renders link with correct href', () => {
+  it('renders the whole card as a link with correct href', () => {
     render(<Linkbox {...defaultProps} />);
-    const link = screen.getByLabelText('Go to test');
+    const link = screen.getByRole('link', { name: 'Go to test' });
     expect(link).toHaveAttribute('href', '/test');
   });
 
@@ -34,8 +34,9 @@ describe('Linkbox', () => {
     expect(screen.getByAltText('Image')).toBeInTheDocument();
   });
 
-  it('has region role with aria-label', () => {
+  it('uses link semantics instead of a clickable region', () => {
     render(<Linkbox {...defaultProps} />);
-    expect(screen.getByRole('region')).toHaveAttribute('aria-label', 'Test linkbox');
+    expect(screen.queryByRole('region')).not.toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Go to test' })).toBeInTheDocument();
   });
 });

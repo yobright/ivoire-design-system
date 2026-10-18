@@ -138,6 +138,9 @@ export type { LinkProps, LinkSize } from './components/Link';
 export { Pagination } from './components/Pagination';
 export type { PaginationProps } from './components/Pagination';
 
+export { MegaMenu } from './components/MegaMenu';
+export type { MegaMenuAction, MegaMenuColumn, MegaMenuLink, MegaMenuProps, MegaMenuSection } from './components/MegaMenu';
+
 // Structural components
 export { 
   Header, 
@@ -176,6 +179,7 @@ export type { GridProps } from './components/Grid';
 // Theme APIs
 export { ThemeProvider, useTheme } from './theme';
 export type {
+  IvdsThemePreset,
   IvdsThemeMode,
   IvdsThemeTarget,
   IvdsThemeTokens,

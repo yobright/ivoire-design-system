@@ -1,6 +1,6 @@
 # @ivds/react
 
-Composants React du Ivoire Design System. Ce package fournit des composants types avec TypeScript, accessibles par defaut, et prets pour les interfaces institutionnelles.
+Composants React d’Ivoire Design System. Ce package fournit des composants typés avec TypeScript, conçus pour être accessibles par défaut et simples à intégrer dans des interfaces web structurées.
 
 ## Installation
 
@@ -8,11 +8,11 @@ Composants React du Ivoire Design System. Ce package fournit des composants type
 yarn add @ivds/react @ivds/core @ivds/design-tokens
 ```
 
-**Prerequis** : React >= 18.2.0
+**Prérequis** : React >= 18.2.0
 
 ---
 
-## Demarrage rapide
+## Démarrage rapide
 
 ```tsx
 // 1. Importer les styles Core
@@ -24,7 +24,7 @@ import { Button, Card, TextInput } from '@ivds/react';
 
 function App() {
   return (
-    <ThemeProvider mode="light">
+    <ThemeProvider mode="default">
       <Card variant="elevated">
         <Card.Header><h2>Mon formulaire</h2></Card.Header>
         <Card.Body>
@@ -98,22 +98,33 @@ function App() {
 | `Header` | sticky, glass, scrolled, dark, maxWidth |
 | `HeaderBrand` | Bloc de marque du header |
 | `HeaderNav` | Navigation principale du header |
-| `HeaderActions` | Zone d'actions du header |
+| `HeaderActions` | Zone d’actions du header |
 | `Footer` | light, columns, maxWidth |
-| `Navigation` | Navigation horizontale composee de `NavigationLink` |
-| `SideNav` | Navigation laterale composee de `SideNavItem` |
-| `SideNavigation` | Alias explicite de la navigation laterale |
+| `Navigation` | Navigation horizontale composée de `NavigationLink` |
+| `SideNav` | Navigation latérale composée de `SideNavItem` |
+| `SideNavigation` | Alias explicite de la navigation latérale |
+
+### Quand utiliser / ne pas utiliser
+
+| Famille | À utiliser quand | À éviter quand |
+|---------|------------------|----------------|
+| Structure et navigation | Vous construisez une page, un portail produit ou une documentation avec header, navigation, contenu et footer cohérents. | Vous avez besoin d’une navigation applicative très spécifique, non couverte par les patterns documentés. |
+| Formulaires fondamentaux | Vous collectez des informations standards avec labels visibles, aide, validation inline et résumé d’erreurs. | Vous devez imposer des masques complexes ou des workflows métier sans validation UX dédiée. |
+| Composants interactifs composites | Vous voulez accélérer la construction d’une interface avec cartes, tableaux, modales, stepper, hero et composants de feedback. | Vous imbriquez plusieurs contrôles interactifs dans une même zone cliquable ou vous ne pouvez pas vérifier le comportement clavier. |
+| Feedback et états système | Vous affichez un succès, une erreur, un chargement ou une notification de manière explicite et annoncée aux technologies d’assistance. | Le message remplace une validation inline ou masque l’action concrète attendue de l’utilisateur. |
+
+Les composants `Card interactive`, `Linkbox`, `Modal`, `Table` et `Stepper` doivent être vérifiés dans le flux final : nom accessible, ordre de focus, navigation clavier, contenu long et comportement responsive.
 
 ### Utilitaires
 
 | Composant | Description |
 |-----------|-------------|
-| `Container` | Contrainte de largeur et gutters coherents |
+| `Container` | Contrainte de largeur et gutters cohérents |
 | `Columns` | Mise en colonnes responsive ou fixe |
 | `Section` | Bloc de section themable avec contenu contraint |
-| `Link` | Lien inline ou habille en bouton |
-| `Pagination` | Pagination accessible pour listes et resultats |
-| `Box` | Conteneur generique avec props de spacing |
+| `Link` | Lien inline ou habillé en bouton |
+| `Pagination` | Pagination accessible pour listes et résultats |
+| `Box` | Conteneur générique avec props de spacing |
 | `Flex` | Conteneur flexbox |
 | `Grid` | Conteneur grille CSS |
 
@@ -167,7 +178,7 @@ function PortailProduit() {
           <li><a href="#">Storybook</a></li>
           <li><a href="#">Guidelines</a></li>
         </FooterSection>
-        <FooterBottom>© 2026 Ivoire Design System</FooterBottom>
+        <FooterBottom> 2026 Ivoire Design System</FooterBottom>
       </Footer>
     </>
   );
@@ -176,38 +187,49 @@ function PortailProduit() {
 
 ---
 
-## Theming
+## Thématisation
 
-### Modes clair et sombre
+### Presets officiels
 
 ```tsx
+import { Button } from '@ivds/react';
 import { ThemeProvider, useTheme } from '@ivds/react/theme';
 
 function App() {
   return (
-    <ThemeProvider mode="light">
+    <ThemeProvider mode="default">
       <MonContenu />
     </ThemeProvider>
   );
 }
 
 function BoutonTheme() {
-  const { mode, setMode } = useTheme();
+  const { preset, setPreset } = useTheme();
   return (
-    <Button onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}>
-      Mode {mode === 'light' ? 'sombre' : 'clair'}
-    </Button>
+    <>
+      <Button onClick={() => setPreset('default')} aria-pressed={preset === 'default'}>
+        Default
+      </Button>
+      <Button onClick={() => setPreset('dark')} aria-pressed={preset === 'dark'}>
+        Sombre
+      </Button>
+      <Button onClick={() => setPreset('high-contrast')} aria-pressed={preset === 'high-contrast'}>
+        Haut Contraste
+      </Button>
+    </>
   );
 }
 ```
 
-### Tokens personnalises
+`light` reste accepté comme alias rétrocompatible, mais `default`, `dark` et `high-contrast` sont les presets recommandés.
 
-Pour adapter les couleurs a votre ministere :
+### Tokens personnalisés
+
+Pour adapter les couleurs à votre contexte :
 
 ```tsx
 <ThemeProvider
-  mode="light"
+  mode="default"
   tokens={{
     '--color-brand-primary-500': '#1a6bdb',
     '--color-brand-primary-600': '#1058b8',
@@ -220,16 +242,44 @@ Pour adapter les couleurs a votre ministere :
 
 ---
 
-## Accessibilite
+## Maturité et accessibilité
+
+IVDS documente un modèle de maturité pour les composants et les patterns :
+
+- `Draft`
+- `Beta`
+- `Stable`
+- `Deprecated`
+
+### Statut actuel par famille
+
+| Famille | Statut | Notes |
+|---------|--------|-------|
+| Theming et utilitaires de layout | `Stable` | `ThemeProvider`, `Container`, `Columns`, `Section`, `Link`, `Box`, `Flex`, `Grid` |
+| Structure et navigation | `Stable` | `Header`, `Footer`, `Navigation`, `SideNavigation`, `Breadcrumb`, `Pagination` |
+| Formulaires fondamentaux | `Stable` | `Button`, `TextInput`, `Checkbox`, `RadioButton`, `Select`, `Switch`, `Fieldset`, `SelectionGroup`, `ErrorSummary` |
+| Inputs avancés | `Beta` | `DateInput`, `TimeInput`, `PhoneInput`, `NumberInput`, `PasswordInput`, `FileInput` |
+| Feedback, data-display et composites | `Beta` | `Alert`, `Notification`, `LoadingSpinner`, `StatusLabel`, `Tooltip`, `Accordion`, `Table`, `Stepper`, `Hero`, `Login`, etc. |
+
+Le détail des critères de validation est documenté dans :
+
+- [`../../documentation/RELEASE-PHASES.md`](../../documentation/RELEASE-PHASES.md)
+- [`../../documentation/ACCESSIBILITY-CONTRACT.md`](../../documentation/ACCESSIBILITY-CONTRACT.md)
+
+Les composants React fournissent une base accessible, mais l’équipe qui les intègre doit toujours valider le flux complet, les contenus, les labels et le contexte réel de l’interface.
+
+---
+
+## Accessibilité
 
 Tous les composants suivent les bonnes pratiques WCAG 2.2 AA :
 
 - `aria-disabled`, `aria-busy`, `aria-invalid` sur les champs
-- `aria-label` et `aria-labelledby` sur les elements interactifs
+- `aria-label` et `aria-labelledby` sur les éléments interactifs
 - `aria-current="page"` sur la navigation active
 - `role="dialog"` avec focus trapping sur Modal
-- Navigation clavier complete (Tab, Fleches, Entree, Echap)
-- Focus visible sur tous les elements interactifs
+- Navigation clavier complète (Tab, Flèches, Entrée, Échap)
+- Focus visible sur tous les éléments interactifs
 
 ---
 
@@ -241,7 +291,7 @@ Lancez le Storybook pour explorer les composants en action :
 yarn dev:react   # Port 6008
 ```
 
-Le Storybook inclut des pages de documentation sur les tokens (couleurs, typographie, espacement) dans la section "Fondations".
+Le Storybook inclut aussi des pages de documentation sur les tokens (couleurs, typographie, espacement) dans la section "Fondations".
 
 ## Licence
 

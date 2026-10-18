@@ -24,6 +24,10 @@ export interface ModalProps
   closeOnOverlayClick?: boolean;
   /** Whether pressing Escape should close the modal */
   closeOnEscape?: boolean;
+  /** Accessible label for the close button */
+  closeButtonLabel?: string;
+  /** Accessible label for the overlay close target */
+  closeOverlayLabel?: string;
 }
 
 export const Modal: React.FC<ModalProps> = ({
@@ -36,6 +40,8 @@ export const Modal: React.FC<ModalProps> = ({
   footer,
   closeOnOverlayClick = true,
   closeOnEscape = true,
+  closeButtonLabel = 'Fermer la fenetre modale',
+  closeOverlayLabel = 'Fermer la zone de dialogue',
   children,
   className = '',
   'aria-label': ariaLabel,
@@ -157,7 +163,7 @@ export const Modal: React.FC<ModalProps> = ({
         type="button"
         className={`${baseClass}__backdrop`}
         onClick={handleOverlayClick}
-        aria-label="Close modal overlay"
+        aria-label={closeOverlayLabel}
         tabIndex={-1}
       />
       <div
@@ -192,7 +198,7 @@ export const Modal: React.FC<ModalProps> = ({
               <button
                 className={`${baseClass}__close`}
                 onClick={onClose}
-                aria-label="Close modal"
+                aria-label={closeButtonLabel}
                 type="button"
               >
                 <svg
