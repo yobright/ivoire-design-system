@@ -62,10 +62,10 @@ export const BrandColors = () => {
       name: '🇨🇮 Orange (Primary)',
       description: 'From the Ivory Coast flag - represents the savanna and the spirit of the nation',
       colors: [
-        { name: 'Orange', value: '#ff8c00', description: 'Primary brand color' },
+        { name: 'Orange', value: '#ff9f1c', description: 'Primary brand color' },
         { name: 'Orange Light', value: '#fff4e6', description: 'Backgrounds and subtle accents' },
-        { name: 'Orange Medium Light', value: '#ffd699', description: 'Hover states and highlights' },
-        { name: 'Orange Dark', value: '#cc7000', description: 'Text and emphasis' },
+        { name: 'Orange Medium Light', value: '#ffd8a8', description: 'Hover states and highlights' },
+        { name: 'Orange Dark', value: '#e67700', description: 'Text and emphasis' },
       ]
     })}
 
@@ -73,10 +73,10 @@ export const BrandColors = () => {
       name: '🇨🇮 Green (Secondary)',
       description: 'From the Ivory Coast flag - represents hope, forests, and natural resources',
       colors: [
-        { name: 'Green', value: '#009e60', description: 'Secondary brand color' },
-        { name: 'Green Light', value: '#e6f7f0', description: 'Backgrounds and subtle accents' },
-        { name: 'Green Medium Light', value: '#99e6c7', description: 'Hover states and highlights' },
-        { name: 'Green Dark', value: '#007a4d', description: 'Text and emphasis' },
+        { name: 'Teal', value: '#2ec4b6', description: 'Secondary brand color' },
+        { name: 'Teal Light', value: '#ecfdf9', description: 'Backgrounds and subtle accents' },
+        { name: 'Teal Medium Light', value: '#a7f3d0', description: 'Hover states and highlights' },
+        { name: 'Teal Dark', value: '#0f766e', description: 'Text and emphasis' },
       ]
     })}
 

@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-05-16
+
+### Added
+- Theme preset aliases for `default`, `dark`, and `high-contrast`
+- Release maturity documentation for component families
+
+### Fixed
+- Replaced broad `transition: all` declarations with explicit transitioned properties
+
+### Changed
+- npm package now publishes build artifacts and SCSS assets without Storybook stories, tests, or source maps
+- Internal peer dependency on `@ivds/design-tokens` updated to `^1.2.0`
+
 ## [1.1.0] - 2026-04-13
 
 ### Added

@@ -11,11 +11,11 @@
   --fontFamily-display: var(--typography-fontFamilies-display, 'IBM Plex Sans', 'Inter', sans-serif);
 
   // Brand aliases
-  --ivds-brand-primary: var(--color-brand-primary-500, #ff9f1c);
-  --ivds-brand-secondary: var(--color-brand-secondary-500, #2ec4b6);
-  --ivds-brand-accent: var(--color-brand-accent-500, #14b8a6);
-  --ivds-brand-premium: var(--color-brand-premium-500, #f4a261);
-  --ivds-brand-earth: var(--color-brand-earth-500, #9b2226);
+  --ivds-brand-primary: var(--ivds-preset-brand-primary, var(--color-brand-primary-500, #ff9f1c));
+  --ivds-brand-secondary: var(--ivds-preset-brand-secondary, var(--color-brand-secondary-500, #2ec4b6));
+  --ivds-brand-accent: var(--ivds-preset-brand-accent, var(--color-brand-accent-500, #14b8a6));
+  --ivds-brand-premium: var(--ivds-preset-brand-premium, var(--color-brand-premium-500, #f4a261));
+  --ivds-brand-earth: var(--ivds-preset-brand-earth, var(--color-brand-earth-500, #9b2226));
 
   // Neutral aliases
   --color-semantic-neutral-50: var(--color-ui-neutral-50, #fafaf8);
@@ -58,46 +58,46 @@
   --color-semantic-info-foreground: var(--color-ui-info-foreground, #1c1917);
 
   // Surface + text system
-  --ivds-surface-page: var(--color-semantic-surface-secondary, #fafaf8);
-  --ivds-surface-base: var(--color-semantic-surface-primary, #fff);
-  --ivds-surface-muted: var(--color-semantic-surface-tertiary, #f5f5f0);
-  --ivds-surface-strong: var(--color-semantic-surface-inverse, #1c1917);
-  --ivds-surface-accent: var(--color-brand-primary-50, #fff4e6);
-  --ivds-surface-secondary-accent: var(--color-brand-secondary-50, #ecfdf9);
-  --ivds-surface-premium: var(--color-brand-premium-50, #fff8e1);
-  --ivds-border-subtle: var(--color-semantic-neutral-200, #e7e5dd);
-  --ivds-border-strong: var(--color-semantic-neutral-300, #d6d3c7);
-  --ivds-border-brand: var(--color-brand-accent-400, #2dd4bf);
-  --ivds-border-primary: var(--color-brand-primary-300, #ffc078);
-  --ivds-text-primary: var(--color-semantic-neutral-900, #1c1917);
-  --ivds-text-secondary: var(--color-semantic-neutral-700, #44403c);
-  --ivds-text-muted: var(--color-semantic-neutral-500, #78716c);
-  --ivds-text-on-strong: #fff;
-  --ivds-text-on-brand: #fff;
+  --ivds-surface-page: var(--ivds-preset-surface-page, var(--color-semantic-surface-secondary, #fafaf8));
+  --ivds-surface-base: var(--ivds-preset-surface-base, var(--color-semantic-surface-primary, #fff));
+  --ivds-surface-muted: var(--ivds-preset-surface-muted, var(--color-semantic-surface-tertiary, #f5f5f0));
+  --ivds-surface-strong: var(--ivds-preset-surface-strong, var(--color-semantic-surface-inverse, #1c1917));
+  --ivds-surface-accent: var(--ivds-preset-surface-accent, var(--color-semantic-surface-accent, var(--color-brand-primary-50, #fff4e6)));
+  --ivds-surface-secondary-accent: var(--ivds-preset-surface-secondary-accent, var(--color-semantic-surface-secondary-accent, var(--color-brand-secondary-50, #ecfdf9)));
+  --ivds-surface-premium: var(--ivds-preset-surface-premium, var(--color-semantic-surface-premium, var(--color-brand-premium-50, #fff8e1)));
+  --ivds-border-subtle: var(--ivds-preset-border-subtle, var(--color-semantic-border-subtle, var(--color-semantic-neutral-200, #e7e5dd)));
+  --ivds-border-strong: var(--ivds-preset-border-strong, var(--color-semantic-border-strong, var(--color-semantic-neutral-300, #d6d3c7)));
+  --ivds-border-brand: var(--ivds-preset-border-brand, var(--color-semantic-border-brand, var(--color-brand-accent-400, #2dd4bf)));
+  --ivds-border-primary: var(--ivds-preset-border-primary, var(--color-semantic-border-primary, var(--color-brand-primary-300, #ffc078)));
+  --ivds-text-primary: var(--ivds-preset-text-primary, var(--color-semantic-text-primary, var(--color-semantic-neutral-900, #1c1917)));
+  --ivds-text-secondary: var(--ivds-preset-text-secondary, var(--color-semantic-text-secondary, var(--color-semantic-neutral-700, #44403c)));
+  --ivds-text-muted: var(--ivds-preset-text-muted, var(--color-semantic-text-muted, var(--color-semantic-neutral-500, #78716c)));
+  --ivds-text-on-strong: var(--ivds-preset-text-on-strong, var(--color-semantic-text-on-strong, #fff));
+  --ivds-text-on-brand: var(--ivds-preset-text-on-brand, var(--color-semantic-text-on-brand, #fff));
 
   // Interactive aliases
-  --ivds-interactive-primary-bg: var(--color-brand-primary-500, #ff9f1c);
-  --ivds-interactive-primary-bg-hover: var(--color-brand-primary-600, #f08c00);
-  --ivds-interactive-primary-bg-active: var(--color-brand-primary-700, #e67700);
-  --ivds-interactive-primary-text: #fff;
-  --ivds-interactive-primary-shadow: var(--shadow-md, 0 4px 12px rgba(0, 0, 0, 0.08));
-  --ivds-interactive-secondary-bg: #fff;
-  --ivds-interactive-secondary-bg-hover: var(--color-brand-secondary-50, #ecfdf9);
-  --ivds-interactive-secondary-border: var(--color-brand-secondary-600, #14b8a6);
-  --ivds-interactive-secondary-text: var(--color-brand-secondary-800, #115e59);
-  --ivds-interactive-accent-bg: var(--color-brand-accent-500, #14b8a6);
-  --ivds-interactive-accent-bg-hover: var(--color-brand-accent-600, #0f766e);
-  --ivds-interactive-accent-bg-active: var(--color-brand-accent-700, #115e59);
-  --ivds-interactive-accent-text: #fff;
-  --ivds-interactive-supplementary-bg: transparent;
-  --ivds-interactive-supplementary-bg-hover: var(--color-semantic-neutral-100, #f5f5f0);
-  --ivds-interactive-supplementary-text: var(--ivds-text-primary, #1c1917);
+  --ivds-interactive-primary-bg: var(--ivds-preset-interactive-primary-bg, var(--color-semantic-interactive-primary-bg, var(--color-brand-primary-500, #ff9f1c)));
+  --ivds-interactive-primary-bg-hover: var(--ivds-preset-interactive-primary-bg-hover, var(--color-semantic-interactive-primary-bg-hover, var(--color-brand-primary-600, #f08c00)));
+  --ivds-interactive-primary-bg-active: var(--ivds-preset-interactive-primary-bg-active, var(--color-semantic-interactive-primary-bg-active, var(--color-brand-primary-700, #e67700)));
+  --ivds-interactive-primary-text: var(--ivds-preset-interactive-primary-text, var(--color-semantic-interactive-primary-text, #fff));
+  --ivds-interactive-primary-shadow: var(--ivds-preset-interactive-primary-shadow, var(--shadow-md, 0 4px 12px rgba(0, 0, 0, 0.08)));
+  --ivds-interactive-secondary-bg: var(--ivds-preset-interactive-secondary-bg, var(--color-semantic-interactive-secondary-bg, #fff));
+  --ivds-interactive-secondary-bg-hover: var(--ivds-preset-interactive-secondary-bg-hover, var(--color-semantic-interactive-secondary-bg-hover, var(--color-brand-secondary-50, #ecfdf9)));
+  --ivds-interactive-secondary-border: var(--ivds-preset-interactive-secondary-border, var(--color-semantic-interactive-secondary-border, var(--color-brand-secondary-600, #14b8a6)));
+  --ivds-interactive-secondary-text: var(--ivds-preset-interactive-secondary-text, var(--color-semantic-interactive-secondary-text, var(--color-brand-secondary-800, #115e59)));
+  --ivds-interactive-accent-bg: var(--ivds-preset-interactive-accent-bg, var(--color-semantic-interactive-accent-bg, var(--color-brand-accent-500, #14b8a6)));
+  --ivds-interactive-accent-bg-hover: var(--ivds-preset-interactive-accent-bg-hover, var(--color-semantic-interactive-accent-bg-hover, var(--color-brand-accent-600, #0f766e)));
+  --ivds-interactive-accent-bg-active: var(--ivds-preset-interactive-accent-bg-active, var(--color-semantic-interactive-accent-bg-active, var(--color-brand-accent-700, #115e59)));
+  --ivds-interactive-accent-text: var(--ivds-preset-interactive-accent-text, var(--color-semantic-interactive-accent-text, #fff));
+  --ivds-interactive-supplementary-bg: var(--ivds-preset-interactive-supplementary-bg, var(--color-semantic-interactive-supplementary-bg, transparent));
+  --ivds-interactive-supplementary-bg-hover: var(--ivds-preset-interactive-supplementary-bg-hover, var(--color-semantic-interactive-supplementary-bg-hover, var(--color-semantic-neutral-100, #f5f5f0)));
+  --ivds-interactive-supplementary-text: var(--ivds-preset-interactive-supplementary-text, var(--color-semantic-interactive-supplementary-text, var(--ivds-text-primary, #1c1917)));
 
   // Gradient aliases
-  --ivds-gradient-primary: var(--color-brand-gradient-primary, linear-gradient(135deg, #ff9f1c 0%, #2ec4b6 100%));
-  --ivds-gradient-sunset: var(--color-brand-gradient-sunset, linear-gradient(135deg, #ff9f1c 0%, #f4a261 50%, #e76f51 100%));
-  --ivds-gradient-nature: var(--color-brand-gradient-nature, linear-gradient(135deg, #2ec4b6 0%, #283618 100%));
-  --ivds-gradient-premium: var(--color-brand-gradient-premium, linear-gradient(135deg, #f4a261 0%, #ff9f1c 100%));
+  --ivds-gradient-primary: var(--ivds-preset-gradient-primary, var(--color-brand-gradient-primary, linear-gradient(135deg, #ff9f1c 0%, #2ec4b6 100%)));
+  --ivds-gradient-sunset: var(--ivds-preset-gradient-sunset, var(--color-brand-gradient-sunset, linear-gradient(135deg, #ff9f1c 0%, #f4a261 50%, #e76f51 100%)));
+  --ivds-gradient-nature: var(--ivds-preset-gradient-nature, var(--color-brand-gradient-nature, linear-gradient(135deg, #2ec4b6 0%, #283618 100%)));
+  --ivds-gradient-premium: var(--ivds-preset-gradient-premium, var(--color-brand-gradient-premium, linear-gradient(135deg, #f4a261 0%, #ff9f1c 100%)));
 
   // Radius + shadow aliases
   --ivds-radius-xs: var(--borderRadius-xs, 0.0625rem);
@@ -114,53 +114,84 @@
   --container-max-width: 1280px;
 
   // Focus treatment — outline-based (no box-shadow conflict with elevated components)
-  --ivds-focus-ring-color: var(--color-brand-accent-500, #14b8a6);
-  --ivds-focus-ring-width: 3px;
-  --ivds-focus-ring-offset: 2px;
-  --ivds-focus-ring: var(--shadow-glow-secondary, 0 0 0 3px rgba(46, 196, 182, 0.28));
+  --ivds-focus-ring-color: var(--ivds-preset-focus-ring-color, var(--color-brand-accent-500, #14b8a6));
+  --ivds-focus-ring-width: var(--ivds-preset-focus-ring-width, 3px);
+  --ivds-focus-ring-offset: var(--ivds-preset-focus-ring-offset, 2px);
+  --ivds-focus-ring: var(--ivds-preset-focus-ring-ring, var(--shadow-glow-secondary, 0 0 0 3px rgba(46, 196, 182, 0.28)));
 
   // Motion
-  --ivds-motion-fast: var(--animation-duration-fast, 150ms);
-  --ivds-motion-normal: var(--animation-duration-normal, 250ms);
-  --ivds-motion-slow: var(--animation-duration-slow, 400ms);
-  --ivds-motion-ease: var(--animation-easing-standard, cubic-bezier(0.4, 0, 0.2, 1));
-  --ivds-motion-smooth: var(--animation-easing-smooth, cubic-bezier(0.25, 0.8, 0.25, 1));
-  --ivds-motion-bounce: var(--animation-easing-bounce, cubic-bezier(0.34, 1.56, 0.64, 1));
-  --ivds-transition-colors: var(--animation-transition-colors, color 150ms cubic-bezier(0.4, 0, 0.2, 1), background-color 150ms cubic-bezier(0.4, 0, 0.2, 1), border-color 150ms cubic-bezier(0.4, 0, 0.2, 1));
-  --ivds-transition-surface: var(--animation-transition-surface, background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1), transform 250ms cubic-bezier(0.4, 0, 0.2, 1));
-  --ivds-transition-transform: var(--animation-transition-transform, transform 250ms cubic-bezier(0.34, 1.56, 0.64, 1));
+  --ivds-motion-fast: var(--ivds-preset-motion-fast, var(--animation-duration-fast, 150ms));
+  --ivds-motion-normal: var(--ivds-preset-motion-normal, var(--animation-duration-normal, 250ms));
+  --ivds-motion-slow: var(--ivds-preset-motion-slow, var(--animation-duration-slow, 400ms));
+  --ivds-motion-ease: var(--ivds-preset-motion-ease, var(--animation-easing-standard, cubic-bezier(0.4, 0, 0.2, 1)));
+  --ivds-motion-smooth: var(--ivds-preset-motion-smooth, var(--animation-easing-smooth, cubic-bezier(0.25, 0.8, 0.25, 1)));
+  --ivds-motion-bounce: var(--ivds-preset-motion-bounce, var(--animation-easing-bounce, cubic-bezier(0.34, 1.56, 0.64, 1)));
+  --ivds-transition-colors: var(--ivds-preset-transition-colors, var(--animation-transition-colors, color 150ms cubic-bezier(0.4, 0, 0.2, 1), background-color 150ms cubic-bezier(0.4, 0, 0.2, 1), border-color 150ms cubic-bezier(0.4, 0, 0.2, 1)));
+  --ivds-transition-surface: var(--ivds-preset-transition-surface, var(--animation-transition-surface, background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1), transform 250ms cubic-bezier(0.4, 0, 0.2, 1)));
+  --ivds-transition-transform: var(--ivds-preset-transition-transform, var(--animation-transition-transform, transform 250ms cubic-bezier(0.34, 1.56, 0.64, 1)));
 }
 
 [data-ivds-theme='dark'] {
   color-scheme: dark;
 
-  --ivds-surface-page: #120f0d;
-  --ivds-surface-base: #1a1613;
-  --ivds-surface-muted: #241f1b;
-  --ivds-surface-strong: #0c0a09;
-  --ivds-border-subtle: #3f3a36;
-  --ivds-border-strong: #57534e;
-  --ivds-border-brand: var(--color-brand-accent-400, #2dd4bf);
-  --ivds-text-primary: #f8f5f1;
-  --ivds-text-secondary: #e7e5dd;
-  --ivds-text-muted: #d6d3c7;
-  --ivds-text-on-strong: #fff;
-  --ivds-text-on-brand: #fff;
-  --ivds-interactive-primary-bg: var(--color-brand-primary-500, #ff9f1c);
-  --ivds-interactive-primary-bg-hover: var(--color-brand-primary-400, #ffb457);
-  --ivds-interactive-primary-bg-active: var(--color-brand-primary-600, #f08c00);
-  --ivds-interactive-secondary-bg: transparent;
-  --ivds-interactive-secondary-bg-hover: rgba(46, 196, 182, 0.14);
-  --ivds-interactive-secondary-border: var(--color-brand-secondary-400, #34d399);
-  --ivds-interactive-secondary-text: var(--color-brand-accent-300, #5eead4);
-  --ivds-interactive-accent-bg: var(--color-brand-accent-500, #14b8a6);
-  --ivds-interactive-accent-bg-hover: var(--color-brand-accent-400, #2dd4bf);
-  --ivds-interactive-accent-bg-active: var(--color-brand-accent-600, #0f766e);
-  --ivds-interactive-supplementary-bg: rgba(255, 255, 255, 0.06);
-  --ivds-interactive-supplementary-bg-hover: rgba(255, 255, 255, 0.12);
-  --ivds-interactive-supplementary-text: #f8f5f1;
-  --ivds-focus-ring-color: var(--color-brand-accent-300, #5eead4);
-  --ivds-focus-ring: var(--shadow-glow-secondary, 0 0 0 3px rgba(46, 196, 182, 0.28));
+  --ivds-surface-page: var(--ivds-preset-surface-page, #120f0d);
+  --ivds-surface-base: var(--ivds-preset-surface-base, #1a1613);
+  --ivds-surface-muted: var(--ivds-preset-surface-muted, #241f1b);
+  --ivds-surface-strong: var(--ivds-preset-surface-strong, #0c0a09);
+  --ivds-border-subtle: var(--ivds-preset-border-subtle, #3f3a36);
+  --ivds-border-strong: var(--ivds-preset-border-strong, #57534e);
+  --ivds-border-brand: var(--ivds-preset-border-brand, var(--color-brand-accent-400, #2dd4bf));
+  --ivds-text-primary: var(--ivds-preset-text-primary, #f8f5f1);
+  --ivds-text-secondary: var(--ivds-preset-text-secondary, #e7e5dd);
+  --ivds-text-muted: var(--ivds-preset-text-muted, #d6d3c7);
+  --ivds-text-on-strong: var(--ivds-preset-text-on-strong, #fff);
+  --ivds-text-on-brand: var(--ivds-preset-text-on-brand, #fff);
+  --ivds-interactive-primary-bg: var(--ivds-preset-interactive-primary-bg, var(--color-brand-primary-500, #ff9f1c));
+  --ivds-interactive-primary-bg-hover: var(--ivds-preset-interactive-primary-bg-hover, var(--color-brand-primary-400, #ffb457));
+  --ivds-interactive-primary-bg-active: var(--ivds-preset-interactive-primary-bg-active, var(--color-brand-primary-600, #f08c00));
+  --ivds-interactive-secondary-bg: var(--ivds-preset-interactive-secondary-bg, transparent);
+  --ivds-interactive-secondary-bg-hover: var(--ivds-preset-interactive-secondary-bg-hover, rgba(46, 196, 182, 0.14));
+  --ivds-interactive-secondary-border: var(--ivds-preset-interactive-secondary-border, var(--color-brand-secondary-400, #34d399));
+  --ivds-interactive-secondary-text: var(--ivds-preset-interactive-secondary-text, var(--color-brand-accent-300, #5eead4));
+  --ivds-interactive-accent-bg: var(--ivds-preset-interactive-accent-bg, var(--color-brand-accent-500, #14b8a6));
+  --ivds-interactive-accent-bg-hover: var(--ivds-preset-interactive-accent-bg-hover, var(--color-brand-accent-400, #2dd4bf));
+  --ivds-interactive-accent-bg-active: var(--ivds-preset-interactive-accent-bg-active, var(--color-brand-accent-600, #0f766e));
+  --ivds-interactive-supplementary-bg: var(--ivds-preset-interactive-supplementary-bg, rgba(255, 255, 255, 0.06));
+  --ivds-interactive-supplementary-bg-hover: var(--ivds-preset-interactive-supplementary-bg-hover, rgba(255, 255, 255, 0.12));
+  --ivds-interactive-supplementary-text: var(--ivds-preset-interactive-supplementary-text, #f8f5f1);
+  --ivds-focus-ring-color: var(--ivds-preset-focus-ring-color, var(--color-brand-accent-300, #5eead4));
+  --ivds-focus-ring: var(--ivds-preset-focus-ring-ring, var(--shadow-glow-secondary, 0 0 0 3px rgba(46, 196, 182, 0.28)));
+}
+
+[data-ivds-theme='high-contrast'] {
+  color-scheme: dark;
+
+  --ivds-surface-page: var(--ivds-preset-surface-page, #000);
+  --ivds-surface-base: var(--ivds-preset-surface-base, #000);
+  --ivds-surface-muted: var(--ivds-preset-surface-muted, #111);
+  --ivds-surface-strong: var(--ivds-preset-surface-strong, #fff);
+  --ivds-border-subtle: var(--ivds-preset-border-subtle, #fff);
+  --ivds-border-strong: var(--ivds-preset-border-strong, #ffd400);
+  --ivds-border-brand: var(--ivds-preset-border-brand, #00e5ff);
+  --ivds-text-primary: var(--ivds-preset-text-primary, #fff);
+  --ivds-text-secondary: var(--ivds-preset-text-secondary, #fff);
+  --ivds-text-muted: var(--ivds-preset-text-muted, #f5f5f5);
+  --ivds-text-on-strong: var(--ivds-preset-text-on-strong, #000);
+  --ivds-text-on-brand: var(--ivds-preset-text-on-brand, #000);
+  --ivds-interactive-primary-bg: var(--ivds-preset-interactive-primary-bg, #ffd400);
+  --ivds-interactive-primary-bg-hover: var(--ivds-preset-interactive-primary-bg-hover, #ffea00);
+  --ivds-interactive-primary-bg-active: var(--ivds-preset-interactive-primary-bg-active, #cfa900);
+  --ivds-interactive-primary-text: var(--ivds-preset-interactive-primary-text, #000);
+  --ivds-interactive-secondary-bg: var(--ivds-preset-interactive-secondary-bg, transparent);
+  --ivds-interactive-secondary-bg-hover: var(--ivds-preset-interactive-secondary-bg-hover, #1a1a1a);
+  --ivds-interactive-secondary-border: var(--ivds-preset-interactive-secondary-border, #fff);
+  --ivds-interactive-secondary-text: var(--ivds-preset-interactive-secondary-text, #fff);
+  --ivds-interactive-accent-bg: var(--ivds-preset-interactive-accent-bg, #00e5ff);
+  --ivds-interactive-accent-bg-hover: var(--ivds-preset-interactive-accent-bg-hover, #7df9ff);
+  --ivds-interactive-accent-bg-active: var(--ivds-preset-interactive-accent-bg-active, #00b8d4);
+  --ivds-interactive-accent-text: var(--ivds-preset-interactive-accent-text, #000);
+  --ivds-focus-ring-color: var(--ivds-preset-focus-ring-color, #ffd400);
+  --ivds-focus-ring: var(--ivds-preset-focus-ring-ring, 0 0 0 3px rgba(255, 212, 0, 0.5));
 }
 
 .ivds-theme-surface {

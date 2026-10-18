@@ -3,8 +3,10 @@
   flex-direction: column;
   border-radius: 0.75rem;
   background-color: var(--ivds-surface-base, #fff);
+  color: inherit;
   overflow: hidden;
   cursor: pointer;
+  text-decoration: none;
   transition: box-shadow 0.2s ease, transform 0.15s ease;
 }
 
@@ -14,6 +16,11 @@
 }
 
 .ivds-linkbox:focus-within {
+  box-shadow: 0 0 0 3px var(--ivds-focus-ring, rgba(37, 99, 235, 0.35));
+}
+
+.ivds-linkbox:focus-visible {
+  outline: none;
   box-shadow: 0 0 0 3px var(--ivds-focus-ring, rgba(37, 99, 235, 0.35));
 }
 

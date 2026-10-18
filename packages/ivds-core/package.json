@@ -1,12 +1,15 @@
 {
   "name": "@ivds/core",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Core styles for the Ivoire Design System",
   "main": "lib/base.css",
   "style": "lib/all.css",
   "files": [
-    "lib",
-    "src",
+    "lib/**/*.css",
+    "lib/**/*.scss",
+    "lib/**/*.ts",
+    "lib/**/*.svg",
+    "!lib/**/__tests__/**",
     "README.md",
     "CHANGELOG.md"
   ],
@@ -82,12 +85,11 @@
     "./variables.min": {
       "style": "./lib/variables/variables.min.css",
       "default": "./lib/variables/variables.min.css"
-    },
-    "./src/*": "./src/*"
+    }
   },
   "scripts": {
     "generate-icons": "node scripts/generateIcons.js",
-    "build": "rimraf lib/ && yarn generate-icons && yarn lint:styles && yarn postcss-build && yarn css-to-ts && yarn copy-scss-files && yarn copy-scss-utils && yarn cssToScss",
+    "build": "rimraf lib/ && yarn generate-icons && yarn lint:styles && yarn postcss-build && yarn css-to-ts && yarn copy-scss-files && yarn copy-scss-utils && yarn cssToScss && yarn clean-build-artifacts",
     "build:prod": "NODE_ENV=production SASS_SILENCE_DEPRECATIONS=legacy-js-api,import yarn build",
     "postcss-build": "postcss 'src/**/[!_]*.(css|scss)' --base src -d lib --ext .css && postcss 'src/**/[!_]*.(css|scss)' --base src -d lib --ext 'min.css' --env 'minify'",
     "postcss-watch": "postcss 'src/**/*.(css|scss)' --base src -d lib --watch",
@@ -102,6 +104,7 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "clean": "rimraf lib/ coverage/ storybook-static/",
+    "clean-build-artifacts": "rimraf --glob \"lib/**/__tests__\" \"lib/**/*.map\"",
     "prepublishOnly": "yarn clean && yarn build:prod && yarn test",
     "start": "yarn storybook",
     "scss-tests": "yarn jest",
@@ -110,7 +113,7 @@
     "size": "bundlesize"
   },
   "peerDependencies": {
-    "@ivds/design-tokens": "^1.0.0"
+    "@ivds/design-tokens": "^1.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

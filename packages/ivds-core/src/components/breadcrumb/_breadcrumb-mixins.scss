@@ -50,7 +50,10 @@
 @mixin breadcrumb-link {
   color: var(--link-color);
   text-decoration: none;
-  transition: all var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease);
+  transition:
+    color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
+    background-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease),
+    text-decoration-color var(--ivds-motion-fast, 150ms) var(--ivds-motion-ease, ease);
   border-radius: var(--ivds-radius-xs, 0);
   padding: var(--spacing-1, 0.25rem) var(--spacing-2, 0.5rem);
   margin: calc(-1 * var(--spacing-1, 0.25rem)) calc(-1 * var(--spacing-2, 0.5rem));

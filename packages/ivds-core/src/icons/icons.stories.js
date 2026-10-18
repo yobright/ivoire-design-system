@@ -82,7 +82,9 @@ export const CommonIcons = () => `
       border: 2px solid var(--color-semantic-neutral-200, #e2e8f0);
       border-radius: 4px;
       text-align: center;
-      transition: all 0.2s;
+      transition:
+        border-color 0.2s,
+        background-color 0.2s;
     }
     .icon-item:hover {
       border-color: var(--color-brand-primary-600, #e13b1f);
@@ -121,7 +123,9 @@ export const AllIcons = () => `
       border: 1px solid var(--color-semantic-neutral-200, #e2e8f0);
       border-radius: 4px;
       text-align: center;
-      transition: all 0.2s;
+      transition:
+        border-color 0.2s,
+        background-color 0.2s;
     }
     .icon-item:hover {
       border-color: var(--color-brand-primary-600, #e13b1f);
