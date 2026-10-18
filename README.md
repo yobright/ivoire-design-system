@@ -1,20 +1,20 @@
 # Ivoire Design System (IVDS)
 
-Ivoire Design System est un systeme de conception open source concu pour accompagner la transformation numerique en Cote d'Ivoire. Il propose des ressources en matiere de conception et de developpement, ainsi que des directives pour creer des solutions accessibles et conviviales.
+Ivoire Design System est un système de conception open source pensé pour fournir une base cohérente de design et d’implémentation pour des interfaces web. Le projet réunit des tokens de design, des composants CSS et des composants React, avec une attention particulière portée à l’accessibilité, à la clarté d’usage et à la qualité d’intégration.
 
-Ce projet est une **initiative independante**. Il pose les fondations techniques — tokens de design, composants CSS, composants React — qui pourront servir de base a des interfaces institutionnelles coherentes et modernes.
+IVDS est une initiative indépendante. Le monorepo rassemble les fondations techniques du système et la documentation utile à son adoption.
 
 ---
 
 ## Les packages
 
-| Package | Role | Installation |
+| Package | Rôle | Installation |
 |---------|------|-------------|
-| `@ivds/design-tokens` | Couleurs, typographie, espacements, elevation, animations | `yarn add @ivds/design-tokens` |
-| `@ivds/core` | Composants CSS-only, reset, utilitaires | `yarn add @ivds/core` |
-| `@ivds/react` | Composants React avec TypeScript, ThemeProvider | `yarn add @ivds/react` |
+| `@ivds/design-tokens` | Couleurs, typographie, espacements, élévation, animation et alias sémantiques | `yarn add @ivds/design-tokens` |
+| `@ivds/core` | Styles CSS, reset, icônes et utilitaires | `yarn add @ivds/core` |
+| `@ivds/react` | Composants React typés, avec gestion du thème | `yarn add @ivds/react` |
 
-## Demarrage rapide
+## Démarrage rapide
 
 ### 1. Installer les packages
 
@@ -25,7 +25,7 @@ yarn add @ivds/design-tokens @ivds/core @ivds/react
 ### 2. Importer les styles
 
 ```tsx
-// Dans votre point d'entree (App.tsx, layout.tsx, etc.)
+// Dans votre point d’entrée (App.tsx, layout.tsx, etc.)
 import '@ivds/design-tokens/css';
 import '@ivds/core';
 ```
@@ -40,7 +40,7 @@ function App() {
     <main>
       <Card variant="elevated">
         <TextInput
-          label="Numero de piece d'identite"
+          label="Numéro de pièce d’identité"
           placeholder="CI-XXXX-XXXX"
         />
         <Button variant="primary" size="lg">
@@ -54,6 +54,13 @@ function App() {
 
 ---
 
+## Points clés
+
+- **Fondations partagées** : les tokens, les styles et les composants s’appuient sur un même socle.
+- **CSS et React** : les composants sont disponibles en version CSS seule et en version React.
+- **Thématisation** : le système propose des presets officiels et un contrat de thème personnalisable.
+- **Accessibilité** : les composants sont conçus pour faciliter la conformité WCAG 2.2 AA.
+
 ## Composants disponibles
 
 ### React (`@ivds/react`)
@@ -66,37 +73,39 @@ function App() {
 
 **Utilitaires** : Container, Columns, Section, Link, Box, Flex, Grid
 
-Chaque composant supporte `forwardRef`, le typage TypeScript complet, et les attributs ARIA.
+Chaque composant React prend en charge `forwardRef`, un typage TypeScript complet et les attributs ARIA nécessaires selon son usage.
 
 ### Core CSS (`@ivds/core`)
 
-Les memes composants en CSS pur, avec la convention BEM (`ivds-button`, `ivds-card`, etc.). Utilisable sans React ni framework JavaScript.
+Les mêmes composants sont proposés en CSS seul, avec une convention BEM (`ivds-button`, `ivds-card`, etc.), pour une utilisation sans React ni framework JavaScript.
 
 ---
 
-## Identite visuelle
+## Identité visuelle
 
-IVDS utilise une palette qui s'inspire de l'identite ivoirienne :
+IVDS repose sur une palette de marque et sur une échelle neutre destinée à structurer l’interface :
 
-- **Primary** : Burnt orange `#CC5500` — la chaleur de la terre ivoirienne
-- **Secondary** : Vert `#007a4d` — la croissance et le developpement
-- **Accent** : Bleu lagune `#1a6bdb` — le civisme et la confiance
-- **Cocoa** : Brun cacao `#6b4423` — la production emblematique
-- **Gold** : Or savane `#d4af37` — les paysages dores
+- **Primary** : Orange signature `#ff9f1c`
+- **Secondary** : Teal institutionnel `#2ec4b6`
+- **Accent** : Lagoon teal `#14b8a6`
+- **Cocoa** : Brun cacao `#6b4423`
+- **Gold** : Or savane `#d4af37`
 
-La typographie combine **Inter** (texte courant) et **IBM Plex Sans** (titres).
+La typographie combine **Inter** pour le texte courant et **IBM Plex Sans** pour les titres.
 
 ---
 
-## Accessibilite
+## Accessibilité
 
-IVDS vise la conformite WCAG 2.2 AA :
+IVDS vise une base compatible avec WCAG 2.2 AA :
 
-- Navigation clavier complete
-- Attributs ARIA sur tous les composants interactifs
-- Cibles tactiles de 48px minimum
-- Focus visible par outline (pas de box-shadow)
-- Support du mode sombre via `[data-ivds-theme='dark']`
+- Navigation complète au clavier
+- Attributs ARIA sur les composants interactifs
+- Cibles tactiles de 48 px minimum
+- Focus visible
+- Support des variantes de thème via `data-ivds-theme`
+
+La conformité finale dépend toutefois du contenu, du contexte d’intégration et des parcours implémentés dans chaque produit.
 
 ---
 
@@ -109,33 +118,44 @@ yarn install
 # Build complet
 yarn build
 
-# Developpement (Storybook)
+# Développement (Storybook)
 yarn dev:core          # Storybook Core sur le port 6007
 yarn dev:react         # Storybook React sur le port 6008
 
 # Tests
 yarn test
+
+# Certification technique institutionnelle locale
+yarn certify:institutional:strict
 ```
 
 ---
 
 ## Architecture
 
-```
+```text
 ivoire-design-system/
   packages/
     ivds-design-tokens/    Tokens JSON -> CSS / SCSS / JS / TypeScript
     ivds-core/             Composants SCSS + utilitaires
     ivds-react/            Composants React + ThemeProvider
   documentation/           Guides et conventions
-  scripts/                 Outils d'audit et d'automatisation
+  scripts/                 Outils d’audit et d’automatisation
 ```
+
+## Documentation complémentaire
+
+- [Guide de contribution](CONTRIBUTING.md)
+- [Guide de personnalisation](documentation/CUSTOMIZATION.md)
+- [Guide de développement](documentation/DEVELOPMENT.md)
+- [Phases de release](documentation/RELEASE-PHASES.md)
+- [Contrat d’accessibilité](documentation/ACCESSIBILITY-CONTRACT.md)
 
 ## Contribution
 
-Ce projet est en phase de fondation technique. Les contributions sont les bienvenues, qu'il s'agisse de signaler un bug, proposer une amelioration, ou ameliorer la documentation.
+Les contributions sont les bienvenues, qu’il s’agisse de signaler un bug, de proposer une amélioration ou d’enrichir la documentation.
 
-Consultez [CONTRIBUTING.md](CONTRIBUTING.md) pour savoir comment contribuer.
+Consultez [CONTRIBUTING.md](CONTRIBUTING.md) pour connaître le processus de contribution.
 
 ## Licence
 

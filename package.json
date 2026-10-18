@@ -27,8 +27,11 @@
     "test:tokens": "lerna run --scope @ivds/design-tokens test",
     "test:core": "lerna run --scope @ivds/core test",
     "test:react": "lerna run --scope @ivds/react test",
+    "test:e2e": "lerna run --scope @ivds/react test:e2e",
     "audit:react-coverage": "node scripts/react-component-coverage.mjs",
     "audit:react-coverage:strict": "node scripts/react-component-coverage.mjs --strict",
+    "certify:institutional": "node scripts/certify-institutional.mjs",
+    "certify:institutional:strict": "node scripts/certify-institutional.mjs --strict",
     "dev:core": "lerna run --scope @ivds/core storybook",
     "dev:react": "lerna run --scope @ivds/react storybook"
   },

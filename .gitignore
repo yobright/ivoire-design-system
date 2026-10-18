@@ -3,8 +3,9 @@ node_modules/
 .pnp
 .pnp.js
 
-# Internal documentation
-/bright-studio-team
+# Internal
+/team
+
 
 # Production builds
 /build
@@ -119,6 +120,8 @@ storybook-static/
 
 # Reports
 reports/
+playwright-report/
+test-results/
 
 # Chromatic
 build-storybook.log
