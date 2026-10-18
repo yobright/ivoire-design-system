@@ -10,7 +10,7 @@ if (!fs.existsSync(libDir)) {
   process.exit(1)
 }
 
-const requiredFiles = ["all.css", "all.scss", "all.json", "index.cjs"]
+const requiredFiles = ["all.css", "all.scss", "all.json", "default.css", "dark.css", "high-contrast.css", "index.cjs"]
 
 let allFilesExist = true
 
@@ -63,6 +63,21 @@ if (fs.existsSync(cssFile)) {
   if (foundVars < essentialVars.length / 2) {
     allFilesExist = false
   }
+}
+
+const defaultPresetFile = path.join(libDir, "default.css")
+if (fs.existsSync(defaultPresetFile)) {
+  const presetContent = fs.readFileSync(defaultPresetFile, "utf8")
+  const presetVars = ["--ivds-preset-surface-base", "--ivds-preset-text-primary", "--ivds-preset-interactive-primary-bg"]
+
+  presetVars.forEach((varName) => {
+    if (presetContent.includes(varName)) {
+      console.log(`✅ ${varName} found in default preset`)
+    } else {
+      console.error(`❌ ${varName} missing from default preset`)
+      allFilesExist = false
+    }
+  })
 }
 
 // testing CommonJS exports (using .cjs instead of .js)

@@ -23,22 +23,39 @@ StyleDictionary.registerTransform({
   },
 })
 
-StyleDictionary.registerFormat({
-  name: "css/variables-with-references",
-  formatter: (dictionary) => {
-    const header = `/**
+const createCssVariablesFormat = (selector) => (dictionary) => {
+  const header = `/**
  * IVDS Design Tokens
  * Generated on ${new Date().toISOString()}
  */
 
-:root {`
+${selector} {`
 
-    const variables = dictionary.allTokens.map((token) => `  --${token.name}: ${token.value};`).join("\n")
+  const variables = dictionary.allTokens.map((token) => `  --${token.name}: ${token.value};`).join("\n")
 
-    const footer = "\n}"
+  const footer = "\n}"
 
-    return header + "\n" + variables + footer
-  },
+  return header + "\n" + variables + footer
+}
+
+StyleDictionary.registerFormat({
+  name: "css/variables-with-references",
+  formatter: createCssVariablesFormat(":root"),
+})
+
+StyleDictionary.registerFormat({
+  name: "css/variables-default-preset",
+  formatter: createCssVariablesFormat(":root,\n[data-ivds-theme='default']"),
+})
+
+StyleDictionary.registerFormat({
+  name: "css/variables-dark-preset",
+  formatter: createCssVariablesFormat("[data-ivds-theme='dark']"),
+})
+
+StyleDictionary.registerFormat({
+  name: "css/variables-high-contrast-preset",
+  formatter: createCssVariablesFormat("[data-ivds-theme='high-contrast']"),
 })
 
 StyleDictionary.registerFormat({
@@ -84,14 +101,14 @@ const getPath = (path = "") => {
   return hasTrailingSlash ? fullPath : `${fullPath}/`
 }
 
-const getPlatformConfig = (output, buildPath = "") => ({
+const getPlatformConfig = (output, buildPath = "", cssFormat = "css/variables-with-references") => ({
   css: {
     transformGroup: "css/custom",
     buildPath: getPath(buildPath),
     files: [
       {
         destination: `${output}.css`,
-        format: "css/variables-with-references",
+        format: cssFormat,
         options: {
           showFileHeader: true,
         },
@@ -137,8 +154,23 @@ const getPlatformConfig = (output, buildPath = "") => ({
 const configs = [
   // All tokens
   {
-    source: ["tokens/**/*.json"],
+    source: ["tokens/**/*.json", "!tokens/theme/*.json"],
     platforms: getPlatformConfig("all"),
+  },
+
+  {
+    source: ["tokens/theme/default.json"],
+    platforms: getPlatformConfig("default", "", "css/variables-default-preset"),
+  },
+
+  {
+    source: ["tokens/theme/dark.json"],
+    platforms: getPlatformConfig("dark", "", "css/variables-dark-preset"),
+  },
+
+  {
+    source: ["tokens/theme/high-contrast.json"],
+    platforms: getPlatformConfig("high-contrast", "", "css/variables-high-contrast-preset"),
   },
 
   // Spacing - component level

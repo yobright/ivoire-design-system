@@ -1,6 +1,6 @@
 {
   "name": "@ivds/design-tokens",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Design tokens for the Ivoire Design System",
   "homepage": "https://github.com/yobright/ivoire-design-system#readme",
   "license": "MIT",
@@ -16,11 +16,12 @@
     "./lib/all.css": "./lib/all.css",
     "./lib/*.css": "./lib/*.css",
     "./css": "./lib/all.css",
+    "./css/*.css": "./lib/*.css",
     "./css/*": "./lib/*.css",
     "./scss": "./lib/all.scss",
     "./scss/*": "./lib/*.scss",
     "./js": "./lib/index.js",
-    "./json": "./lib/tokens.json",
+    "./json": "./lib/all.json",
     "./package.json": "./package.json"
   },
   "files": [

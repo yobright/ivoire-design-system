@@ -89,7 +89,48 @@
         "primary": { "value": "#ffffff" },
         "secondary": { "value": "#fafaf8" },
         "tertiary": { "value": "#f5f5f0" },
-        "inverse": { "value": "#1c1917" }
+        "inverse": { "value": "#1c1917" },
+        "accent": { "value": "#fff4e6" },
+        "secondary-accent": { "value": "#ecfdf9" },
+        "premium": { "value": "#fff8e1" }
+      },
+      "text": {
+        "primary": { "value": "#1c1917" },
+        "secondary": { "value": "#44403c" },
+        "muted": { "value": "#78716c" },
+        "on-strong": { "value": "#ffffff" },
+        "on-brand": { "value": "#ffffff" }
+      },
+      "border": {
+        "subtle": { "value": "#e7e5dd" },
+        "strong": { "value": "#d6d3c7" },
+        "brand": { "value": "#2dd4bf" },
+        "primary": { "value": "#ffc078" }
+      },
+      "interactive": {
+        "primary": {
+          "bg": { "value": "#ff9f1c" },
+          "bg-hover": { "value": "#f08c00" },
+          "bg-active": { "value": "#e67700" },
+          "text": { "value": "#ffffff" }
+        },
+        "secondary": {
+          "bg": { "value": "#ffffff" },
+          "bg-hover": { "value": "#ecfdf9" },
+          "border": { "value": "#14b8a6" },
+          "text": { "value": "#115e59" }
+        },
+        "accent": {
+          "bg": { "value": "#14b8a6" },
+          "bg-hover": { "value": "#0f766e" },
+          "bg-active": { "value": "#115e59" },
+          "text": { "value": "#ffffff" }
+        },
+        "supplementary": {
+          "bg": { "value": "transparent" },
+          "bg-hover": { "value": "#f5f5f0" },
+          "text": { "value": "#1c1917" }
+        }
       }
     }
   }
